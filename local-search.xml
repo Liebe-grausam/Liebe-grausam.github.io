@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Ollama</title>
+    <link href="/2024/03/21/Ollama/"/>
+    <url>/2024/03/21/Ollama/</url>
+    
+    <content type="html"><![CDATA[<p>昨天加入了环境变量，之前困扰的ollama报错问题也解决了。<br><img src="/../img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" alt="运行环境"><br><img src="/../img/ollama/%E4%BB%A5%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B.png" alt="以流的形式运行实例"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>玩了AI</title>
     <link href="/2024/03/20/%E7%8E%A9%E4%BA%86AI/"/>
     <url>/2024/03/20/%E7%8E%A9%E4%BA%86AI/</url>
