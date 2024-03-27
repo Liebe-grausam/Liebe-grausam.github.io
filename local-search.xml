@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>金宇彬好笨</title>
+    <link href="/2024/03/27/%E9%87%91%E5%AE%87%E5%BD%AC%E5%A5%BD%E7%AC%A8/"/>
+    <url>/2024/03/27/%E9%87%91%E5%AE%87%E5%BD%AC%E5%A5%BD%E7%AC%A8/</url>
+    
+    <content type="html"><![CDATA[<p>这个系列用来专门更数据库<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240327124313.png" alt="列出所有供应商的信息"><br>总的说来就是列出所有供应商的信息，包括供应商姓名、所供应的零件名（没有供应零件的供应商也要列出，最后结果中不要出现重复元组）</p><p>想实现的效果like this<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/fd6783cf6517e9620578fc548e54fa6.jpg" alt="主要的痛点在于空行怎么实现"><br>在网上看到了一个用banbao搭博客的学长（姑且称他为banbao学长）的代码，但是运行之后是错误的</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">select distinct S<span class="hljs-selector-class">.SNAME</span>, P<span class="hljs-selector-class">.PNAME</span><br>from S,SPJ,P<br>where S<span class="hljs-selector-class">.SNO</span> = SPJ<span class="hljs-selector-class">.SNO</span> and SPJ<span class="hljs-selector-class">.PNO</span> = P.PNO<br></code></pre></td></tr></table></figure><p>还没从关系模型里一堆奇怪的符号转过弯来的我表示震惊，大致研究了一下，distinct可以去掉重复行，from的作用是笛卡尔积（不是自然连接！！！！！）where这行起到了自然连接的作用</p><p>笛卡尔积就是无脑乘起来（相当于小学的乘法法则 总共有a×b×c种</p><p>但是对于苯人贫瘠的脑子还是无法想象，于是我想起以前高中某信息代课老师笨笨的做法，以上表为例全部列了出来</p><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%A4%A7%E5%8A%9B%E5%87%BA%E5%A5%87%E8%BF%B9.jpg" alt="大力出奇迹"></p><p>于是恍然大悟（模拟自然连接的筛选法则</p><p>所以学长的问题在于他没有实现空行，如何把空行揪出来呢</p><p>网上查询了一下（GPT），可以通过左外连接来实现这个需求。左外连接可以保证左边表（S 表）的所有记录都会被返回，即使它们在右边的表（这里是 SPJ 表）中没有匹配的记录。对于没有供应零件的供应商，其相关的零件名字段会返回为 NULL。</p><p>正确的代码如下：</p><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> S.SNAME, P.PNAME<br><span class="hljs-keyword">FROM</span> S<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> SPJ <span class="hljs-keyword">ON</span> S.SNO = SPJ.SNO<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> P <span class="hljs-keyword">ON</span> SPJ.PNO = P.PNO<br></code></pre></td></tr></table></figure><p>和学长代码的主要区别就是把（伪）自然连接换成了左外连接！</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>五十音打卡-1</title>
     <link href="/2024/03/27/%E4%BA%94%E5%8D%81%E9%9F%B3%E6%89%93%E5%8D%A1-1/"/>
     <url>/2024/03/27/%E4%BA%94%E5%8D%81%E9%9F%B3%E6%89%93%E5%8D%A1-1/</url>
