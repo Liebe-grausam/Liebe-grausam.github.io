@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>求供应了所有零件的供应商</title>
+    <link href="/2024/03/29/%E6%B1%82%E4%BE%9B%E5%BA%94%E4%BA%86%E6%89%80%E6%9C%89%E9%9B%B6%E4%BB%B6%E7%9A%84%E4%BE%9B%E5%BA%94%E5%95%86/"/>
+    <url>/2024/03/29/%E6%B1%82%E4%BE%9B%E5%BA%94%E4%BA%86%E6%89%80%E6%9C%89%E9%9B%B6%E4%BB%B6%E7%9A%84%E4%BE%9B%E5%BA%94%E5%95%86/</url>
+    
+    <content type="html"><![CDATA[<p>先复习一下关系代数里面的除法</p><p>学生表R：</p><table><thead><tr><th>学号</th><th>姓名</th><th>年龄</th><th>院系</th></tr></thead><tbody><tr><td>001</td><td>张三</td><td>19</td><td>计算机</td></tr></tbody></table><p>除数S1：</p><table><thead><tr><th>年龄</th></tr></thead><tbody><tr><td>19</td></tr></tbody></table><p>R÷S1&#x3D;学生表中年龄为19的学生信息的新表格，但这个新表格中的字段不包括年龄。</p><p>即：</p><table><thead><tr><th>学号</th><th>姓名</th><th>院系</th></tr></thead><tbody><tr><td>001</td><td>张三</td><td>计算机</td></tr></tbody></table><p>所以除法结果就是在被除表中，同时满足除数表的所有条件，但没有除数表中的字段的新表（如果结果有多条记录要全部列出）。</p><p>言归正传，由于评测台的版本过于老，所以不支持except，只能搞where not exists嵌套</p><p>所以不妨来绕一下，供应了所有零件 &#x3D; 不存在一个零件，它不在该供应商的供应零件集中，具体推导可以看下面图片<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%9B%9E%E6%83%B3%E8%B5%B7%E8%A2%AB%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E6%94%AF%E9%85%8D%E7%9A%84%E6%81%90%E6%83%A7.jpg" alt="回想起被数理逻辑支配的恐惧"></p><p>一开始最里面的嵌套是用where not in写的，但是问了gpt之后说这样会导致一些空值的情况，所以最好还是用where not exists</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> SNAME<br><span class="hljs-keyword">FROM</span> S<br><span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (<br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span><br>    <span class="hljs-keyword">FROM</span> P<br>    <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (<br>        <span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span><br>        <span class="hljs-keyword">FROM</span> SPJ<br>        <span class="hljs-keyword">WHERE</span> SPJ.SNO <span class="hljs-operator">=</span> S.SNO<br>        <span class="hljs-keyword">AND</span> SPJ.PNO <span class="hljs-operator">=</span> P.PNO<br>    )<br>)<br></code></pre></td></tr></table></figure><p>SELECT 1是性能问题，它使得只要找到一条记录就返回结果。当然如果是为了考试的话用SELECT *也没有任何问题</p><p>可以将这段代码的执行思想类比为一个嵌套的循环，其中外部循环是对供应商的循环，内部循环是对零件的循环。这种思想类似于控制变量的概念，即在外部循环中保持一个变量不变（当前供应商），而在内部循环中迭代另一个变量（零件）。</p><ol><li>外部的 SELECT SNAME FROM S … 查询遍历供应商表 S 中的每个供应商。</li><li>对于每个供应商，内部的子查询开始执行。这个子查询对零件表 P 中的每个零件进行循环（通过 NOT EXISTS 子句），并检查是否存在至少一条记录，表示当前供应商供应该零件。如果不存在这样的记录，表示当前供应商缺少供应的零件。</li><li>如果对于当前供应商不存在任何缺少供应的零件，即内部子查询返回空结果集，那么外部的 NOT EXISTS 就会返回 TRUE，表示当前供应商满足条件。</li><li>如果对于当前供应商存在至少一种缺少供应的零件，那么外部的 NOT EXISTS 就会返回 FALSE，表示当前供应商不满足条件。</li></ol><p>这种查询的执行方式确实类似于使用嵌套的循环来检查每个供应商是否满足条件。这样的查询结构有助于控制变量，以确保每个供应商都经过了正确的检查，而不会在内部循环中受到外部循环的影响（省流，类似于for循环控制外层变量在内层循环中不变，这样就能保证最内层的循环查找的一定是同一个供应商的供货记录</p><p>最外层的表是S，中间的是P，最内层的是SPJ</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>坠落的审判</title>
     <link href="/2024/03/28/%E5%9D%A0%E8%90%BD%E7%9A%84%E5%AE%A1%E5%88%A4/"/>
     <url>/2024/03/28/%E5%9D%A0%E8%90%BD%E7%9A%84%E5%AE%A1%E5%88%A4/</url>
@@ -412,19 +425,6 @@
     <url>/2024/03/06/HITORIE/</url>
     
     <content type="html"><![CDATA[<p>在地下室大唱特唱HITORIE。过路的人问我为什么喜欢日本的歌，我不假思索地回答，因为我喜欢HITORIE这个乐队，准确的说，我喜欢这个乐队的主唱。</p><p>wowaka的歌都很难翻唱。他的几首比较广为传诵的歌都是非常快的bpm，令人上气不接下气，但是在我非常低落的时期，他那种宣泄式的嘶吼的迷茫是我的精神支柱。从进入大学以来，几乎每个学期都在循环他的老歌。</p><p>发现冬野里有一句歌词是，“所有人都拥有的&#x2F;唯一的&#x2F;心脏&#x2F;即使被洋溢的色彩所浸染&#x2F;也依然跳不够&#x2F;不要离开我”，很感慨。</p><p>在五月天假唱风波时，我会想到wowaka的万人合唱unknown-mother goose现场。每一个人都向前挥动着手臂，就像巨浪。他不够高，甚至够不到立式话筒。但是他踮起脚抬起头，似乎是咬牙切齿地，但是饱含感情地喊出每一个词，弹奏着手中的电吉他。当我第一次听到现场最后那个爆发式的质问时，我的眼泪情不自禁地流了下来。有人假唱，有人燃尽生命怒吼。</p><p>从那首歌起，我对他的认知从一个净写些这么难翻唱的v家曲的p主，到发自内心认为他是一个可敬的歌者。我深深地崇拜着他的灵魂，尽管他也一样看似是现实逃避之人。从那一刻起我也开始去了解我几乎不怎么接触的日语歌领域，开始了解他担任主唱的乐队，开始费力地学着罗马音。</p><p>我带上耳机跟随着sleepwalk的节奏就像mv里漫步的舞者，这首歌是我循环次数最多的歌。我一边仰望着晴朗冬日里光秃秃的树枝枝干，一边一遍遍地听着冬野，每当听到那个钢琴变奏眼神都会突然变得柔和而悲伤。那时还在疫情学期，夜晚的未名湖非常寂静，我在未名湖的夜晚向着对面大喊“为何难解？为何难解！”。我一面郑重地弹奏，一面想象他站在台上的样子。我决定把记忆中的那个他重现出来，一直一直唱着他的歌。这是我的怀念，以最郑重的方式。</p><p>“在颤抖到无法动弹前，唱起来，唱起歌谣，只是唱着歌谣。”</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>关于家乡经济发展成功原因的思考</title>
-    <link href="/2024/03/06/%E5%85%B3%E4%BA%8E%E5%AE%B6%E4%B9%A1%E7%BB%8F%E6%B5%8E%E5%8F%91%E5%B1%95%E6%88%90%E5%8A%9F%E5%8E%9F%E5%9B%A0%E7%9A%84%E6%80%9D%E8%80%83/"/>
-    <url>/2024/03/06/%E5%85%B3%E4%BA%8E%E5%AE%B6%E4%B9%A1%E7%BB%8F%E6%B5%8E%E5%8F%91%E5%B1%95%E6%88%90%E5%8A%9F%E5%8E%9F%E5%9B%A0%E7%9A%84%E6%80%9D%E8%80%83/</url>
-    
-    <content type="html"><![CDATA[<p>经济地理学的课程论文，觉得很有意义所以写的比较认真。和家里人也聊了一下这些话题。家乡的变化真的日新月异，我们的认同感也日渐增强。<br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page1.png" alt="1"><br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page2.png" alt="2"><br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page3.png" alt="3"><br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page4.png" alt="4"><br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page5.png" alt="5"><br><img src="/../img/%E7%BB%8F%E6%B5%8E%E5%9C%B0%E7%90%86%E5%AD%A6/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E8%83%A1%E9%9B%A8%E6%96%B0-2100013110_Page6.png" alt="6"></p>]]></content>
     
     
     
