@@ -16,32 +16,21 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前面都没问题，注意一下beq那行（一般beq都是while循环），而且后面一般跟label  虽然偏移量是1，不过实际上读的是下下一条指令（毕竟没有偏移的话就直接读下一条了（很重要！！  D触发器：主要有一个数据输入、一个数据输出和一个时钟输入。在时钟clock的上升沿（0→1）， 采样输入D的值，传送到输出Q， 其余时间输出Q的值不变 为什么与S连的都是或非门？（A,B两个输入先或非一下，然后再">
+    <meta name="description" content="继上节体育课偶然发现自己已经可以连续踢出两个毽子后这几天加紧练习！虽然大部分时候还是只能踢一个但是偶尔也可以踢出四个（单只脚），有很大的进步！ 爪爪大作战mvp及获胜记录增加了很多！爪爪技术精进！判断推理刚好看到讲义的第99页（经zjt提醒才发现还有网课要听），经济地理学完全不想写读书笔记，，，（打算gpt）主要这个学期看的电子书实在太多了比较烦了 感觉自己大学后期的学习主要看兴趣和内驱力，，感兴">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计组期中兼MOOC梳理-2">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/01/%E8%AE%A1%E7%BB%84%E6%9C%9F%E4%B8%AD%E5%85%BCMOOC%E6%A2%B3%E7%90%86-2/index.html">
+<meta property="og:title" content="今日（昨日）成就！">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/02/%E4%BB%8A%E6%97%A5%EF%BC%88%E6%98%A8%E6%97%A5%EF%BC%89%E6%88%90%E5%B0%B1%EF%BC%81/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="前面都没问题，注意一下beq那行（一般beq都是while循环），而且后面一般跟label  虽然偏移量是1，不过实际上读的是下下一条指令（毕竟没有偏移的话就直接读下一条了（很重要！！  D触发器：主要有一个数据输入、一个数据输出和一个时钟输入。在时钟clock的上升沿（0→1）， 采样输入D的值，传送到输出Q， 其余时间输出Q的值不变 为什么与S连的都是或非门？（A,B两个输入先或非一下，然后再">
+<meta property="og:description" content="继上节体育课偶然发现自己已经可以连续踢出两个毽子后这几天加紧练习！虽然大部分时候还是只能踢一个但是偶尔也可以踢出四个（单只脚），有很大的进步！ 爪爪大作战mvp及获胜记录增加了很多！爪爪技术精进！判断推理刚好看到讲义的第99页（经zjt提醒才发现还有网课要听），经济地理学完全不想写读书笔记，，，（打算gpt）主要这个学期看的电子书实在太多了比较烦了 感觉自己大学后期的学习主要看兴趣和内驱力，，感兴">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-1.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-2.jpg">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%80%E4%BD%8D%E5%85%A8%E5%8A%A0%E5%99%A8.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7i+1.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%E5%85%AC%E5%BC%8Fi+1%E6%8E%A8%E5%AF%BC.jpg">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%AE%A1%E7%AE%97%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%EF%BC%88%E4%B8%89%E7%BA%A7%E9%97%A8%E5%BB%B6%E8%BF%9F%EF%BC%89.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/2016%E6%9C%9F%E4%B8%AD-%E4%B8%8E%E9%97%A8.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/2017%E6%9C%9F%E4%B8%AD-%E6%88%96%E9%97%A8.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E7%AE%97%E9%97%A8%E5%BB%B6%E8%BF%9F%E6%95%B0.png">
-<meta property="article:published_time" content="2024-04-01T06:44:45.000Z">
-<meta property="article:modified_time" content="2024-04-01T09:40:23.326Z">
+<meta property="article:published_time" content="2024-04-01T16:28:33.000Z">
+<meta property="article:modified_time" content="2024-04-01T16:38:31.849Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-1.png">
   
   
   
-  <title>计组期中兼MOOC梳理-2 - 苯人的一些发疯自留地！</title>
+  <title>今日（昨日）成就！ - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -171,7 +160,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计组期中兼MOOC梳理-2"></span>
+            <span id="subtitle" data-typed-text="今日（昨日）成就！"></span>
           
         </div>
 
@@ -182,8 +171,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-01 14:44" pubdate>
-          2024年4月1日 下午
+        <time datetime="2024-04-02 00:28" pubdate>
+          2024年4月2日 凌晨
         </time>
       </span>
     
@@ -194,7 +183,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          593 字
+          556 字
         
       </span>
     
@@ -243,21 +232,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计组期中兼MOOC梳理-2</h1>
+            <h1 style="display: none">今日（昨日）成就！</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-1.png" srcset="/img/loading.gif" lazyload alt="还原机器代码-1"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-2.jpg" srcset="/img/loading.gif" lazyload alt="还原机器代码-2"><br>前面都没问题，注意一下beq那行（一般beq都是while循环），而且后面一般跟label</p>
-<blockquote>
-<p>虽然偏移量是1，不过实际上读的是下下一条指令（毕竟没有偏移的话就直接读下一条了（很重要！！</p>
-</blockquote>
-<p>D触发器：主要有一个数据输入、一个数据输出和一个时钟输入。在时钟clock的上升沿（0→1）， 采样输入D的值，传送到输出Q， 其余时间输出Q的值不变</p>
-<p><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B8%80%E4%BD%8D%E5%85%A8%E5%8A%A0%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="2016期中-一位全加器"><br>为什么与S连的都是或非门？（A,B两个输入先或非一下，然后再和进位的输入或非），因为S只是某一位的取值（类比个位 只需关注奇偶）又加上二进制只有10两个数字，所以看一下一不一样就行</p>
-<p>为什么Cout先连与门再连或门？AB两个输入先与一下，如果全是1那就构成进位条件。如果AB不全是一呢？没关系AB只要有一个是1就可以了（异或为1），并且如果输入的进位也是1的话也可以构成进位条件，两者满足其一就可以<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7i+1.png" srcset="/img/loading.gif" lazyload alt="进位输出信号分析"><br>可以推一下i&#x3D;1的时候的公式<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%E5%85%AC%E5%BC%8Fi+1%E6%8E%A8%E5%AF%BC.jpg" srcset="/img/loading.gif" lazyload alt="2016期中-进位信号公式i+1推导"><br>以上都是行波进位加法器。</p>
-<p>如果是超前进位加法器：<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%AE%A1%E7%AE%97%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%EF%BC%88%E4%B8%89%E7%BA%A7%E9%97%A8%E5%BB%B6%E8%BF%9F%EF%BC%89.png" srcset="/img/loading.gif" lazyload alt="超前计算进位信号（三级门延迟）"><br>他主要优化的点在于C2的值不需要依赖C1，节省了等待时间（全都是并行计算的），一个竖列的全都是同时算出来，总共三个数列，所以计算Ci的延迟时间固定位三级门延迟</p>
-<p>但是总的一整个超前进位加法器是四级门延迟的。那是因为S3的计算依赖于C3，而计算C3需要三级门延迟。所以计算出S3需要四级门延迟（关键路径<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="超前进位加法器"></p>
-<p><img src="/../img/%E8%AE%A1%E7%BB%84/2016%E6%9C%9F%E4%B8%AD-%E4%B8%8E%E9%97%A8.png" srcset="/img/loading.gif" lazyload alt="2016期中-与门"><br>非门记忆：让positive的人在上面，本negative人只想当一个阴暗爬行的接地鼠鼠<br><img src="/../img/%E8%AE%A1%E7%BB%84/2017%E6%9C%9F%E4%B8%AD-%E6%88%96%E9%97%A8.png" srcset="/img/loading.gif" lazyload alt="2017期中-或门（画的是或非门）"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E7%AE%97%E9%97%A8%E5%BB%B6%E8%BF%9F%E6%95%B0.png" srcset="/img/loading.gif" lazyload alt="2016期中-计算n位行波进位加法器门延迟数"></p>
+                <p>继上节体育课偶然发现自己已经可以连续踢出两个毽子后这几天加紧练习！虽然大部分时候还是只能踢一个但是偶尔也可以踢出四个（单只脚），有很大的进步！</p>
+<p>爪爪大作战mvp及获胜记录增加了很多！爪爪技术精进！判断推理刚好看到讲义的第99页（经zjt提醒才发现还有网课要听），经济地理学完全不想写读书笔记，，，（打算gpt）主要这个学期看的电子书实在太多了比较烦了</p>
+<p>感觉自己大学后期的学习主要看兴趣和内驱力，，感兴趣的就多看一点，不感兴趣的就少看一点，甚至感兴趣的都懒得按格式写（认为格式的组织影响了我脑内观点的输出），虽然老师站在学术的角度还是很强调格式，，不过选英语课的人有几个最后真的去做研究呢（至少选英语课的都不是外院的人，我也是觉得读论文比较有意思，反正我读的评论文体也少，不需要花大量时间去组织资料，可能做学术的更需要条条框框吧</p>
+<p>甚至因为自己厌恶条条框框对自己将来的职业规划产生了怀疑。不过晚上仔细想了一下，如果是自己不感兴趣的内容（应付摆烂式），顺便把格式做了对我来说也没有大碍，主要还是自己感兴趣的内容因为自己有很多自己的想法，所以就不想按照格式。不过以后的工作大概率是自己不感兴趣的。无论是大厂螺丝钉比较单一的职能，还是信息老师这种单一授课，或者其他泛体制内岗位。所以如果怀着摆烂心态的话，有没有条条框框都无所谓了</p>
 
                 
               </div>
@@ -275,8 +258,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计组期中兼MOOC梳理-2</div>
-      <div>http://liebe-grausam.github.io/2024/04/01/计组期中兼MOOC梳理-2/</div>
+      <div>今日（昨日）成就！</div>
+      <div>http://liebe-grausam.github.io/2024/04/02/今日（昨日）成就！/</div>
     </div>
     <div class="license-meta">
       
@@ -288,7 +271,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月1日</div>
+          <div>2024年4月2日</div>
         </div>
       
       
@@ -320,18 +303,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/02/%E4%BB%8A%E6%97%A5%EF%BC%88%E6%98%A8%E6%97%A5%EF%BC%89%E6%88%90%E5%B0%B1%EF%BC%81/" title="今日（昨日）成就！">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日（昨日）成就！</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/31/%E6%B8%90%E5%85%A5%E4%BD%B3%E5%A2%83%EF%BC%81/" title="渐入佳境！">
-                        <span class="hidden-mobile">渐入佳境！</span>
+                      <a href="/2024/04/01/%E8%AE%A1%E7%BB%84%E6%9C%9F%E4%B8%AD%E5%85%BCMOOC%E6%A2%B3%E7%90%86-2/" title="计组期中兼MOOC梳理-2">
+                        <span class="hidden-mobile">计组期中兼MOOC梳理-2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
