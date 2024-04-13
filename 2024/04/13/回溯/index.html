@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.ico">
+  <link rel="icon" href="/img/avatar.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1E646E">
+  <meta name="author" content="Liebe_grausam">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="小红书笔试写到一道回溯题，，来不及写了，故在这里写完康康（正确率18%祭出我写了一半的回溯代码，，（也有动归的残骸 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;iostream&gt;using namespace std;&#x2F;&#x2F; int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回溯？动归？">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/13/%E5%9B%9E%E6%BA%AF/index.html">
+<meta property="og:site_name" content="苯人的一些发疯自留地！">
+<meta property="og:description" content="小红书笔试写到一道回溯题，，来不及写了，故在这里写完康康（正确率18%祭出我写了一半的回溯代码，，（也有动归的残骸 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;iostream&gt;using namespace std;&#x2F;&#x2F; int">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%AC%94%E8%AF%95/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240413144759.png">
+<meta property="article:published_time" content="2024-04-13T05:46:59.000Z">
+<meta property="article:modified_time" content="2024-04-13T09:48:50.533Z">
+<meta property="article:author" content="Liebe_grausam">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%AC%94%E8%AF%95/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240413144759.png">
+  
+  
+  
+  <title>回溯？动归？ - 苯人的一些发疯自留地！</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liebe-grausam.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>撒野地</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/wenzhang.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="回溯？动归？"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-13 13:46" pubdate>
+          2024年4月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">回溯？动归？</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>小红书笔试写到一道回溯题，，来不及写了，故在这里写完康康（正确率18%<br><img src="/../img/%E7%AC%94%E8%AF%95/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240413144759.png" srcset="/img/loading.gif" lazyload alt="粉丝数问题"><br>祭出我写了一半的回溯代码，，（也有动归的残骸</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// int dp[101][101];</span><br><span class="hljs-type">int</span> a[<span class="hljs-number">100</span>];<br><span class="hljs-comment">// 定义函数体</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">ddd</span><span class="hljs-params">(<span class="hljs-type">int</span> bb,<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (x==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>||bb&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-type">bool</span> flag=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;x;i++)&#123;<br>        <span class="hljs-type">int</span> ii= a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span> (x&gt;=ii)&#123;<br>            flag|=<span class="hljs-built_in">ddd</span>(bb<span class="hljs-number">-1</span>,x-ii);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> flag;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// 感觉还是动态规划</span><br>    <span class="hljs-comment">// 好像是回溯啊 那完蛋了</span><br><br>    <span class="hljs-comment">// 第一个参数是最少需要推广几次</span><br>    <span class="hljs-comment">// 第二个参数是现在的粉丝数量（这次推广之后</span><br>    <span class="hljs-type">int</span> n,x;<br>    cin&gt;&gt;n&gt;&gt;x;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>    &#125;<br>    <span class="hljs-comment">// for (int i=0;i&lt;n;i++)&#123;</span><br>    <span class="hljs-comment">//     int ii=a[i]/2;</span><br>    <span class="hljs-comment">//     dp[1][a[i]/2]=1;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-type">bool</span> flag=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">ddd</span>(i,x))&#123;<br>            flag=<span class="hljs-literal">true</span>;<br>            cout&lt;&lt;i;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!flag)&#123;<br>        cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    &#125;<br>    <br>    <span class="hljs-comment">// cout&lt;&lt;flag;</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>漏看了一条很重要的信息：只有一个账号能推广多次<br>（带摄像头的线上笔试真的太磨人了，，，屏幕比较小没放大根本看不见</p>
+<p>当时想加个最小值的返回判定但是来不及编译了，，加上去应该正确率不止这么点，挺可惜的，，不过就算写了也没来得及考虑推广多次的情况</p>
+<p>翻到了网上的解析，是用动归做的 因为我先做的下一题，，所以后来觉得这题不用动归做</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> dp[<span class="hljs-number">101</span>]; <span class="hljs-comment">// 本来我想设二维的，但是发现一维就够了</span><br><span class="hljs-comment">// dp[x]表示粉丝数恰好为x时至少需要推广的次数</span><br><span class="hljs-comment">// 初值全都赋成INF_MAX</span><br><span class="hljs-type">int</span> a[<span class="hljs-number">100</span>];<span class="hljs-comment">// 输入的原账号的粉丝量</span><br><span class="hljs-type">int</span> t[<span class="hljs-number">100</span>];<span class="hljs-comment">// 每个账号推广后实际涨粉数（</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-type">int</span> n,x;<br>    cin&gt;&gt;n&gt;&gt;x;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 这里就除以二 后面看着好看点</span><br>    &#125;<br>    <span class="hljs-comment">// 先考虑每个账号至多推广一次的情形</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=x;i++)&#123;<br>        dp[i]=<span class="hljs-number">99999</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        dp[t[i]]=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-comment">// bool flag=0;</span><br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=x;i++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>            <span class="hljs-keyword">if</span> (i-t[j]&gt;=<span class="hljs-number">0</span>)&#123;<br>                dp[i]=<span class="hljs-built_in">min</span>(dp[i],dp[i-t[j]]+<span class="hljs-number">1</span>);<br>            &#125;<br>            <span class="hljs-comment">// 控制一下下标范围，当时太急了也没来得及写</span><br>            <br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> tmp = dp[x];<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=x;j++)&#123;<br>            dp[j]=<span class="hljs-number">99999</span>;<br>        &#125;<br>        t[i]=a[i];<br>        <span class="hljs-comment">// dp[t[i]]=1;</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>            dp[t[j]]=<span class="hljs-number">1</span>;<br>        &#125;<br>        <br>        <span class="hljs-comment">// 还有一个忽视了的点！题目问的是账号数不是推广的总次数</span><br>        <span class="hljs-comment">// 所以这里推广多次的账号dp值不需要设成2</span><br>        <br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=x;j++)&#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m=<span class="hljs-number">0</span>;m&lt;n;m++)&#123;<br>                <span class="hljs-keyword">if</span> (j&gt;=t[m])&#123;<br>                    dp[j]=<span class="hljs-built_in">min</span>(dp[j],dp[j-t[m]]+<span class="hljs-number">1</span>);<br>                &#125;<br>                <span class="hljs-comment">// 下标合法性</span><br>            &#125;<br>        &#125;<br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 回溯（bushi</span><br>        tmp = <span class="hljs-built_in">min</span>(tmp,dp[x]);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dp[x]!=<span class="hljs-number">99999</span>)&#123;<br>        cout&lt;&lt;dp[x];<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-comment">// cout&lt;&lt;flag;</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>输出了一下还是错，，比对了一下标准答案发现dp需要反向遍历，而且内外循环套错了</p>
+<p>改了一下还是不行，，，</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> dp[<span class="hljs-number">101</span>]; <span class="hljs-comment">// 本来我想设二维的，但是发现一维就够了</span><br><span class="hljs-comment">// dp[x]表示粉丝数恰好为x时至少需要推广的次数</span><br><span class="hljs-comment">// 初值全都赋成INF_MAX</span><br><span class="hljs-type">int</span> a[<span class="hljs-number">100</span>];<span class="hljs-comment">// 输入的原账号的粉丝量</span><br><span class="hljs-type">int</span> t[<span class="hljs-number">100</span>];<span class="hljs-comment">// 每个账号推广后实际涨粉数（</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-type">int</span> n,x;<br>    cin&gt;&gt;n&gt;&gt;x;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 这里就除以二 后面看着好看点</span><br>    &#125;<br>    <span class="hljs-comment">// 先考虑每个账号至多推广一次的情形</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=x;i++)&#123;<br>        dp[i]=<span class="hljs-number">99999</span>;<br>    &#125;<br>    <br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        dp[t[i]]=<span class="hljs-number">1</span>;<br>    &#125;<br>    dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// bool flag=0;</span><br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=t[j];i&lt;=x;i++)&#123;<br>            dp[i]=<span class="hljs-built_in">min</span>(dp[i],dp[i-t[j]]+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> tmp = dp[x];<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=x;j++)&#123;<br>            dp[j]=<span class="hljs-number">99999</span>;<br>        &#125;<br>        t[i]=a[i];<br>        <span class="hljs-comment">// dp[t[i]]=1;</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>            dp[t[j]]=<span class="hljs-number">1</span>;<br>        &#125;<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-comment">// 还有一个忽视了的点！题目问的是账号数不是推广的总次数</span><br>        <span class="hljs-comment">// 所以这里推广多次的账号dp值不需要设成2</span><br>        <br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m=<span class="hljs-number">0</span>;m&lt;n;m++)&#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=t[m];j&lt;=x;j++)&#123;<br>                dp[j]=<span class="hljs-built_in">min</span>(dp[j],dp[j-t[m]]+<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <br><br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 回溯（bushi</span><br>        tmp = <span class="hljs-built_in">min</span>(tmp,dp[x]);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dp[x]!=<span class="hljs-number">99999</span>)&#123;<br>        cout&lt;&lt;dp[x];<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-comment">// cout&lt;&lt;flag;</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最神奇的是注释掉一大段代码之后就能跑通了，，，思考了一下原因是因为重新初始化，所以把之前迭代的数据丢失了，缺失了只推广一半粉丝数的数据，，所以蝴蝶效应影响到了其他的dp值</p>
+<p>AC代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> dp[<span class="hljs-number">101</span>]; <span class="hljs-comment">// 本来我想设二维的，但是发现一维就够了</span><br><span class="hljs-comment">// dp[x]表示粉丝数恰好为x时至少需要推广的次数</span><br><span class="hljs-comment">// 初值全都赋成INF_MAX</span><br><span class="hljs-type">int</span> a[<span class="hljs-number">100</span>];<span class="hljs-comment">// 输入的原账号的粉丝量</span><br><span class="hljs-type">int</span> t[<span class="hljs-number">100</span>];<span class="hljs-comment">// 每个账号推广后实际涨粉数（</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-type">int</span> n,x;<br>    cin&gt;&gt;n&gt;&gt;x;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 这里就除以二 后面看着好看点</span><br>    &#125;<br>    <span class="hljs-comment">// 先考虑每个账号至多推广一次的情形</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=x;i++)&#123;<br>        dp[i]=<span class="hljs-number">99999</span>;<br>    &#125;<br>    <br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        dp[t[i]]=<span class="hljs-number">1</span>;<br>    &#125;<br>    dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// bool flag=0;</span><br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=t[j];i&lt;=x;i++)&#123;<br>            dp[i]=<span class="hljs-built_in">min</span>(dp[i],dp[i-t[j]]+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> tmp = dp[x];<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-comment">// for (int j=1;j&lt;=x;j++)&#123;</span><br>        <span class="hljs-comment">//     dp[j]=99999;</span><br>        <span class="hljs-comment">// &#125;</span><br>        t[i]=a[i];<br>        <span class="hljs-comment">// dp[t[i]]=1;</span><br>        <span class="hljs-comment">// for (int j=0;j&lt;n;j++)&#123;</span><br>        <span class="hljs-comment">//     dp[t[j]]=1;</span><br>        <span class="hljs-comment">// &#125;</span><br>        <span class="hljs-comment">// dp[0]=0;</span><br>        <br>        <span class="hljs-comment">// 还有一个忽视了的点！题目问的是账号数不是推广的总次数</span><br>        <span class="hljs-comment">// 所以这里推广多次的账号dp值不需要设成2</span><br>        <br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m=<span class="hljs-number">0</span>;m&lt;n;m++)&#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=t[m];j&lt;=x;j++)&#123;<br>                dp[j]=<span class="hljs-built_in">min</span>(dp[j],dp[j-t[m]]+<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <br><br>        t[i]=a[i]/<span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 回溯（bushi</span><br>        tmp = <span class="hljs-built_in">min</span>(tmp,dp[x]);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dp[x]!=<span class="hljs-number">99999</span>)&#123;<br>        cout&lt;&lt;dp[x];<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-comment">// cout&lt;&lt;flag;</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>回溯？动归？</div>
+      <div>http://liebe-grausam.github.io/2024/04/13/回溯/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liebe_grausam</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/12/%E5%B0%8F%E7%BA%A2%E4%B9%A6%EF%BC%81/" title="小红书！">
+                        <span class="hidden-mobile">小红书！</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://liebe-grausam.github.io" target="_blank" rel="nofollow noopener"><span>Kepler</span></a> <i class="iconfont icon-love"></i> <a href="https://junglethorn.github.io" target="_blank" rel="nofollow noopener"><span>Grey’pe</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
