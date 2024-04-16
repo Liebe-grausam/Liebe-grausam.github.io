@@ -16,18 +16,19 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="昨天加入了环境变量，之前困扰的ollama报错问题也解决了。">
+    <meta name="description" content="昨天加入了环境变量，之前困扰的ollama报错问题也解决了。 12345678import ollamastream &#x3D; ollama.chat(    model&#x3D;&amp;#x27;MyModel&amp;#x27;,    messages&#x3D;[&amp;#123;&amp;#x27;role&amp;#x27;: &amp;#x27;user&amp;#x27;, &amp;#x27;content&amp;#x27;: &amp;#x27;Why is the sky">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ollama">
 <meta property="og:url" content="http://liebe-grausam.github.io/2024/03/21/Ollama/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="昨天加入了环境变量，之前困扰的ollama报错问题也解决了。">
+<meta property="og:description" content="昨天加入了环境变量，之前困扰的ollama报错问题也解决了。 12345678import ollamastream &#x3D; ollama.chat(    model&#x3D;&amp;#x27;MyModel&amp;#x27;,    messages&#x3D;[&amp;#123;&amp;#x27;role&amp;#x27;: &amp;#x27;user&amp;#x27;, &amp;#x27;content&amp;#x27;: &amp;#x27;Why is the sky">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/ollama/%E4%BB%A5%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B.png">
 <meta property="article:published_time" content="2024-03-21T07:52:24.000Z">
-<meta property="article:modified_time" content="2024-03-21T07:55:23.070Z">
+<meta property="article:modified_time" content="2024-04-16T13:55:22.375Z">
 <meta property="article:author" content="Liebe_grausam">
+<meta property="article:tag" content="Ollama">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png">
   
@@ -215,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          30 字
+          313 字
         
       </span>
     
@@ -226,7 +227,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -278,7 +279,7 @@
               <div class="markdown-body">
                 
                 <p>昨天加入了环境变量，之前困扰的ollama报错问题也解决了。<br><img src="/../img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" srcset="/img/loading.gif" lazyload alt="运行环境"><br><img src="/../img/ollama/%E4%BB%A5%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B.png" srcset="/img/loading.gif" lazyload alt="以流的形式运行实例"></p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> ollama<br>stream = ollama.chat(<br>    model=<span class="hljs-string">&#x27;MyModel&#x27;</span>,<br>    messages=[&#123;<span class="hljs-string">&#x27;role&#x27;</span>: <span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-string">&#x27;content&#x27;</span>: <span class="hljs-string">&#x27;Why is the sky blue?&#x27;</span>&#125;],<br>    stream=<span class="hljs-literal">True</span>,<br>)<br><span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> stream:<br>  <span class="hljs-built_in">print</span>(chunk[<span class="hljs-string">&#x27;message&#x27;</span>][<span class="hljs-string">&#x27;content&#x27;</span>], end=<span class="hljs-string">&#x27;&#x27;</span>, flush=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -286,6 +287,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Ollama/">#Ollama</a>
+      
+    </div>
   
 </div>
 

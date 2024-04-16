@@ -573,9 +573,15 @@
     <link href="/2024/03/21/Ollama/"/>
     <url>/2024/03/21/Ollama/</url>
     
-    <content type="html"><![CDATA[<p>昨天加入了环境变量，之前困扰的ollama报错问题也解决了。<br><img src="/../img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" alt="运行环境"><br><img src="/../img/ollama/%E4%BB%A5%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B.png" alt="以流的形式运行实例"></p>]]></content>
+    <content type="html"><![CDATA[<p>昨天加入了环境变量，之前困扰的ollama报错问题也解决了。<br><img src="/../img/ollama/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" alt="运行环境"><br><img src="/../img/ollama/%E4%BB%A5%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B.png" alt="以流的形式运行实例"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> ollama<br>stream = ollama.chat(<br>    model=<span class="hljs-string">&#x27;MyModel&#x27;</span>,<br>    messages=[&#123;<span class="hljs-string">&#x27;role&#x27;</span>: <span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-string">&#x27;content&#x27;</span>: <span class="hljs-string">&#x27;Why is the sky blue?&#x27;</span>&#125;],<br>    stream=<span class="hljs-literal">True</span>,<br>)<br><span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> stream:<br>  <span class="hljs-built_in">print</span>(chunk[<span class="hljs-string">&#x27;message&#x27;</span>][<span class="hljs-string">&#x27;content&#x27;</span>], end=<span class="hljs-string">&#x27;&#x27;</span>, flush=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>Ollama</tag>
+      
+    </tags>
     
   </entry>
   
@@ -586,9 +592,15 @@
     <link href="/2024/03/20/%E7%8E%A9%E4%BA%86AI/"/>
     <url>/2024/03/20/%E7%8E%A9%E4%BA%86AI/</url>
     
-    <content type="html"><![CDATA[<p>第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇</p><p>本地部署完成！（算是？</p><p>成就：获得免费API（记得运行的时候要全局翻墙</p><p><img src="/../img/%E7%8E%A9%E4%BA%86AI/API_keys.png" alt="API keys"><br><img src="/../img/%E7%8E%A9%E4%BA%86AI/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png" alt="运行示例"></p>]]></content>
+    <content type="html"><![CDATA[<p>第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇</p><p>本地部署完成！（算是？</p><p>成就：获得免费API（记得运行的时候要全局翻墙</p><p><img src="/../img/%E7%8E%A9%E4%BA%86AI/API_keys.png" alt="API keys"><br><img src="/../img/%E7%8E%A9%E4%BA%86AI/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png" alt="运行示例"><br>源码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> groq <span class="hljs-keyword">import</span> Groq<br><br>client = Groq(api_key=<span class="hljs-string">&quot;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&quot;</span>)<br><br>chat_completion = client.chat.completions.create(<br>    messages=[<br>        &#123;<br>            <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,<br>            <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;why is the sea blue?&quot;</span>,<br>        &#125;<br>    ],<br>    model=<span class="hljs-string">&quot;gemma-7b-it&quot;</span>,<br>)<br><br><span class="hljs-built_in">print</span>(chat_completion.choices[<span class="hljs-number">0</span>].message.content)<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>groq</tag>
+      
+    </tags>
     
   </entry>
   

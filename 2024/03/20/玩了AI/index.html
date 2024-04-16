@@ -16,18 +16,19 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇 本地部署完成！（算是？ 成就：获得免费API（记得运行的时候要全局翻墙">
+    <meta name="description" content="第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇 本地部署完成！（算是？ 成就：获得免费API（记得运行的时候要全局翻墙 源码 123456789101112131415from groq import Groqclient &#x3D; Groq(api_key&#x3D;&quot;gsk_n5vnqiPrXiR4xMl7ziAJWGdyb3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩了AI">
 <meta property="og:url" content="http://liebe-grausam.github.io/2024/03/20/%E7%8E%A9%E4%BA%86AI/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇 本地部署完成！（算是？ 成就：获得免费API（记得运行的时候要全局翻墙">
+<meta property="og:description" content="第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇 本地部署完成！（算是？ 成就：获得免费API（记得运行的时候要全局翻墙 源码 123456789101112131415from groq import Groqclient &#x3D; Groq(api_key&#x3D;&quot;gsk_n5vnqiPrXiR4xMl7ziAJWGdyb3">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%8E%A9%E4%BA%86AI/API_keys.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%8E%A9%E4%BA%86AI/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png">
 <meta property="article:published_time" content="2024-03-20T13:41:55.000Z">
-<meta property="article:modified_time" content="2024-03-20T13:48:16.376Z">
+<meta property="article:modified_time" content="2024-04-16T13:52:56.048Z">
 <meta property="article:author" content="Liebe_grausam">
+<meta property="article:tag" content="groq">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%8E%A9%E4%BA%86AI/API_keys.png">
   
@@ -215,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          94 字
+          458 字
         
       </span>
     
@@ -226,7 +227,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -280,8 +281,8 @@
                 <p>第一次跑一个ai的实例独立跑通了！之前没跑通是因为环境变量的问题，设置了环境变量就好了！（事实证明不能忽视控制台的警告哇</p>
 <p>本地部署完成！（算是？</p>
 <p>成就：获得免费API（记得运行的时候要全局翻墙</p>
-<p><img src="/../img/%E7%8E%A9%E4%BA%86AI/API_keys.png" srcset="/img/loading.gif" lazyload alt="API keys"><br><img src="/../img/%E7%8E%A9%E4%BA%86AI/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png" srcset="/img/loading.gif" lazyload alt="运行示例"></p>
-
+<p><img src="/../img/%E7%8E%A9%E4%BA%86AI/API_keys.png" srcset="/img/loading.gif" lazyload alt="API keys"><br><img src="/../img/%E7%8E%A9%E4%BA%86AI/%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B.png" srcset="/img/loading.gif" lazyload alt="运行示例"><br>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> groq <span class="hljs-keyword">import</span> Groq<br><br>client = Groq(api_key=<span class="hljs-string">&quot;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&quot;</span>)<br><br>chat_completion = client.chat.completions.create(<br>    messages=[<br>        &#123;<br>            <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,<br>            <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;why is the sea blue?&quot;</span>,<br>        &#125;<br>    ],<br>    model=<span class="hljs-string">&quot;gemma-7b-it&quot;</span>,<br>)<br><br><span class="hljs-built_in">print</span>(chat_completion.choices[<span class="hljs-number">0</span>].message.content)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -289,6 +290,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/groq/">#groq</a>
+      
+    </div>
   
 </div>
 
