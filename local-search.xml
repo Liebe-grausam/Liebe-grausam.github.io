@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>对于与门或门实现更好的理解</title>
+    <link href="/2024/04/16/%E5%AF%B9%E4%BA%8E%E4%B8%8E%E9%97%A8%E6%88%96%E9%97%A8%E5%AE%9E%E7%8E%B0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <url>/2024/04/16/%E5%AF%B9%E4%BA%8E%E4%B8%8E%E9%97%A8%E6%88%96%E9%97%A8%E5%AE%9E%E7%8E%B0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<p>众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门</p><p>非门其实就是一个CMOS反相器</p><p>与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点</p><p>或非：0变1，PMOS擅长，接电源，但PMOS不能直接接地，所以最下面的PMOS要下接一个NMOS。同理另一个为了对称也接一个NMOS，但是NMOS不能接电源，所以两个NMOS的上端与两个PMOS的下端要引出Y端（把两个NMOS门画在PMOS门的下面 使得它们整体隔开会好画一点<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg" alt="与非与或非"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>计组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SRAM数字电路设计</title>
     <link href="/2024/04/16/SRAM%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
     <url>/2024/04/16/SRAM%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/</url>
