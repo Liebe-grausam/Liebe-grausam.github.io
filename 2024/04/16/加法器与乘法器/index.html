@@ -16,26 +16,30 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门 非门其实就是一个CMOS反相器 与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点 或非：0变1，PMOS">
+    <meta name="description" content="今天把之前艾美疫苗送的笔记本写完了，，可喜可贺虽然除法器还没考过不过以防万一稍微瞄一眼">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对于与门或门实现更好的理解">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/16/%E5%AF%B9%E4%BA%8E%E4%B8%8E%E9%97%A8%E6%88%96%E9%97%A8%E5%AE%9E%E7%8E%B0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:title" content="加减乘除法器">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/16/%E5%8A%A0%E6%B3%95%E5%99%A8%E4%B8%8E%E4%B9%98%E6%B3%95%E5%99%A8/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门 非门其实就是一个CMOS反相器 与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点 或非：0变1，PMOS">
+<meta property="og:description" content="今天把之前艾美疫苗送的笔记本写完了，，可喜可贺虽然除法器还没考过不过以防万一稍微瞄一眼">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg">
-<meta property="article:published_time" content="2024-04-16T07:42:43.000Z">
-<meta property="article:modified_time" content="2024-04-16T07:58:23.421Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%8A%A0%E6%B3%95%E5%99%A8.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%87%8F%E6%B3%95%E5%99%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B9%98%E6%B3%95%E5%99%A8.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/32-bit%E9%99%A4%E6%B3%95%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E9%99%A4%E6%B3%95%E5%99%A8%E5%9B%BE%E7%A4%BA.jpg">
+<meta property="article:published_time" content="2024-04-16T13:15:10.000Z">
+<meta property="article:modified_time" content="2024-04-16T13:32:29.892Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="计组">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%8A%A0%E6%B3%95%E5%99%A8.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>对于与门或门实现更好的理解 - 苯人的一些发疯自留地！</title>
+  <title>加减乘除法器 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="对于与门或门实现更好的理解"></span>
+            <span id="subtitle" data-typed-text="加减乘除法器"></span>
           
         </div>
 
@@ -203,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-16 15:42" pubdate>
-          2024年4月16日 下午
+        <time datetime="2024-04-16 21:15" pubdate>
+          2024年4月16日 晚上
         </time>
       </span>
     
@@ -215,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          323 字
+          43 字
         
       </span>
     
@@ -226,7 +230,7 @@
         
         
         
-          3 分钟
+          1 分钟
         
       </span>
     
@@ -272,15 +276,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">对于与门或门实现更好的理解</h1>
+            <h1 style="display: none">加减乘除法器</h1>
             
             
               <div class="markdown-body">
                 
-                <p>众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门</p>
-<p>非门其实就是一个CMOS反相器</p>
-<p>与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点</p>
-<p>或非：0变1，PMOS擅长，接电源，但PMOS不能直接接地，所以最下面的PMOS要下接一个NMOS。同理另一个为了对称也接一个NMOS，但是NMOS不能接电源，所以两个NMOS的上端与两个PMOS的下端要引出Y端（把两个NMOS门画在PMOS门的下面 使得它们整体隔开会好画一点<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg" srcset="/img/loading.gif" lazyload alt="与非与或非"></p>
+                <p><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%8A%A0%E6%B3%95%E5%99%A8.jpg" srcset="/img/loading.gif" lazyload alt="加法器"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%87%8F%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="减法器"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B9%98%E6%B3%95%E5%99%A8.jpg" srcset="/img/loading.gif" lazyload alt="乘法器"><br>今天把之前艾美疫苗送的笔记本写完了，，可喜可贺<br>虽然除法器还没考过不过以防万一稍微瞄一眼<br><img src="/../img/%E8%AE%A1%E7%BB%84/32-bit%E9%99%A4%E6%B3%95%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="32-bit除法器的工作流程图"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E9%99%A4%E6%B3%95%E5%99%A8%E5%9B%BE%E7%A4%BA.jpg" srcset="/img/loading.gif" lazyload alt="除法器图示"></p>
 
                 
               </div>
@@ -305,8 +306,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>对于与门或门实现更好的理解</div>
-      <div>http://liebe-grausam.github.io/2024/04/16/对于与门或门实现更好的理解/</div>
+      <div>加减乘除法器</div>
+      <div>http://liebe-grausam.github.io/2024/04/16/加法器与乘法器/</div>
     </div>
     <div class="license-meta">
       
@@ -350,18 +351,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/16/%E5%8A%A0%E6%B3%95%E5%99%A8%E4%B8%8E%E4%B9%98%E6%B3%95%E5%99%A8/" title="加减乘除法器">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">加减乘除法器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/16/SRAM%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" title="SRAM数字电路设计">
-                        <span class="hidden-mobile">SRAM数字电路设计</span>
+                      <a href="/2024/04/16/%E5%AF%B9%E4%BA%8E%E4%B8%8E%E9%97%A8%E6%88%96%E9%97%A8%E5%AE%9E%E7%8E%B0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%90%86%E8%A7%A3/" title="对于与门或门实现更好的理解">
+                        <span class="hidden-mobile">对于与门或门实现更好的理解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
