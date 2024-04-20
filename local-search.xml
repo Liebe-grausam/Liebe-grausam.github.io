@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>重大突破-分离辅音</title>
+    <link href="/2024/04/20/%E9%87%8D%E5%A4%A7%E7%AA%81%E7%A0%B4/"/>
+    <url>/2024/04/20/%E9%87%8D%E5%A4%A7%E7%AA%81%E7%A0%B4/</url>
+    
+    <content type="html"><![CDATA[<p>发现配的环境还是不大行，，于是今天又倒腾了好久的环境</p><p>一直很好奇为什么终端每次打印环境变量的时候都会出现一些奇怪的字符 就算是人工键入也是非常奇怪的字符，今天破案了</p><p>下次输环境变量的时候不要再右键文件属性然后复制了，直接点<br><img src="/../img/env/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240420234648.png" alt="watch this"><br>就会出来一个直接可以复制的地址，这样就不会出现奇怪的字符了</p><p>再不行就重新下一个包（注意一下下载的是essential部分还是full部分 以免漏掉一些东西 不过我感觉根源还是上面的复制问题</p><p>又仔细研究了一下上次下的synthesis轮子，（如果方言能像拼音一样直接拼出来就好了，拆解成多个音频，每个音频播放固定的时长</p><p>居然被我找到了！吴语拼音！因为玉环话和温岭话比较相近所以打算采用温岭话拼音方案！<a href="https://wu-chinese.com/romanization/wenling.html">吴语协会温岭话拼音链接</a></p><p>从官网的辅音介绍下载了一个ogg（既然是方言爱好者官网的，肯定比我这个“门外汉”读的标准），但是问题在于这个音频是送气的（ta），所以就在想怎么把辅音和元音分开，问了chatgpt给的答案也不尽人意，最后hyx发挥了她的智慧——</p><p>主要思路就是利用pydub库（一个处理音频的库），将官网下载的音频找到非静音部分（这个灵感来源是华为录音的跳过静音功能），再截取前面的一小部分，就可以分离开了！</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pydub <span class="hljs-keyword">import</span> AudioSegment<br><span class="hljs-keyword">from</span> pydub.silence <span class="hljs-keyword">import</span> detect_nonsilent<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 加载音频文件</span><br>audio_file = <span class="hljs-string">&quot;ta.ogg&quot;</span><br>audio = AudioSegment.from_ogg(audio_file)<br><br><span class="hljs-comment"># 使用detect_nonsilent找到非静音部分</span><br>nonsilent_intervals = detect_nonsilent(audio, silence_thresh=-<span class="hljs-number">40</span>, min_silence_len=<span class="hljs-number">50</span>)<br><br><span class="hljs-comment"># 获取第一个非静音部分的开始位置</span><br><span class="hljs-keyword">if</span> nonsilent_intervals:<br>    start_pos = nonsilent_intervals[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><br>    <span class="hljs-comment"># 截取去掉静音部分后的前25毫秒音频</span><br>    chunk = audio[start_pos:start_pos + <span class="hljs-number">25</span>]  <br><br>    <span class="hljs-comment"># 创建一个新的音频文件夹来保存截取出的音频</span><br>    output_folder = <span class="hljs-string">&quot;output_audio&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(output_folder):<br>        os.mkdir(output_folder)<br><br>    <span class="hljs-comment"># 保存截取出的音频</span><br>    output_file = os.path.join(output_folder, <span class="hljs-string">&quot;first_25ms_after_silence.ogg&quot;</span>)<br>    chunk.export(output_file, <span class="hljs-built_in">format</span>=<span class="hljs-string">&quot;ogg&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;成功截取去掉静音部分后的前25毫秒音频。&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未找到非静音部分。&quot;</span>)<br><br></code></pre></td></tr></table></figure><p>听了一下效果感觉还可以！明天试试看把它和元音音频合起来</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>dialect</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>明明配了环境，却仍然不能运行？</title>
     <link href="/2024/04/19/%E4%BF%A1%E7%A7%91%E5%A3%AC%E6%9E%81%E5%85%B6%E8%A6%81%E5%BC%BA%E7%9A%84%E4%B8%80%E7%94%9F/"/>
     <url>/2024/04/19/%E4%BF%A1%E7%A7%91%E5%A3%AC%E6%9E%81%E5%85%B6%E8%A6%81%E5%BC%BA%E7%9A%84%E4%B8%80%E7%94%9F/</url>
