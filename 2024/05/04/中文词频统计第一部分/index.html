@@ -16,24 +16,27 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="跑的第一个hadoop是hadoop自带的英文词频统计。 因为自己手头有一堆博客的md文件，于是想做一个中文的词频统计。 （扩完容之后开跑！ 苯人环境：hadoop单机版 Ubuntu20.04 苯人文件夹结构：  posts scripts mapper.py reducer.py（仍在编写中   small_input *.md   a_output …      终端代码 1hadoop j">
+    <meta name="description" content="先总结一下今天干了什么（工作日报 使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。   下一步的操作是要编辑reduce文件，使得同一键的count合并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跑通第二个hadoop">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/04/%E8%B7%91%E9%80%9A%E7%AC%AC%E4%BA%8C%E4%B8%AAhadoop/index.html">
+<meta property="og:title" content="中文词频统计第一部分">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/04/%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="跑的第一个hadoop是hadoop自带的英文词频统计。 因为自己手头有一堆博客的md文件，于是想做一个中文的词频统计。 （扩完容之后开跑！ 苯人环境：hadoop单机版 Ubuntu20.04 苯人文件夹结构：  posts scripts mapper.py reducer.py（仍在编写中   small_input *.md   a_output …      终端代码 1hadoop j">
+<meta property="og:description" content="先总结一下今天干了什么（工作日报 使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。   下一步的操作是要编辑reduce文件，使得同一键的count合并">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-04T07:15:16.000Z">
-<meta property="article:modified_time" content="2024-05-04T07:24:34.409Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/hadoop/split.txt.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/hadoop/%E6%9C%AA%E7%BB%8Freduce%E7%9A%84%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1.png">
+<meta property="article:published_time" content="2024-05-04T11:33:46.000Z">
+<meta property="article:modified_time" content="2024-05-04T11:40:27.091Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="hadoop">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/hadoop/split.txt.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>跑通第二个hadoop - 苯人的一些发疯自留地！</title>
+  <title>中文词频统计第一部分 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -190,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="跑通第二个hadoop"></span>
+            <span id="subtitle" data-typed-text="中文词频统计第一部分"></span>
           
         </div>
 
@@ -201,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-04 15:15" pubdate>
-          2024年5月4日 下午
+        <time datetime="2024-05-04 19:33" pubdate>
+          2024年5月4日 晚上
         </time>
       </span>
     
@@ -213,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          141 字
         
       </span>
     
@@ -224,7 +227,7 @@
         
         
         
-          11 分钟
+          2 分钟
         
       </span>
     
@@ -270,41 +273,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">跑通第二个hadoop</h1>
+            <h1 style="display: none">中文词频统计第一部分</h1>
             
             
               <div class="markdown-body">
                 
-                <p>跑的第一个hadoop是hadoop自带的英文词频统计。</p>
-<p>因为自己手头有一堆博客的md文件，于是想做一个中文的词频统计。</p>
-<p>（扩完容之后开跑！</p>
-<p>苯人环境：hadoop单机版 Ubuntu20.04</p>
-<p>苯人文件夹结构：</p>
-<ul>
-<li>posts<ul>
-<li>scripts<ul>
-<li>mapper.py</li>
-<li>reducer.py（仍在编写中</li>
-</ul>
-</li>
-<li>small_input<ul>
-<li>*.md</li>
-</ul>
-</li>
-<li>a_output<ul>
-<li>…</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>终端代码</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">hadoop jar <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/share/</span>hadoop<span class="hljs-regexp">/tools/</span>lib<span class="hljs-regexp">/hadoop-streaming-3.4.0.jar -file mapper.py -mapper &quot;python3 mapper.py&quot; -input ~/</span>桌面<span class="hljs-regexp">/posts/</span>small_input<span class="hljs-regexp">/ -output ~/</span>桌面<span class="hljs-regexp">/posts/</span>a_output/<br></code></pre></td></tr></table></figure>
-<p>可以每打一部分就用“\”作为分割符，就可以接着输没输完的命令</p>
-<p>mapper.py代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> jieba<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">read_input</span>(<span class="hljs-params">file</span>):<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file:<br>        <span class="hljs-keyword">yield</span> line<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">separator=<span class="hljs-string">&#x27;\t&#x27;</span></span>):<br>    <span class="hljs-comment"># 输入来自标准输入(stdin)</span><br>    data = read_input(sys.stdin)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> data:<br>        line = line.strip()<br>        <span class="hljs-comment"># 提取标题、日期和标签</span><br>        title = re.findall(<span class="hljs-string">r&#x27;title:\s*(.+)&#x27;</span>, line)<br>        date = re.findall(<span class="hljs-string">r&#x27;date:\s*(.+)&#x27;</span>, line)<br>        tags = re.findall(<span class="hljs-string">r&#x27;tags:\s*(.+)&#x27;</span>, line)<br>        <span class="hljs-keyword">if</span> title:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;title:<span class="hljs-subst">&#123;separator&#125;</span><span class="hljs-subst">&#123;title[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">if</span> date:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;date:<span class="hljs-subst">&#123;separator&#125;</span><span class="hljs-subst">&#123;date[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">if</span> tags:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;tags:<span class="hljs-subst">&#123;separator&#125;</span><span class="hljs-subst">&#123;tags[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)<br>        <span class="hljs-comment"># 提取正文并分词</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> line.startswith(<span class="hljs-string">&#x27;---&#x27;</span>) <span class="hljs-keyword">and</span> line.strip():<br>            <span class="hljs-comment"># 去除非中文字符</span><br>            content = re.sub(<span class="hljs-string">r&#x27;[^\u4e00-\u9fa5]&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, line)<br>            words = jieba.cut(content)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;content:<span class="hljs-subst">&#123;separator&#125;</span><span class="hljs-subst">&#123;<span class="hljs-string">&#x27; &#x27;</span>.join(words)&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
-
-<p>分词成功！</p>
+                <p>先总结一下今天干了什么（工作日报</p>
+<p>使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。</p>
+<p><img src="/../img/hadoop/split.txt.png" srcset="/img/loading.gif" lazyload alt="原来的输出版本，一堆未经处理的以空格分割的分词"></p>
+<p><img src="/../img/hadoop/%E6%9C%AA%E7%BB%8Freduce%E7%9A%84%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1.png" srcset="/img/loading.gif" lazyload alt="未经reduce的词频统计"></p>
+<p>下一步的操作是要编辑reduce文件，使得同一键的count合并</p>
 
                 
               </div>
@@ -329,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>跑通第二个hadoop</div>
-      <div>http://liebe-grausam.github.io/2024/05/04/跑通第二个hadoop/</div>
+      <div>中文词频统计第一部分</div>
+      <div>http://liebe-grausam.github.io/2024/05/04/中文词频统计第一部分/</div>
     </div>
     <div class="license-meta">
       
@@ -374,18 +352,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/04/%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/" title="中文词频统计第一部分">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">中文词频统计第一部分</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/04/%E6%9C%80%E5%A4%8D%E6%9D%82%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%BE%80%E5%BE%80%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%89%A9%E5%AE%B9%E6%96%B9%E5%BC%8F/" title="最复杂的系统往往只需要最简单的扩容方式">
-                        <span class="hidden-mobile">最复杂的系统往往只需要最简单的扩容方式</span>
+                      <a href="/2024/05/04/%E8%B7%91%E9%80%9A%E7%AC%AC%E4%BA%8C%E4%B8%AAhadoop/" title="跑通第二个hadoop">
+                        <span class="hidden-mobile">跑通第二个hadoop</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
