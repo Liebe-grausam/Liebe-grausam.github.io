@@ -16,27 +16,26 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="先总结一下今天干了什么（工作日报 使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。   下一步的操作是要编辑reduce文件，使得同一键的count合并">
+    <meta name="description" content="编写了reduce文件并运行成功了！来备个份 split_mapper.py的代码 123456789101112131415161718import sysimport reimport jiebadef process_data(data):    # 在这里对数据进行处理，比如去除非中文字符，并分词    content &#x3D; re.sub(r&amp;#x27;[^\u4e00-\u9fa5]&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中文词频统计第一部分">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/04/%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/index.html">
+<meta property="og:title" content="reduce成功！">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/04/reduce%E6%88%90%E5%8A%9F%EF%BC%81/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="先总结一下今天干了什么（工作日报 使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。   下一步的操作是要编辑reduce文件，使得同一键的count合并">
+<meta property="og:description" content="编写了reduce文件并运行成功了！来备个份 split_mapper.py的代码 123456789101112131415161718import sysimport reimport jiebadef process_data(data):    # 在这里对数据进行处理，比如去除非中文字符，并分词    content &#x3D; re.sub(r&amp;#x27;[^\u4e00-\u9fa5]&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/hadoop/split.txt.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/hadoop/%E6%9C%AA%E7%BB%8Freduce%E7%9A%84%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1.png">
-<meta property="article:published_time" content="2024-05-04T11:33:46.000Z">
-<meta property="article:modified_time" content="2024-05-04T11:40:27.091Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/hadoop/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%BB%93%E6%9E%9C.png">
+<meta property="article:published_time" content="2024-05-04T11:50:47.000Z">
+<meta property="article:modified_time" content="2024-05-04T11:56:11.374Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="hadoop">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/hadoop/split.txt.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/hadoop/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%BB%93%E6%9E%9C.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>中文词频统计第一部分 - 苯人的一些发疯自留地！</title>
+  <title>reduce成功！ - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +192,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="中文词频统计第一部分"></span>
+            <span id="subtitle" data-typed-text="reduce成功！"></span>
           
         </div>
 
@@ -204,7 +203,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-04 19:33" pubdate>
+        <time datetime="2024-05-04 19:50" pubdate>
           2024年5月4日 晚上
         </time>
       </span>
@@ -216,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          141 字
+          1.4k 字
         
       </span>
     
@@ -227,7 +226,7 @@
         
         
         
-          2 分钟
+          12 分钟
         
       </span>
     
@@ -273,16 +272,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">中文词频统计第一部分</h1>
+            <h1 style="display: none">reduce成功！</h1>
             
             
               <div class="markdown-body">
                 
-                <p>先总结一下今天干了什么（工作日报</p>
-<p>使用jieba进行分词，将post里的input文件夹下的所有.md文件读进标准输入，删除日期、标签、标题等元数据，过滤非中文字符，输出以每个词为键、值为1的键值对，表示该词出现了一次。</p>
-<p><img src="/../img/hadoop/split.txt.png" srcset="/img/loading.gif" lazyload alt="原来的输出版本，一堆未经处理的以空格分割的分词"></p>
-<p><img src="/../img/hadoop/%E6%9C%AA%E7%BB%8Freduce%E7%9A%84%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1.png" srcset="/img/loading.gif" lazyload alt="未经reduce的词频统计"></p>
-<p>下一步的操作是要编辑reduce文件，使得同一键的count合并</p>
+                <p>编写了reduce文件并运行成功了！来备个份</p>
+<p>split_mapper.py的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> jieba<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">process_data</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-comment"># 在这里对数据进行处理，比如去除非中文字符，并分词</span><br>    content = re.sub(<span class="hljs-string">r&#x27;[^\u4e00-\u9fa5]&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, data)  <span class="hljs-comment"># 去除非中文字符</span><br>    words = jieba.cut(content)  <span class="hljs-comment"># 分词</span><br>    <span class="hljs-keyword">return</span> words<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> sys.stdin:<br>        words = process_data(line.strip())<br>        <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> words:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;word&#125;</span>\t1&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<p>split_reducer.py的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">reducer</span>():<br>    current_word = <span class="hljs-literal">None</span><br>    current_count = <span class="hljs-number">0</span><br>    word_count_dict = defaultdict(<span class="hljs-built_in">int</span>)<br><br>    <span class="hljs-comment"># 读取来自Mapper的输入</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> sys.stdin:<br>        word, count = line.strip().split(<span class="hljs-string">&#x27;\t&#x27;</span>)<br>        <br>        <span class="hljs-comment"># 转换计数为整数类型</span><br>        <span class="hljs-keyword">try</span>:<br>            count = <span class="hljs-built_in">int</span>(count)<br>        <span class="hljs-keyword">except</span> ValueError:<br>            <span class="hljs-comment"># 如果无法转换，就跳过这一行</span><br>            <span class="hljs-keyword">continue</span><br>        <br>        <span class="hljs-comment"># 合并相同的单词并计算总次数</span><br>        <span class="hljs-keyword">if</span> current_word == word:<br>            current_count += count<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># 输出累积的单词计数</span><br>            <span class="hljs-keyword">if</span> current_word:<br>                word_count_dict[current_word] += current_count<br>            current_word = word<br>            current_count = count<br><br>    <span class="hljs-comment"># 处理最后一个单词</span><br>    <span class="hljs-keyword">if</span> current_word == word:<br>        word_count_dict[current_word] += current_count<br><br>    <span class="hljs-comment"># 输出最终结果</span><br>    <span class="hljs-keyword">for</span> word, count <span class="hljs-keyword">in</span> word_count_dict.items():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;word&#125;</span>\t<span class="hljs-subst">&#123;count&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    reducer()<br></code></pre></td></tr></table></figure>
+
+<p>终端运行代码：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">hadoop jar <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/share/</span>hadoop<span class="hljs-regexp">/tools/</span>lib<span class="hljs-regexp">/hadoop-streaming-3.4.0.jar -files split_mapper.py,split_reducer.py -mapper &quot;python3 split_mapper.py&quot; -reducer &quot;python3 split_reducer.py&quot; -input ~/</span>桌面<span class="hljs-regexp">/posts/</span>small_input<span class="hljs-regexp">/ -output ~/</span>桌面<span class="hljs-regexp">/posts/</span>f_output/<br></code></pre></td></tr></table></figure>
+
+<p>注意：选项是files不是file（因为是多个文件），并且要用逗号分隔而不是空格</p>
+<p><img src="/../img/hadoop/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="词频统计结果"></p>
 
                 
               </div>
@@ -307,8 +313,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>中文词频统计第一部分</div>
-      <div>http://liebe-grausam.github.io/2024/05/04/中文词频统计第一部分/</div>
+      <div>reduce成功！</div>
+      <div>http://liebe-grausam.github.io/2024/05/04/reduce成功！/</div>
     </div>
     <div class="license-meta">
       
@@ -352,18 +358,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/04/reduce%E6%88%90%E5%8A%9F%EF%BC%81/" title="reduce成功！">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">reduce成功！</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/04/%E8%B7%91%E9%80%9A%E7%AC%AC%E4%BA%8C%E4%B8%AAhadoop/" title="跑通第二个hadoop">
-                        <span class="hidden-mobile">跑通第二个hadoop</span>
+                      <a href="/2024/05/04/%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/" title="中文词频统计第一部分">
+                        <span class="hidden-mobile">中文词频统计第一部分</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
