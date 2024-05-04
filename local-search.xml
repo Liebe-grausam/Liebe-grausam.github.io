@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>最复杂的系统往往只需要最简单的扩容方式</title>
+    <link href="/2024/05/04/%E6%9C%80%E5%A4%8D%E6%9D%82%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%BE%80%E5%BE%80%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%89%A9%E5%AE%B9%E6%96%B9%E5%BC%8F/"/>
+    <url>/2024/05/04/%E6%9C%80%E5%A4%8D%E6%9D%82%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%BE%80%E5%BE%80%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%89%A9%E5%AE%B9%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>环境：Ubuntu 20.04</p><p>先在虚拟机设置中增加硬盘容量，不过此时还处于灰色未分配状态</p><p>扩容前安装gparted</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-built_in">get</span> install gparted<br></code></pre></td></tr></table></figure><p>终端运行gparted，出现图形界面</p><p>&#x2F;dev&#x2F;sda1 为主分区<br>&#x2F;dev&#x2F;sda2 为扩展分区<br>&#x2F;dev&#x2F;sda5 为逻辑分区（我的sda5挂在sda2目录下</p><p>这个时候的正确操作（网上绝无仅有版！）：</p><p>step1<br>右键sda2所在分区，选择更改大小选项，将箭头拖到最右端</p><p>step2<br>右键sda5所在分区，选择更改大小选项，将箭头拖到最右端</p><p>两个都要改！！因为是挂载版，比较特殊</p><p>（在尝试这个方法前还尝试了fdisk，并且gparted大部分人分区和我不一样（他们好像没有扩展分区所以没办法复现，中间甚至碰到了很多稀奇古怪的错误，，，<strong>虚拟机快照</strong>你值得拥有</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vmware</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>配置hadoop环境</title>
     <link href="/2024/05/04/%E9%85%8D%E7%BD%AEhadoop%E7%8E%AF%E5%A2%83/"/>
     <url>/2024/05/04/%E9%85%8D%E7%BD%AEhadoop%E7%8E%AF%E5%A2%83/</url>
