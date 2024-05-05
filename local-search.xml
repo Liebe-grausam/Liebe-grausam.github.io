@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Hadoop+python实现博客中文词频统计</title>
+    <link href="/2024/05/05/Hadoop-python%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/"/>
+    <url>/2024/05/05/Hadoop-python%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/</url>
+    
+    <content type="html"><![CDATA[<p>一时兴起想做个博客关键词统计！（如果有空的话看看能不能打包成插件发布到hexo上面）<br><img src="/../img/hadoop%E6%88%90%E5%93%81/wordcloud.png" alt="词云图example"><br>看到的时候还有点纳闷怎么“父亲”和“母亲”两个这么书面的词出现频率那么高，后来仔细一看——鉴定为看弗兰肯斯坦看的（之前读评论文的时候写了一堆）。</p><p>po一个小小的攻略在这里！（项目地址：<a href="https://github.com/Liebe-grausam/hadoop_chinese_wordcount%EF%BC%89">https://github.com/Liebe-grausam/hadoop_chinese_wordcount）</a></p><p>前置准备：ubuntu20.04 + hadoop环境，以及python文件运行必要的包。</p><p>step 1：<br>在input文件夹中放入待处理的文件。<br><img src="/../img/hadoop%E6%88%90%E5%93%81/input%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E5%AE%B9.png" alt="input文件夹内容"></p><p>step 2：<br>在script文件夹下启动终端，运行代码：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">hadoop jar <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/share/</span>hadoop<span class="hljs-regexp">/tools/</span>lib<span class="hljs-regexp">/hadoop-streaming-version.jar -files mapper.py,reducer.py -mapper &quot;python3 mapper.py&quot; -reducer &quot;python3 reducer.py&quot; -input road_to_repo/i</span>nput<span class="hljs-regexp">/ -output road_to_repo/</span>output/<br></code></pre></td></tr></table></figure><p>其中“hadoop-streaming-version.jar”的“version”要改成你的hadoop的实际版本，“road_to_repo”要改成克隆下来的该项目文件夹所在路径。</p><p><strong>most important!：此命令为一次性操作，如果运行失败，必须把生成的output文件夹删掉之后再重新运行该命令。</strong></p><p>代码运行需要一定时间，如果单纯为学习目的可以使用small_input文件夹作为输入。</p><p>代码运行结果保存在output文件夹下的part-00000中。<br><img src="/../img/hadoop%E6%88%90%E5%93%81/part-00000.png" alt="part-00000内容"></p><p>step 3：<br>由于MapReduce的作用是统计词频，并不是用来生成词云图，因此还需要将刚才的运行结果拷贝到script文件夹中的output.txt。<br>在script文件夹下启动终端，运行代码：</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python3</span> word_cloud.<span class="hljs-keyword">py</span><br></code></pre></td></tr></table></figure><p>即可得到同一目录下保存的word_cloud.png。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hadoop</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>reduce成功！</title>
     <link href="/2024/05/04/reduce%E6%88%90%E5%8A%9F%EF%BC%81/"/>
     <url>/2024/05/04/reduce%E6%88%90%E5%8A%9F%EF%BC%81/</url>
