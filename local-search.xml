@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>演练</title>
+    <link href="/2024/05/07/%E6%BC%94%E7%BB%83/"/>
+    <url>/2024/05/07/%E6%BC%94%E7%BB%83/</url>
+    
+    <content type="html"><![CDATA[<p>吸取上次xhs笔试失败经验（题没刷完就去匆匆笔试</p><p>这次简历一投就去techguide里刷题了</p><p>but shoppee给数据的方式看着好怪，就算不一定真的给这么怪的输入样例hyx也不能掉以轻心！</p><p>它给的测试样例是这样的：[10,2]</p><p>我试问最后官网上难道也有那两个方括号吗，，如果我没准备过一眼看到会心态颤抖一下，，但是时间是金钱，于是hyx把这点也考虑到了！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    string s;<br>    cin&gt;&gt;s;<br>    <span class="hljs-type">int</span> len=s.<span class="hljs-built_in">length</span>();<br>    vector&lt;string&gt;strnum;<br>    <span class="hljs-comment">// int cur = 0;</span><br>    string temp;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;len;i++)&#123;<br>        <span class="hljs-keyword">if</span> (s[i]&gt;<span class="hljs-string">&#x27;9&#x27;</span>|| s[i]&lt;<span class="hljs-string">&#x27;0&#x27;</span>)&#123;<br>            <span class="hljs-comment">// 非数字字符，忽略</span><br>            strnum.<span class="hljs-built_in">push_back</span>(temp);<br>            <span class="hljs-comment">// cur = cur + 1;</span><br>            temp = <span class="hljs-string">&quot;&quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            temp=temp+s[i];<br>        &#125;<br>        <br>    &#125;<br>    <span class="hljs-type">int</span> size = strnum.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        cout&lt;&lt;strnum[i]&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <br><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>shoppee笔试准备</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hadoop+python实现博客中文词频统计</title>
     <link href="/2024/05/05/Hadoop-python%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/"/>
     <url>/2024/05/05/Hadoop-python%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%96%87%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/</url>
