@@ -24,7 +24,7 @@
 <meta property="og:description" content="题目合集：  一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15？ Mysql的技术特点是什么？ Heap表是什么？ Mysql服务器默认端口是什么？ 与Oracle相比，Mysql有什么优势？ 如何区分FLOAT和DOUBLE？ 区分CHAR_LENGTH和LENGTH？ 请简洁描述">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-07T16:21:41.000Z">
-<meta property="article:modified_time" content="2024-05-08T03:24:46.920Z">
+<meta property="article:modified_time" content="2024-05-08T03:30:48.908Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="面试合集搬运">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
         
         
         
-          85 分钟
+          88 分钟
         
       </span>
     
@@ -396,6 +396,19 @@
 <h3 id="9-在Mysql中ENUM的用法是什么？"><a href="#9-在Mysql中ENUM的用法是什么？" class="headerlink" title="9. 在Mysql中ENUM的用法是什么？"></a>9. 在Mysql中ENUM的用法是什么？</h3><p>ENUM是一个字符串对象，用于指定一组预定义的值，并可在创建表时使用。</p>
 <p>Create table size(name ENUM(‘Smail,’Medium’,’Large’));</p>
 <h3 id="10-如何定义REGEXP？"><a href="#10-如何定义REGEXP？" class="headerlink" title="10. 如何定义REGEXP？"></a>10. 如何定义REGEXP？</h3><p>REGEXP是模式匹配，其中匹配模式在搜索值的任何位置。</p>
+<p>REGEXP是一个用于在MySQL中执行正则表达式匹配的操作符。通过使用REGEXP操作符，可以在MySQL查询中使用正则表达式来进行模式匹配和过滤数据。</p>
+<p>下面是REGEXP操作符的基本语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">expr REGEXP <span class="hljs-keyword">pattern</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>expr</code>：要匹配的表达式或字段。</li>
+<li><code>pattern</code>：正则表达式模式。</li>
+</ul>
+<p>例如，要查找名字以字母”A”开头的所有用户，可以使用如下的查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> users <span class="hljs-keyword">WHERE</span> name REGEXP <span class="hljs-string">&#x27;^A&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这个查询将返回所有名字以字母”A”开头的用户数据。</p>
+<p>正则表达式提供了强大的模式匹配功能，可以用于各种情况下的数据过滤和匹配操作。MySQL中的REGEXP操作符使得我们可以在查询中利用这些功能来实现更加灵活和复杂的数据查询和处理。</p>
 <h3 id="11-CHAR和VARCHAR的区别？"><a href="#11-CHAR和VARCHAR的区别？" class="headerlink" title="11. CHAR和VARCHAR的区别？"></a>11. CHAR和VARCHAR的区别？</h3><p>以下是CHAR和VARCHAR的区别：</p>
 <p>CHAR和VARCHAR类型在存储和检索方面有所不同</p>
 <p>CHAR列长度固定为创建表时声明的长度，长度值范围是1到255</p>
