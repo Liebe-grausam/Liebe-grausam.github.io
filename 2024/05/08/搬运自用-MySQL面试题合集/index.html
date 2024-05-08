@@ -24,7 +24,7 @@
 <meta property="og:description" content="题目合集：  一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15？ Mysql的技术特点是什么？ Heap表是什么？ Mysql服务器默认端口是什么？ 与Oracle相比，Mysql有什么优势？ 如何区分FLOAT和DOUBLE？ 区分CHAR_LENGTH和LENGTH？ 请简洁描述">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-07T16:21:41.000Z">
-<meta property="article:modified_time" content="2024-05-07T16:42:02.442Z">
+<meta property="article:modified_time" content="2024-05-08T03:24:46.920Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="面试合集搬运">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.9k 字
+          10k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          74 分钟
+          85 分钟
         
       </span>
     
@@ -349,7 +349,41 @@
 <p>浮点数以8位精度存储在FLOAT中，并且有四个字节。</p>
 <p>浮点数存储在DOUBLE中，精度为18位，有八个字节。</p>
 <h3 id="7-区分CHAR-LENGTH和LENGTH？"><a href="#7-区分CHAR-LENGTH和LENGTH？" class="headerlink" title="7. 区分CHAR_LENGTH和LENGTH？"></a>7. 区分CHAR_LENGTH和LENGTH？</h3><p>CHAR_LENGTH是字符数，而LENGTH是字节数。Latin字符的这两个数据是相同的，但是对于Unicode和其他编码，它们是不同的。</p>
-<h3 id="8-请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？"><a href="#8-请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？" class="headerlink" title="8. 请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？"></a>8. 请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？</h3><p>SQL标准定义的四个隔离级别为：</p>
+<h3 id="8-请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？"><a href="#8-请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？" class="headerlink" title="8. 请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？"></a>8. 请简洁描述Mysql中InnoDB支持的四种事务隔离级别名称，以及逐级之间的区别？</h3><table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交</td>
+<td>未解决</td>
+<td>未解决</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>读提交</td>
+<td>解决</td>
+<td>未解决</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>解决</td>
+<td>解决</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>串行化</td>
+<td>解决</td>
+<td>解决</td>
+<td>解决</td>
+</tr>
+</tbody></table>
+<p>SQL标准定义的四个隔离级别为：</p>
 <p>read uncommited ：读到未提交数据</p>
 <p>read committed：脏读，不可重复读</p>
 <p>repeatable read：可重读</p>
@@ -360,7 +394,7 @@
 <li>幻像读（phantom read）：在同一事务中，同一查询多次进行时候，由于其他插入操作（insert）的事务提交，导致每次返回不同的结果集。<br>不同的隔离级别有不同的现象，并有不同的锁定&#x2F;并发机制，隔离级别越高，数据库的并发性就越差，4种事务隔离级别分别表现的现象如下表：</li>
 </ol>
 <h3 id="9-在Mysql中ENUM的用法是什么？"><a href="#9-在Mysql中ENUM的用法是什么？" class="headerlink" title="9. 在Mysql中ENUM的用法是什么？"></a>9. 在Mysql中ENUM的用法是什么？</h3><p>ENUM是一个字符串对象，用于指定一组预定义的值，并可在创建表时使用。</p>
-<p>Create table size(name ENUM(‘Smail,’Medium’,’Large’);</p>
+<p>Create table size(name ENUM(‘Smail,’Medium’,’Large’));</p>
 <h3 id="10-如何定义REGEXP？"><a href="#10-如何定义REGEXP？" class="headerlink" title="10. 如何定义REGEXP？"></a>10. 如何定义REGEXP？</h3><p>REGEXP是模式匹配，其中匹配模式在搜索值的任何位置。</p>
 <h3 id="11-CHAR和VARCHAR的区别？"><a href="#11-CHAR和VARCHAR的区别？" class="headerlink" title="11. CHAR和VARCHAR的区别？"></a>11. CHAR和VARCHAR的区别？</h3><p>以下是CHAR和VARCHAR的区别：</p>
 <p>CHAR和VARCHAR类型在存储和检索方面有所不同</p>
@@ -374,7 +408,23 @@
 <p>TEXT</p>
 <p>VARCHAR</p>
 <h3 id="13-如何获取当前的Mysql版本？"><a href="#13-如何获取当前的Mysql版本？" class="headerlink" title="13. 如何获取当前的Mysql版本？"></a>13. 如何获取当前的Mysql版本？</h3><p>SELECT VERSION();用于获取当前Mysql的版本。</p>
-<h3 id="14-Mysql中使用什么存储引擎？"><a href="#14-Mysql中使用什么存储引擎？" class="headerlink" title="14. Mysql中使用什么存储引擎？"></a>14. Mysql中使用什么存储引擎？</h3><p>存储引擎称为表类型，数据使用各种技术存储在文件中。</p>
+<h3 id="14-Mysql中使用什么存储引擎？"><a href="#14-Mysql中使用什么存储引擎？" class="headerlink" title="14. Mysql中使用什么存储引擎？"></a>14. Mysql中使用什么存储引擎？</h3><p>存储引擎称为表类型，数据使用各种技术存储在文件中。<br>MySQL支持多种存储引擎，每种引擎都有其自身的特点和用途。在MySQL中，默认的存储引擎是InnoDB，但也支持其他存储引擎，例如MyISAM、MEMORY、CSV等。</p>
+<p>常用的MySQL存储引擎包括：</p>
+<ol>
+<li><p><strong>InnoDB</strong>：支持事务处理和行级锁定，是MySQL默认的存储引擎，适用于大多数应用场景。</p>
+</li>
+<li><p><strong>MyISAM</strong>：不支持事务处理，但提供了高速的读取和全文索引功能，适用于读密集型应用。</p>
+</li>
+<li><p><strong>MEMORY</strong>：将数据存储在内存中，速度非常快，但数据不是持久的，适用于缓存和临时表等场景。</p>
+</li>
+<li><p><strong>CSV</strong>：将数据存储在CSV文件中，适用于数据交换和导入导出。</p>
+</li>
+<li><p><strong>ARCHIVE</strong>：用于存储大量归档数据，支持高压缩比和快速插入。</p>
+</li>
+<li><p><strong>NDB</strong>：用于MySQL Cluster，支持分布式存储和高可用性。</p>
+</li>
+</ol>
+<p>不同的存储引擎具有不同的特点和适用场景，选择合适的存储引擎取决于应用的需求和性能要求。</p>
 <p>技术涉及：</p>
 <p>Storage mechanism</p>
 <p>Locking levels</p>
@@ -411,6 +461,24 @@
 <p>SET profiling&#x3D;1;</p>
 <p>Show profiles \G</p>
 <p>Show profile;</p>
+<p>在MySQL中，你可以使用多种方法和命令来进行数据库服务器性能分析。以下是一些常用的方法和相关的命令：</p>
+<ol>
+<li><p><strong>SHOW STATUS</strong>：显示当前MySQL服务器的各种状态信息，包括连接数、查询数、缓存命中率等。可以通过查看这些状态信息来了解服务器的整体性能情况。</p>
+</li>
+<li><p><strong>SHOW PROCESSLIST</strong>：显示当前运行的所有MySQL进程，包括查询、连接等信息。通过查看当前进程列表，可以了解哪些查询正在执行，以及它们的状态和执行时间等信息。</p>
+</li>
+<li><p><strong>EXPLAIN</strong>：用于分析查询语句的执行计划。通过执行<code>EXPLAIN</code>命令，可以查看查询语句的执行计划，了解MySQL是如何执行查询的，以及是否使用了索引等信息。</p>
+</li>
+<li><p><strong>MySQL Performance Schema</strong>：MySQL Performance Schema是MySQL提供的一种性能监控和分析工具，可以用于收集和分析MySQL服务器的性能数据。通过分析Performance Schema中的各种性能指标和事件，可以更详细地了解MySQL服务器的性能状况。</p>
+</li>
+<li><p><strong>MySQL Slow Query Log</strong>：MySQL Slow Query Log是MySQL提供的一种记录慢查询的功能。通过启用Slow Query Log，并设置合适的阈值，可以记录下执行时间超过一定阈值的查询语句，从而帮助找出潜在的性能问题。</p>
+</li>
+<li><p><strong>MySQL Workbench Performance Dashboard</strong>：MySQL Workbench是MySQL官方提供的图形化管理工具，其中包含了Performance Dashboard功能，可以用于实时监控和分析MySQL服务器的性能数据，包括连接数、查询执行时间、缓存命中率等。</p>
+</li>
+<li><p><strong>Percona Toolkit</strong>：Percona Toolkit是一个由Percona提供的一组MySQL管理和监控工具，其中包含了一些用于性能分析的工具，例如pt-query-digest、pt-stalk等，可以用于分析慢查询、监控服务器性能等。</p>
+</li>
+</ol>
+<p>这些方法和命令可以帮助你对MySQL数据库服务器的性能进行分析和监控，从而找出潜在的性能问题，并进行优化和调整。</p>
 <h3 id="21-如何控制HEAP表的最大尺寸？"><a href="#21-如何控制HEAP表的最大尺寸？" class="headerlink" title="21. 如何控制HEAP表的最大尺寸？"></a>21. 如何控制HEAP表的最大尺寸？</h3><p>Heal表的大小可通过称为max_heap_table_size的Mysql配置变量来控制。</p>
 <h3 id="22-MyISAM-Static和MyISAM-Dynamic有什么区别？"><a href="#22-MyISAM-Static和MyISAM-Dynamic有什么区别？" class="headerlink" title="22. MyISAM Static和MyISAM Dynamic有什么区别？"></a>22. MyISAM Static和MyISAM Dynamic有什么区别？</h3><p>在MyISAM Static上的所有字段有固定宽度。动态MyISAM表将具有像TEXT，BLOB等字段，以适应不同长度的数据类型。点击这里有一套最全阿里面试题总结。</p>
 <p>MyISAM Static在受损情况下更容易恢复。</p>
