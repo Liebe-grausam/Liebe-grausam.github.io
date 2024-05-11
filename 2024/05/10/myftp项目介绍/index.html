@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="再次鸣谢Jungol的建站赞助~主要存一些平时画的小破画！暂时会开手稿和重制版两个栏，也放一些文字内容作为复盘&amp;碎碎念etc.希望这个博客可以长期存活下去！（只要没有特殊原因断更）">
+    <meta name="description" content="计算机网络的课程项目：基于tcp协议，实现了一个简单的 FTP Server 和 FTP Client CLI (CLI指命令行界面)。 支持的命令有：open  : 建立一个到 : 的连接ls: 通过C语言中的popen函数来调用shell输出的结果，获取server当前运行目录下的文件列表。get : 将 Server 运行目录中的  文件存放到 Client 运行目录的  中。put : 将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="myftp项目介绍">
 <meta property="og:url" content="http://liebe-grausam.github.io/2024/05/10/myftp%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="再次鸣谢Jungol的建站赞助~主要存一些平时画的小破画！暂时会开手稿和重制版两个栏，也放一些文字内容作为复盘&amp;碎碎念etc.希望这个博客可以长期存活下去！（只要没有特殊原因断更）">
+<meta property="og:description" content="计算机网络的课程项目：基于tcp协议，实现了一个简单的 FTP Server 和 FTP Client CLI (CLI指命令行界面)。 支持的命令有：open  : 建立一个到 : 的连接ls: 通过C语言中的popen函数来调用shell输出的结果，获取server当前运行目录下的文件列表。get : 将 Server 运行目录中的  文件存放到 Client 运行目录的  中。put : 将">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T15:30:46.000Z">
-<meta property="article:modified_time" content="2024-05-10T15:30:46.252Z">
+<meta property="article:modified_time" content="2024-05-11T11:55:46.392Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          567 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -274,7 +274,11 @@
             
               <div class="markdown-body">
                 
-                
+                <p>计算机网络的课程项目：基于tcp协议，实现了一个简单的 FTP Server 和 FTP Client CLI (CLI指命令行界面)。</p>
+<p>支持的命令有：<br>open <IP> <port>: 建立一个到 <IP>:<port> 的连接<br>ls: 通过C语言中的popen函数来调用shell输出的结果，获取server当前运行目录下的文件列表。<br>get <filename>: 将 Server 运行目录中的 <filename> 文件存放到 Client 运行目录的 <filename> 中。<br>put <filename>: 将 Client 运行目录中的 <filename> 文件存放到 Server 运行目录的 <filename> 中。<br>sha256 <filename>：通过C语言中的popen函数来调用shell输出的结果，在 Server 运行目录中查询某个文件的 sha256 值，若不存在则返回不存在。<br>quit: 如有连接则断开连接，回到 open 前的状态；如果已经是 open 前的状态，则关闭 Client。</p>
+<p>（如果问到popen函数和system函数的区别，就说system函数的返回值五花八门，而popen返回值只有非空和空值，更好处理；而且调用system函数会阻塞进程，调用popen函数不会阻塞进程，也就是说用户可以继续运行主进程）</p>
+<p>我觉得我的项目主要的亮点在于实现大文件的传输。其中有一个测试点是要实现1MB的文件的上传与下载。我一开始想通过开一个数组来实现，但是发现这样行不通，最后经过修改之后决定通过malloc分配出一段空间，然后将文件分片后传输，最后在另一端重新组合起来。</p>
+
                 
               </div>
             
