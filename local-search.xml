@@ -4,7 +4,45 @@
   
   
   <entry>
-    <title>给出保持无损连接和函数依赖的分解</title>
+    <title>函数依赖最小覆盖</title>
+    <link href="/2024/05/15/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86/"/>
+    <url>/2024/05/15/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/icurious/article/details/51240114">csdn链接</a><br><strong>计算最小函数依赖集步骤：</strong><br>① 用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；<br>② 去掉多余的函数依赖：从第一个函数依赖X→Y开始将其从F中去掉，然后在剩下的函数依赖中求X的闭包X+，看X+是否包含Y，若是，则去掉X→Y；否则不能去掉，依次做下去。直到找不到冗余的函数依赖；<br>③去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖。例如XY→A，若要判Y为多余的，则以X→A代替XY→A是否等价？若A∈(X)+，则Y是多余属性，可以去掉。<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96.jpg" alt="最小覆盖"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3NF分解</title>
+    <link href="/2024/05/15/3NF%E5%88%86%E8%A7%A3/"/>
+    <url>/2024/05/15/3NF%E5%88%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/538080461">知乎链接</a><br><strong>3NF分解步骤</strong>：</p><ol><li>先求出正则覆盖Fc</li><li>对于Fc里面的所有函数依赖a-&gt;b,均转化为Ri&#x3D;ab</li><li>对于所有的模式Ri<br> ①如果包含候选码，进行4.<br> ②如果都不包含候选码， 将任意一个候选码添加到模式Ri里面</li><li>如果一个模式被另一个模式包含，则去掉此被包含的模式。</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BCNF分解</title>
     <link href="/2024/05/15/%E7%BB%99%E5%87%BA%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E5%88%86%E8%A7%A3/"/>
     <url>/2024/05/15/%E7%BB%99%E5%87%BA%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E5%88%86%E8%A7%A3/</url>
     
