@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>牛客模拟面试-3</title>
+    <link href="/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-3/"/>
+    <url>/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-3/</url>
+    
+    <content type="html"><![CDATA[<h3 id="UDP（用户数据报协议）是什么？"><a href="#UDP（用户数据报协议）是什么？" class="headerlink" title="UDP（用户数据报协议）是什么？"></a>UDP（用户数据报协议）是什么？</h3><p>UDP是<strong>传输层协议</strong>，是面向用户数据报协议，不保证可靠交付，<strong>没用TCP的拥塞控制和三次握手的机制保证可靠传输（虽然我的项目里写了但是那个是可靠udp！udp本身没有拥塞控制），UDP尽最大努力交付</strong>。最少只有8个字节。UDP支持单播、组播、广播，UDP相对TCP更简单，传输的速率更快，所以通常可以<strong>用在实时性比较强的需求上</strong>，比如视频会议等。</p><h3 id="如何实现可靠udp"><a href="#如何实现可靠udp" class="headerlink" title="如何实现可靠udp"></a>如何实现可靠udp</h3><p>（这不就是我的项目吗！！！！）<br>实现可靠UDP（User Datagram Protocol）的方法通常涉及在应用层增加逻辑来处理数据包的丢失、重传、排序和确认。以下是一些实现可靠UDP的关键步骤：</p><ol><li><p><strong>数据包编号（Sequence Numbering）</strong>：</p><ul><li>在发送每个数据包时分配一个<strong>唯一的序列号</strong>。接收方可以使用这个序列号来检测丢失的数据包并按正确的顺序重组数据。</li></ul></li><li><p><strong>确认机制（Acknowledgment Mechanism）</strong>：</p><ul><li>接收方在收到数据包后<strong>发送确认包（ACK）</strong>回发送方，告知其数据包已成功接收。如果发送方在一定时间内未收到ACK，则认为该数据包丢失，需要重传。</li></ul></li><li><p><strong>重传机制（Retransmission Mechanism）</strong>：</p><ul><li>发送方在一定时间内未收到ACK时，<strong>重传</strong>未被确认的数据包。这个时间可以是固定的，也可以根据网络状况进行调整。</li></ul></li><li><p><strong>超时和重试次数（Timeout and Retry Count）</strong>：</p><ul><li>设置<strong>超时重传的时间间隔和重试的次数。如果超过重试次数仍未收到ACK，可以认为连接断开。</strong></li></ul></li><li><p><strong>滑动窗口（Sliding Window）</strong>：</p><ul><li>为了提高传输效率，可以实现<strong>滑动窗口协议，允许发送方在等待ACK的同时继续发送一定数量的数据包。</strong></li></ul></li><li><p><strong>流量控制和拥塞控制（Flow Control and Congestion Control）</strong>：</p><ul><li>实现流量控制机制以避免发送方过快发送数据导致接收方缓冲区溢出。拥塞控制机制可以帮助在网络拥堵时调整发送速率。</li></ul></li></ol><h3 id="HTTPS（安全超文本传输协议）是什么"><a href="#HTTPS（安全超文本传输协议）是什么" class="headerlink" title="HTTPS（安全超文本传输协议）是什么"></a>HTTPS（安全超文本传输协议）是什么</h3><p>标准回答</p><p>HTTPS（Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的HTTP通道，在HTTP的基础上通过<strong>身份认证和传输加密</strong>阶段保证了传输过程的安全性。HTTPS 在HTTP 的基础下加入TLS（Transport Layer Security 安全传输层协议）&#x2F;SSL（Secure Sockets Layer 安全套接层协议），HTTPS 的安全基础是 TLS&#x2F;SSL，因此加密就需要TLS&#x2F; SSL。HTTPS的特点是：<strong>内容加密、身份验证、数据完整性</strong>。</p><p>加分回答</p><p>HTTPS（Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的HTTP通道，在HTTP的基础上通过身份认证和传输加密阶段保证了传输过程的安全性。HTTPS 在HTTP 的基础下加入TLS（Transport Layer Security 安全传输层协议）&#x2F;SSL（Secure Sockets Layer 安全套接层协议），HTTPS 的安全基础是 TLS&#x2F;SSL，因此加密就需要TLS&#x2F; SSL。</p><p>SSL的全称为Secure Sockets Layer，安全套接层协议。是为网络通信提供安全及数据完整性的一种安全协议。SSL协议在1994年被Netscape发明，后来各个浏览器均支持SSL。</p><p>TLS的全称是Transport Layer Security，安全传输层协议。是SSL3.0的后续版本。在TLS与SSL3.0之间存在着显著的差别，主要是它们所支持的加密算法不同，所以TLS与SSL3.0不能互操作。虽然TLS与SSL3.0在加密算法上不同，但是在我们理解HTTPS的过程中，我们可以把SSL和TLS看做是同一个协议。</p><p>在HTTPS数据传输的过程中，需要用TLS&#x2F;SSL对数据进行加密，然后通过HTTP对加密后的密文进行传输，可以看出HTTPS的通信是由HTTP和TLS&#x2F;SSL配合完成的。</p><p>HTTPS的特点：</p><p>内容加密：<strong>混合加密方式，对称加密和非对称加密</strong>。<br>验证身份：通过<strong>证书认证</strong>客户端访问的是正确的服务器。<br>数据完整性：<strong>防止传输的数据被中间人篡改</strong>。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>牛客模拟面试-2</title>
+    <link href="/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-2/"/>
+    <url>/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="C-中的四种类型转换"><a href="#C-中的四种类型转换" class="headerlink" title="C++ 中的四种类型转换"></a>C++ 中的四种类型转换</h3><p><a href="https://zhuanlan.zhihu.com/p/258975506">知乎链接</a><br>1、static_cast</p><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">static_cast</span>&lt;<span class="hljs-keyword">type</span>&gt;(expression)<br></code></pre></td></tr></table></figure><p>该运算符把 expression 转换为 type 类型，主要用于基本数据类型之间的转换，如把 uint 转换为 int，把 int 转换为 double 等。<br>需要注意的是：static_cast 会进行一些类型检查，但是没有运行时检查来保证转换的安全性，需要程序员来判断转换是否安全。</p><p>2、dynamic_cast</p><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">dynamic_cast</span>&lt;<span class="hljs-keyword">type</span>&gt;(expression)<br></code></pre></td></tr></table></figure><p>dynamic_cast 主要用于类层次间的上行转换或下行转换。在进行上行转换（派生类-&gt;基类）时，dynamic_cast 和 static_cast 的效果是一样的，但在下行转换（基类-&gt;派生类）时，dynamic_cast 具有类型检查的功能，比 static_cast 更安全。</p><p>3、const_cast</p><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">const_cast</span>&lt;<span class="hljs-keyword">type</span>&gt;(expression)<br></code></pre></td></tr></table></figure><p>用于去除 const 属性，去掉类型的 const 或者 volatile 属性，将 const 类型的指针变为非 const 类型的指针。</p><p>4、reinterpret_cast<br>reinterpret_cast <strong>不进行任何类型安全检查</strong>，直接将位模式解释为目标类型。这意味着它可以将任何指针类型转换为其他任何指针类型，而不考虑它们之间是否有合理的转换关系。</p><h3 id="HTTP-1-X-和-HTTP-2-X-的区别"><a href="#HTTP-1-X-和-HTTP-2-X-的区别" class="headerlink" title="HTTP 1.X 和 HTTP 2.X 的区别"></a>HTTP 1.X 和 HTTP 2.X 的区别</h3><p>（1）.HTTP2使用的是二进制传送，HTTP1.X是文本（字符串）传送。</p><p><strong>二进制传送的单位是帧和流</strong>。帧组成了流，同时流还有<strong>流ID</strong>标示</p><p>（2）.HTTP2<strong>支持多路复用</strong></p><p>因为有流ID，所以通过同一个http请求实现多个http请求传输变成了可能，可以通过流ID来标示究竟是哪个流从而定位到是哪个http请求</p><p>（3）.HTTP2<strong>头部压缩</strong></p><p>HTTP2通过gzip和compress<strong>压缩头部</strong>然后再发送，<strong>同时客户端和服务器端同时维护一张头信息表，所有字段都记录在这张表中，这样后面每次传输只需要传输表里面的索引Id就行，通过索引ID查询表头的值</strong></p><p>（4）.HTTP2<strong>支持服务器推送</strong></p><p>HTTP2支持在未经客户端许可的情况下，主动向客户端推送内容</p><h3 id="介绍一下几种IO模型"><a href="#介绍一下几种IO模型" class="headerlink" title="介绍一下几种IO模型"></a>介绍一下几种IO模型</h3><p>阻塞IO、非阻塞IO、多路复用IO、信号驱动IO以及异步IO</p><h3 id="如何判断大端和小端"><a href="#如何判断大端和小端" class="headerlink" title="如何判断大端和小端"></a>如何判断大端和小端</h3><p><a href="https://blog.csdn.net/weixin_38184628/article/details/136305592">csdn链接</a><br>Big-Endian（大端字节序） 和Little-Endian。<br>a) Little-Endian 高位字节在前，低位字节在后。<br>b) Big-Endian 低位字节在前，高位字节在后。<br>c) 网络字节序：TCP&#x2F;IP各层协议将字节序定义为Big-Endian，因此TCP&#x2F;IP协议中使用的字节序通常称之为网络字节序。</p><p>假设有一个 int 类型的数据，值为 0x12345678，保存在地址 0x400 ~ 0x403 这 4 个字节的位置。</p><p>大端：</p><p>在大端 cpu 上，存储情况如下图所示，高位存储在低地址。0x12 是高位，存储在地址 0x400 上；0x78 是低位，存储才 0x403 上。</p><p>小端：</p><p>小端与大端相反，高位存储在高地址。0x12 是高位，存储在 0x403；0x78 是低位，存储在 0x400。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>模拟面试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>牛客模拟面试-1</title>
     <link href="/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-1/"/>
     <url>/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-1/</url>
