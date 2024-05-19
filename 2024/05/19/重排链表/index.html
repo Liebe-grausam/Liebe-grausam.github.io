@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="UDP（用户数据报协议）是什么？UDP是传输层协议，是面向用户数据报协议，不保证可靠交付，没用TCP的拥塞控制和三次握手的机制保证可靠传输（虽然我的项目里写了但是那个是可靠udp！udp本身没有拥塞控制），UDP尽最大努力交付。最少只有8个字节。UDP支持单播、组播、广播，UDP相对TCP更简单，传输的速率更快，所以通常可以用在实时性比较强的需求上，比如视频会议等。 如何实现可靠udp（这不就是我">
+    <meta name="description" content="很经典的一道题目注意分解为一个一个函数，并且通过输出来debug（当然正式写的时候可能没时间debug了，所以还是要常写常新 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛客模拟面试-3">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-3/index.html">
+<meta property="og:title" content="重排链表">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/19/%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="UDP（用户数据报协议）是什么？UDP是传输层协议，是面向用户数据报协议，不保证可靠交付，没用TCP的拥塞控制和三次握手的机制保证可靠传输（虽然我的项目里写了但是那个是可靠udp！udp本身没有拥塞控制），UDP尽最大努力交付。最少只有8个字节。UDP支持单播、组播、广播，UDP相对TCP更简单，传输的速率更快，所以通常可以用在实时性比较强的需求上，比如视频会议等。 如何实现可靠udp（这不就是我">
+<meta property="og:description" content="很经典的一道题目注意分解为一个一个函数，并且通过输出来debug（当然正式写的时候可能没时间debug了，所以还是要常写常新 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-19T08:10:04.000Z">
-<meta property="article:modified_time" content="2024-05-19T08:27:25.985Z">
+<meta property="article:published_time" content="2024-05-19T13:17:52.000Z">
+<meta property="article:modified_time" content="2024-05-19T13:18:52.469Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>牛客模拟面试-3 - 苯人的一些发疯自留地！</title>
+  <title>重排链表 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="牛客模拟面试-3"></span>
+            <span id="subtitle" data-typed-text="重排链表"></span>
           
         </div>
 
@@ -200,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-19 16:10" pubdate>
-          2024年5月19日 下午
+        <time datetime="2024-05-19 21:17" pubdate>
+          2024年5月19日 晚上
         </time>
       </span>
     
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.8k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          15 分钟
+          16 分钟
         
       </span>
     
@@ -269,55 +269,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">牛客模拟面试-3</h1>
+            <h1 style="display: none">重排链表</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="UDP（用户数据报协议）是什么？"><a href="#UDP（用户数据报协议）是什么？" class="headerlink" title="UDP（用户数据报协议）是什么？"></a>UDP（用户数据报协议）是什么？</h3><p>UDP是<strong>传输层协议</strong>，是面向用户数据报协议，不保证可靠交付，<strong>没用TCP的拥塞控制和三次握手的机制保证可靠传输（虽然我的项目里写了但是那个是可靠udp！udp本身没有拥塞控制），UDP尽最大努力交付</strong>。最少只有8个字节。UDP支持单播、组播、广播，UDP相对TCP更简单，传输的速率更快，所以通常可以<strong>用在实时性比较强的需求上</strong>，比如视频会议等。</p>
-<h3 id="如何实现可靠udp"><a href="#如何实现可靠udp" class="headerlink" title="如何实现可靠udp"></a>如何实现可靠udp</h3><p>（这不就是我的项目吗！！！！）<br>实现可靠UDP（User Datagram Protocol）的方法通常涉及在应用层增加逻辑来处理数据包的丢失、重传、排序和确认。以下是一些实现可靠UDP的关键步骤：</p>
-<ol>
-<li><p><strong>数据包编号（Sequence Numbering）</strong>：</p>
-<ul>
-<li>在发送每个数据包时分配一个<strong>唯一的序列号</strong>。接收方可以使用这个序列号来检测丢失的数据包并按正确的顺序重组数据。</li>
-</ul>
-</li>
-<li><p><strong>确认机制（Acknowledgment Mechanism）</strong>：</p>
-<ul>
-<li>接收方在收到数据包后<strong>发送确认包（ACK）</strong>回发送方，告知其数据包已成功接收。如果发送方在一定时间内未收到ACK，则认为该数据包丢失，需要重传。</li>
-</ul>
-</li>
-<li><p><strong>重传机制（Retransmission Mechanism）</strong>：</p>
-<ul>
-<li>发送方在一定时间内未收到ACK时，<strong>重传</strong>未被确认的数据包。这个时间可以是固定的，也可以根据网络状况进行调整。</li>
-</ul>
-</li>
-<li><p><strong>超时和重试次数（Timeout and Retry Count）</strong>：</p>
-<ul>
-<li>设置<strong>超时重传的时间间隔和重试的次数。如果超过重试次数仍未收到ACK，可以认为连接断开。</strong></li>
-</ul>
-</li>
-<li><p><strong>滑动窗口（Sliding Window）</strong>：</p>
-<ul>
-<li>为了提高传输效率，可以实现<strong>滑动窗口协议，允许发送方在等待ACK的同时继续发送一定数量的数据包。</strong></li>
-</ul>
-</li>
-<li><p><strong>流量控制和拥塞控制（Flow Control and Congestion Control）</strong>：</p>
-<ul>
-<li>实现流量控制机制以避免发送方过快发送数据导致接收方缓冲区溢出。拥塞控制机制可以帮助在网络拥堵时调整发送速率。</li>
-</ul>
-</li>
-</ol>
-<h3 id="HTTPS（安全超文本传输协议）是什么"><a href="#HTTPS（安全超文本传输协议）是什么" class="headerlink" title="HTTPS（安全超文本传输协议）是什么"></a>HTTPS（安全超文本传输协议）是什么</h3><p>标准回答</p>
-<p>HTTPS（Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的HTTP通道，在HTTP的基础上通过<strong>身份认证和传输加密</strong>阶段保证了传输过程的安全性。HTTPS 在HTTP 的基础下加入TLS（Transport Layer Security 安全传输层协议）&#x2F;SSL（Secure Sockets Layer 安全套接层协议），HTTPS 的安全基础是 TLS&#x2F;SSL，因此加密就需要TLS&#x2F; SSL。HTTPS的特点是：<strong>内容加密、身份验证、数据完整性</strong>。</p>
-<p>加分回答</p>
-<p>HTTPS（Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的HTTP通道，在HTTP的基础上通过身份认证和传输加密阶段保证了传输过程的安全性。HTTPS 在HTTP 的基础下加入TLS（Transport Layer Security 安全传输层协议）&#x2F;SSL（Secure Sockets Layer 安全套接层协议），HTTPS 的安全基础是 TLS&#x2F;SSL，因此加密就需要TLS&#x2F; SSL。</p>
-<p>SSL的全称为Secure Sockets Layer，安全套接层协议。是为网络通信提供安全及数据完整性的一种安全协议。SSL协议在1994年被Netscape发明，后来各个浏览器均支持SSL。</p>
-<p>TLS的全称是Transport Layer Security，安全传输层协议。是SSL3.0的后续版本。在TLS与SSL3.0之间存在着显著的差别，主要是它们所支持的加密算法不同，所以TLS与SSL3.0不能互操作。虽然TLS与SSL3.0在加密算法上不同，但是在我们理解HTTPS的过程中，我们可以把SSL和TLS看做是同一个协议。</p>
-<p>在HTTPS数据传输的过程中，需要用TLS&#x2F;SSL对数据进行加密，然后通过HTTP对加密后的密文进行传输，可以看出HTTPS的通信是由HTTP和TLS&#x2F;SSL配合完成的。</p>
-<p>HTTPS的特点：</p>
-<p>内容加密：<strong>混合加密方式，对称加密和非对称加密</strong>。<br>验证身份：通过<strong>证书认证</strong>客户端访问的是正确的服务器。<br>数据完整性：<strong>防止传输的数据被中间人篡改</strong>。</p>
-
+                <p>很经典的一道题目<br>注意分解为一个一个函数，并且通过输出来debug（当然正式写的时候可能没时间debug了，所以还是要常写常新</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> value;<br>    ListNode* next;<br>    <span class="hljs-built_in">ListNode</span>(<span class="hljs-type">int</span> v,ListNode* n)&#123;<br>        value = v;<br>        next = n;<br>    &#125;<br>&#125;;<br><span class="hljs-function">ListNode* <span class="hljs-title">find_mid</span><span class="hljs-params">(ListNode* head)</span></span>&#123;<br>    <span class="hljs-comment">// 这个的版本是：如果有两个都是中间，返回前面那个</span><br>    <span class="hljs-comment">// 如果要返回后面那个，得fast!=nullptr&amp;&amp;fast-&gt;next!=nullptr</span><br>        ListNode* fast = head;<br>        ListNode* slow = head;<br>        <span class="hljs-keyword">while</span> (fast-&gt;next!=<span class="hljs-literal">nullptr</span>&amp;&amp;fast-&gt;next-&gt;next!=<span class="hljs-literal">nullptr</span>)&#123;<br>            fast = fast-&gt;next-&gt;next;<br>            slow = slow-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> slow;<br>&#125;<br><span class="hljs-function">ListNode* <span class="hljs-title">reverse_list</span><span class="hljs-params">(ListNode* head)</span></span>&#123;<br>        ListNode* cur = head;<br>        ListNode* pre = <span class="hljs-literal">nullptr</span>;<br>        ListNode* nxt = <span class="hljs-literal">nullptr</span>;<br>        <span class="hljs-keyword">while</span> (cur!=<span class="hljs-literal">nullptr</span>)&#123;<br>            nxt = cur-&gt;next;<br>            cur-&gt;next = pre;<br>            pre = cur;<br>            cur = nxt;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pre;<br><br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge_list</span><span class="hljs-params">(ListNode* head1,ListNode* head2)</span></span>&#123;<br>        ListNode* cur1 = head1;<br>        ListNode* cur2 = head2;<br>        ListNode* nxt1 = <span class="hljs-literal">nullptr</span>;<br>        ListNode* nxt2 = <span class="hljs-literal">nullptr</span>;<br>        <span class="hljs-keyword">while</span> (cur1!=<span class="hljs-literal">nullptr</span>&amp;&amp;cur2!=<span class="hljs-literal">nullptr</span>)&#123;<br>            <br>            nxt1 = cur1-&gt;next;<br>            nxt2 = cur2-&gt;next;<br>            cur1-&gt;next = cur2;<br>            cur1 = nxt1;<br>            cur2-&gt;next = nxt1;<br>            cur2 = nxt2;<br>            <br>        &#125;<br>        <br><br>    &#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_list</span><span class="hljs-params">(ListNode* head)</span></span>&#123;<br>    <span class="hljs-keyword">while</span> (head!=<span class="hljs-literal">nullptr</span>)&#123;<br>        cout&lt;&lt;head-&gt;value&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        head=head-&gt;next;<br>    &#125;<br>    cout&lt;&lt;endl;<br>&#125;<br>    <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    ListNode* head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">1</span>,<span class="hljs-literal">nullptr</span>);<br>    head-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">2</span>,<span class="hljs-literal">nullptr</span>);<br>    head-&gt;next-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">3</span>,<span class="hljs-literal">nullptr</span>);<br>    head-&gt;next-&gt;next-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">4</span>,<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-comment">// head-&gt;next-&gt;next-&gt;next-&gt;next = new ListNode(5,nullptr);</span><br>    ListNode* mid = <span class="hljs-built_in">find_mid</span>(head);<br>    ListNode*new_head = <span class="hljs-built_in">reverse_list</span>(mid-&gt;next);<br>    mid-&gt;next = <span class="hljs-literal">nullptr</span>;<br>    <span class="hljs-comment">// 这一步很重要！！！！</span><br><br>    <span class="hljs-comment">// cout&lt;&lt;&quot;mid=&quot;&lt;&lt;mid-&gt;value&lt;&lt;endl;</span><br>    <br>    <span class="hljs-built_in">merge_list</span>(head,new_head);<br>    <span class="hljs-built_in">print_list</span>(head);<br>    <span class="hljs-comment">// print_list(new_head);</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -334,8 +292,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>牛客模拟面试-3</div>
-      <div>http://liebe-grausam.github.io/2024/05/19/牛客模拟面试-3/</div>
+      <div>重排链表</div>
+      <div>http://liebe-grausam.github.io/2024/05/19/重排链表/</div>
     </div>
     <div class="license-meta">
       
@@ -379,18 +337,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/19/%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/" title="重排链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">重排链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-2/" title="牛客模拟面试-2">
-                        <span class="hidden-mobile">牛客模拟面试-2</span>
+                      <a href="/2024/05/19/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-3/" title="牛客模拟面试-3">
+                        <span class="hidden-mobile">牛客模拟面试-3</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
