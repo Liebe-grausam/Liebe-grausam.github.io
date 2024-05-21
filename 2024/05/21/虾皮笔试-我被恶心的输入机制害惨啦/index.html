@@ -16,13 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="再次鸣谢Jungol的建站赞助~主要存一些平时画的小破画！暂时会开手稿和重制版两个栏，也放一些文字内容作为复盘&amp;碎碎念etc.希望这个博客可以长期存活下去！（只要没有特殊原因断更）">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://liebe-grausam.github.io/archives/page/2/index.html">
+    <meta name="description" content="战绩：一道90% 一道AK 一道0%谁家好人直接用字符串读入一个二维数组，，，要死了案例输入：[[0]][[1,2,3],[4,5,6],[7,8,9]][[1,2,3,4]]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虾皮笔试-我被恶心的输入机制害惨啦">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/21/%E8%99%BE%E7%9A%AE%E7%AC%94%E8%AF%95-%E6%88%91%E8%A2%AB%E6%81%B6%E5%BF%83%E7%9A%84%E8%BE%93%E5%85%A5%E6%9C%BA%E5%88%B6%E5%AE%B3%E6%83%A8%E5%95%A6/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="再次鸣谢Jungol的建站赞助~主要存一些平时画的小破画！暂时会开手稿和重制版两个栏，也放一些文字内容作为复盘&amp;碎碎念etc.希望这个博客可以长期存活下去！（只要没有特殊原因断更）">
+<meta property="og:description" content="战绩：一道90% 一道AK 一道0%谁家好人直接用字符串读入一个二维数组，，，要死了案例输入：[[0]][[1,2,3],[4,5,6],[7,8,9]][[1,2,3,4]]">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-21T02:15:51.000Z">
+<meta property="article:modified_time" content="2024-05-21T02:17:20.890Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -30,11 +32,17 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>归档 - 苯人的一些发疯自留地！</title>
+  <title>虾皮笔试-我被恶心的输入机制害惨啦 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -99,7 +107,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -175,15 +183,63 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/wenzhang.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="虾皮笔试-我被恶心的输入机制害惨啦"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-21 10:15" pubdate>
+          2024年5月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          86 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          1 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
 
         
       </div>
@@ -199,100 +255,163 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 117 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2024</p>
-    
-    <a href="/2024/05/18/%E6%94%BE%E4%B8%AAshoppee%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86%E5%90%A7%E6%96%B9%E4%BE%BF%E5%A4%8D%E4%B9%A0/" class="list-group-item list-group-item-action">
-      <time>05-18</time>
-      <div class="list-group-item-title">放个shoppee笔试合集吧方便复习</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">虾皮笔试-我被恶心的输入机制害惨啦</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>战绩：一道90% 一道AK 一道0%<br>谁家好人直接用字符串读入一个二维数组，，，要死了<br>案例输入：<br>[[0]]<br>[[1,2,3],[4,5,6],[7,8,9]]<br>[[1,2,3,4]]</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-    
-    <a href="/2024/05/15/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86/" class="list-group-item list-group-item-action">
-      <time>05-15</time>
-      <div class="list-group-item-title">函数依赖最小覆盖</div>
-    </a>
-  
-    
-    <a href="/2024/05/15/3NF%E5%88%86%E8%A7%A3/" class="list-group-item list-group-item-action">
-      <time>05-15</time>
-      <div class="list-group-item-title">3NF分解</div>
-    </a>
-  
-    
-    <a href="/2024/05/15/%E7%BB%99%E5%87%BA%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E5%88%86%E8%A7%A3/" class="list-group-item list-group-item-action">
-      <time>05-15</time>
-      <div class="list-group-item-title">BCNF分解</div>
-    </a>
-  
-    
-    <a href="/2024/05/14/%E4%BA%8C%E6%88%98xhs%E7%AC%94%E8%AF%95/" class="list-group-item list-group-item-action">
-      <time>05-14</time>
-      <div class="list-group-item-title">二战xhs笔试</div>
-    </a>
-  
-    
-    <a href="/2024/05/12/%E5%81%9C%E6%B0%B4%E6%97%B6%E9%97%B4%E5%88%B0/" class="list-group-item list-group-item-action">
-      <time>05-12</time>
-      <div class="list-group-item-title">停水时间到</div>
-    </a>
-  
-    
-    <a href="/2024/05/10/%E8%BD%AC%E8%BD%BD%E7%9F%A5%E4%B9%8E-kafka%E9%9D%A2%E8%AF%95%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>05-10</time>
-      <div class="list-group-item-title">转载知乎-kafka面试题</div>
-    </a>
-  
-    
-    <a href="/2024/05/10/myftp%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/" class="list-group-item list-group-item-action">
-      <time>05-10</time>
-      <div class="list-group-item-title">myftp项目介绍</div>
-    </a>
-  
-    
-    <a href="/2024/05/10/%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" class="list-group-item list-group-item-action">
-      <time>05-10</time>
-      <div class="list-group-item-title">字节面试准备</div>
-    </a>
-  
-    
-    <a href="/2024/05/10/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E6%8A%84mooc-%E6%99%BA%E6%85%A7%E6%A0%91%E7%AD%94%E6%A1%88%E7%9A%84%E7%BD%91%E7%AB%99/" class="list-group-item list-group-item-action">
-      <time>05-10</time>
-      <div class="list-group-item-title">推荐一个抄mooc/智慧树答案的网站</div>
-    </a>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/#board">3</a><a class="page-number" href="/archives/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/#board">12</a><a class="extend next" rel="next" href="/archives/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>虾皮笔试-我被恶心的输入机制害惨啦</div>
+      <div>http://liebe-grausam.github.io/2024/05/21/虾皮笔试-我被恶心的输入机制害惨啦/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liebe_grausam</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/21/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-7/" title="牛客模拟面试-7">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">牛客模拟面试-7</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/20/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-6/" title="牛客模拟面试-6">
+                        <span class="hidden-mobile">牛客模拟面试-6</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -410,6 +529,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
