@@ -24,7 +24,7 @@
 <meta property="og:description" content="HTTP协议的缓存策略？HTTP协议的缓存策略有两种，分别是强制缓存和协商缓存，强制缓存的优先级大于协商缓存。强制缓存是服务器告诉浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行协商缓存策略。协商缓存是让客户端与服务器之间能实现缓存文件是否更新的验证、提升缓存的复用率，将缓存信息中的Etag和Last-Modified字段通过请求发送给服务器，由服务器校验。如果文件没有改变">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-21T05:11:04.000Z">
-<meta property="article:modified_time" content="2024-05-21T05:29:13.199Z">
+<meta property="article:modified_time" content="2024-05-21T06:35:38.715Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.1k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -281,7 +281,7 @@
 <p>第一次请求资源时，服务器返回资源，并在响应头首部中回传资源的缓存策略。<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接返回状态码200，否则就把请求参数加到请求头首部中传给服务器，看是否击中协商缓存，击中则返回304，否则服务器会返回新的资源。<br>延伸阅读<br>强制缓存：</p>
 <p>强缓存命中则直接读取浏览器本地的资源，在network中显示的是from memory或者from disk。<br>控制强制缓存的字段有：Cache-Control（http1.1）和Expires（http1.0）。<br>Cache-control是一个相对时间，用以表达<strong>自上次请求正确的资源之后的多少秒的时间段内缓存有效</strong>。<br>Expires是一个绝对时间。用以表达在这个时间点之前发起请求可以直接从浏览器中读取数据，而无需发起请求。<br><strong>Cache-Control的优先级比Expires的优先级高</strong>。前者的出现是为了解决Expires在浏览器时间被手动更改导致缓存判断错误的问题。如果同时存在则使用Cache-control。<br>协商缓存：</p>
 <p>协商缓存的状态码由服务器决策返回200或者304<br>当浏览器的强缓存失效的时候或者请求头中设置了不走强缓存，并且在请求头中设置了If-Modified-Since或者 If-None-Match的时候，会将这两个属性值到服务端去验证是否命中协商缓存，如果命中了协商缓存，会返回 304 状态，加载浏览器缓存，并且响应头会设置 Last-Modified或者ETag属性。<br>对比缓存在请求数上和没有缓存是一致的，但如果是 304 的话，返回的仅仅是一个状态码而已，并没有实际的文件内容，因此在响应体体积上的节省是它的优化点。<br>协商缓存有2组字段(不是两个)，控制协商缓存的字段有：Last-Modified&#x2F;If-Modified-since（http1.0）和Etag&#x2F;If-None-match（http1.1）。<br>Last-Modified&#x2F;If-Modified-since表示的是服务器的资源最后一次修改的时间。Etag&#x2F;If-None-match表示的是服务器资源的唯一标识，只要资源变化，Etag就会重新生成。<br>Etag&#x2F;If-None-match的优先级比Last-Modified&#x2F;If-Modified-since高。</p>
-<h3 id="C-11的新特性"><a href="#C-11的新特性" class="headerlink" title="C++11的新特性"></a>C++11的新特性</h3><p>auto类型推导<br>declatype类型推导<br>四种cast类型转换<br>智能指针<br>try_catch抛出异常<br>lamada表达式</p>
+<h3 id="C-11的新特性"><a href="#C-11的新特性" class="headerlink" title="C++11的新特性"></a>C++11的新特性</h3><p>auto类型推导（给变量做类型推导，需要初始值<br>decltype类型推导（类似与sizeof，不过decltype的推导过程是在编译期完成的，并且不会真正计算表达式的值<br>四种cast类型转换（static_cast, dynamic_cast, const_cast, reinterpret_cast）<br>智能指针<br>try_catch抛出异常<br>lambda表达式</p>
 <h3 id="静态变量、全局变量、局部变量的特点"><a href="#静态变量、全局变量、局部变量的特点" class="headerlink" title="静态变量、全局变量、局部变量的特点"></a>静态变量、全局变量、局部变量的特点</h3><p>从所在位置、作用域、内存位置、生命周期来说一说静态变量、全局变量、局部变量的特点：</p>
 <p>位置</p>
 <p>局部变量：在函数中或者方法中，函数的参数，局部代码块中。</p>
