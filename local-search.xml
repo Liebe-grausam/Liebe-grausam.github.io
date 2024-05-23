@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>速通KMP算法</title>
+    <link href="/2024/05/24/%E9%80%9F%E9%80%9AKMP%E7%AE%97%E6%B3%95/"/>
+    <url>/2024/05/24/%E9%80%9F%E9%80%9AKMP%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../img/%E7%AE%97%E6%B3%95/kmp%E7%AE%97%E6%B3%95.png" alt="为什么要用KMP算法"><br><a href="https://zhuanlan.zhihu.com/p/83334559?utm_psn=1777131874840141824">知乎链接</a><br><img src="/../img/%E7%AE%97%E6%B3%95/581e5a8571eeb0cc180801a1d145db9.jpg" alt="笔记"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>看别人面经冲刺中</title>
+    <link href="/2024/05/23/%E7%9C%8B%E5%88%AB%E4%BA%BA%E9%9D%A2%E7%BB%8F%E5%86%B2%E5%88%BA%E4%B8%AD/"/>
+    <url>/2024/05/23/%E7%9C%8B%E5%88%AB%E4%BA%BA%E9%9D%A2%E7%BB%8F%E5%86%B2%E5%88%BA%E4%B8%AD/</url>
+    
+    <content type="html"><![CDATA[<h2 id="MySQL的MVCC机制"><a href="#MySQL的MVCC机制" class="headerlink" title="MySQL的MVCC机制"></a>MySQL的MVCC机制</h2><p>MySQL 的 MVCC（多版本并发控制，Multi-Version Concurrency Control）机制是一种用于处理并发访问数据库的技术，主要应用于 InnoDB 存储引擎。它通过创建数据的多个版本来实现事务的隔离性和一致性，从而提高数据库的并发性能。MVCC 机制主要依赖于隐藏的列和快照来实现。这些隐藏列包括两个时间戳，分别是 <code>trx_id</code>（事务 ID）和 <code>roll_pointer</code>（回滚指针）。</p><h3 id="MVCC-的工作原理"><a href="#MVCC-的工作原理" class="headerlink" title="MVCC 的工作原理"></a>MVCC 的工作原理</h3><ol><li><p><strong>隐藏列</strong>:</p><ul><li><code>trx_id</code>: 每次事务对数据进行修改时，都会生成一个唯一的事务 ID，并将其赋值给修改后的数据行。</li><li><code>roll_pointer</code>: 指向该数据行在回滚段中的上一版本，用于实现数据的多版本控制和回滚操作。</li></ul></li><li><p><strong>快照读（Snapshot Read）</strong>:<br> 快照读是指读取数据库中的一致性快照，即读取数据行在某个时间点的版本。这种读取方式不会加锁，可以提高读取的并发性。具体来说，InnoDB 在读取数据时会根据当前事务的隔离级别和数据行的 <code>trx_id</code> 判断是否可以读取该版本的数据。</p></li><li><p><strong>当前读（Current Read）</strong>:<br> <strong>当前读是指读取最新版本的数据，并且会对读取的数据加锁</strong>，防止其他事务同时修改这些数据。例如，<code>SELECT ... FOR UPDATE</code> 和 <code>SELECT ... LOCK IN SHARE MODE</code> 都属于当前读。</p></li></ol><h3 id="事务隔离级别与-MVCC"><a href="#事务隔离级别与-MVCC" class="headerlink" title="事务隔离级别与 MVCC"></a>事务隔离级别与 MVCC</h3><p>MVCC 在不同的事务隔离级别下有不同的表现：</p><ol><li><p><strong>读未提交（Read Uncommitted）</strong>:<br> 事务可以读取其他未提交事务的数据修改。此隔离级别不使用 MVCC。</p></li><li><p><strong>读已提交（Read Committed）</strong>:<br> 事务只能读取已提交事务的数据修改。每次读取操作都会读取最新的已提交版本。</p></li><li><p><strong>可重复读（Repeatable Read）</strong>:<br> 在同一个事务中，多次读取同一数据行，返回的结果始终一致，即使其他事务已经提交了对该数据行的修改。InnoDB 通过创建事务开始时的快照来实现这一点。</p></li><li><p><strong>串行化（Serializable）</strong>:<br> 强制事务按顺序执行，类似于在每个读取的数据行上加锁，以实现最高级别的隔离性。</p></li></ol><h3 id="MVCC-的优势"><a href="#MVCC-的优势" class="headerlink" title="MVCC 的优势"></a>MVCC 的优势</h3><ol><li><p><strong>提高并发性能</strong>:<br> 通过快照读实现读写分离，读取操作无需加锁，从而大大提高了数据库的并发性能。</p></li><li><p><strong>避免幻读</strong>:<br> 在可重复读隔离级别下，MVCC 可以有效避免幻读问题，因为事务读取的是一致性快照，而不是实时数据。</p></li><li><p><strong>回滚方便</strong>:<br> 通过 <code>roll_pointer</code>，可以方便地回滚到数据行的前一个版本，支持事务的撤销操作。</p></li></ol><h3 id="MVCC-的实现细节"><a href="#MVCC-的实现细节" class="headerlink" title="MVCC 的实现细节"></a>MVCC 的实现细节</h3><p>在 InnoDB 中，每个数据行有两个隐藏的列：<code>DB_TRX_ID</code> 和 <code>DB_ROLL_PTR</code>。<code>DB_TRX_ID</code> 存储最近一次对该行进行修改的事务 ID，<code>DB_ROLL_PTR</code> 指向该行的上一版本。通过这些隐藏列，InnoDB 能够跟踪和管理多个版本的数据，从而实现 MVCC。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MySQL 的 MVCC 机制通过维护数据行的多个版本以及利用事务的快照，能够在提高并发性能的同时保证数据的一致性和隔离性。这使得 MySQL 能够在高并发环境下，提供高效和可靠的数据访问服务。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目捶打</title>
     <link href="/2024/05/23/%E9%A1%B9%E7%9B%AE%E6%8D%B6%E6%89%93/"/>
     <url>/2024/05/23/%E9%A1%B9%E7%9B%AE%E6%8D%B6%E6%89%93/</url>
