@@ -16,26 +16,23 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="知乎链接 12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;string&gt;int dp[200][256];&#x2F;&#x2F; dp[x][y]&#x3D;z表示状态x下遇到y字符（y是ascii码值）会转到z状态int next[100];using">
+    <meta name="description" content="进程有多少种状态，如何转换？三种状态：阻塞、就绪、运行。四种转换：阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。就绪-&gt;运行：调度器选择">
 <meta property="og:type" content="article">
-<meta property="og:title" content="速通KMP算法">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/24/%E9%80%9F%E9%80%9AKMP%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="牛客模拟面试-13">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/26/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-13/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="知乎链接 12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;string&gt;int dp[200][256];&#x2F;&#x2F; dp[x][y]&#x3D;z表示状态x下遇到y字符（y是ascii码值）会转到z状态int next[100];using">
+<meta property="og:description" content="进程有多少种状态，如何转换？三种状态：阻塞、就绪、运行。四种转换：阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。就绪-&gt;运行：调度器选择">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%AE%97%E6%B3%95/kmp%E7%AE%97%E6%B3%95.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%AE%97%E6%B3%95/581e5a8571eeb0cc180801a1d145db9.jpg">
-<meta property="article:published_time" content="2024-05-23T16:22:15.000Z">
-<meta property="article:modified_time" content="2024-05-24T08:24:53.844Z">
+<meta property="article:published_time" content="2024-05-26T13:41:21.000Z">
+<meta property="article:modified_time" content="2024-05-26T15:53:59.211Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%AE%97%E6%B3%95/kmp%E7%AE%97%E6%B3%95.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>速通KMP算法 - 苯人的一些发疯自留地！</title>
+  <title>牛客模拟面试-13 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="速通KMP算法"></span>
+            <span id="subtitle" data-typed-text="牛客模拟面试-13"></span>
           
         </div>
 
@@ -203,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-24 00:22" pubdate>
-          2024年5月24日 凌晨
+        <time datetime="2024-05-26 21:41" pubdate>
+          2024年5月26日 晚上
         </time>
       </span>
     
@@ -215,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          856 字
+          352 字
         
       </span>
     
@@ -226,7 +223,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -272,13 +269,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">速通KMP算法</h1>
+            <h1 style="display: none">牛客模拟面试-13</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/../img/%E7%AE%97%E6%B3%95/kmp%E7%AE%97%E6%B3%95.png" srcset="/img/loading.gif" lazyload alt="为什么要用KMP算法"><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83334559?utm_psn=1777131874840141824">知乎链接</a><br><img src="/../img/%E7%AE%97%E6%B3%95/581e5a8571eeb0cc180801a1d145db9.jpg" srcset="/img/loading.gif" lazyload alt="笔记"></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-type">int</span> dp[<span class="hljs-number">200</span>][<span class="hljs-number">256</span>];<br><span class="hljs-comment">// dp[x][y]=z表示状态x下遇到y字符（y是ascii码值）会转到z状态</span><br><span class="hljs-type">int</span> next[<span class="hljs-number">100</span>];<br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build_statement</span><span class="hljs-params">(string pat)</span></span>&#123;<br>    <span class="hljs-type">int</span> patlen = pat.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-comment">// int base = 0;</span><br>    <span class="hljs-type">int</span> X = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 影子状态</span><br>    dp[<span class="hljs-number">0</span>][pat[<span class="hljs-number">0</span>]]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;patlen;i++)&#123;<br>        <span class="hljs-comment">// 注意这里直接从状态1开始算，并且不包括最后一个状态</span><br>        <span class="hljs-comment">// 因为如果dp到最后一个状态说明就可以了</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;<span class="hljs-number">256</span>;j++)&#123;<br>            <span class="hljs-keyword">if</span> (j==pat[i])dp[i][j]=i+<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> dp[i][j]=dp[X][j];<br>        &#125;<br>        X=dp[X][pat[i]];<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">search</span><span class="hljs-params">(string pat, string txt)</span></span>&#123;<br>    <span class="hljs-type">int</span> patlen = pat.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-type">int</span> txtlen = txt.<span class="hljs-built_in">length</span>();<br>    <span class="hljs-type">int</span> cur = <span class="hljs-number">0</span> ; <br>    <span class="hljs-comment">// 表示初始状态为0</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i =<span class="hljs-number">0</span>;i&lt;txtlen;i++)&#123;<br>        cur=dp[cur][txt[i]];<br>        <span class="hljs-keyword">if</span> (cur==patlen) <span class="hljs-keyword">return</span> i-patlen+<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    string pat=<span class="hljs-string">&quot;ababc&quot;</span>;<br>    string txt=<span class="hljs-string">&quot;bbcabbsaababcabbbac&quot;</span>;<br>    <span class="hljs-built_in">build_statement</span>(pat);<br>    cout&lt;&lt;<span class="hljs-built_in">search</span>(pat, txt);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h3 id="进程有多少种状态，如何转换？"><a href="#进程有多少种状态，如何转换？" class="headerlink" title="进程有多少种状态，如何转换？"></a>进程有多少种状态，如何转换？</h3><p><strong>三种状态</strong>：<br>阻塞、就绪、运行。<br><strong>四种转换</strong>：<br>阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。<br>运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。<br>运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。<br>就绪-&gt;运行：调度器选择一个就绪进程并分配CPU给它，进程进入运行状态。</p>
+<h3 id="哪些问题是HTTPS无法解决的？"><a href="#哪些问题是HTTPS无法解决的？" class="headerlink" title="哪些问题是HTTPS无法解决的？"></a>哪些问题是HTTPS无法解决的？</h3><ol>
+<li>Http是基于<strong>TCP协议的，在网络层的传输耗时比较长</strong>，https没有解决这个问题；</li>
+<li>http<strong>头是不能压缩</strong>的，每次要传递很大的数据包，<strong>每个连接也只能支持一个请求</strong>。</li>
+<li>同时https应用了很多<strong>加密算法</strong>，这些算法的执行也是会<strong>影响速度</strong>的。</li>
+</ol>
+
                 
               </div>
             
@@ -295,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>速通KMP算法</div>
-      <div>http://liebe-grausam.github.io/2024/05/24/速通KMP算法/</div>
+      <div>牛客模拟面试-13</div>
+      <div>http://liebe-grausam.github.io/2024/05/26/牛客模拟面试-13/</div>
     </div>
     <div class="license-meta">
       
@@ -308,7 +310,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月24日</div>
+          <div>2024年5月26日</div>
         </div>
       
       
@@ -340,18 +342,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/26/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-13/" title="牛客模拟面试-13">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">牛客模拟面试-13</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/23/%E7%9C%8B%E5%88%AB%E4%BA%BA%E9%9D%A2%E7%BB%8F%E5%86%B2%E5%88%BA%E4%B8%AD/" title="看别人面经冲刺中">
-                        <span class="hidden-mobile">看别人面经冲刺中</span>
+                      <a href="/2024/05/24/%E9%80%9F%E9%80%9AKMP%E7%AE%97%E6%B3%95/" title="速通KMP算法">
+                        <span class="hidden-mobile">速通KMP算法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
