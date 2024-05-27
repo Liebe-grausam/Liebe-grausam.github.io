@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>接雨水</title>
+    <link href="/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
+    <url>/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
+    
+    <content type="html"><![CDATA[<p>字节臭名昭著接雨水</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// 臭名昭著接雨水</span><br>    <span class="hljs-comment">// 用双指针做</span><br>    vector&lt;<span class="hljs-type">int</span>&gt;height = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>&#125;;<br>    <span class="hljs-type">int</span> size=height.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> right = size<span class="hljs-number">-1</span>;<br>    <span class="hljs-type">int</span> leftMax = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> rightMax = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (left&lt;right)&#123;<br>        leftMax = <span class="hljs-built_in">max</span>(leftMax,height[left]);<br>        rightMax = <span class="hljs-built_in">max</span>(rightMax,height[right]);<br>        <span class="hljs-keyword">if</span> (rightMax&gt;leftMax)&#123;<br>            res+=leftMax-height[left];<br>            left++;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            res+=rightMax-height[right];<br>            right--;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;res;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>括号生成</title>
     <link href="/2024/05/27/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"/>
     <url>/2024/05/27/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</url>
