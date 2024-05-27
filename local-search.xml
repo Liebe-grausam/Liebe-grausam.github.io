@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>最大数</title>
+    <link href="/2024/05/27/%E6%9C%80%E5%A4%A7%E6%95%B0/"/>
+    <url>/2024/05/27/%E6%9C%80%E5%A4%A7%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<p>巧用lambda表达式，string头文件中有可以直接将数字转为字符串的方法！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt;a=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">100</span>,<span class="hljs-number">92</span>&#125;;<br>    <span class="hljs-built_in">sort</span>(a.<span class="hljs-built_in">begin</span>(),a.<span class="hljs-built_in">end</span>(),[](<span class="hljs-type">int</span> m,<span class="hljs-type">int</span> n)&#123;<span class="hljs-keyword">return</span> <span class="hljs-built_in">to_string</span>(m)+<span class="hljs-built_in">to_string</span>(n)&gt;<span class="hljs-built_in">to_string</span>(n)+<span class="hljs-built_in">to_string</span>(m);&#125;);<br>    string res;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>();i++)&#123;<br>        res+=<span class="hljs-built_in">to_string</span>(a[i]);<br>    &#125;<br>    cout&lt;&lt;res;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>螺旋矩阵</title>
     <link href="/2024/05/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
     <url>/2024/05/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
