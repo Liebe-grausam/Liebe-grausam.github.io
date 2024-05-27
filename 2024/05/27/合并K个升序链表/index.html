@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="进程有多少种状态，如何转换？三种状态：阻塞、就绪、运行。四种转换：阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。就绪-&gt;运行：调度器选择">
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;class ListNode&amp;#123;public:    int value;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛客模拟面试-13">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/26/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-13/index.html">
+<meta property="og:title" content="合并K个升序链表">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/27/%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="进程有多少种状态，如何转换？三种状态：阻塞、就绪、运行。四种转换：阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。就绪-&gt;运行：调度器选择">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;class ListNode&amp;#123;public:    int value;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-26T13:41:21.000Z">
-<meta property="article:modified_time" content="2024-05-26T15:53:59.211Z">
+<meta property="article:published_time" content="2024-05-27T05:29:58.000Z">
+<meta property="article:modified_time" content="2024-05-27T05:45:45.728Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>牛客模拟面试-13 - 苯人的一些发疯自留地！</title>
+  <title>合并K个升序链表 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="牛客模拟面试-13"></span>
+            <span id="subtitle" data-typed-text="合并K个升序链表"></span>
           
         </div>
 
@@ -200,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-26 21:41" pubdate>
-          2024年5月26日 晚上
+        <time datetime="2024-05-27 13:29" pubdate>
+          2024年5月27日 下午
         </time>
       </span>
     
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          352 字
+          1.2k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          3 分钟
+          10 分钟
         
       </span>
     
@@ -269,18 +269,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">牛客模拟面试-13</h1>
+            <h1 style="display: none">合并K个升序链表</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="进程有多少种状态，如何转换？"><a href="#进程有多少种状态，如何转换？" class="headerlink" title="进程有多少种状态，如何转换？"></a>进程有多少种状态，如何转换？</h3><p><strong>三种状态</strong>：<br>阻塞、就绪、运行。<br><strong>四种转换</strong>：<br>阻塞-&gt;就绪：当一个进程等待的事件发生或资源可用时，它会从阻塞状态转换回就绪状态，等待被调度执行。<br>运行-&gt;阻塞：当一个进程需要等待某个事件发生或等待某个资源时，它会从运行状态转换到阻塞状态。<br>运行-&gt;就绪：当一个运行中的进程的时间片用完或被操作系统抢占，它返回到就绪状态，等待下一次调度。<br>就绪-&gt;运行：调度器选择一个就绪进程并分配CPU给它，进程进入运行状态。</p>
-<h3 id="哪些问题是HTTPS无法解决的？"><a href="#哪些问题是HTTPS无法解决的？" class="headerlink" title="哪些问题是HTTPS无法解决的？"></a>哪些问题是HTTPS无法解决的？</h3><ol>
-<li>Http是基于<strong>TCP协议的，在网络层的传输耗时比较长</strong>，https没有解决这个问题；</li>
-<li>http<strong>头是不能压缩</strong>的，每次要传递很大的数据包，<strong>每个连接也只能支持一个请求</strong>。</li>
-<li>同时https应用了很多<strong>加密算法</strong>，这些算法的执行也是会<strong>影响速度</strong>的。</li>
-</ol>
-
+                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;queue&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> value;<br>    ListNode *next;<br>    <span class="hljs-built_in">ListNode</span>(<span class="hljs-type">int</span> v,ListNode *n)&#123;<br>        value = v;<br>        next = n;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printlist</span><span class="hljs-params">(ListNode *head)</span></span>&#123;<br>    <span class="hljs-keyword">while</span> (head!=<span class="hljs-literal">nullptr</span>)&#123;<br>        cout&lt;&lt;head-&gt;value&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        head=head-&gt;next;<br>    &#125;<br>    cout&lt;&lt;endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    ListNode *head1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">1</span>,<span class="hljs-literal">nullptr</span>);<br>    head1-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">2</span>,<span class="hljs-literal">nullptr</span>);<br>    head1-&gt;next-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">3</span>,<span class="hljs-literal">nullptr</span>);<br>    ListNode *head2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">1</span>,<span class="hljs-literal">nullptr</span>);<br>    head2-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">2</span>,<span class="hljs-literal">nullptr</span>);<br>    head2-&gt;next-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">3</span>,<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-built_in">printlist</span>(head1);<br>    <span class="hljs-built_in">printlist</span>(head2);<br>    <span class="hljs-keyword">auto</span> cmp = [](ListNode *a, ListNode *b)&#123;<span class="hljs-keyword">return</span> a-&gt;value&gt;b-&gt;value;&#125;;<br>    <span class="hljs-comment">// 请注意这里符号填的是大于（好反人类</span><br>    priority_queue&lt;ListNode *,vector&lt;ListNode *&gt;,<span class="hljs-keyword">decltype</span>(cmp)&gt;<span class="hljs-built_in">q</span>(cmp);<br>    <span class="hljs-comment">// 这两个语句背下来orz</span><br>    q.<span class="hljs-built_in">push</span>(head1);<br>    q.<span class="hljs-built_in">push</span>(head2);<br>    ListNode *dummy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>,<span class="hljs-literal">nullptr</span>);<br>    ListNode *cur = dummy;<br>    <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>())&#123;<br>        ListNode *tmp = q.<span class="hljs-built_in">top</span>();<br>        q.<span class="hljs-built_in">pop</span>();<br>        cur-&gt;next = tmp;<br>        cur = tmp;<br>        <span class="hljs-keyword">if</span> (tmp-&gt;next!=<span class="hljs-literal">nullptr</span>)&#123;<br>            <span class="hljs-comment">// 这个非空条件很重要！</span><br>            q.<span class="hljs-built_in">push</span>(tmp-&gt;next);<br>        &#125;<br><br>    &#125;<br>    <span class="hljs-built_in">printlist</span>(dummy-&gt;next);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -297,8 +291,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>牛客模拟面试-13</div>
-      <div>http://liebe-grausam.github.io/2024/05/26/牛客模拟面试-13/</div>
+      <div>合并K个升序链表</div>
+      <div>http://liebe-grausam.github.io/2024/05/27/合并K个升序链表/</div>
     </div>
     <div class="license-meta">
       
@@ -310,7 +304,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月26日</div>
+          <div>2024年5月27日</div>
         </div>
       
       
@@ -342,18 +336,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/27/%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="合并K个升序链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">合并K个升序链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/24/%E9%80%9F%E9%80%9AKMP%E7%AE%97%E6%B3%95/" title="速通KMP算法">
-                        <span class="hidden-mobile">速通KMP算法</span>
+                      <a href="/2024/05/26/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-13/" title="牛客模拟面试-13">
+                        <span class="hidden-mobile">牛客模拟面试-13</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
