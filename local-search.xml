@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>整数反转</title>
+    <link href="/2024/05/27/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"/>
+    <url>/2024/05/27/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/</url>
+    
+    <content type="html"><![CDATA[<p>给定一个32位的有符号整数num，将num中的数字部分反转，最后返回反转的结果</p><ol><li>只反转数字部分，符号位部分不反转</li><li>反转后整数num超过 32 位的有符号整数的范围 [−231,  231 − 1] ，返回 0</li><li>假设本题不允许存储 64 位整数(有符号或无符号，即C++不能使用long long ，Java不能使用long等)<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">reverseint</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> res= <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n!=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">if</span> (res &gt; INT32_MAX / <span class="hljs-number">10</span> || res &lt; INT32_MIN / <span class="hljs-number">10</span>)  &#123;<br>            <span class="hljs-comment">// 要提前预判</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        res = res*<span class="hljs-number">10</span>+n%<span class="hljs-number">10</span>;<br>        n=n/<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n=<span class="hljs-number">2123456789</span>;<br>    cout&lt;&lt;<span class="hljs-built_in">reverseint</span>(n);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>接雨水</title>
     <link href="/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
     <url>/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>

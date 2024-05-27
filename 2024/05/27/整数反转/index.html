@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="字节臭名昭著接雨水 12345678910111213141516171819202122232425262728#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main()&amp;#123;    &#x2F;&#x2F; 臭名昭著接雨水    &#x2F;&#x2F; 用双指针做    vector&lt;int&gt;height &#x3D; &amp;#123">
+    <meta name="description" content="给定一个32位的有符号整数num，将num中的数字部分反转，最后返回反转的结果  只反转数字部分，符号位部分不反转 反转后整数num超过 32 位的有符号整数的范围 [−231,  231 − 1] ，返回 0 假设本题不允许存储 64 位整数(有符号或无符号，即C++不能使用long long ，Java不能使用long等)12345678910111213141516171819202122#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="接雨水">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/index.html">
+<meta property="og:title" content="整数反转">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/27/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="字节臭名昭著接雨水 12345678910111213141516171819202122232425262728#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main()&amp;#123;    &#x2F;&#x2F; 臭名昭著接雨水    &#x2F;&#x2F; 用双指针做    vector&lt;int&gt;height &#x3D; &amp;#123">
+<meta property="og:description" content="给定一个32位的有符号整数num，将num中的数字部分反转，最后返回反转的结果  只反转数字部分，符号位部分不反转 反转后整数num超过 32 位的有符号整数的范围 [−231,  231 − 1] ，返回 0 假设本题不允许存储 64 位整数(有符号或无符号，即C++不能使用long long ，Java不能使用long等)12345678910111213141516171819202122#">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-27T06:46:24.000Z">
-<meta property="article:modified_time" content="2024-05-27T06:46:46.648Z">
+<meta property="article:published_time" content="2024-05-27T06:55:47.000Z">
+<meta property="article:modified_time" content="2024-05-27T07:13:07.472Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>接雨水 - 苯人的一些发疯自留地！</title>
+  <title>整数反转 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="接雨水"></span>
+            <span id="subtitle" data-typed-text="整数反转"></span>
           
         </div>
 
@@ -200,7 +200,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-27 14:46" pubdate>
+        <time datetime="2024-05-27 14:55" pubdate>
           2024年5月27日 下午
         </time>
       </span>
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          548 字
+          499 字
         
       </span>
     
@@ -269,13 +269,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">接雨水</h1>
+            <h1 style="display: none">整数反转</h1>
             
             
               <div class="markdown-body">
                 
-                <p>字节臭名昭著接雨水</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// 臭名昭著接雨水</span><br>    <span class="hljs-comment">// 用双指针做</span><br>    vector&lt;<span class="hljs-type">int</span>&gt;height = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>&#125;;<br>    <span class="hljs-type">int</span> size=height.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> right = size<span class="hljs-number">-1</span>;<br>    <span class="hljs-type">int</span> leftMax = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> rightMax = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (left&lt;right)&#123;<br>        leftMax = <span class="hljs-built_in">max</span>(leftMax,height[left]);<br>        rightMax = <span class="hljs-built_in">max</span>(rightMax,height[right]);<br>        <span class="hljs-keyword">if</span> (rightMax&gt;leftMax)&#123;<br>            res+=leftMax-height[left];<br>            left++;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            res+=rightMax-height[right];<br>            right--;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;res;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>给定一个32位的有符号整数num，将num中的数字部分反转，最后返回反转的结果</p>
+<ol>
+<li>只反转数字部分，符号位部分不反转</li>
+<li>反转后整数num超过 32 位的有符号整数的范围 [−231,  231 − 1] ，返回 0</li>
+<li>假设本题不允许存储 64 位整数(有符号或无符号，即C++不能使用long long ，Java不能使用long等)<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">reverseint</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></span>&#123;<br>    <span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> res= <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n!=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">if</span> (res &gt; INT32_MAX / <span class="hljs-number">10</span> || res &lt; INT32_MIN / <span class="hljs-number">10</span>)  &#123;<br>            <span class="hljs-comment">// 要提前预判</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        res = res*<span class="hljs-number">10</span>+n%<span class="hljs-number">10</span>;<br>        n=n/<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n=<span class="hljs-number">2123456789</span>;<br>    cout&lt;&lt;<span class="hljs-built_in">reverseint</span>(n);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+
                 
               </div>
             
@@ -292,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>接雨水</div>
-      <div>http://liebe-grausam.github.io/2024/05/27/接雨水/</div>
+      <div>整数反转</div>
+      <div>http://liebe-grausam.github.io/2024/05/27/整数反转/</div>
     </div>
     <div class="license-meta">
       
@@ -337,18 +342,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/27/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/" title="整数反转">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">整数反转</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/27/%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" title="括号生成">
-                        <span class="hidden-mobile">括号生成</span>
+                      <a href="/2024/05/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="接雨水">
+                        <span class="hidden-mobile">接雨水</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
