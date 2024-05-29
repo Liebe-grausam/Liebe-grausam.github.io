@@ -24,7 +24,7 @@
 <meta property="og:description" content="MySQL的MVCC机制MySQL 的 MVCC（多版本并发控制，Multi-Version Concurrency Control）机制是一种用于处理并发访问数据库的技术，主要应用于 InnoDB 存储引擎。它通过创建数据的多个版本来实现事务的隔离性和一致性，从而提高数据库的并发性能。MVCC 机制主要依赖于隐藏的列和快照来实现。这些隐藏列包括两个时间戳，分别是 trx_id（事务 ID）和 r">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-23T15:00:46.000Z">
-<meta property="article:modified_time" content="2024-05-26T16:01:57.114Z">
+<meta property="article:modified_time" content="2024-05-29T08:43:53.295Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.1k 字
+          12k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          68 分钟
+          104 分钟
         
       </span>
     
@@ -508,7 +508,242 @@
 <p>HTTP 页面响应速度比 HTTPS 快，主要是因为 HTTP 使用 TCP 三次握手建立连接，而 HTTPS除了 TCP 的三个包，还要加上SSL握手的消耗。</p>
 <p>用的端口也不一样，前者是 80，后者是 443。</p>
 <p>HTTPS 其实就是建构在 SSL&#x2F;TLS 之上的 HTTP 协议，所以，要比较 HTTPS 比 HTTP 要更耗费服务器资源。</p>
-<h2 id="GDB常见调试命令"><a href="#GDB常见调试命令" class="headerlink" title="GDB常见调试命令"></a>GDB常见调试命令</h2>
+<h2 id="GDB常见调试命令"><a href="#GDB常见调试命令" class="headerlink" title="GDB常见调试命令"></a>GDB常见调试命令</h2><p>GDB（GNU Debugger）是一个强大的调试工具，广泛用于调试 C 和 C++ 程序。以下是一些常用的 GDB 调试命令及其功能：</p>
+<p>gdb xxx.exe（可执行文件名：启动gdb<br>gdb q：退出gdb<br>gdb r arg1 arg2：运行程序（传递命令行参数<br>gdb b 文件:行  ：在某某文件的第几行打个断点<br>gdb b 函数名   ：在某个函数打个断点<br>gdb i b ：列出所有断点<br>gdb c ：继续执行到下一个断点<br>gdb s ：进入函数内部单步执行一行<br>gdb n ：不进入函数内部单步执行一行<br>gdb p 变量名：打印这个变量的值<br>gdb i r ：查看寄存器值</p>
+<h3 id="启动和退出-GDB"><a href="#启动和退出-GDB" class="headerlink" title="启动和退出 GDB"></a>启动和退出 GDB</h3><ul>
+<li><p><strong>启动 GDB</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">gdb &lt;executable&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">gdb ./my_program<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>退出 GDB</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">quit<br>或<br>q<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><ul>
+<li><p><strong>运行程序</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">run<br>或<br>r<br></code></pre></td></tr></table></figure>
+<p>可以传递命令行参数：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">run arg1 arg2<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重启程序</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">run<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="设置断点"><a href="#设置断点" class="headerlink" title="设置断点"></a>设置断点</h3><ul>
+<li><p><strong>在某行设置断点</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">break</span> &lt;file&gt;:&lt;line&gt;<br>或<br>b &lt;file&gt;:&lt;line&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">break</span> main.cpp:10<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在某函数设置断点</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">break</span> &lt;<span class="hljs-keyword">function</span>&gt;<br>或<br>b &lt;<span class="hljs-keyword">function</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">break</span> main<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出所有断点</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">info breakpoints<br>或<br>i b<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除断点</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">delete &lt;breakpoint-number&gt;<br>或<br>d &lt;breakpoint-number&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">delete 1<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="控制程序执行"><a href="#控制程序执行" class="headerlink" title="控制程序执行"></a>控制程序执行</h3><ul>
+<li><p><strong>继续执行到下一个断点</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">continue</span><br>或<br>c<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>单步执行一行源代码（进入函数内部）</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">step<br>或<br>s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>单步执行一行源代码（不进入函数内部）</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">next<br>或<br>n<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>执行到当前函数返回</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">finish<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>跳过当前循环的剩余部分</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">until &lt;location&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="检查程序状态"><a href="#检查程序状态" class="headerlink" title="检查程序状态"></a>检查程序状态</h3><ul>
+<li><p><strong>打印变量值</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">print</span> &lt;variable&gt;<br>或<br>p &lt;variable&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">print</span> x<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>打印局部变量值</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">info locals<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看当前栈帧</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">info frame<br>或<br>i f<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看调用栈</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">backtrace<br>或<br>bt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>切换栈帧</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">frame &lt;frame-number&gt;<br>或<br>f &lt;frame-number&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="修改程序状态"><a href="#修改程序状态" class="headerlink" title="修改程序状态"></a>修改程序状态</h3><ul>
+<li><strong>修改变量值</strong><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">set</span> variable &lt;variable&gt; = &lt;value&gt;<br></code></pre></td></tr></table></figure>
+例如：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">set</span> variable x = 42<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="其它有用命令"><a href="#其它有用命令" class="headerlink" title="其它有用命令"></a>其它有用命令</h3><ul>
+<li><p><strong>重新编译并重新加载可执行文件</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">make<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出源代码</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">list &lt;location&gt;<br>或<br>l &lt;location&gt;<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">list main<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>显示寄存器值</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">info registers<br>或<br>i r<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="示例调试会话"><a href="#示例调试会话" class="headerlink" title="示例调试会话"></a>示例调试会话</h3><p>假设我们有一个简单的 C++ 程序 <code>main.cpp</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">5</span>;<br>    <span class="hljs-built_in">foo</span>(a);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们编译并启动 GDB：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">g++ -g -o my_program main.cpp<br>gdb ./my_program<br></code></pre></td></tr></table></figure>
+
+<p>在 GDB 中设置断点并运行程序：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sh">(gdb) <span class="hljs-built_in">break</span> main<br>Breakpoint 1 at 0x4006d2: file main.cpp, line 9.<br><br>(gdb) run<br>Starting program: /path/to/my_program<br>Breakpoint 1, main () at main.cpp:9<br>9       int a = 5;<br><br>(gdb) next<br>10      foo(a);<br><br>(gdb) step<br>foo (x=5) at main.cpp:4<br>4       std::cout &lt;&lt; <span class="hljs-string">&quot;x = &quot;</span> &lt;&lt; <span class="hljs-string">x &lt;&lt; std::endl;</span><br><span class="hljs-string"></span><br><span class="hljs-string">(gdb) continue</span><br><span class="hljs-string">Continuing.</span><br><span class="hljs-string">x</span> = 5<br>[Inferior 1 (process 12345) exited normally]<br><br>(gdb) quit<br></code></pre></td></tr></table></figure>
+
+<p>通过这些命令，您可以有效地调试和检查 C 和 C++ 程序的执行过程。</p>
+<h2 id="STL的组成部分"><a href="#STL的组成部分" class="headerlink" title="STL的组成部分"></a>STL的组成部分</h2><p>一共有六大部分：容器、算法、迭代器、仿函数、适配器、空间配置器<br>容器：用来存放数据的各种数据结构，比如vector、deque、list、set和map等，是一种类模板<br>算法：各种常用的算法，比如排序算法，拷贝算法、查找算法等，是一种函数模板<br>迭代器：容器与算法间的粘合剂，共有五种类型，重载了指针相关的各种操作，比如operator++、operator–等，是一种类模板<br>仿函数：行为类似函数，可以作为算法的某种策略，从实现角度来看，它是重载了operator()的一种类模板<br>适配器：用来修饰容器、仿函数和迭代器的接口<br>空间配置器：负责空间的配置与管理。配置器实现了动态空间分配、管理与释放的类模板。</p>
+<p>它们间的交互关系：容器通过空间配置器取得数据存储空间；算法通过迭代器来存储容器中的内容；<br>仿函数可以协助算法实现不同的策略；适配器可以修饰仿函数。</p>
+<h2 id="乐观锁悲观锁"><a href="#乐观锁悲观锁" class="headerlink" title="乐观锁悲观锁"></a>乐观锁悲观锁</h2><p>乐观锁和悲观锁是两种并发控制的策略，用于处理多线程或多进程环境下的数据竞争问题。它们有不同的应用场景和实现方式，下面分别介绍。</p>
+<h3 id="悲观锁（Pessimistic-Locking）"><a href="#悲观锁（Pessimistic-Locking）" class="headerlink" title="悲观锁（Pessimistic Locking）"></a>悲观锁（Pessimistic Locking）</h3><p><strong>悲观锁</strong>假设每次操作都会发生冲突，因此每次操作前都会先获取锁，以避免冲突和数据不一致问题。</p>
+<ul>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>在读取或写入数据前，先获取锁。</li>
+<li>获取锁的操作会阻塞其他线程或进程，直到锁被释放。</li>
+<li>适用于写操作较多，冲突频繁的场景。</li>
+</ul>
+</li>
+<li><p><strong>实现方式</strong>：</p>
+<ul>
+<li>数据库层面：使用数据库的锁机制，如行锁、表锁等。例如，MySQL中的<code>FOR UPDATE</code>语句。</li>
+<li>应用程序层面：使用互斥锁（mutex）、读写锁（read-write lock）等同步机制。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::mutex mtx;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">critical_section</span><span class="hljs-params">()</span> </span>&#123;<br>    mtx.<span class="hljs-built_in">lock</span>();    <span class="hljs-comment">// 获取锁</span><br>    <span class="hljs-comment">// 临界区代码</span><br>    mtx.<span class="hljs-built_in">unlock</span>();  <span class="hljs-comment">// 释放锁</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="乐观锁（Optimistic-Locking）"><a href="#乐观锁（Optimistic-Locking）" class="headerlink" title="乐观锁（Optimistic Locking）"></a>乐观锁（Optimistic Locking）</h3><p><strong>乐观锁</strong>假设冲突很少发生，因此每次操作不加锁，而是在提交时检查冲突，如果发现冲突则重试。</p>
+<ul>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>在读取和写入数据时不加锁。</li>
+<li>在提交更新时，检查是否有其他线程或进程修改了数据。</li>
+<li>适用于读操作多、写操作少，冲突概率低的场景。</li>
+</ul>
+</li>
+<li><p><strong>实现方式</strong>：</p>
+<ul>
+<li>数据库层面：使用版本号或时间戳机制。例如，每次读取数据时获取当前版本号，更新时检查版本号是否改变。</li>
+<li>应用程序层面：比较并交换（Compare-and-Swap, CAS）操作。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">VersionedData</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> version;<br>    <span class="hljs-type">int</span> data;<br><br>    <span class="hljs-built_in">VersionedData</span>(<span class="hljs-type">int</span> v, <span class="hljs-type">int</span> d) : <span class="hljs-built_in">version</span>(v), <span class="hljs-built_in">data</span>(d) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">update</span><span class="hljs-params">(VersionedData &amp;record, <span class="hljs-type">int</span> newData)</span> </span>&#123;<br>    <span class="hljs-type">int</span> oldVersion = record.version;<br>    <span class="hljs-comment">// 尝试更新数据</span><br>    <span class="hljs-keyword">if</span> (record.version == oldVersion) &#123;<br>        record.data = newData;<br>        record.version = oldVersion + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 版本号不匹配，更新失败</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="应用场景对比"><a href="#应用场景对比" class="headerlink" title="应用场景对比"></a>应用场景对比</h3><ul>
+<li><p><strong>悲观锁</strong>：</p>
+<ul>
+<li>适用于<strong>高并发写操作</strong>，数据冲突较多的场景。</li>
+<li>由于加锁会阻塞其他操作，可能会导致性能下降。</li>
+<li>常用于<strong>银行转账、订单处理等需要强一致性</strong>的场景。</li>
+</ul>
+</li>
+<li><p><strong>乐观锁</strong>：</p>
+<ul>
+<li>适用于<strong>高并发读操作</strong>，数据冲突较少的场景。</li>
+<li>不加锁操作性能较高，但需要处理<strong>冲突重试的逻辑</strong>。</li>
+<li>常用于<strong>社交媒体、数据分析等读多写少的场景</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>悲观锁</strong>：通过<strong>锁机制</strong>避免冲突，但可能会引起阻塞，适合写多读少的场景。</li>
+<li><strong>乐观锁</strong>：假设冲突少，通过<strong>版本控制</strong>或CAS操作来检测冲突，适合读多写少的场景。</li>
+</ul>
+<p>选择使用哪种锁取决于具体的应用场景和数据访问模式。合理使用这两种锁可以有效提高系统的并发性能和数据一致性。</p>
+<h2 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h2><p>数组和链表是两种基本的数据结构，它们在<strong>存储方式、访问方式、插入和删除操作</strong>等方面都有显著的区别。下面是它们的主要区别：</p>
+<h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><ul>
+<li><p><strong>数组（Array）</strong>：</p>
+<ul>
+<li><strong>连续存储</strong>：数组在内存中是连续分配的，每个元素占用相同的大小。</li>
+<li><strong>固定大小</strong>：数组的大小在声明时确定，不能动态改变。</li>
+</ul>
+</li>
+<li><p><strong>链表（Linked List）</strong>：</p>
+<ul>
+<li><strong>非连续存储</strong>：链表中的元素（节点）在内存中可以是非连续分配的，每个节点包含数据部分和指向下一个节点的指针（或者上一个节点的指针）。</li>
+<li><strong>动态大小</strong>：链表可以动态增长或缩减，不需要预先指定大小。</li>
+</ul>
+</li>
+</ul>
+<h3 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h3><ul>
+<li><p><strong>数组</strong>：</p>
+<ul>
+<li><strong>随机访问</strong>：可以通过索引直接访问任意元素，时间复杂度为 (O(1))。</li>
+<li><strong>效率高</strong>：由于是连续存储，CPU缓存命中率高，访问速度快。</li>
+</ul>
+</li>
+<li><p><strong>链表</strong>：</p>
+<ul>
+<li><strong>顺序访问</strong>：访问某个元素需要从头部开始遍历，时间复杂度为 (O(n))。</li>
+<li><strong>效率低</strong>：由于不是连续存储，CPU缓存命中率低，访问速度相对较慢。</li>
+</ul>
+</li>
+</ul>
+<h3 id="插入和删除操作"><a href="#插入和删除操作" class="headerlink" title="插入和删除操作"></a>插入和删除操作</h3><ul>
+<li><p><strong>数组</strong>：</p>
+<ul>
+<li><strong>插入和删除</strong>：在数组中间插入或删除元素需要移动其他元素，时间复杂度为 (O(n))。</li>
+<li><strong>效率低</strong>：由于需要移动大量数据，插入和删除操作相对较慢。</li>
+</ul>
+</li>
+<li><p><strong>链表</strong>：</p>
+<ul>
+<li><strong>插入和删除</strong>：在链表中插入或删除元素只需改变指针，时间复杂度为 (O(1))（在已知位置的情况下）。</li>
+<li><strong>效率高</strong>：只需要调整指针即可，不需要移动其他数据，插入和删除操作相对较快。</li>
+</ul>
+</li>
+</ul>
+<h3 id="内存使用"><a href="#内存使用" class="headerlink" title="内存使用"></a>内存使用</h3><ul>
+<li><p><strong>数组</strong>：</p>
+<ul>
+<li><strong>内存连续</strong>：需要一块连续的内存空间，容易造成内存碎片。</li>
+<li><strong>固定大小</strong>：内存分配固定，一旦定义，<strong>大小不可变</strong>。</li>
+</ul>
+</li>
+<li><p><strong>链表</strong>：</p>
+<ul>
+<li><strong>内存非连续</strong>：内存分配是动态的，<strong>可以有效利用内存，减少碎片</strong>。</li>
+<li><strong>动态大小</strong>：根据需要动态分配或释放内存。</li>
+</ul>
+</li>
+</ul>
+<h3 id="空间效率"><a href="#空间效率" class="headerlink" title="空间效率"></a>空间效率</h3><ul>
+<li><p><strong>数组</strong>：</p>
+<ul>
+<li><strong>空间效率高</strong>：没有额外的内存开销。</li>
+<li><strong>大小固定</strong>：可能会导致<strong>空间浪费</strong>（如果预分配的空间很大而实际使用的很少）。</li>
+</ul>
+</li>
+<li><p><strong>链表</strong>：</p>
+<ul>
+<li><strong>空间效率低</strong>：每个节点需要<strong>额外存储指针</strong>（通常是指向下一个节点的指针）。</li>
+<li><strong>动态分配</strong>：可以根据实际需求动态分配内存，减少空间浪费。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>数组</strong>适合频繁随机访问元素且元素个数固定的场景，如用于实现查找表、缓存等。</li>
+<li><strong>链表</strong>适合频繁插入和删除操作的场景，如用于实现队列、栈等。</li>
+</ul>
+<p>根据实际需求选择合适的数据结构，可以有效提高程序的性能和内存使用效率。</p>
+
                 
               </div>
             
