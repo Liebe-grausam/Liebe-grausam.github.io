@@ -121,18 +121,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
@@ -212,6 +200,72 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/05/22/%E6%A0%B9%E6%8D%AE%E4%B9%8B%E5%89%8D%E7%9A%84%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%E5%A4%8D%E7%9B%98%E4%BA%86%E4%B8%80%E4%B8%8B/" target="_self">
+          根据之前的模拟面试记录复盘了一下
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/22/%E6%A0%B9%E6%8D%AE%E4%B9%8B%E5%89%8D%E7%9A%84%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%E5%A4%8D%E7%9B%98%E4%BA%86%E4%B8%80%E4%B8%8B/" target="_self">
+        <div>
+          肉眼可见地多掌握了好多 udp首部：源port（可选），目的port（必须），长度（最小为header长度8字节），校验和（总是忘其中记得是port不是ip http1.x和2.x区别：传输数据类型，服务器主动推送，多路复用（流ID），头部压缩 IO 模型：异步io 阻塞io 非阻塞io 信号驱动io 多路复用io udp是什么：UDP 是一个简单的传输层协议，为网络层以上和应用层以下的程序提供了
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-22 11:03" pubdate>
+              2024-05-22
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/05/21/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-11/" target="_self">
+          牛客模拟面试-11
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/21/%E7%89%9B%E5%AE%A2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-11/" target="_self">
+        <div>
+          谈谈InnoDB引擎中的锁在InnoDB存储引擎中，锁是实现并发控制和事务隔离的重要机制之一。InnoDB引擎提供了多种锁类型，包括共享锁、排他锁和意向锁等。 共享锁（Shared Lock）：允许多个事务同时读取同一行数据，但是不允许对该行数据进行修改。当一个事务持有共享锁时，其他事务可以获取共享锁，但是不能获取排他锁。多个事务可以同时持有共享锁，不会互相阻塞。 排他锁（Exclusive Lo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-21 19:06" pubdate>
+              2024-05-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -663,84 +717,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/05/18/%E6%94%BE%E4%B8%AAshoppee%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86%E5%90%A7%E6%96%B9%E4%BE%BF%E5%A4%8D%E4%B9%A0/" target="_self">
-          放个shoppee笔试合集吧方便复习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/18/%E6%94%BE%E4%B8%AAshoppee%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86%E5%90%A7%E6%96%B9%E4%BE%BF%E5%A4%8D%E4%B9%A0/" target="_self">
-        <div>
-          每次笔试前（这次有笔试吗？zjt说没有）编译器就必定会出幺蛾子，幸好他推荐给我一个网站：https://vscch.guyutongxue.site/（感谢谷雨同学！！！救大命了）下载一个这个编译器就可以运行 请注意！！！一定要按F6，不要去戳那个右上角的运行按钮！！！（终于能跑通了呜呜呜，而且不用加system(“pause”)，太牛了，，， 5.18二更：真的有笔试啊，，幸好事先调好了 一、最
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-18 19:04" pubdate>
-              2024-05-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/05/15/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86/" target="_self">
-          函数依赖最小覆盖
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/15/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86/" target="_self">
-        <div>
-          csdn链接计算最小函数依赖集步骤：① 用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；② 去掉多余的函数依赖：从第一个函数依赖X→Y开始将其从F中去掉，然后在剩下的函数依赖中求X的闭包X+，看X+是否包含Y，若是，则去掉X→Y；否则不能去掉，依次做下去。直到找不到冗余的函数依赖；③去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖。例如XY→A，若要判Y为多余的，则
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-15 15:57" pubdate>
-              2024-05-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

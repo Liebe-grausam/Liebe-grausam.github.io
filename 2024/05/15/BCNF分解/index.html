@@ -19,14 +19,14 @@
     <meta name="description" content="算法描述输入：关系R0和其上的函数依赖集S0输出：由R0分解出的关系集合，其中每个关系均属于BCNF方法：下列步骤可以被递归地用于任意关系R和FD集合S。初始时，R&#x3D;R0，S&#x3D;S0。 检验R是否属于BCNF。如果是，不需要做任何事，返回{R}作为结果。如果存在BCNF违例，假设为X→Y。计算X+。选择R1&#x3D;X+作为一个关系模式，并使另一个关系模式R2包含属性X以及那些">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BCNF分解">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/15/%E7%BB%99%E5%87%BA%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E5%88%86%E8%A7%A3/index.html">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/05/15/BCNF%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
 <meta property="og:description" content="算法描述输入：关系R0和其上的函数依赖集S0输出：由R0分解出的关系集合，其中每个关系均属于BCNF方法：下列步骤可以被递归地用于任意关系R和FD集合S。初始时，R&#x3D;R0，S&#x3D;S0。 检验R是否属于BCNF。如果是，不需要做任何事，返回{R}作为结果。如果存在BCNF违例，假设为X→Y。计算X+。选择R1&#x3D;X+作为一个关系模式，并使另一个关系模式R2包含属性X以及那些">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/BCNF%E5%88%86%E8%A7%A3%E4%BE%8B%E9%A2%98.jpg">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BD%9C%E4%B8%9A%E4%BE%8B%E9%A2%98.jpg">
 <meta property="article:published_time" content="2024-05-15T03:06:13.000Z">
-<meta property="article:modified_time" content="2024-05-15T07:27:48.492Z">
+<meta property="article:modified_time" content="2024-06-08T14:35:56.588Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
@@ -133,18 +133,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
@@ -216,7 +204,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          754 字
+          903 字
         
       </span>
     
@@ -227,7 +215,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -288,6 +276,7 @@
 <p>因此，候选键的超键必然包含了候选键本身，以及候选键的任何真子集。因为候选键本身已经能够唯一标识关系中的每个元组，所以任何包含候选键的超键也能够唯一标识关系中的每个元组。</p>
 <p>举个例子，如果 {A, B} 是一个候选键，那么 {A, B} 和 {A, B, C} 都是候选键的超键，因为它们包含了候选键 {A, B}。</p>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42319408/article/details/92066595">例题链接跳转</a><br>如：R(A,B,C,D,E) FD{AB→C,DE→C,B→D}<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/BCNF%E5%88%86%E8%A7%A3%E4%BE%8B%E9%A2%98.jpg" srcset="/img/loading.gif" lazyload alt="BCNF分解例题"><br>R(ABCDE), F &#x3D; { AB → C, B → D, CD →  E , CE → B , AC → B }<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BD%9C%E4%B8%9A%E4%BE%8B%E9%A2%98.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>更详细的解释：<br>以最后那道例题为例，候选键为AB, AC<br>我们可以发现原来的函数依赖中，B-&gt;D, CD-&gt;E, CE-&gt;B的左侧都不是候选键的超键，所以我们接下来要做的就是消除这些不是超键的非平凡函数依赖，所以我们会采用CD+ CE+去消除掉（其中CE已经是那个子分解的超键了，所以不做处理</p>
 
                 
               </div>
@@ -313,7 +302,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>BCNF分解</div>
-      <div>http://liebe-grausam.github.io/2024/05/15/给出保持无损连接和函数依赖的分解/</div>
+      <div>http://liebe-grausam.github.io/2024/05/15/BCNF分解/</div>
     </div>
     <div class="license-meta">
       
