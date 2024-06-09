@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>关于spark</title>
+    <link href="/2024/06/09/%E5%85%B3%E4%BA%8Espark/"/>
+    <url>/2024/06/09/%E5%85%B3%E4%BA%8Espark/</url>
+    
+    <content type="html"><![CDATA[<p>教程视频：BV11A411L7CK</p><h2 id="为什么用spark不用hadoop？"><a href="#为什么用spark不用hadoop？" class="headerlink" title="为什么用spark不用hadoop？"></a>为什么用spark不用hadoop？</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png"><br>hadoop更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O</p><p>spark和hadoop的根本差异是多个作业之间的数据通信问题。spark通信基于内存，hadoop基于磁盘。</p><p>不过实际生产环境中如果内存不够可能导致job执行失败，所以spark不能完全取代MapReduce</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>阅读clj事务ppt中</title>
     <link href="/2024/06/09/%E9%98%85%E8%AF%BBclj%E4%BA%8B%E5%8A%A1ppt%E4%B8%AD/"/>
     <url>/2024/06/09/%E9%98%85%E8%AF%BBclj%E4%BA%8B%E5%8A%A1ppt%E4%B8%AD/</url>
