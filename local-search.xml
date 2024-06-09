@@ -4,11 +4,24 @@
   
   
   <entry>
-    <title>关于spark</title>
+    <title>snapshot isolation(SI)</title>
+    <link href="/2024/06/09/snapshot-isolation-SI/"/>
+    <url>/2024/06/09/snapshot-isolation-SI/</url>
+    
+    <content type="html"><![CDATA[<p>乐观锁</p><p>在 Snapshot Isolation 下，不会出现脏读、不可重复度和幻读三种读异常。并且读操作不会被阻塞，对于读多写少的应用 Snapshot Isolation 是非常好的选择。并且，在很多应用场景下，Snapshot Isolation 下的并发事务并不会导致数据异常。</p><p>写偏序（write skew）<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609222658.png"><br>为了避免 write skew，应用程序必须根据具体的情况去做适配，比如使用SELECT … FOR UPDATE，或者在应用层引入写写冲突。这样做相当于把数据库事务的一份工作扔给了应用层。</p><p>SI：快照隔离，任何读取操作得到事务开始那一刻最近已经提交过的数据版本，属于事务级快照隔离</p><p>RCSI：已提交读快照隔离，任何读取操作得到语句开始那一刻最近已经提交过的数据版本，属于语句级快照隔离</p><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609223021.png"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>spark&amp;flink&amp;hive</title>
     <link href="/2024/06/09/%E5%85%B3%E4%BA%8Espark/"/>
     <url>/2024/06/09/%E5%85%B3%E4%BA%8Espark/</url>
     
-    <content type="html"><![CDATA[<p>教程视频：BV11A411L7CK</p><h2 id="为什么用spark不用hadoop？"><a href="#为什么用spark不用hadoop？" class="headerlink" title="为什么用spark不用hadoop？"></a>为什么用spark不用hadoop？</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png"><br>hadoop更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O</p><p>spark和hadoop的根本差异是多个作业之间的数据通信问题。spark通信基于内存，hadoop基于磁盘。</p><p>不过实际生产环境中如果内存不够可能导致job执行失败，所以spark不能完全取代MapReduce</p>]]></content>
+    <content type="html"><![CDATA[<p>B站：尚硅谷</p><h2 id="什么时候用spark不用hadoop？"><a href="#什么时候用spark不用hadoop？" class="headerlink" title="什么时候用spark不用hadoop？"></a>什么时候用spark不用hadoop？</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png"></p><p>spark是一种计算框架，一般用来与hadoop的MapReduce对比（因为MapReduce也是计算框架）spark不管理存储</p><p>hadoop中的MapReduce更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O</p><p>spark和hadoop的根本差异是多个作业之间的数据通信问题。spark通信基于内存（更快，快100倍），hadoop基于磁盘。</p><p>不过实际生产环境中如果内存不够可能导致job执行失败，所以spark不能完全取代MapReduce</p><h2 id="什么时候用flink不用spark？"><a href="#什么时候用flink不用spark？" class="headerlink" title="什么时候用flink不用spark？"></a>什么时候用flink不用spark？</h2><p>spark比较适合做离线分析（比如机器学习这些），但是一些对实时性要求比较高的在线业务来说，spark就不太擅长。而flink的相应速度快。<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609205242.png"><br>理论上只要是实时数据处理方面都可以用flink框架来解决。</p><h2 id="Hive和Hadoop什么关系？"><a href="#Hive和Hadoop什么关系？" class="headerlink" title="Hive和Hadoop什么关系？"></a>Hive和Hadoop什么关系？</h2><p>BV1LU4y1e7Ve</p><p>只能提供离线的数据查询，只能用SQL</p><p>众所周知hadoop中分为存储和计算两大方面，hdfs负责存储，MapReduce负责计算。但是MapReduce需要比较高的计算机水平，所以一些懒人为了在hadoop上也可以使用sql就开发了hive。这样就可以在hadoop上处理结构化数据。hive中的metastore就是用来存储一些表信息。处理的时候其实前半部分和sql语句正常执行无差，也是要进行语法分析和词法分析写成语法树，只是在后面有一些区别。hive的工作实际上就是把sql语句翻译成MapReduce。这样工作人员的开发效率就会提高。不过缺点是相比MapReduce变得不太灵活。所以hive也并不能直接取代hadoop。</p>]]></content>
     
     
     

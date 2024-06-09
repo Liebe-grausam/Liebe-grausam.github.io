@@ -16,26 +16,26 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="B站：尚硅谷 什么时候用spark不用hadoop？ spark是一种计算框架，一般用来与hadoop的MapReduce对比（因为MapReduce也是计算框架）spark不管理存储 hadoop中的MapReduce更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O spark和hadoop的根本差异是多个作业之间的数据通信问题。s">
+    <meta name="description" content="乐观锁 在 Snapshot Isolation 下，不会出现脏读、不可重复度和幻读三种读异常。并且读操作不会被阻塞，对于读多写少的应用 Snapshot Isolation 是非常好的选择。并且，在很多应用场景下，Snapshot Isolation 下的并发事务并不会导致数据异常。 写偏序（write skew）为了避免 write skew，应用程序必须根据具体的情况去做适配，比如使用SEL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spark&amp;flink&amp;hive">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/09/%E5%85%B3%E4%BA%8Espark/index.html">
+<meta property="og:title" content="snapshot isolation(SI)">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/09/snapshot-isolation-SI/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="B站：尚硅谷 什么时候用spark不用hadoop？ spark是一种计算框架，一般用来与hadoop的MapReduce对比（因为MapReduce也是计算框架）spark不管理存储 hadoop中的MapReduce更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O spark和hadoop的根本差异是多个作业之间的数据通信问题。s">
+<meta property="og:description" content="乐观锁 在 Snapshot Isolation 下，不会出现脏读、不可重复度和幻读三种读异常。并且读操作不会被阻塞，对于读多写少的应用 Snapshot Isolation 是非常好的选择。并且，在很多应用场景下，Snapshot Isolation 下的并发事务并不会导致数据异常。 写偏序（write skew）为了避免 write skew，应用程序必须根据具体的情况去做适配，比如使用SEL">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609205242.png">
-<meta property="article:published_time" content="2024-06-09T11:54:37.000Z">
-<meta property="article:modified_time" content="2024-06-09T14:20:10.533Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609222658.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609223021.png">
+<meta property="article:published_time" content="2024-06-09T14:25:02.000Z">
+<meta property="article:modified_time" content="2024-06-09T14:30:34.613Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609222658.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>spark&amp;flink&amp;hive - 苯人的一些发疯自留地！</title>
+  <title>snapshot isolation(SI) - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,7 +192,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="spark&amp;flink&amp;hive"></span>
+            <span id="subtitle" data-typed-text="snapshot isolation(SI)"></span>
           
         </div>
 
@@ -203,7 +203,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-09 19:54" pubdate>
+        <time datetime="2024-06-09 22:25" pubdate>
           2024年6月9日 晚上
         </time>
       </span>
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          736 字
+          334 字
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          7 分钟
+          3 分钟
         
       </span>
     
@@ -272,21 +272,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">spark&amp;flink&amp;hive</h1>
+            <h1 style="display: none">snapshot isolation(SI)</h1>
             
             
               <div class="markdown-body">
                 
-                <p>B站：尚硅谷</p>
-<h2 id="什么时候用spark不用hadoop？"><a href="#什么时候用spark不用hadoop？" class="headerlink" title="什么时候用spark不用hadoop？"></a>什么时候用spark不用hadoop？</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609202013.png" srcset="/img/loading.gif" lazyload></p>
-<p>spark是一种计算框架，一般用来与hadoop的MapReduce对比（因为MapReduce也是计算框架）spark不管理存储</p>
-<p>hadoop中的MapReduce更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O</p>
-<p>spark和hadoop的根本差异是多个作业之间的数据通信问题。spark通信基于内存（更快，快100倍），hadoop基于磁盘。</p>
-<p>不过实际生产环境中如果内存不够可能导致job执行失败，所以spark不能完全取代MapReduce</p>
-<h2 id="什么时候用flink不用spark？"><a href="#什么时候用flink不用spark？" class="headerlink" title="什么时候用flink不用spark？"></a>什么时候用flink不用spark？</h2><p>spark比较适合做离线分析（比如机器学习这些），但是一些对实时性要求比较高的在线业务来说，spark就不太擅长。而flink的相应速度快。<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609205242.png" srcset="/img/loading.gif" lazyload><br>理论上只要是实时数据处理方面都可以用flink框架来解决。</p>
-<h2 id="Hive和Hadoop什么关系？"><a href="#Hive和Hadoop什么关系？" class="headerlink" title="Hive和Hadoop什么关系？"></a>Hive和Hadoop什么关系？</h2><p>BV1LU4y1e7Ve</p>
-<p>只能提供离线的数据查询，只能用SQL</p>
-<p>众所周知hadoop中分为存储和计算两大方面，hdfs负责存储，MapReduce负责计算。但是MapReduce需要比较高的计算机水平，所以一些懒人为了在hadoop上也可以使用sql就开发了hive。这样就可以在hadoop上处理结构化数据。hive中的metastore就是用来存储一些表信息。处理的时候其实前半部分和sql语句正常执行无差，也是要进行语法分析和词法分析写成语法树，只是在后面有一些区别。hive的工作实际上就是把sql语句翻译成MapReduce。这样工作人员的开发效率就会提高。不过缺点是相比MapReduce变得不太灵活。所以hive也并不能直接取代hadoop。</p>
+                <p>乐观锁</p>
+<p>在 Snapshot Isolation 下，不会出现脏读、不可重复度和幻读三种读异常。并且读操作不会被阻塞，对于读多写少的应用 Snapshot Isolation 是非常好的选择。并且，在很多应用场景下，Snapshot Isolation 下的并发事务并不会导致数据异常。</p>
+<p>写偏序（write skew）<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609222658.png" srcset="/img/loading.gif" lazyload><br>为了避免 write skew，应用程序必须根据具体的情况去做适配，比如使用SELECT … FOR UPDATE，或者在应用层引入写写冲突。这样做相当于把数据库事务的一份工作扔给了应用层。</p>
+<p>SI：快照隔离，任何读取操作得到事务开始那一刻最近已经提交过的数据版本，属于事务级快照隔离</p>
+<p>RCSI：已提交读快照隔离，任何读取操作得到语句开始那一刻最近已经提交过的数据版本，属于语句级快照隔离</p>
+<p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609223021.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -304,8 +300,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>spark&amp;flink&amp;hive</div>
-      <div>http://liebe-grausam.github.io/2024/06/09/关于spark/</div>
+      <div>snapshot isolation(SI)</div>
+      <div>http://liebe-grausam.github.io/2024/06/09/snapshot-isolation-SI/</div>
     </div>
     <div class="license-meta">
       
@@ -349,18 +345,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/09/snapshot-isolation-SI/" title="snapshot isolation(SI)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">snapshot isolation(SI)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/09/%E9%98%85%E8%AF%BBclj%E4%BA%8B%E5%8A%A1ppt%E4%B8%AD/" title="阅读clj事务ppt中">
-                        <span class="hidden-mobile">阅读clj事务ppt中</span>
+                      <a href="/2024/06/09/%E5%85%B3%E4%BA%8Espark/" title="spark&amp;flink&amp;hive">
+                        <span class="hidden-mobile">spark&amp;flink&amp;hive</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

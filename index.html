@@ -252,15 +252,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2024/06/09/snapshot-isolation-SI/" target="_self">
+          snapshot isolation(SI)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/09/snapshot-isolation-SI/" target="_self">
+        <div>
+          乐观锁 在 Snapshot Isolation 下，不会出现脏读、不可重复度和幻读三种读异常。并且读操作不会被阻塞，对于读多写少的应用 Snapshot Isolation 是非常好的选择。并且，在很多应用场景下，Snapshot Isolation 下的并发事务并不会导致数据异常。 写偏序（write skew）为了避免 write skew，应用程序必须根据具体的情况去做适配，比如使用SEL
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-09 22:25" pubdate>
+              2024-06-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2024/06/09/%E5%85%B3%E4%BA%8Espark/" target="_self">
-          关于spark
+          spark&amp;flink&amp;hive
         </a>
       </h1>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/06/09/%E5%85%B3%E4%BA%8Espark/" target="_self">
         <div>
-          教程视频：BV11A411L7CK 为什么用spark不用hadoop？hadoop更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O spark和hadoop的根本差异是多个作业之间的数据通信问题。spark通信基于内存，hadoop基于磁盘。 不过实际生产环境中如果内存不够可能导致job执行失败，所以spark不能完全取代MapRe
+          B站：尚硅谷 什么时候用spark不用hadoop？ spark是一种计算框架，一般用来与hadoop的MapReduce对比（因为MapReduce也是计算框架）spark不管理存储 hadoop中的MapReduce更倾向于一次性数据计算，不适合机器学习等频繁循环迭代的场景（因为hadoop的形式需要太多次磁盘I&#x2F;O spark和hadoop的根本差异是多个作业之间的数据通信问题。s
         </div>
       </a>
 
@@ -666,39 +699,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2024-05-30 13:22" pubdate>
               2024-05-30
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/05/29/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_self">
-          两数之和
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/29/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_self">
-        <div>
-          题目暗藏玄机，，，错误案例： 12345678910111213141516class Solution &#123;public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;        unordered_map&lt;int,int&gt;hash;        vector&lt
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-29 15:31" pubdate>
-              2024-05-29
             </time>
           </div>
         
