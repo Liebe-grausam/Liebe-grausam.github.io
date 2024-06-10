@@ -16,28 +16,23 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="时间戳协议◆ 每个事务 𝑻𝒊 进入系统被分配一个时间戳 𝑻𝑺(𝑻𝒊)◆ 如果 𝑻𝒋 晚于 𝑻𝒊进入系统， 𝑻𝑺(𝑻𝒊) &lt; 𝑻𝑺(𝑻𝒋)◆ 回滚的事务重新启动， 分配新的时间戳 每个数据项 𝑸 有两个时间戳与之联系◆ 𝑾𝑻 𝑸 : 所有执行𝒘𝒓𝒊𝒕𝒆(𝑸)的事务中最大的时间戳◆ 𝑹𝑻 𝑸 : 所有执行𝒓𝒆𝒂𝒅(𝑸)的事务">
+    <meta name="description" content="沉淀。 太久没看算法题了。这次不能再错过面试机会了orz！虾皮下一面大概率要拷打了！！ 我也好想停止焦虑哇。 先把上次没做出来的dfs写了。 岛屿数量123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;iostream">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并发控制ppt">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/09/%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6ppt/index.html">
+<meta property="og:title" content="沉淀">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/10/%E6%B2%89%E6%B7%80/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="时间戳协议◆ 每个事务 𝑻𝒊 进入系统被分配一个时间戳 𝑻𝑺(𝑻𝒊)◆ 如果 𝑻𝒋 晚于 𝑻𝒊进入系统， 𝑻𝑺(𝑻𝒊) &lt; 𝑻𝑺(𝑻𝒋)◆ 回滚的事务重新启动， 分配新的时间戳 每个数据项 𝑸 有两个时间戳与之联系◆ 𝑾𝑻 𝑸 : 所有执行𝒘𝒓𝒊𝒕𝒆(𝑸)的事务中最大的时间戳◆ 𝑹𝑻 𝑸 : 所有执行𝒓𝒆𝒂𝒅(𝑸)的事务">
+<meta property="og:description" content="沉淀。 太久没看算法题了。这次不能再错过面试机会了orz！虾皮下一面大概率要拷打了！！ 我也好想停止焦虑哇。 先把上次没做出来的dfs写了。 岛屿数量123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;iostream">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001940.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002038.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002057.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001146.png">
-<meta property="article:published_time" content="2024-06-09T15:48:06.000Z">
-<meta property="article:modified_time" content="2024-06-09T16:21:09.908Z">
+<meta property="article:published_time" content="2024-06-10T07:19:35.000Z">
+<meta property="article:modified_time" content="2024-06-10T13:10:33.216Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001940.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>并发控制ppt - 苯人的一些发疯自留地！</title>
+  <title>沉淀 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="并发控制ppt"></span>
+            <span id="subtitle" data-typed-text="沉淀"></span>
           
         </div>
 
@@ -205,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-09 23:48" pubdate>
-          2024年6月9日 晚上
+        <time datetime="2024-06-10 15:19" pubdate>
+          2024年6月10日 下午
         </time>
       </span>
     
@@ -217,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          234 字
+          1.3k 字
         
       </span>
     
@@ -228,7 +223,7 @@
         
         
         
-          2 分钟
+          12 分钟
         
       </span>
     
@@ -274,15 +269,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">并发控制ppt</h1>
+            <h1 style="display: none">沉淀</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="时间戳协议"><a href="#时间戳协议" class="headerlink" title="时间戳协议"></a>时间戳协议</h2><p>◆ 每个事务 𝑻𝒊 进入系统被分配一个时间戳 𝑻𝑺(𝑻𝒊)<br>◆ 如果 𝑻𝒋 晚于 𝑻𝒊进入系统， 𝑻𝑺(𝑻𝒊) &lt; 𝑻𝑺(𝑻𝒋)<br>◆ 回滚的事务重新启动， 分配新的时间戳</p>
-<p>每个数据项 𝑸 有两个时间戳与之联系<br>◆ 𝑾𝑻 𝑸 : 所有执行𝒘𝒓𝒊𝒕𝒆(𝑸)的事务中最大的时间戳<br>◆ 𝑹𝑻 𝑸 : 所有执行𝒓𝒆𝒂𝒅(𝑸)的事务中最大的时间戳</p>
-<p>注意：不是最后执行Read(Q)事务的时间戳，而是所有执行𝒓𝒆𝒂𝒅(𝑸)的事务中<strong>最大</strong>的时间戳<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001940.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002038.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002057.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001146.png" srcset="/img/loading.gif" lazyload></p>
-
+                <p>沉淀。</p>
+<p>太久没看算法题了。这次不能再错过面试机会了orz！虾皮下一面大概率要拷打了！！</p>
+<p>我也好想停止焦虑哇。</p>
+<p>先把上次没做出来的dfs写了。</p>
+<h2 id="岛屿数量"><a href="#岛屿数量" class="headerlink" title="岛屿数量"></a>岛屿数量</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> row 4</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> column 5</span><br><span class="hljs-type">int</span> grid[row][column]= &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_array</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;column;j++)&#123;<br>            cout&lt;&lt;grid[i][j]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout&lt;&lt;endl;<br><br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> i,<span class="hljs-type">int</span> j)</span></span>&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;current (i,j) is &quot;</span>&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;j&lt;&lt;endl;<br>    <span class="hljs-comment">// 已遍历过的格子要进行标记</span><br>    <span class="hljs-keyword">if</span> (i&lt;<span class="hljs-number">0</span>||i&gt;=row)&#123;<br>        <span class="hljs-comment">// 边界外</span><br>        cout&lt;&lt;<span class="hljs-string">&quot;i out of range&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (j&lt;<span class="hljs-number">0</span>||j&gt;=column)&#123;<br>        <span class="hljs-comment">// 边界外</span><br>        cout&lt;&lt;<span class="hljs-string">&quot;j out of range&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (grid[i][j]!=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;<br>    grid[i][j]=<span class="hljs-number">2</span>;<br>    <span class="hljs-comment">// 标记为已遍历过的陆地格子</span><br>    <span class="hljs-built_in">dfs</span>(i<span class="hljs-number">-1</span>,j);<br>    <span class="hljs-built_in">dfs</span>(i+<span class="hljs-number">1</span>,j);<br>    <span class="hljs-built_in">dfs</span>(i,j+<span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">dfs</span>(i,j<span class="hljs-number">-1</span>);<br>    <br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;original data:&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-built_in">print_array</span>();<br>    <span class="hljs-comment">// preprocess();</span><br>    <span class="hljs-comment">// cout&lt;&lt;&quot;after preprocess:&quot;&lt;&lt;endl;</span><br>    <span class="hljs-comment">// print_array();</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;column;j++)&#123;<br>            <span class="hljs-keyword">if</span> (grid[i][j]==<span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-built_in">dfs</span>(i,j);<br>                count++;<br>                <span class="hljs-comment">// 注意count++要放在dfs外面！！！</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">print_array</span>();<br>    cout&lt;&lt;<span class="hljs-string">&quot;count value is &quot;</span>&lt;&lt;count;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -299,8 +295,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>并发控制ppt</div>
-      <div>http://liebe-grausam.github.io/2024/06/09/并发控制ppt/</div>
+      <div>沉淀</div>
+      <div>http://liebe-grausam.github.io/2024/06/10/沉淀/</div>
     </div>
     <div class="license-meta">
       
@@ -312,7 +308,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月9日</div>
+          <div>2024年6月10日</div>
         </div>
       
       
@@ -344,18 +340,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/10/sql%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/" title="sql性能调优">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">sql性能调优</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/09/%E4%BE%9D%E6%97%A7%E6%98%AF%E4%BA%8B%E5%8A%A1ppt/" title="依旧是事务ppt">
-                        <span class="hidden-mobile">依旧是事务ppt</span>
+                      <a href="/2024/06/10/%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/" title="关系规范化">
+                        <span class="hidden-mobile">关系规范化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
