@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#define len 7using namespace std;int main()&amp;#123;    int a[len]&#x3D;&amp;#123;4,5,6,7,0,1,2">
+    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std;class my">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搜索旋转排序数组（难难难）">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/10/%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E9%9A%BE%E9%9A%BE%E9%9A%BE%EF%BC%89/index.html">
+<meta property="og:title" content="合并区间">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/11/%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#define len 7using namespace std;int main()&amp;#123;    int a[len]&#x3D;&amp;#123;4,5,6,7,0,1,2">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;iostream&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;using namespace std;class my">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-10T14:21:24.000Z">
-<meta property="article:modified_time" content="2024-06-10T14:21:41.748Z">
+<meta property="article:published_time" content="2024-06-11T05:47:29.000Z">
+<meta property="article:modified_time" content="2024-06-11T05:47:41.569Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>搜索旋转排序数组（难难难） - 苯人的一些发疯自留地！</title>
+  <title>合并区间 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="搜索旋转排序数组（难难难）"></span>
+            <span id="subtitle" data-typed-text="合并区间"></span>
           
         </div>
 
@@ -200,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-10 22:21" pubdate>
-          2024年6月10日 晚上
+        <time datetime="2024-06-11 13:47" pubdate>
+          2024年6月11日 下午
         </time>
       </span>
     
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          996 字
+          1.4k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          9 分钟
+          12 分钟
         
       </span>
     
@@ -269,12 +269,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">搜索旋转排序数组（难难难）</h1>
+            <h1 style="display: none">合并区间</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> len 7</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> a[len]=&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;;<br>    <span class="hljs-type">int</span> target;<br>    cin&gt;&gt;target;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> r = len<span class="hljs-number">-1</span>;<br>    <span class="hljs-comment">// int m = (l+r)/2;</span><br>    <span class="hljs-comment">// 我们要先判断 [0,mid] 是有序数组还是 [mid+1,r] 是有序数组</span><br>    <span class="hljs-keyword">while</span> (l&lt;=r)&#123;<br>        <span class="hljs-type">int</span> m = (l+r)/<span class="hljs-number">2</span>;<br>        cout&lt;&lt;<span class="hljs-string">&quot;l,r,m=&quot;</span>&lt;&lt;l&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;r&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;m&lt;&lt;endl;<br>        <span class="hljs-comment">// 我们要看 [l, mid] 和 [mid + 1, r] 哪个部分是有序的</span><br>        <span class="hljs-comment">// 如果 [l, mid] 有序，且target在a[l]和a[mid]之间，那就在该区间搜索</span><br>        <span class="hljs-comment">// 否则在 [mid+1,r] 区间搜索</span><br>        <span class="hljs-keyword">if</span> (target==a[m])&#123;<br>            cout&lt;&lt;m;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-comment">// 我们要先判断</span><br>        <span class="hljs-keyword">if</span> (a[<span class="hljs-number">0</span>]&lt;=a[m])&#123;<br>            <span class="hljs-comment">// 说明[0,m]段升序</span><br>            <span class="hljs-comment">// 以及这个判断要求一定要提到最外面</span><br>            <span class="hljs-keyword">if</span> (a[<span class="hljs-number">0</span>]&lt;=target&amp;&amp;target&lt;a[m])&#123;<br>                <span class="hljs-comment">// 如果target在索引0-m之间</span><br>                <span class="hljs-comment">// 两边的范围都要写</span><br>                <span class="hljs-comment">// 前面要带等号，后面判断过了就不用带等号了</span><br>                r = m<span class="hljs-number">-1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                l = m+<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">// 说明[m+1,len-1]段升序</span><br>            <span class="hljs-keyword">if</span> (a[m]&lt;target&amp;&amp;a[len<span class="hljs-number">-1</span>]&gt;=target)&#123;<br>                <span class="hljs-comment">// 如果target索引在[m,len-1]之间</span><br>                l = m+<span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                r = m<span class="hljs-number">-1</span>;<br>            &#125;<br>        &#125;<br>        <br>    &#125;<br>    <span class="hljs-keyword">if</span> (a[l]!=target) cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">else</span> cout&lt;&lt;l;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">my_interval</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> begin;<br>    <span class="hljs-type">int</span> end;<br><br>    <span class="hljs-built_in">my_interval</span>(<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> e)&#123;<br>        begin = b;<br>        end = e;<br>    &#125;<br><br>&#125;;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(my_interval a,my_interval b)</span></span>&#123;<br>    <span class="hljs-comment">// 按左边界升序排列</span><br>    <span class="hljs-keyword">return</span> a.begin&lt;b.begin;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_intervals</span><span class="hljs-params">(vector&lt;my_interval&gt;intervals)</span></span>&#123;<br>    <span class="hljs-type">int</span> len = intervals.<span class="hljs-built_in">size</span>();<br>    cout&lt;&lt;<span class="hljs-string">&quot;intervals:&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;len;i++)&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;[&quot;</span>&lt;&lt;intervals[i].begin&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;intervals[i].end&lt;&lt;<span class="hljs-string">&quot;]&quot;</span>&lt;&lt;endl;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    vector&lt;my_interval&gt;intervals;<br>    intervals.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">my_interval</span>(<span class="hljs-number">1</span>,<span class="hljs-number">4</span>));<br>    <span class="hljs-comment">// 直接构造临时对象pushback</span><br>    intervals.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">my_interval</span>(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>));<br>    <span class="hljs-comment">// intervals.push_back(my_interval(1,3));</span><br>    <span class="hljs-comment">// intervals.push_back(my_interval(8,10));</span><br>    <span class="hljs-comment">// intervals.push_back(my_interval(2,6));</span><br>    <span class="hljs-comment">// intervals.push_back(my_interval(15,18));</span><br>    <span class="hljs-built_in">print_intervals</span>(intervals);<br>    <span class="hljs-type">int</span> size = intervals.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-built_in">sort</span>(intervals.<span class="hljs-built_in">begin</span>(),intervals.<span class="hljs-built_in">end</span>(),cmp);<br>    <span class="hljs-built_in">print_intervals</span>(intervals);<br>    vector&lt;my_interval&gt;result;<br>    result.<span class="hljs-built_in">push_back</span>(intervals[<span class="hljs-number">0</span>]);<br>    <span class="hljs-type">int</span> cur = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i =<span class="hljs-number">1</span>;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span> (intervals[i].begin&lt;=result[cur].end)&#123;<br>            <span class="hljs-comment">// 合并产生新的右边界</span><br>            result[cur].end = intervals[i].end;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            result.<span class="hljs-built_in">push_back</span>(intervals[i]);<br>            cur++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">print_intervals</span>(result);<br><br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -291,8 +291,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>搜索旋转排序数组（难难难）</div>
-      <div>http://liebe-grausam.github.io/2024/06/10/搜索旋转排序数组（难难难）/</div>
+      <div>合并区间</div>
+      <div>http://liebe-grausam.github.io/2024/06/11/合并区间/</div>
     </div>
     <div class="license-meta">
       
@@ -304,7 +304,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月10日</div>
+          <div>2024年6月11日</div>
         </div>
       
       
@@ -336,9 +336,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/11/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%89%BE%E6%9E%A2%E5%80%BC%E6%96%B9%E6%B3%95/" title="旋转数组找枢值方法">
+                      <a href="/2024/06/11/%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="最长递增子序列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">旋转数组找枢值方法</span>
+                        <span class="hidden-mobile">最长递增子序列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -346,8 +346,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/10/%E6%B2%89%E6%B7%80/" title="沉淀">
-                        <span class="hidden-mobile">沉淀</span>
+                      <a href="/2024/06/11/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%89%BE%E6%9E%A2%E5%80%BC%E6%96%B9%E6%B3%95/" title="旋转数组找枢值方法">
+                        <span class="hidden-mobile">旋转数组找枢值方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
