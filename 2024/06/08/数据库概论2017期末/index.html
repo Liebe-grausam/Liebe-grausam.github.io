@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240609002645.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/8062872afcc7fce896f4c83e6074e47.jpg">
 <meta property="article:published_time" content="2024-06-08T14:05:13.000Z">
-<meta property="article:modified_time" content="2024-06-10T07:21:44.774Z">
+<meta property="article:modified_time" content="2024-06-12T06:42:55.677Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/Ch4MdFvNln2AUFmFAADYqLFNxAo520.png">
@@ -217,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          3.7k 字
         
       </span>
     
@@ -228,7 +228,7 @@
         
         
         
-          29 分钟
+          31 分钟
         
       </span>
     
@@ -289,7 +289,6 @@
 <p>缺点：<br>BCNF 可能会导致表分的过碎，表的数目过多，可能对一些复杂的查询造成性能上的影响<br>例如原始的 STC 表中是有函数依赖 (sno,cno) -&gt;tno 的，但是分开成 ST、C 两张表之后，这个函数不能体现了。这样我们可以在 ST 表（全码）中随意插入数据，而这样插入的数据可能不不满足函数依赖 (sno,cno) -&gt;tno</p>
 <h2 id="4-叙述-Armstrong-公理系统的三条公理"><a href="#4-叙述-Armstrong-公理系统的三条公理" class="headerlink" title="4. 叙述 Armstrong 公理系统的三条公理."></a>4. 叙述 Armstrong 公理系统的三条公理.</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/Ch4MdFvNln2AUFmFAADYqLFNxAo520.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="5-写出两种利用“占用—抢占”-解决死锁的方法"><a href="#5-写出两种利用“占用—抢占”-解决死锁的方法" class="headerlink" title="5. 写出两种利用“占用—抢占” 解决死锁的方法."></a>5. 写出两种利用“占用—抢占” 解决死锁的方法.</h2><p>区分解决死锁与预防死锁！！</p>
-<p>理解了你的要求，下面是两种在死锁已经发生时，通过“占用—抢占”机制来解决死锁的方法。</p>
 <h3 id="1-资源剥夺法（Resource-Preemption）"><a href="#1-资源剥夺法（Resource-Preemption）" class="headerlink" title="1. 资源剥夺法（Resource Preemption）"></a>1. 资源剥夺法（Resource Preemption）</h3><p>资源剥夺法通过抢占某些资源来打破死锁。当检测到死锁时，系统选择某些事务并强制释放它们所持有的资源。被抢占的事务将被挂起，直到它们所需的资源变得可用。</p>
 <h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
 <li><p><strong>死锁检测</strong>：</p>
@@ -394,10 +393,9 @@
 <p>I锁的实施是从根开始，依次占据路径上的所有节点，直至真正要进行显式封锁的节点的父节点为止。</p>
 <p>IS锁：intent shared lock（意向共享锁，表示他的后裔节点（意向）加S锁<br>IX锁：intent exclusive lock（意向排他锁，表示他的后裔节点（意向）加X锁<br>SIX锁：S+IX 要读整个表并且会更新个别元组<br>（SIX非常特殊！他不是常规的表级锁，所以不能像别的意向锁一样直接和意向锁相容</p>
 <p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608233030.png" srcset="/img/loading.gif" lazyload><br>持有U锁的时候不能做X操作。<br>只有一个事务可以持有U锁，所以U锁之间是不相容的</p>
-<h2 id="7-写出两种预防转换死锁的手段。"><a href="#7-写出两种预防转换死锁的手段。" class="headerlink" title="7. 写出两种预防转换死锁的手段。"></a>7. 写出两种预防转换死锁的手段。</h2><ol>
-<li>预先占据所需的全部资源（哲学家同时拿起两根筷子）</li>
-<li>给资源预先排序，事务按规定顺序封锁数据</li>
-</ol>
+<h2 id="7-写出两种预防转换死锁的手段。"><a href="#7-写出两种预防转换死锁的手段。" class="headerlink" title="7. 写出两种预防转换死锁的手段。"></a>7. 写出两种预防转换死锁的手段。</h2><p>死锁发生的四个必要条件是（TP-LINK秋招提前批的时候也考到了）：<br>（1） 互斥条件：一个资源每次只能被一个进程使用。<br>（2） 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。<br>（3） 不剥夺条件：进程已获得的资源，在末使用完之前，不能强行剥夺。<br>（4） 循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。<br>只要发生死锁，上述四个条件一定满足，只要有一个条件不满足，就不会发生死锁</p>
+<p>因此，要避免死锁，只要破坏上述四个条件之一，主要有以下方法：<br>静态分配资源：破坏条件（2）和（4）<br>按序分配资源：破坏条件（4）<br>剥夺式分配：破坏条件（3）</p>
+<p>而互斥地使用资源是多进程能正确工作的前提，是必须保证满足的，不能破坏，否则就会出现问题如读写不一致</p>
 <h2 id="8-描述两段锁协议的内容及作用"><a href="#8-描述两段锁协议的内容及作用" class="headerlink" title="8. 描述两段锁协议的内容及作用"></a>8. 描述两段锁协议的内容及作用</h2><p>增长阶段：事务可以获得锁，但不能释放锁<br>缩减阶段：事务可以释放锁，但不能获得锁</p>
 <p>作用：若一组事务均服从两阶段封锁协议，则它们的调度一定是可串行化</p>
 <h2 id="9-什么是先写日志的原则（WAL）？为什么要遵从这一原则？"><a href="#9-什么是先写日志的原则（WAL）？为什么要遵从这一原则？" class="headerlink" title="9. 什么是先写日志的原则（WAL）？为什么要遵从这一原则？"></a>9. 什么是先写日志的原则（WAL）？为什么要遵从这一原则？</h2><p>write ahead log<br>对于尚未提交的事务，在将DB缓冲区写到外存之前，必须先将日志缓冲区内容写到外存。</p>
