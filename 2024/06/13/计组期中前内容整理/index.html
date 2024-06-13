@@ -16,28 +16,46 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="怎么理解指令和微指令呢？大概就是微指令从指令中拆分出具体的很小的一个单位步骤，指令分为两个字节。前一个字节的前4位是操作码，后四位是寄存器号或者0000（像JMP没有寄存器所以就直接0000），第二个字节一定是存储单元地址（所以之前有一道选择题说能不能是寄存器+寄存器呢？对不起，不行，必须要有一个地址。在这里设计的四条指令分别是：  ADD R, M◦ 功能： 将R的内容与M中的内容相加后存入R">
+    <meta name="description" content="与门、或门众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门 非门其实就是一个CMOS反相器 与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点 或非：0变1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计组期中复习-微程序控制器">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/04/14/%E8%AE%A1%E7%BB%84%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0-%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8/index.html">
+<meta property="og:title" content="计组期中前内容整理">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/13/%E8%AE%A1%E7%BB%84%E6%9C%9F%E4%B8%AD%E5%89%8D%E5%86%85%E5%AE%B9%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="怎么理解指令和微指令呢？大概就是微指令从指令中拆分出具体的很小的一个单位步骤，指令分为两个字节。前一个字节的前4位是操作码，后四位是寄存器号或者0000（像JMP没有寄存器所以就直接0000），第二个字节一定是存储单元地址（所以之前有一道选择题说能不能是寄存器+寄存器呢？对不起，不行，必须要有一个地址。在这里设计的四条指令分别是：  ADD R, M◦ 功能： 将R的内容与M中的内容相加后存入R">
+<meta property="og:description" content="与门、或门众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门 非门其实就是一个CMOS反相器 与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点 或非：0变1">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/SRAM%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/SRAM%E8%AE%BE%E8%AE%A1.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%8A%A0%E6%B3%95%E5%99%A8.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%87%8F%E6%B3%95%E5%99%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B9%98%E6%B3%95%E5%99%A8.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/32-bit%E9%99%A4%E6%B3%95%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E9%99%A4%E6%B3%95%E5%99%A8%E5%9B%BE%E7%A4%BA.jpg">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8%E8%A1%A5%E5%85%A8%E4%BB%A3%E7%A0%81.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/T1%E5%92%8CT2.jpg">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E7%AD%94%E6%A1%88.png">
-<meta property="article:published_time" content="2024-04-14T06:48:48.000Z">
-<meta property="article:modified_time" content="2024-04-15T08:19:54.039Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E9%80%89%E6%8B%A9%E9%A2%98.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-1.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-2.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%80%E4%BD%8D%E5%85%A8%E5%8A%A0%E5%99%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7i+1.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%E5%85%AC%E5%BC%8Fi+1%E6%8E%A8%E5%AF%BC.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%AE%A1%E7%AE%97%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%EF%BC%88%E4%B8%89%E7%BA%A7%E9%97%A8%E5%BB%B6%E8%BF%9F%EF%BC%89.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/2016%E6%9C%9F%E4%B8%AD-%E4%B8%8E%E9%97%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/2017%E6%9C%9F%E4%B8%AD-%E6%88%96%E9%97%A8.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E7%AE%97%E9%97%A8%E5%BB%B6%E8%BF%9F%E6%95%B0.png">
+<meta property="article:published_time" content="2024-06-13T06:11:24.000Z">
+<meta property="article:modified_time" content="2024-06-13T06:17:37.272Z">
 <meta property="article:author" content="Liebe_grausam">
-<meta property="article:tag" content="计组">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8%E8%A1%A5%E5%85%A8%E4%BB%A3%E7%A0%81.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>计组期中复习-微程序控制器 - 苯人的一些发疯自留地！</title>
+  <title>计组期中前内容整理 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计组期中复习-微程序控制器"></span>
+            <span id="subtitle" data-typed-text="计组期中前内容整理"></span>
           
         </div>
 
@@ -205,8 +223,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-14 14:48" pubdate>
-          2024年4月14日 下午
+        <time datetime="2024-06-13 14:11" pubdate>
+          2024年6月13日 下午
         </time>
       </span>
     
@@ -217,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          4.8k 字
         
       </span>
     
@@ -228,7 +246,7 @@
         
         
         
-          17 分钟
+          41 分钟
         
       </span>
     
@@ -274,12 +292,39 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计组期中复习-微程序控制器</h1>
+            <h1 style="display: none">计组期中前内容整理</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8%E8%A1%A5%E5%85%A8%E4%BB%A3%E7%A0%81.png" srcset="/img/loading.gif" lazyload alt="微程序控制器补全代码"><br>怎么理解指令和微指令呢？大概就是微指令从指令中拆分出具体的很小的一个单位步骤，指令分为两个字节。前一个字节的前4位是操作码，后四位是寄存器号或者0000（像JMP没有寄存器所以就直接0000），第二个字节<strong>一定</strong>是存储单元地址（所以之前有一道选择题说能不能是寄存器+寄存器呢？对不起，不行，必须要有一个地址。<br>在这里设计的四条指令分别是：</p>
+                <h2 id="与门、或门"><a href="#与门、或门" class="headerlink" title="与门、或门"></a>与门、或门</h2><p>众所周知与门&#x3D;与非门+非门，或门&#x3D;或非门+非门</p>
+<p>非门其实就是一个CMOS反相器</p>
+<p>与非：1变0，NMOS擅长，接地，但NMOS不能直接接电源，所以最上面的NMOS要上接一个PMOS。同理另一个为了对称也接一个PMOS，但是PMOS不能接地，所以两个PMOS的下端与两个NMOS的上端要引出Y端（把两个PMOS门画在NMOS门的上面 使得它们整体隔开会好画一点</p>
+<p>或非：0变1，PMOS擅长，接电源，但PMOS不能直接接地，所以最下面的PMOS要下接一个NMOS。同理另一个为了对称也接一个NMOS，但是NMOS不能接电源，所以两个NMOS的上端与两个PMOS的下端要引出Y端（把两个NMOS门画在PMOS门的下面 使得它们整体隔开会好画一点<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B8%8E%E9%9D%9E%E4%B8%8E%E6%88%96%E9%9D%9E.jpg" srcset="/img/loading.gif" lazyload alt="与非与或非"></p>
+<h2 id="SRAM数字电路设计"><a href="#SRAM数字电路设计" class="headerlink" title="SRAM数字电路设计"></a>SRAM数字电路设计</h2><p><img src="/../img/%E8%AE%A1%E7%BB%84/SRAM%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5.jpg" srcset="/img/loading.gif" lazyload alt="SRAM一些概念"></p>
+<p>SRAM基本单元由两个CMOS反相器（其实就是两个非门）组成，两个反相器的输入输出交叉连接，即第一个反相器的输出连接第二个反相器的输入，第二个反相器的输出连接第一个反相器的输入。这实现了两个反相器输出状态的锁定、保存，即存储了一个位元的状态。</p>
+<h3 id="BL：Bit-Line（位线）"><a href="#BL：Bit-Line（位线）" class="headerlink" title="BL：Bit Line（位线）"></a>BL：Bit Line（位线）</h3><p>在SRAM（静态随机存取存储器）的数字电路设计中，”BL” 通常指的是 “Bit Line”。</p>
+<p>在SRAM单元中，位线用于连接存储单元和读&#x2F;写电路。它承载存储单元中的数据位，并负责将这些数据传输到读&#x2F;写电路以进行读取或写入操作。</p>
+<p>在SRAM的读操作中，位线被用作数据传输路径，将存储单元中的数据位传输到读取电路。在写操作中，位线负责将数据位传输到存储单元，以更新存储的数据。</p>
+<h3 id="Word-Line（字线）"><a href="#Word-Line（字线）" class="headerlink" title="Word Line（字线）"></a>Word Line（字线）</h3><p>在SRAM单元中，字线用于选择存储单元进行读或写操作（不管是读还是写，WL都为1，过程结束时为0）。当字线激活时，它会打开连接到该字线的所有存储单元的传输门，从而允许读取或写入操作。</p>
+<p>在读操作中，字线使得选定的存储单元的数据位能够流入位线（Bit Line）进行读取。在写操作中，字线允许数据位从位线传输到选定的存储单元，以更新存储的数据。</p>
+<h3 id="Q（输出）"><a href="#Q（输出）" class="headerlink" title="Q（输出）"></a>Q（输出）</h3><p>在数字电路设计中，通常使用 “Q” 来表示输出信号。这个标记表示该部分或组件的输出端。</p>
+<p>例如，在触发器或存储器单元中，”Q” 和 “&#x2F;Q”（Q的反相输出）通常表示状态或数据的输出。这些输出可以连接到其他电路部分，以实现数据传输和处理。</p>
+<h3 id="读-x2F-写过程"><a href="#读-x2F-写过程" class="headerlink" title="读&#x2F;写过程"></a>读&#x2F;写过程</h3><p><img src="/../img/%E8%AE%A1%E7%BB%84/SRAM%E8%AE%BE%E8%AE%A1.jpg" srcset="/img/loading.gif" lazyload alt="SRAM设计"><br>SRAM设计中，WL为1时写入BL，并在Q中输出BL</p>
+<p>在SRAM（静态随机存取存储器）的设计中，当Word Line（WL）被激活为逻辑”1”时：</p>
+<ol>
+<li><p><strong>写入操作</strong>：将位线（Bit Line，BL）的数据写入选定的存储单元。</p>
+</li>
+<li><p><strong>读取操作</strong>：存储单元的数据位被传输到位线（Bit Line，BL）。</p>
+</li>
+</ol>
+<p>这时，”Q” 通常表示存储单元的输出，即位线（Bit Line，BL）的内容。当执行读取操作时，Q会输出位线上的数据，反映存储单元的状态。</p>
+<p>SRAM的运行在写入和读出时基本没有区别。</p>
+<h3 id="断电后SRAM将丢失所有电荷状态"><a href="#断电后SRAM将丢失所有电荷状态" class="headerlink" title="断电后SRAM将丢失所有电荷状态"></a>断电后SRAM将丢失所有电荷状态</h3><p>断电后的SRAM（静态随机存取存储器）不能持续存储数据。SRAM的存储方式是基于电荷状态在存储单元中存储数据，而这些电荷会随着时间和电流的丧失而消散。</p>
+<p>当电源关闭时，SRAM中的电荷会迅速耗尽，导致数据丢失。这与DRAM（动态随机存取存储器）不同，DRAM使用电容来存储数据，需要定期刷新以保持数据，即使在断电后也能短暂保留数据。</p>
+<p>因此，SRAM需要持续的电源供应以保持数据，一旦电源被中断或关闭，存储在其中的数据会立即丢失。</p>
+<h2 id="加法器、减法器、乘法器、除法器"><a href="#加法器、减法器、乘法器、除法器" class="headerlink" title="加法器、减法器、乘法器、除法器"></a>加法器、减法器、乘法器、除法器</h2><p><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%8A%A0%E6%B3%95%E5%99%A8.jpg" srcset="/img/loading.gif" lazyload alt="加法器"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%87%8F%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="减法器"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B9%98%E6%B3%95%E5%99%A8.jpg" srcset="/img/loading.gif" lazyload alt="乘法器"><br>今天把之前艾美疫苗送的笔记本写完了，，可喜可贺<br>虽然除法器还没考过不过以防万一稍微瞄一眼<br><img src="/../img/%E8%AE%A1%E7%BB%84/32-bit%E9%99%A4%E6%B3%95%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="32-bit除法器的工作流程图"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E9%99%A4%E6%B3%95%E5%99%A8%E5%9B%BE%E7%A4%BA.jpg" srcset="/img/loading.gif" lazyload alt="除法器图示"></p>
+<h2 id="微程序控制器"><a href="#微程序控制器" class="headerlink" title="微程序控制器"></a>微程序控制器</h2><p><img src="/../img/%E8%AE%A1%E7%BB%84/%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8%E8%A1%A5%E5%85%A8%E4%BB%A3%E7%A0%81.png" srcset="/img/loading.gif" lazyload alt="微程序控制器补全代码"><br>怎么理解指令和微指令呢？大概就是微指令从指令中拆分出具体的很小的一个单位步骤，指令分为两个字节。前一个字节的前4位是操作码，后四位是寄存器号或者0000（像JMP没有寄存器所以就直接0000），第二个字节<strong>一定</strong>是存储单元地址（所以之前有一道选择题说能不能是寄存器+寄存器呢？对不起，不行，必须要有一个地址。<br>在这里设计的四条指令分别是：</p>
 <ol>
 <li>ADD R, M<br>◦ 功能： 将R的内容与M中的内容相加后存入R</li>
 <li>LOAD R, M<br>◦ 功能： 将M中的内容装入R</li>
@@ -287,26 +332,57 @@
 <li>JMP L<br>◦ 功能： 无条件转向L处</li>
 </ol>
 <p>注： M和L为存储器地址， R为寄存器编号</p>
-<h1 id="取指令"><a href="#取指令" class="headerlink" title="取指令"></a>取指令</h1><p>每条指令的T1周期， 都要发出PC_OUT、 MAR_IN、 M_读和PC_加共四个信号。这条微指令形式的信号序列如下：1111000000000000<br>每条指令的T2周期， 都要发MDR_OUT、 IR_IN两个信号这条微指令形式的信号序列如下：0000110000000000<br><img src="/../img/%E8%AE%A1%E7%BB%84/T1%E5%92%8CT2.jpg" srcset="/img/loading.gif" lazyload alt="T1和T2"><br>故T2的微操作字段为0000110000000000，下址字段不是像T1周期执行完之后无脑下一步（毕竟T1释放了PC+信号，但是T2不是直接PC+，而是要看这个指令具体在哪里。从T1机器周期就开始传递的这个数据正是下一个要执行的指令地址。</p>
+<h3 id="取指令"><a href="#取指令" class="headerlink" title="取指令"></a>取指令</h3><p>每条指令的T1周期， 都要发出PC_OUT、 MAR_IN、 M_读和PC_加共四个信号。这条微指令形式的信号序列如下：1111000000000000<br>每条指令的T2周期， 都要发MDR_OUT、 IR_IN两个信号这条微指令形式的信号序列如下：0000110000000000<br><img src="/../img/%E8%AE%A1%E7%BB%84/T1%E5%92%8CT2.jpg" srcset="/img/loading.gif" lazyload alt="T1和T2"><br>故T2的微操作字段为0000110000000000，下址字段不是像T1周期执行完之后无脑下一步（毕竟T1释放了PC+信号，但是T2不是直接PC+，而是要看这个指令具体在哪里。从T1机器周期就开始传递的这个数据正是下一个要执行的指令地址。</p>
 <p>下址字段为1xx10</p>
 <p>最高位的1<br>意义：这通常表明，接下来的微指令将发生一个条件性的跳转。也就是说，CPU的下一步行动并不是简单地执行下一个顺序的微指令地址，而是根据某个条件来决定跳转的目标地址。（该例为执行IR寄存器中的内容（指令地址（指令寄存器</p>
 <p>中间的xx<br>意义：这部分通常代表指令的操作码，它用于指示当前执行的指令类型。在微程序设计中，这可以用于基于正在执行的机器指令来选择相应的微指令流程。<br>例子：如果“xx”是从指令寄存器（IR）中解析出的当前机器指令的部分字段（比如操作码），这可以用来决定执行哪一组微指令。（load为00，add为01，store为10，jmp为11）</p>
 <p><img src="/../img/%E8%AE%A1%E7%BB%84/%E7%AD%94%E6%A1%88.png" srcset="/img/loading.gif" lazyload alt="答案"><br>最后的10<br>其实也很好理解。因为不管是LOAD, ADD, STORE, 还是JMP，他们的“第一个”（图中是T3）的地址的后两位都是10（注意机器周期从开1始算，但是地址从0开始算</p>
 <p>最上面那个取指令对于所有的指令LOAD, ADD, STORE, JMP都适用（即，分别取LOAD, ADD, …）都要从第一个机器周期开始算。因为不管是哪个指令首先都得从PC取出来，所以他们在T1和T2的步骤是一样的。</p>
-<h1 id="LOAD-R-M"><a href="#LOAD-R-M" class="headerlink" title="LOAD R, M"></a>LOAD R, M</h1><p>然后就是LOAD指令在T3和T4的机器周期干了什么</p>
+<h3 id="LOAD-R-M"><a href="#LOAD-R-M" class="headerlink" title="LOAD R, M"></a>LOAD R, M</h3><p>然后就是LOAD指令在T3和T4的机器周期干了什么</p>
 <p>先来看看LOAD指令在所有的周期干了什么吧<br>指令“LOAD R1, M1”的执行过程：<br><strong>① 取指令并形成下一条指令的地址（所有指令通用</strong><br>I. 控制器发“PCOUT” 和“MARIN” 信号， 使PC→MAR<br>II. 控制器发“M读” 信号， 使存储器的内容（指令） →MDR<br>III. 控制器发“PC加” 信号， 使PC+n→PC， 其中n为该指令占用的地址数<br>IV. 控制器发“MDROUT” 和“IRIN” 信号， 使MDR→IR</p>
 <p>（上面的都干过了）</p>
 <p><strong>② 执行指令“LOAD R1, M1”</strong><br>I. 控制器发“IROUT” 和“MARIN” 信号， 使IR中指令的地址段（即M1） →MAR<br>II. 控制器发“M读” 信号， 使存储器M1的内容（数据） →MDR<br>III. 控制器发“MDROUT” 和“R1IN” 信号， 使MDR→R1</p>
 <p>我们重点关注②。LOAD R, M的功能是将M中的内容装入R。<br>I和II组合组成了T3：0110 0010 0000 0000<br>（注意MDRin没有用到，把指令读到MDR的指令是M读，而不是MDRIN<br>因为load还没执行完，所以下址字段无条件跳转到LOAD的下一个周期所在微地址0011（最高位的0标志无条件跳转）</p>
 <p>III就是T4，因为此时LOAD的核心功能已经完成，所以下址字段为End指令所在位置。</p>
-<h1 id="ADD-R-M"><a href="#ADD-R-M" class="headerlink" title="ADD R, M"></a>ADD R, M</h1><p>（省略取指令步骤</p>
+<h3 id="ADD-R-M"><a href="#ADD-R-M" class="headerlink" title="ADD R, M"></a>ADD R, M</h3><p>（省略取指令步骤</p>
 <blockquote>
 <p>执行指令“ADD R1,M2”<br>I. 控制器发“IROUT” 和“MARIN” 信号， 使IR中指令的地址段（ 即M2） →MAR<br>II. 控制器发“M读” 信号， 使存储器M2的内容（数据） →MDR，通过DBUS<br>III. 控制器发“MDROUT” 和“YIN” 信号， 使MDR→Y（ 即ALU的A端）<br>IV. 控制器发“R1OUT” ， 使R1→内部总线（ 即ALU的B端）<br>V. 控制器发“add” 信号， 使A+B→Z<br>VI. 控制器发“ZOUT” 和“R1IN” 信号， 使Z→R1</p>
 </blockquote>
 <p>这么冗长的步骤我也记不住啊，，一条条分解吧</p>
 <p>ADD R,M的核心功能是把M中的内容取出来与R相加再存入R中。<br>M从哪来？<br>IR指令中来，指令中包含了所求地址，所以IR_OUT,它现在在总线，我再MAR_IN一下。（MAR和MDR的区别是，一个存的是这个地址，一个存的是地址的内容</p>
 <p>我怎么读出这个M中的内容呢？（因为是内容相加而不是地址相加）那好办，M_读一下，MAR寄存器中存的地址<strong>的内容</strong>就到总线去了。然后把总线的内容通过MDRIN就可以读入MDR了</p>
-<p>–to be continued</p>
+<h2 id="2016、2017期中往年题复盘"><a href="#2016、2017期中往年题复盘" class="headerlink" title="2016、2017期中往年题复盘"></a>2016、2017期中往年题复盘</h2><p><img src="/../img/%E8%AE%A1%E7%BB%84/%E9%80%89%E6%8B%A9%E9%A2%98.png" srcset="/img/loading.gif" lazyload alt="高亮为gpt，红笔为自己写的"></p>
+<p>ljl的体系是mooc与上课课件正交的部分，，，</p>
+<p>阿塔纳索夫研发的是ABC计算机，不是ENIAC。（2016期中）</p>
+<p>第一台存储程序式电子计算机是EDSAC必考。（记忆点：S-save&#x2F;store）</p>
+<p>冯诺依曼五个基本组成部分必考。</p>
+<blockquote>
+<p>① 运算器， CA： central arithmetical<br>② 控制器， CC： central control<br>③ 存储器， M： memory<br>④ 输入设备， I： input<br>⑤ 输出设备， O： output</p>
+</blockquote>
+<p>还有其他两个特点分别是：数据和程序均以二进制代码形式不加区别地存放在存储器中，存放位置由存储器的地址指定；计算机在工作时能够自动地从存储器中取出指令加以执行。</p>
+<p>吗嘟这么多课件找不到的内容原来全在MOOC里！气死我了！</p>
+<p>计算机执行指令的具体步骤：取指（Fetch），译码（Decode），执行（Execute），回写（Write-back）。（2017期中）</p>
+<blockquote>
+<p>取指：①控制器将指令的地址送往存储器 ②存储器按给定的地址读出指令内容，送回控制器<br>译码：①控制器分析指令的操作性质 ②控制器向有关部件发出指令所需的控制信号<br>执行：①控制器从通用寄存器或存储器取出操作数 ②控制器命令运算器对操作数进行指令规定的运算<br>回写：将运算结果写入通用寄存器或存储器</p>
+</blockquote>
+<p>在 x86 实模式下， 假设 CS&#x3D;3000H， DS&#x3D;2000H，则指令“MOV AX,[3000H]” 执行时访问的内存地址是23000H。(2017期中) （MOOC课件上有原题一模一样）</p>
+<blockquote>
+<p>计算方法：DS*16+[3000H] 段地址×16＋偏移地址</p>
+</blockquote>
+<p>按两个32位源操作数所在位置划分，MIPS和x86的加法指令都能够支持的是：寄存器 + 寄存器（2016期中）</p>
+<blockquote>
+<p>记住就行了，，默默插一嘴，这题也出现在MOOC的期末考试中，所以肯定是正确答案</p>
+</blockquote>
+<p><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-1.png" srcset="/img/loading.gif" lazyload alt="还原机器代码-1"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%98%E5%8E%9F%E6%9C%BA%E5%99%A8%E4%BB%A3%E7%A0%81-2.jpg" srcset="/img/loading.gif" lazyload alt="还原机器代码-2"><br>前面都没问题，注意一下beq那行（一般beq都是while循环），而且后面一般跟label</p>
+<blockquote>
+<p>虽然偏移量是1，不过实际上读的是下下一条指令（毕竟没有偏移的话就直接读下一条了（很重要！！</p>
+</blockquote>
+<p>D触发器：主要有一个数据输入、一个数据输出和一个时钟输入。在时钟clock的上升沿（0→1）， 采样输入D的值，传送到输出Q， 其余时间输出Q的值不变</p>
+<p><img src="/../img/%E8%AE%A1%E7%BB%84/%E4%B8%80%E4%BD%8D%E5%85%A8%E5%8A%A0%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="2016期中-一位全加器"><br>为什么与S连的都是或非门？（A,B两个输入先或非一下，然后再和进位的输入或非），因为S只是某一位的取值（类比个位 只需关注奇偶）又加上二进制只有10两个数字，所以看一下一不一样就行</p>
+<p>为什么Cout先连与门再连或门？AB两个输入先与一下，如果全是1那就构成进位条件。如果AB不全是一呢？没关系AB只要有一个是1就可以了（异或为1），并且如果输入的进位也是1的话也可以构成进位条件，两者满足其一就可以<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7i+1.png" srcset="/img/loading.gif" lazyload alt="进位输出信号分析"><br>可以推一下i&#x3D;1的时候的公式<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%E5%85%AC%E5%BC%8Fi+1%E6%8E%A8%E5%AF%BC.jpg" srcset="/img/loading.gif" lazyload alt="2016期中-进位信号公式i+1推导"><br>以上都是行波进位加法器。</p>
+<p>如果是超前进位加法器：<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%AE%A1%E7%AE%97%E8%BF%9B%E4%BD%8D%E4%BF%A1%E5%8F%B7%EF%BC%88%E4%B8%89%E7%BA%A7%E9%97%A8%E5%BB%B6%E8%BF%9F%EF%BC%89.png" srcset="/img/loading.gif" lazyload alt="超前计算进位信号（三级门延迟）"><br>他主要优化的点在于C2的值不需要依赖C1，节省了等待时间（全都是并行计算的），一个竖列的全都是同时算出来，总共三个数列，所以计算Ci的延迟时间固定位三级门延迟</p>
+<p>但是总的一整个超前进位加法器是四级门延迟的。那是因为S3的计算依赖于C3，而计算C3需要三级门延迟。所以计算出S3需要四级门延迟（关键路径<br><img src="/../img/%E8%AE%A1%E7%BB%84/%E8%B6%85%E5%89%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="超前进位加法器"></p>
+<p><img src="/../img/%E8%AE%A1%E7%BB%84/2016%E6%9C%9F%E4%B8%AD-%E4%B8%8E%E9%97%A8.png" srcset="/img/loading.gif" lazyload alt="2016期中-与门"><br>非门记忆：让positive的人在上面，本negative人只想当一个阴暗爬行的接地鼠鼠<br><img src="/../img/%E8%AE%A1%E7%BB%84/2017%E6%9C%9F%E4%B8%AD-%E6%88%96%E9%97%A8.png" srcset="/img/loading.gif" lazyload alt="2017期中-或门（画的是或非门）"><br><img src="/../img/%E8%AE%A1%E7%BB%84/%E7%AE%97%E9%97%A8%E5%BB%B6%E8%BF%9F%E6%95%B0.png" srcset="/img/loading.gif" lazyload alt="2016期中-计算n位行波进位加法器门延迟数"></p>
 
                 
               </div>
@@ -316,13 +392,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%AE%A1%E7%BB%84/">#计组</a>
-      
-    </div>
-  
 </div>
 
 
@@ -331,8 +400,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计组期中复习-微程序控制器</div>
-      <div>http://liebe-grausam.github.io/2024/04/14/计组期中复习-微程序控制器/</div>
+      <div>计组期中前内容整理</div>
+      <div>http://liebe-grausam.github.io/2024/06/13/计组期中前内容整理/</div>
     </div>
     <div class="license-meta">
       
@@ -344,7 +413,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月14日</div>
+          <div>2024年6月13日</div>
         </div>
       
       
@@ -376,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/16/SRAM%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" title="SRAM数字电路设计">
+                      <a href="/2024/06/13/Frankenstein/" title="Frankenstein">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SRAM数字电路设计</span>
+                        <span class="hidden-mobile">Frankenstein</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -386,8 +455,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/13/%E5%9B%9E%E6%BA%AF/" title="回溯？动归？">
-                        <span class="hidden-mobile">回溯？动归？</span>
+                      <a href="/2024/06/12/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/" title="进程、线程与协程">
+                        <span class="hidden-mobile">进程、线程与协程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
