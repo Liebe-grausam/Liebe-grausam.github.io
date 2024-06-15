@@ -26,8 +26,14 @@
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615132600.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615135106.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615153359.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615155719.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615160330.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/BCNF%E5%88%86%E8%A7%A3%E4%BE%8B%E9%A2%98.jpg">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BD%9C%E4%B8%9A%E4%BE%8B%E9%A2%98.jpg">
 <meta property="article:published_time" content="2024-06-08T13:53:12.000Z">
-<meta property="article:modified_time" content="2024-06-15T07:14:21.850Z">
+<meta property="article:modified_time" content="2024-06-15T08:09:43.300Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615132600.png">
@@ -216,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          6.9k 字
         
       </span>
     
@@ -227,7 +233,7 @@
         
         
         
-          30 分钟
+          58 分钟
         
       </span>
     
@@ -408,7 +414,100 @@
 <h2 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97.jpg" srcset="/img/loading.gif" lazyload><br>外连接：<br>为避免自然连接时因失配而发生的信息丢失， 可以假定往参与连接的一方表中附加一个取值全为空值的行， 它和参与连接的另一方表中的任何一个未匹配上的元组都能匹配， 称之为外连接</p>
 <p>外连接的形式：左外连接、右外连接、全外连接<br>左外连接 &#x3D; 自然连接 + 左侧表中未匹配元组<br>右外连接 &#x3D; 自然连接 + 右侧表中未匹配元组<br>全外连接 &#x3D; 自然连接 + 两侧表中未匹配元组</p>
 <p>除法运算：<br>（某一篇博客中有具体谈到）<br>在被除表中，同时满足除数表的所有条件，但没有除数表中的字段的新表（如果结果有多条记录要全部列出）。</p>
-<h1 id="第四章-SQL"><a href="#第四章-SQL" class="headerlink" title="第四章 SQL"></a>第四章 SQL</h1>
+<h1 id="第四章-SQL"><a href="#第四章-SQL" class="headerlink" title="第四章 SQL"></a>第四章 SQL</h1><h2 id="数据类型的定义"><a href="#数据类型的定义" class="headerlink" title="数据类型的定义"></a>数据类型的定义</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615153359.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="索引的定义"><a href="#索引的定义" class="headerlink" title="索引的定义"></a>索引的定义</h2><p>关系表是个无序集合</p>
+<p>索引存储结构：B+树</p>
+<p>作用：</p>
+<ol>
+<li>查找元组</li>
+<li>排序</li>
+<li>表连接</li>
+<li>分组</li>
+<li>保证唯一性</li>
+</ol>
+<p>索引碎片：页面逻辑顺序与物理顺序不一致（解决方案：聚簇索引cluster</p>
+<p>聚簇索引：<br>表中元组按索引项的值排序并物理地聚簇在一起<br>一个基本表上只能建一个聚簇索引</p>
+<p>覆盖索引：include<br>把select中的列也包含进索引中， 这样就可以完全基于索引回答查询， 避免回表</p>
+<p>过滤索引：在索引的定义中加入where语句， 索引中只包括那些满足过滤条件的列值</p>
+<p>create index filter_idx1 on R(A) where A is not null</p>
+<p>数据的物理独立性：<br>索引如何使用完全由系统决定</p>
+<p>索引可以提高查询效率<br>耗费空间<br>降低插入、 删除、 更新效率</p>
+<h1 id="第五章-服务器脚本语言"><a href="#第五章-服务器脚本语言" class="headerlink" title="第五章 服务器脚本语言"></a>第五章 服务器脚本语言</h1><p>游标定义：在查询结果的记录集合中移动的指针<br>需要游标的数据操作：当select语句的结果中包含多行时， 使用游标可以逐个存取这些行</p>
+<p>触发器定义：触发器是一条语句，当对数据库做修改时，它自动被系统执行</p>
+<p>约束级别：</p>
+<p>数据库约束级别用于确保数据的完整性和一致性。</p>
+<ol>
+<li><p><strong>域约束（Domain Constraints）</strong>：</p>
+<ul>
+<li>限制列中的数据类型和取值范围。例如，规定某列只能包含整数或日期类型的数据。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span>,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>),<br>    Age <span class="hljs-type">INT</span> <span class="hljs-keyword">CHECK</span> (Age <span class="hljs-operator">&gt;=</span> <span class="hljs-number">18</span> <span class="hljs-keyword">AND</span> Age <span class="hljs-operator">&lt;=</span> <span class="hljs-number">65</span>)<br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>实体完整性约束（Entity Integrity Constraints）</strong>：</p>
+<ul>
+<li>确保表中的每一行都有一个唯一标识符，通常通过主键实现。</li>
+<li>主键（Primary Key）：每个表都应有一个主键，主键列中的值必须唯一且不能为NULL。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>),<br>    Age <span class="hljs-type">INT</span><br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>参照完整性约束（Referential Integrity Constraints）</strong>：</p>
+<ul>
+<li>确保表之间的关系有效，通过外键实现。</li>
+<li>外键（Foreign Key）：一列或多列在另一表中有对应的主键或唯一键。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Departments (<br>    DepartmentID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    DepartmentName <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>)<br>);<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>),<br>    DepartmentID <span class="hljs-type">INT</span>,<br>    <span class="hljs-keyword">FOREIGN</span> KEY (DepartmentID) <span class="hljs-keyword">REFERENCES</span> Departments(DepartmentID)<br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>唯一性约束（Unique Constraints）</strong>：</p>
+<ul>
+<li>确保某列或某些列的值在表中唯一，类似于主键，但允许NULL值。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    Email <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">UNIQUE</span>,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>)<br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>检查约束（Check Constraints）</strong>：</p>
+<ul>
+<li>通过特定的条件检查数据的有效性。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>),<br>    Age <span class="hljs-type">INT</span>,<br>    Salary <span class="hljs-type">DECIMAL</span>(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>),<br>    <span class="hljs-keyword">CHECK</span> (Salary <span class="hljs-operator">&gt;=</span> <span class="hljs-number">30000</span>)<br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>非空约束（Not Null Constraints）</strong>：</p>
+<ul>
+<li>确保列中不能有NULL值。</li>
+<li>例子：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employees (<br>    EmployeeID <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    Name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    Age <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span><br>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h1 id="第六章-非关系数据"><a href="#第六章-非关系数据" class="headerlink" title="第六章 非关系数据"></a>第六章 非关系数据</h1><p>略</p>
+<h1 id="第七章-关系规范化"><a href="#第七章-关系规范化" class="headerlink" title="第七章 关系规范化"></a>第七章 关系规范化</h1><h2 id="数据异常包括哪些？"><a href="#数据异常包括哪些？" class="headerlink" title="数据异常包括哪些？"></a>数据异常包括哪些？</h2><p>信息的不可表示问题</p>
+<p>插入异常：如果没有职工具有8级工资， 则8级工资的工资数额就难以插入<br>删除异常：如果仅有职工赵明具有4级工资， 删除赵明则会将有关4级工资的工资数额信息也一并删除</p>
+<p>信息的冗余问题</p>
+<p>数据冗余：职工很多， 工资级别有限， 每一级别的工资数额反复存储多次<br>更新异常：如果将5级工资的工资数额调为620， 则需要找到每个具有5级工资的职工， 逐一修改</p>
+<h2 id="各种依赖的定义"><a href="#各种依赖的定义" class="headerlink" title="各种依赖的定义"></a>各种依赖的定义</h2><p>函数依赖 部分函数依赖 完全函数依赖 传递函数依赖 多值依赖（多对多属性组</p>
+<h2 id="各种NF概念"><a href="#各种NF概念" class="headerlink" title="各种NF概念"></a>各种NF概念</h2><p>1NF：不可再分<br>2NF：1NF消除部分依赖（每个非主属性完全依赖于码<br>3NF：2NF消除传递依赖<br>BCNF：每个非平凡函数依赖的左侧都必须是超键<br>4NF：消除多值依赖</p>
+<h2 id="逻辑蕴含"><a href="#逻辑蕴含" class="headerlink" title="逻辑蕴含"></a>逻辑蕴含</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615155719.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Armstrong公理"><a href="#Armstrong公理" class="headerlink" title="Armstrong公理"></a>Armstrong公理</h2><p>自反律 增广律 传递律<br>借助逻辑蕴涵定义及自反律实现正确性证明</p>
+<h2 id="函数依赖集等价性以及最小覆盖"><a href="#函数依赖集等价性以及最小覆盖" class="headerlink" title="函数依赖集等价性以及最小覆盖"></a>函数依赖集等价性以及最小覆盖</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/icurious/article/details/51240114">csdn链接</a><br><strong>计算最小函数依赖集步骤：</strong><br>① 用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；<br>② 去掉多余的函数依赖：从第一个函数依赖X→Y开始将其从F中去掉，然后在剩下的函数依赖中求X的闭包X+，看X+是否包含Y，若是，则去掉X→Y；否则不能去掉，依次做下去。直到找不到冗余的函数依赖；<br>③去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖。例如XY→A，若要判Y为多余的，则以X→A代替XY→A是否等价？若A∈(X)+，则Y是多余属性，可以去掉。<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96.jpg" srcset="/img/loading.gif" lazyload alt="最小覆盖"></p>
+<h2 id="关系模式分解"><a href="#关系模式分解" class="headerlink" title="关系模式分解"></a>关系模式分解</h2><p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615160330.png" srcset="/img/loading.gif" lazyload><br>目标：<br>消除异常：达到更高级范式<br>信息保真：无损连接分解<br>避免违约：保持函数依赖</p>
+<h2 id="保持函数依赖的分解"><a href="#保持函数依赖的分解" class="headerlink" title="保持函数依赖的分解"></a>保持函数依赖的分解</h2><p>tbc</p>
+<h2 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h2><p>tbc</p>
+<h2 id="3NF分解"><a href="#3NF分解" class="headerlink" title="3NF分解"></a>3NF分解</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/538080461">知乎链接</a><br><strong>3NF分解步骤</strong>：</p>
+<ol>
+<li>先求出正则覆盖Fc</li>
+<li>对于Fc里面的所有函数依赖a-&gt;b,均转化为Ri&#x3D;ab</li>
+<li>对于所有的模式Ri<br> ①如果包含候选码，进行4.<br> ②如果都不包含候选码， 将任意一个候选码添加到模式Ri里面</li>
+<li>如果一个模式被另一个模式包含，则去掉此被包含的模式。</li>
+</ol>
+<h2 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h2><h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>输入：关系R0和其上的函数依赖集S0<br>输出：由R0分解出的关系集合，其中每个关系均属于BCNF<br>方法：下列步骤可以被递归地用于任意关系R和FD集合S。初始时，R&#x3D;R0，S&#x3D;S0。</p>
+<p>检验R是否属于BCNF。如果是，不需要做任何事，返回{R}作为结果。<br>如果存在BCNF违例，假设为X→Y。计算X+。选择R1&#x3D;X+作为一个关系模式，并使另一个关系模式R2包含属性X以及那些不在X+中的属性。<br>（对于R2，它将包含所有不在X+中的属性，因此X → Y 的函数依赖不会存在于R2中，因为X已经被分解到了R1中。所以，R2一定是满足BCNF的。）<br>计算R1和R2的FD集，分别记为S1和S2。<br>递归地分解R1和R2。返回这些分解得到的结果集合。</p>
+<h3 id="通俗的描述"><a href="#通俗的描述" class="headerlink" title="通俗的描述"></a>通俗的描述</h3><p>当一个关系模式违反BCNF时，意味着存在非平凡的函数依赖，其左侧不是任何候选键的超键。</p>
+<p>具体来说，一个关系模式违反BCNF的条件是：</p>
+<p>存在一个非平凡的函数依赖X → Y。<br>X 不是任何候选键的超键。<br>如果存在这样的函数依赖，那么该关系模式就违反了BCNF。</p>
+<h3 id="什么是超键"><a href="#什么是超键" class="headerlink" title="什么是超键"></a>什么是超键</h3><p>候选键的超键是以候选键为子集的超键。</p>
+<p>一个候选键是能够唯一标识关系中的每个元组的最小属性集合。而一个超键是能够唯一标识关系中的每个元组的任意属性集合。</p>
+<p>因此，候选键的超键必然包含了候选键本身，以及候选键的任何真子集。因为候选键本身已经能够唯一标识关系中的每个元组，所以任何包含候选键的超键也能够唯一标识关系中的每个元组。</p>
+<p>举个例子，如果 {A, B} 是一个候选键，那么 {A, B} 和 {A, B, C} 都是候选键的超键，因为它们包含了候选键 {A, B}。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42319408/article/details/92066595">例题链接跳转</a><br>如：R(A,B,C,D,E) FD{AB→C,DE→C,B→D}<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/BCNF%E5%88%86%E8%A7%A3%E4%BE%8B%E9%A2%98.jpg" srcset="/img/loading.gif" lazyload alt="BCNF分解例题"><br>R(ABCDE), F &#x3D; { AB → C, B → D, CD →  E , CE → B , AC → B }<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BD%9C%E4%B8%9A%E4%BE%8B%E9%A2%98.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>更详细的解释：<br>以最后那道例题为例，候选键为AB, AC<br>我们可以发现原来的函数依赖中，B-&gt;D, CD-&gt;E, CE-&gt;B的左侧都不是候选键的超键，所以我们接下来要做的就是消除这些不是超键的非平凡函数依赖，所以我们会采用CD+ CE+去消除掉（其中CE已经是那个子分解的超键了，所以不做处理</p>
+
                 
               </div>
             
