@@ -16,18 +16,17 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="先复习一下关系代数里面的除法 学生表R：    学号 姓名 年龄 院系    001 张三 19 计算机   除数S1：    年龄    19   R÷S1&#x3D;学生表中年龄为19的学生信息的新表格，但这个新表格中的字段不包括年龄。 即：    学号 姓名 院系    001 张三 计算机   所以除法结果就是在被除表中，同时满足除数表的所有条件，但没有除数表中的字段的新表（如果结果有多条">
+    <meta name="description" content="clj作业SQJ订单表每项工程使用红色零件总金额 供应商数据库SPJ中有三张表：S(SNO, SNAME, STATUS, CITY)P(PNO, PNAME, COLOR, WEIGHT, CITY)J(JNO, JNAME,CITY)SPJ(SNO, PNO, JNO, QTY, PRICE)S表示供应商，各属性依次为供应商号，供应商名，供应商状态值，供应商所在城市；P表示零件，各属性依次为零">
 <meta property="og:type" content="article">
-<meta property="og:title" content="求供应了所有零件的供应商">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/03/29/%E6%B1%82%E4%BE%9B%E5%BA%94%E4%BA%86%E6%89%80%E6%9C%89%E9%9B%B6%E4%BB%B6%E7%9A%84%E4%BE%9B%E5%BA%94%E5%95%86/index.html">
+<meta property="og:title" content="sql语句书写">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/06/18/sql%E8%AF%AD%E5%8F%A5%E4%B9%A6%E5%86%99/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="先复习一下关系代数里面的除法 学生表R：    学号 姓名 年龄 院系    001 张三 19 计算机   除数S1：    年龄    19   R÷S1&#x3D;学生表中年龄为19的学生信息的新表格，但这个新表格中的字段不包括年龄。 即：    学号 姓名 院系    001 张三 计算机   所以除法结果就是在被除表中，同时满足除数表的所有条件，但没有除数表中的字段的新表（如果结果有多条">
+<meta property="og:description" content="clj作业SQJ订单表每项工程使用红色零件总金额 供应商数据库SPJ中有三张表：S(SNO, SNAME, STATUS, CITY)P(PNO, PNAME, COLOR, WEIGHT, CITY)J(JNO, JNAME,CITY)SPJ(SNO, PNO, JNO, QTY, PRICE)S表示供应商，各属性依次为供应商号，供应商名，供应商状态值，供应商所在城市；P表示零件，各属性依次为零">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%9B%9E%E6%83%B3%E8%B5%B7%E8%A2%AB%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E6%94%AF%E9%85%8D%E7%9A%84%E6%81%90%E6%83%A7.jpg">
-<meta property="article:published_time" content="2024-03-29T14:36:15.000Z">
-<meta property="article:modified_time" content="2024-04-15T08:21:04.392Z">
+<meta property="article:published_time" content="2024-06-18T10:01:53.000Z">
+<meta property="article:modified_time" content="2024-06-18T12:47:06.685Z">
 <meta property="article:author" content="Liebe_grausam">
-<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%9B%9E%E6%83%B3%E8%B5%B7%E8%A2%AB%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E6%94%AF%E9%85%8D%E7%9A%84%E6%81%90%E6%83%A7.jpg">
   
@@ -35,7 +34,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>求供应了所有零件的供应商 - 苯人的一些发疯自留地！</title>
+  <title>sql语句书写 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,7 +191,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="求供应了所有零件的供应商"></span>
+            <span id="subtitle" data-typed-text="sql语句书写"></span>
           
         </div>
 
@@ -203,8 +202,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-29 22:36" pubdate>
-          2024年3月29日 晚上
+        <time datetime="2024-06-18 18:01" pubdate>
+          2024年6月18日 晚上
         </time>
       </span>
     
@@ -215,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          6.2k 字
         
       </span>
     
@@ -226,7 +225,7 @@
         
         
         
-          9 分钟
+          52 分钟
         
       </span>
     
@@ -272,12 +271,41 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">求供应了所有零件的供应商</h1>
+            <h1 style="display: none">sql语句书写</h1>
             
             
               <div class="markdown-body">
                 
-                <p>先复习一下关系代数里面的除法</p>
+                <h1 id="clj作业SQJ订单表"><a href="#clj作业SQJ订单表" class="headerlink" title="clj作业SQJ订单表"></a>clj作业SQJ订单表</h1><h2 id="每项工程使用红色零件总金额"><a href="#每项工程使用红色零件总金额" class="headerlink" title="每项工程使用红色零件总金额"></a>每项工程使用红色零件总金额</h2><blockquote>
+<p>供应商数据库SPJ中有三张表：<br>S(SNO, SNAME, STATUS, CITY)<br>P(PNO, PNAME, COLOR, WEIGHT, CITY)<br>J(JNO, JNAME,CITY)<br>SPJ(SNO, PNO, JNO, QTY, PRICE)<br>S表示供应商，各属性依次为供应商号，供应商名，供应商状态值，供应商所在城市；<br>P表示零件，各属性依次为零件号，零件名，零件颜色，零件重量，零件存放的城市；<br>J表示工程，各属性依次为工程号，工程名，工程所在城市；<br>SPJ表示供货关系，各属性依次为供应商号，零件号，工程号，供货数量，单价。<br>基于以上SPJ关系模式用SQL完成下面的查询：<br>按零件数量总和的降序列出每项工程所使用的每种红色零件的总的金额（工程可以向不同的供应商购买同一零件，总金额＝单价*供货数量）。输出工程号、零件号、总金额。</p>
+</blockquote>
+<p>样例输出：</p>
+<table>
+<thead>
+<tr>
+<th>jno</th>
+<th>pno</th>
+<th>sum_money</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>J4</td>
+<td>P1</td>
+<td>73000</td>
+</tr>
+<tr>
+<td>J4</td>
+<td>P4</td>
+<td>22400</td>
+</tr>
+</tbody></table>
+<p>依然是使用聚集函数（不要忘了group by，这里直接写两列就可以了</p>
+<p>一开始遇到的问题是ambiguous列名，解决措施是注明这个列是来自哪张表的</p>
+<p>left join的原因和上一题同理</p>
+<p>ORDER BY可以实现升&#x2F;降序，ASC为升序，DESC为降序，格式为order by 列名 asc&#x2F;desc, 列名 asc&#x2F;desc,…（按排序关键字顺序书写，前面的关键字优先看</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> J.JNO,P.PNO,<span class="hljs-built_in">SUM</span>(QTY<span class="hljs-operator">*</span>PRICE)<br><span class="hljs-keyword">FROM</span> J <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> SPJ <span class="hljs-keyword">ON</span> J.JNO<span class="hljs-operator">=</span>SPJ.JNO<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> P <span class="hljs-keyword">ON</span> P.PNO<span class="hljs-operator">=</span>SPJ.PNO<br><span class="hljs-keyword">WHERE</span> P.COLOR <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;红色&#x27;</span><br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> JNO,PNO<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-built_in">SUM</span>(QTY) <span class="hljs-keyword">DESC</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="求供应了所有零件的供应商"><a href="#求供应了所有零件的供应商" class="headerlink" title="求供应了所有零件的供应商"></a>求供应了所有零件的供应商</h2><p>先复习一下关系代数里面的除法</p>
 <p>学生表R：</p>
 <table>
 <thead>
@@ -338,6 +366,115 @@
 </ol>
 <p>这种查询的执行方式确实类似于使用嵌套的循环来检查每个供应商是否满足条件。这样的查询结构有助于控制变量，以确保每个供应商都经过了正确的检查，而不会在内部循环中受到外部循环的影响（省流，类似于for循环控制外层变量在内层循环中不变，这样就能保证最内层的循环查找的一定是同一个供应商的供货记录</p>
 <p>最外层的表是S，中间的是P，最内层的是SPJ</p>
+<h2 id="只向与自己不同城市工程供应"><a href="#只向与自己不同城市工程供应" class="headerlink" title="只向与自己不同城市工程供应"></a>只向与自己不同城市工程供应</h2><blockquote>
+<p>供应商数据库SPJ中有三张表：<br>S(SNO, SNAME, STATUS, CITY)<br>P(PNO, PNAME, COLOR, WEIGHT, CITY)<br>J(JNO, JNAME,CITY)<br>SPJ(SNO, PNO, JNO, QTY, PRICE)<br>S表示供应商，各属性依次为供应商号，供应商名，供应商状态值，供应商所在城市；<br>P表示零件，各属性依次为零件号，零件名，零件颜色，零件重量，零件存放的城市；<br>J表示工程，各属性依次为工程号，工程名，工程所在城市；<br>SPJ表示供货关系，各属性依次为供应商号，零件号，工程号，供货数量，单价。<br>基于以上SPJ关系模式用SQL完成下面的查询：<br>求只向与自己位于不同城市的工程供应零件的供应商姓名。</p>
+</blockquote>
+<p>首先，这个供应商不能是什么零件都没有供应，所以以SPJ为主表进行left join</p>
+<p>注意这个left join的格式必须是某某表LEFT JOIN 另一个表 ON 一些条件！！！</p>
+<p>如果要连续left join的话另起一行就可以</p>
+<p>WHERE NOT IN的格式也要注意！是WHERE 某一列 NOT IN（括号里面套娃select）</p>
+<p>讲完了格式讲一下这道题的思路，大体上就是首先，这个供应商必须供应了零件，所以以spj为主表，然后，（判断推理的思路！）“只向与自己位于不同城市供应了零件”的反面是“向与自己位于相同城市的工程供应过零件”（在sql查询中，这个“过”非常重要，“只”相对难办）于是我们求出“向与自己位于相同城市的工程供应过零件”再not in一下就好了！</p>
+<p>放代码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> S.SNAME<br><span class="hljs-keyword">FROM</span> SPJ <br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> S <span class="hljs-keyword">ON</span> SPJ.SNO<span class="hljs-operator">=</span>S.SNO<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> J <span class="hljs-keyword">ON</span> SPJ.JNO<span class="hljs-operator">=</span>J.JNO<br><span class="hljs-keyword">WHERE</span> S.SNAME <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span>(<br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> S.SNAME<br>    <span class="hljs-keyword">FROM</span> SPJ <br>    <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> S <span class="hljs-keyword">ON</span> SPJ.SNO<span class="hljs-operator">=</span>S.SNO    <br>    <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> J <span class="hljs-keyword">ON</span> SPJ.JNO<span class="hljs-operator">=</span>J.JNO<br>    <span class="hljs-keyword">WHERE</span> S.CITY<span class="hljs-operator">=</span>J.CITY<br>)     <br></code></pre></td></tr></table></figure>
+<h2 id="列出每个城市的工程使用零件总量"><a href="#列出每个城市的工程使用零件总量" class="headerlink" title="列出每个城市的工程使用零件总量"></a>列出每个城市的工程使用零件总量</h2><blockquote>
+<p>供应商数据库SPJ中有三张表：<br>S(SNO, SNAME, STATUS, CITY)<br>P(PNO, PNAME, COLOR, WEIGHT, CITY)<br>J(JNO, JNAME,CITY)<br>SPJ(SNO, PNO, JNO, QTY, PRICE)<br>S表示供应商，各属性依次为供应商号，供应商名，供应商状态值，供应商所在城市；<br>P表示零件，各属性依次为零件号，零件名，零件颜色，零件重量，零件存放的城市；<br>J表示工程，各属性依次为工程号，工程名，工程所在城市；<br>SPJ表示供货关系，各属性依次为供应商号，零件号，工程号，供货数量，单价。<br>基于以上SPJ关系模式用SQL完成下面的查询：<br>列出每个城市的工程所使用的零件总的数量。</p>
+</blockquote>
+<p>样例输出：</p>
+<table>
+<thead>
+<tr>
+<th>CITY</th>
+<th>sum(QTY)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paris</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Rome</td>
+<td>1200</td>
+</tr>
+</tbody></table>
+<p>这道题用到了聚集函数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> CITY,<span class="hljs-built_in">SUM</span>(QTY)<br><span class="hljs-keyword">FROM</span> J <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> SPJ <span class="hljs-keyword">ON</span>  SPJ.JNO<span class="hljs-operator">=</span>J.JNO<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> CITY       <br></code></pre></td></tr></table></figure>
+
+<p>left join是因为要列出每个城市的工程零件量，但是不排除有些城市可能零件量为零。（每次都忘了写on</p>
+<p>最后要加一行group by 列名（having 条件表达式，不过这题没有涉及所以不用having</p>
+<h1 id="面试搬运-SQL面试五十题"><a href="#面试搬运-SQL面试五十题" class="headerlink" title="面试搬运-SQL面试五十题"></a>面试搬运-SQL面试五十题</h1><p>字号太小了就搬过来了。<br>原地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qiqi123i/article/details/108455130">https://blog.csdn.net/qiqi123i/article/details/108455130</a></p>
+<ol>
+<li>查询课程编号为“01”的课程比“02”的课程成绩高的所有学生的学号（难）</li>
+<li>查询平均成绩大于60分的学生的学号和平均成绩</li>
+<li>查询所有学生的学号、姓名、选课数、总成绩</li>
+<li>查询姓“猴”的老师的个数</li>
+<li>查询没学过“张三”老师课的学生的学号、姓名</li>
+<li>查询学过“张三”老师所教的所有课的同学的学号、姓名</li>
+<li>查询学过编号为“01”的课程并且也学过编号为“02”的课程的学生的学号、姓名</li>
+<li>查询课程编号为“02”的总成绩</li>
+<li>查询所有课程成绩小于60分的学生的学号、姓名</li>
+<li>查询没有学全所有课的学生的学号、姓名</li>
+<li>查询至少有一门课与学号为“01”的学生所学课程相同的学生的学号和姓名 （难）</li>
+<li>查询和“01”号同学所学课程完全相同的其他同学的学号（难）</li>
+<li>查询没学过”张三”老师讲授的任一门课程的学生姓名 和47题一样</li>
+<li>查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩</li>
+<li>检索”01”课程分数小于60，按分数降序排列的学生信息</li>
+<li>按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩(难)</li>
+<li>查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率</li>
+<li>按各科成绩进行排序，并显示排名(难)</li>
+<li>查询学生的总成绩并进行排名</li>
+<li>查询不同老师所教不同课程平均分从高到低显示</li>
+<li>查询所有课程的成绩第2名到第3名的学生信息及该课程成绩（重要 25类似）</li>
+<li>使用分段[100-85],[85-70],[70-60],[&lt;60]来统计各科成绩，分别统计各分数段人数：课程ID和课程名称</li>
+<li>查询学生平均成绩及其名次</li>
+<li>查询各科成绩前三名的记录（不考虑成绩并列情况）</li>
+<li>查询每门课程被选修的学生数</li>
+<li>查询出只有两门课程的全部学生的学号和姓名</li>
+<li>查询男生、女生人数</li>
+<li>查询名字中含有”风”字的学生信息</li>
+<li>查询1990年出生的学生名单</li>
+<li>查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩</li>
+<li>查询每门课程的平均成绩，结果按平均成绩升序排序，平均成绩相同时，按课程号降序排列</li>
+<li>查询课程名称为”数学”，且分数低于60的学生姓名和分数</li>
+<li>查询所有学生的课程及分数情况</li>
+<li>查询任何一门课程成绩在70分以上的姓名、课程名称和分数</li>
+<li>查询不及格的课程并按课程号从大到小排列</li>
+<li>查询课程编号为03且课程成绩在80分以上的学生的学号和姓名</li>
+<li>求每门课程的学生人数</li>
+<li>查询选修“张三”老师所授课程的学生中成绩最高的学生姓名及其成绩</li>
+<li>查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩 （难）</li>
+<li>查询每门功成绩最好的前两名</li>
+<li>统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</li>
+<li>检索至少选修两门课程的学生学号</li>
+<li>查询选修了全部课程的学生信息</li>
+<li>查询各学生的年龄</li>
+<li>查询没学过“张三”老师讲授的任一门课程的学生姓名</li>
+<li>查询两门以上不及格课程的同学的学号及其平均成绩</li>
+<li>查询本月过生日的学生</li>
+<li>查询下一个月过生日的学生</li>
+</ol>
+<h1 id="SQL测验"><a href="#SQL测验" class="headerlink" title="SQL测验"></a>SQL测验</h1><p>不想成为那个八股背的非常流利但是sql一道都不会写的人于是开始恶补啊啊啊啊啊</p>
+<p>一个选择题测验网站：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=sql">https://www.w3school.com.cn/quiz/quiz.asp?quiz=sql</a></p>
+<p>注：“您的回答”下没有“正确答案”的就是答对了</p>
+<p>1.SQL 指的是？<br>您的回答：Structured Query Language</p>
+<p>2.哪个 SQL 语句用于从数据库中提取数据？<br>您的回答：SELECT</p>
+<p>3.哪条 SQL 语句用于更新数据库中的数据？<br>您的回答：UPDATE</p>
+<p>4.哪条 SQL 语句用于删除数据库中的数据？<br>您的回答：DELETE</p>
+<p>5.哪条 SQL 语句用于在数据库中插入新的数据？<br>您的回答：INSERT INTO</p>
+<p>6.通过 SQL，您如何从 “Persons” 表中选取 “FirstName” 列？<br>您的回答：SELECT FirstName FROM Persons</p>
+<p>7.通过 SQL，您如何从 “Persons” 表中选取所有的列？<br>您的回答：SELECT * FROM Persons</p>
+<p>8.通过 SQL，您如何从 “Persons” 表中选取 “FirstName” 列的值等于”Peter” 的所有记录？<br>您的回答：SELECT * FROM Persons WHERE FirstName&#x3D;’Peter’</p>
+<p>9.通过 SQL，您如何从 “Persons” 表中选取 “FirstName” 列的值以 “a” <strong>开头</strong>的所有记录？<br>您的回答：SELECT * FROM Persons WHERE FirstName LIKE ‘%a’<br><strong>正确答案：SELECT * FROM Persons WHERE FirstName LIKE ‘a%’</strong></p>
+<p>10.请判断下列说法是否正确：当所列出的某个条件为 true 时，OR 运算符会显示记录。当列出的所有条件为 true 时，AND 运算符会显示记录。<br>您的回答：正确</p>
+<p>11.通过 SQL，您如何在表 Persons 中选择 FirstName 等于 Thomas 而 LastName 等于 Carter 的所有记录？<br>您的回答：SELECT * FROM Persons WHERE FirstName&#x3D;’Thomas’ AND LastName&#x3D;’Carter’</p>
+<p>12.通过 SQL，您如何按字母顺序选取 Persons 表中 LastName 介于 Adams 和 Carter 的所有记录？<br>您的回答：SELECT * FROM Persons WHERE LastName&gt;’Adams’ AND LastName&lt;’Carter’<br><strong>正确答案：SELECT * FROM Persons WHERE LastName BETWEEN ‘Adams’ AND ‘Carter’</strong></p>
+<p>13.哪条 SQL 语句可返回唯一不同的值？<br>您的回答：SELECT DISTINCT</p>
+<p>14.哪个 SQL 关键词用于对<strong>结果集</strong>进行排序？<br>您的回答：SORT BY<br><strong>正确答案：ORDER BY</strong></p>
+<p>15.通过 SQL，您如何根据 “FirstName” 列降序地从 “Persons” 表返回所有记录？<br>您的回答：SELECT * FROM Persons ORDER BY FirstName DESC</p>
+<p>16.通过 SQL，您如何向 “Persons” 表插入新的记录？<br>您的回答：INSERT INTO Persons VALUES (‘Jimmy’, ‘Jackson’)</p>
+<p>17.通过 SQL，您如何向 “Persons” 表中的 “LastName” 列插入 “Wilson” ？<br>您的回答：INSERT INTO Persons (LastName) VALUES (‘Wilson’)</p>
+<p>18.您如何把 “Persons” 表中 “LastName” 列的 “Gates” 改为 “Wilson” ？<br>您的回答：UPDATE Persons SET LastName&#x3D;’Wilson’ WHERE LastName&#x3D;’Gates’</p>
+<p>19.通过 SQL，您如何在 “Persons” 表中删除 “FirstName” 等于 “Fred” 的纪录？<br>您的回答：DELETE ROW FirstName&#x3D;’Fred’ FROM Persons<br><strong>正确答案：DELETE FROM Persons WHERE FirstName &#x3D; ‘Fred’</strong></p>
+<p>20.通过 SQL，您如何返回 “Persons” 表中记录的数目？<br>您的回答：SELECT COUNT(*) FROM Persons</p>
 
                 
               </div>
@@ -347,13 +484,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
-      
-    </div>
-  
 </div>
 
 
@@ -362,8 +492,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>求供应了所有零件的供应商</div>
-      <div>http://liebe-grausam.github.io/2024/03/29/求供应了所有零件的供应商/</div>
+      <div>sql语句书写</div>
+      <div>http://liebe-grausam.github.io/2024/06/18/sql语句书写/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +505,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月29日</div>
+          <div>2024年6月18日</div>
         </div>
       
       
@@ -407,18 +537,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/30/%E5%88%97%E5%87%BA%E6%AF%8F%E4%B8%AA%E5%9F%8E%E5%B8%82%E7%9A%84%E5%B7%A5%E7%A8%8B%E4%BD%BF%E7%94%A8%E9%9B%B6%E4%BB%B6%E6%80%BB%E9%87%8F/" title="列出每个城市的工程使用零件总量">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">列出每个城市的工程使用零件总量</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/28/%E5%9D%A0%E8%90%BD%E7%9A%84%E5%AE%A1%E5%88%A4/" title="坠落的审判">
-                        <span class="hidden-mobile">坠落的审判</span>
+                      <a href="/2024/06/13/%E6%80%BB%E7%BA%BF/" title="总线时序图">
+                        <span class="hidden-mobile">总线时序图</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
