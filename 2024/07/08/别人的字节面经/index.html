@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.ico">
+  <link rel="icon" href="/img/avatar.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1E646E">
+  <meta name="author" content="Liebe_grausam">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这是一份最终版字节面经，也是一份最终版互联网面经。如果这次还面不过的话应该就放弃这条路了。 计算机网络网络分层及其典型协议OSI七层模型：应用层（Application Layer）：这是网络体系结构中的最顶层，提供用户接口和应用程序之间的通信服务。在这一层，用户可以访问各种网络应用程序，如电子邮件、文件传输和远程登录。表示层（Presentation Layer）：该层负责数据的格式化、加密和压">
+<meta property="og:type" content="article">
+<meta property="og:title" content="别人的字节面经">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/07/08/%E5%88%AB%E4%BA%BA%E7%9A%84%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F/index.html">
+<meta property="og:site_name" content="苯人的一些发疯自留地！">
+<meta property="og:description" content="这是一份最终版字节面经，也是一份最终版互联网面经。如果这次还面不过的话应该就放弃这条路了。 计算机网络网络分层及其典型协议OSI七层模型：应用层（Application Layer）：这是网络体系结构中的最顶层，提供用户接口和应用程序之间的通信服务。在这一层，用户可以访问各种网络应用程序，如电子邮件、文件传输和远程登录。表示层（Presentation Layer）：该层负责数据的格式化、加密和压">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
+<meta property="article:published_time" content="2024-07-08T07:55:35.000Z">
+<meta property="article:modified_time" content="2024-07-08T15:48:19.135Z">
+<meta property="article:author" content="Liebe_grausam">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>别人的字节面经 - 苯人的一些发疯自留地！</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liebe-grausam.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>撒野地</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/wenzhang.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="别人的字节面经"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-08 15:55" pubdate>
+          2024年7月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          67 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">别人的字节面经</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这是一份最终版字节面经，也是一份最终版互联网面经。如果这次还面不过的话应该就放弃这条路了。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="网络分层及其典型协议"><a href="#网络分层及其典型协议" class="headerlink" title="网络分层及其典型协议"></a>网络分层及其典型协议</h2><p>OSI七层模型：<br>应用层（Application Layer）：这是网络体系结构中的最顶层，提供用户接口和应用程序之间的通信服务。在这一层，用户可以访问各种网络应用程序，如电子邮件、文件传输和远程登录。<br>表示层（Presentation Layer）：该层负责数据的格式化、加密和压缩，以确保数据在不同系统之间的交换是有效的和安全的。它还提供了数据格式转换和语法转换的功能。<br>会话层（Session Layer）：会话层管理应用程序之间的通信会话，负责建立、维护和终止会话。它还提供了数据的同步和检查点恢复功能，以确保通信的完整性和持续性。<br>传输层（Transport Layer）：传输层为应用程序提供端到端的数据传输服务，负责数据的分段、传输控制、错误恢复和流量控制。它主要使用 TCP（传输控制协议）和 UDP（用户数据报协议）来实现这些功能。<br>网络层（Network Layer）：网络层负责数据包的路由和转发，以及网络中的寻址和拥塞控制。它选择最佳的路径来传输数据包，以确保它们能够从源主机到目标主机进行传输。<br>数据链路层（Data Link Layer）：数据链路层提供点对点的数据传输服务，负责将原始比特流转换为数据帧，并检测和纠正传输中出现的错误。它还控制访问物理媒介的方式，以及数据帧的传输和接收。<br>物理层（Physical Layer）：物理层在物理媒介上传输原始比特流，定义了连接主机的硬件设备和传输媒介的规范。它确保比特流能够在网络中准确地传输，例如通过以太网、光纤和无线电波等媒介。<br><img src="/../img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="数据链路层重要知识"><a href="#数据链路层重要知识" class="headerlink" title="数据链路层重要知识"></a>数据链路层重要知识</h2><h3 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h3><p>帧是数据链路层的基本单位，发送端在网络层的一段数据前后添加特定标记形成帧，接收端根据前后特定标记识别出帧。<br>只有数据链路层才能识别帧，物理层只负责传输比特流。 这也满足计算机网络层次结构设计的一个原则——层与层之间相互独立、解耦。</p>
+<p>网络层将IP数据报 传送到数据链路层作为帧的数据部分，数据链路层在分别其前后增加了一个标记。帧在物理层就是一串01比特流。</p>
+<p>帧首部和尾部是特定的控制字符(特定比特流)<br>帧首部(SOH)：00000001<br>帧尾部(EOT)：00000100</p>
+<h3 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h3><p>控制字符在帧数据中，但是要当做不存在的去处理</p>
+<p>在帧数据部分出现的首尾控制字符前加一个转义字符(ESC)。如果数据中也出现转义字符咋办，那就再转义字符前再加一个转义字符。<br>ESC在这里的作用就像C语言中的“\”。</p>
+<h3 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h3><p>物理层只管传输比特流，无法控制和判断是否出错。物理层在传输过程中很容易受到环境干扰，进而产生错误但物理层无法察觉。因此数据链路层负责起“差错监测”的工作。</p>
+<ol>
+<li>奇偶校验</li>
+</ol>
+<p>根据原始数据1的个数来增加奇偶校验码。分为单比特奇偶校验（检查）和多维奇偶校验（可纠错）</p>
+<p>一维奇偶校验码的编码规则是把信息码元先分组，在每组最后加一位校验码元，使该码中1的数目为奇数或偶数，奇数时称为奇校验码，偶数时称为偶校验码。<br>单维奇偶校验只能发现错误位数为奇数的错误，即比如两位出错，奇偶校验无法发现错误。</p>
+<p>二维就是在空间上先形成二维数组，然后每行每列都有一个校验码。</p>
+<ol start="2">
+<li>CRC循环冗余校验</li>
+</ol>
+<p>选一个 r+1 bit 的生成多项式G(x)，作为双方的除数。<br>若原始数据为D，发送方用M&#x3D;D*2^r作为被除数。<br>M除以G,得到一个余数R,即为CRC循环冗余检验码。<br>最终发送的数据为M+R。<br>（相当于，在原始数据和“原始数据左移r位得到的被除数除以生成多项式得到的余数”一起发送（把余数添加在最后</p>
+<p>发送方发送这个数据之后，接收方再用这个数据除以原来的除数（生成多项式得到的除数），如果余数为零就没有错误。</p>
+<p>能检查出全部单比特错。<br>能检查出全部的奇数个比特错。<br>能检查出全部长度小于或等于r位的突发错。<br>硬件电路效率很高。</p>
+<p>CRC冗余检验通常工作在数据链路层。（√）<br>存在100%能查错的算法。（×，目前不存在）<br>校验和查错速度比CRC检验快。（×，CRC是基于底层硬件的差错方式，更快）<br>散列函数（如MD5算法）（这玩意是单向加密的，无法通过MD5加密后的数据来还原）可用于数据保密通信。（×，只能检查数据的完整性）<br>奇偶校验只能查错，不能纠错。（×，多维奇偶校验可以纠错）<br>纠错机制应广泛用于计算机网络通信（×，代价太大，更多的是差错控制机制）</p>
+<h2 id="TCP、UDP差异及应用场景"><a href="#TCP、UDP差异及应用场景" class="headerlink" title="TCP、UDP差异及应用场景"></a>TCP、UDP差异及应用场景</h2><p>可靠性<br>点对点 vs 一对多 多对一 多对多<br>分片（TCP在传输层分片，UDP在网络层分片<br>首部开销<br>是否要建立连接<br>传输是否有边界（如何传输</p>
+<p>应用场景：TCP用于FTP文件传输，HTTP &#x2F; HTTPS；UDP用于包总量较少的通信，如 DNS、SNMP 等，视频、音频等多媒体通信，广播通信。</p>
+<h2 id="TCP如何保证数据可靠传输"><a href="#TCP如何保证数据可靠传输" class="headerlink" title="TCP如何保证数据可靠传输"></a>TCP如何保证数据可靠传输</h2><p>控制位<br>校验码<br>建立连接<br>拥塞控制<br>超时重传<br>seq、ack<br>滑动窗口<br>快速重传（当接收端收到比期望号大的seq时候，就会发送冗余ACK，在超时重传之前如果收到三个相同的冗余ACK，那么就知道哪段报文发生了丢包，重传该段报文即可，避免了超时重传）</p>
+<h2 id="TCP3次握手4次挥手"><a href="#TCP3次握手4次挥手" class="headerlink" title="TCP3次握手4次挥手"></a>TCP3次握手4次挥手</h2><p>握手：<br>syn（seq&#x3D;x） synack （seq&#x3D;y ack&#x3D;x+1） ack（seq&#x3D;x+1 ack&#x3D;y+1）（注意要加一）<br>挥手：<br>fin（fin&#x3D;u） ack（seq&#x3D;v ack&#x3D;u+1） finack(seq&#x3D;w ack&#x3D;u+1) ack(seq&#x3D;u+1 ack&#x3D;w+1)</p>
+<h2 id="挥手之后客户端进入close状态要等多久"><a href="#挥手之后客户端进入close状态要等多久" class="headerlink" title="挥手之后客户端进入close状态要等多久"></a>挥手之后客户端进入close状态要等多久</h2><p>2MSL（MSL指报文被丢弃前的最长存活时间</p>
+<p>这是为了确保服务器收到ACK报文，如果服务器没收到ACK报文就要重传FINACK报文，如果在此期间客户端又收到了这个报文就要重新计时。</p>
+<h2 id="TCP粘包"><a href="#TCP粘包" class="headerlink" title="TCP粘包"></a>TCP粘包</h2><p>这是由TCP的传输特性引起的。因为TCP是流式传输，如果请求发送的数据量没达到缓冲区大小，那么多个请求可能会合并成一个请求进行发送，这样TCP可能没办法判断哪一段流属于一个信息。<br>粘包时：发送方每次写入数据 &lt; 接收方套接字(Socket)缓冲区大小。<br>拆包时：发送方每次写入数据 &gt; 接收方套接字(Socket)缓冲区大小。<br>日常的网络应用开发大都在传输层进行，由于UDP有消息保护边界，不会发生粘包拆包问题，因此粘包拆包问题只发生在TCP协议中</p>
+<p>解决办法：</p>
+<p>1、<strong>固定长度</strong>：客户端在发送数据包的时候，每个包都固定长度，比如1024个字节大小，如果客户端发送的数据长度不足1024个字节，则通过补充空格的方式补全到指定长度；</p>
+<p>2、<strong>特殊字符边界</strong>：客户端在每个包的末尾使用固定的分隔符，例如\r\n，如果一个包被拆分了，则等待下一个包发送过来之后找到其中的\r\n，然后对其拆分后的头部部分与前一个包的剩余部分进行合并，这样就得到了一个完整的包；</p>
+<p>3、<strong>自定义消息结构</strong>：将消息分为头部和消息体，在头部中保存有当前整个消息的长度，只有在读取到足够长度的消息之后才算是读到了一个完整的消息；</p>
+<p>4、通过自定义协议进行粘包和拆包的处理。</p>
+<p>补充：http协议如何解决粘包</p>
+<p>读取请求行&#x2F;请求头、响应行&#x2F;响应头<br>1、遇到第一个\r\n表示读取请求行或响应行结束；<br>2、遇到\r\n\r\n表示读取请求头或响应头结束；</p>
+<p>读取body数据<br>HTTP协议通常使用Content-Length来标识body的长度。在服务器端，需要先申请对应长度的buffer，然后再赋值。<br>如果需要一边生产数据一边发送数据，就需要使用”Transfer-Encoding: chunked” 来代替Content-Length，也就是对数据进行分块传输（使用chunked协议）。</p>
+<p>chunk协议主要内容<br>1、主要包含三部分: chunk，last-chunk和trailer。如果分多次发送，则chunk有多份。<br>2、 chunk主要包含大小和数据，大小表示这个这个chunk包的大小，使用16进制标示。其中chunk之间的分隔符为CRLF。<br>3、通过last-chunk来标识chunk发送完成。一般读取到last-chunk(内容为0)的时候，代表chunk发送完成。<br>4、trailer表示增加header等额外信息，一般情况下header是空。通过CRLF来标识整个chunked数据发送完成。</p>
+<p>chunk协议优&#x2F;缺点</p>
+<p>优点</p>
+<p>1、假如body的长度是10K，对于Content-Length则需要申请10K连续的buffer，而对于Transfer-Encoding:chunked可以申请1k的空间，然后循环使用10次。节省了内存空间的开销。<br>2、如果内容的长度不可知，则可使用chunked方式能有效的解决Content-Length的问题<br>3、http服务器压缩可以采用分块压缩，而不是整个块压缩。分块压缩可以一边进行压缩，一般发送数据，来加快数据的传输时间。</p>
+<p>缺点<br>1、chunked协议解析比较复杂。<br>2、在http转发的场景下(比如nginx)难以处理，比如如何对分块数据进行转发。</p>
+<p>Nginx（读作 “engine x”）是一款开源的高性能HTTP服务器及反向代理服务器。</p>
+<p>以下是Nginx的几个主要功能：</p>
+<ol>
+<li><strong>HTTP服务器</strong>：Nginx可以用作Web服务器，用于提供静态文件、处理HTTP请求、提供SSL支持等。</li>
+<li><strong>反向代理服务器</strong>：Nginx可以作为反向代理，将客户端请求转发到后端服务器，通常用于负载均衡、缓存以及安全性提升。</li>
+<li><strong>负载均衡</strong>：Nginx可以将流量分配到多个后端服务器，从而提高网站的可靠性和性能。</li>
+<li><strong>缓存</strong>：Nginx可以缓存静态内容和代理内容，从而减少服务器的负载并加快响应时间。</li>
+<li><strong>邮件代理服务器</strong>：Nginx也可以用作IMAP&#x2F;POP3&#x2F;SMTP邮件代理服务器。</li>
+</ol>
+<p>Nginx以其高性能、低资源消耗和模块化设计著称，使其成为许多高流量网站的首选Web服务器。例如，WordPress、GitHub、Netflix和Dropbox都在使用Nginx。</p>
+<h2 id="输入URL到网页的过程"><a href="#输入URL到网页的过程" class="headerlink" title="输入URL到网页的过程"></a>输入URL到网页的过程</h2><p>查域名是否在本地缓存中<br>DNS解析到IP地址（顶级域名解析器-&gt;根域名解析器-&gt;本地域名解析器）<br><strong>建立TCP连接</strong><br>向服务器发请求头<br>请求服务器中资源<br>页面渲染</p>
+<h2 id="websocket协议"><a href="#websocket协议" class="headerlink" title="websocket协议"></a>websocket协议</h2><p>普遍认为，WebSocket的优点有如下几点：</p>
+<p>1）较少的控制开销：在连接创建后，服务器和客户端之间交换数据时，用于协议控制的数据包头部相对较小；<br>2）<strong>更强的实时性</strong>：由于协议是全双工的，所以服务器可以随时主动给客户端下发数据。相对于 HTTP 请求需要等待客户端发起请求服务端才能响应，延迟明显更少；<br>3）保持连接状态：与 HTTP 不同的是，WebSocket 需要先创建连接，这就使得其成为一种<strong>有状态</strong>的协议，之后通信时可以省略部分状态信息；<br>4）更好的二进制支持：WebSocket <strong>定义了二进制帧</strong>，相对 HTTP，可以更轻松地处理二进制内容；<br>5）可以支持扩展：WebSocket 定义了扩展，用户可以扩展协议、实现部分自定义的子协议。<br>由于 WebSocket 拥有上述的优点，所以它被广泛地应用在即时通讯&#x2F;IM、实时音视频、在线教育和游戏等领域。</p>
+<p>WebSocket 协议和 HTTP&#x2F;HTTPS 协议有一定的关联，但它们是为不同的用途设计的协议。</p>
+<p>HTTP&#x2F;HTTPS 协议：</p>
+<ol>
+<li><strong>用途</strong>：HTTP（Hypertext Transfer Protocol）和 HTTPS（HTTP Secure）主要用于客户端和服务器之间的请求-响应通信。它们适用于请求短期连接，比如网页浏览、文件下载等。</li>
+<li><strong>连接模式</strong>：HTTP&#x2F;HTTPS 是无状态协议，每次请求都需要新建一个连接，并在请求完成后关闭连接。</li>
+<li><strong>传输方式</strong>：HTTP 通过明文传输数据，而 HTTPS 在 HTTP 基础上加入了 SSL&#x2F;TLS 加密层，用于确保数据的安全传输。</li>
+<li><strong>通信方向</strong>：通常是单向的，即客户端发送请求，服务器返回响应。</li>
+</ol>
+<p>WebSocket 协议：</p>
+<ol>
+<li><strong>用途</strong>：WebSocket 是一种全双工通信协议，设计用于在客户端和服务器之间建立长时间的连接，实现实时、低延迟的双向通信。它适用于需要频繁消息交换的应用，如在线聊天、实时游戏、股票行情推送等。</li>
+<li><strong>连接模式</strong>：WebSocket 通过一个初始的 HTTP&#x2F;HTTPS 请求进行连接升级（handshake），然后在该连接上保持持续的、双向的通信，直到连接被关闭。</li>
+<li><strong>传输方式</strong>：WebSocket 连接建立后，数据以帧（frames）形式传输，可以是文本或二进制数据。初始握手使用 HTTP&#x2F;HTTPS 协议，因此 WebSocket 也可以通过 SSL&#x2F;TLS 加密实现安全通信，即 WSS（WebSocket Secure）。</li>
+<li><strong>通信方向</strong>：全双工通信，即客户端和服务器都可以随时发送数据。</li>
+</ol>
+<p>关联：</p>
+<ol>
+<li><p><strong>连接建立</strong>：WebSocket 的连接是通过 HTTP&#x2F;HTTPS 协议的握手（handshake）机制建立的。客户端发送一个 HTTP 请求，包含 <code>Upgrade</code> 头部字段，要求升级到 WebSocket 协议。如果服务器同意升级请求，则返回一个包含 <code>101 Switching Protocols</code> 状态码的响应，随后连接升级为 WebSocket。</p>
+<p>握手示例：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/chat</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>example.com<br><span class="hljs-attribute">Upgrade</span><span class="hljs-punctuation">: </span>websocket<br><span class="hljs-attribute">Connection</span><span class="hljs-punctuation">: </span>Upgrade<br><span class="hljs-attribute">Sec-WebSocket-Key</span><span class="hljs-punctuation">: </span>dGhlIHNhbXBsZSBub25jZQ==<br><span class="hljs-attribute">Sec-WebSocket-Version</span><span class="hljs-punctuation">: </span>13<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安全性</strong>：WebSocket 可以通过 HTTPS（即 WSS）来建立加密连接，确保数据传输的安全性。类似于 HTTPS 相对于 HTTP 的作用，WSS 提供了对 WebSocket 数据流的加密。</p>
+</li>
+</ol>
+<p>总结来说，WebSocket 和 HTTP&#x2F;HTTPS 在初始握手阶段有直接关联，但它们在设计目的、连接模式和通信方式上有明显的区别。HTTP&#x2F;HTTPS 适用于请求-响应模型，而 WebSocket 适用于需要持续、低延迟双向通信的场景。</p>
+<h2 id="为什么握手要三次，挥手要四次"><a href="#为什么握手要三次，挥手要四次" class="headerlink" title="为什么握手要三次，挥手要四次"></a>为什么握手要三次，挥手要四次</h2><p>握手三次：<br>确认客户端和服务端的收发能力都没问题<br>四次挥手：<br>关闭连接时，客户端向服务端发送 FIN时，仅仅表示客户端不再发送数据了但是还能接收数据。<br>服务端收到客户端的FIN报文时，先回一个 ACK 应答报文，而服务端可能还有数据需要处理和发送，等服务端不再发送数据时，才发送 FIN 报文给客户端来表示同意现在关闭连接。</p>
+<h2 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a>HTTPS协议</h2><p>Client hello：<br>SSL&#x2F;TLS ver、client random、密码套件</p>
+<p>Server hello：<br>SSL&#x2F;TLS check、Server random、密码套件 check、数字证书</p>
+<p>client response：<br>CA密钥 check 真实性<br>通信算法改变通知<br>握手结束通知<br>摘要</p>
+<p>server response：<br>通信算法改变通知<br>握手结束通知<br>摘要</p>
+<p>加密通信ing</p>
+<h2 id="对一个已经上线的使用HTTPS的客户端应用，假设有问题，如何排查，如何抓包？"><a href="#对一个已经上线的使用HTTPS的客户端应用，假设有问题，如何排查，如何抓包？" class="headerlink" title="对一个已经上线的使用HTTPS的客户端应用，假设有问题，如何排查，如何抓包？"></a>对一个已经上线的使用HTTPS的客户端应用，假设有问题，如何排查，如何抓包？</h2><p>确认问题：确定问题是发生在客户端、服务器还是网络。检查客户端日志、服务器日志以及网络状况。<br>检查证书：确认客户端和服务器使用的SSL&#x2F;TLS证书是否有效且未过期。<br>验证网络连接：确保网络连接正常，没有防火墙或其他网络设备阻止流量。<br>使用wireshark抓包（客户端代理设置成127.0.0.1:8080</p>
+<h2 id="DNS协议如何多级寻址"><a href="#DNS协议如何多级寻址" class="headerlink" title="DNS协议如何多级寻址"></a>DNS协议如何多级寻址</h2><p>查缓存-&gt;<strong>本地</strong>询问根域名服务器-&gt;根域名服务器返回顶级域名服务器-&gt;<strong>本地</strong>查顶级域名服务器-&gt;顶级域名服务器返回授权域名服务器-&gt;本地查授权域名服务器-&gt;授权域名服务器返回给本地域名服务器-&gt;<strong>保存到缓存</strong>并返回给本机</p>
+<h2 id="域名和ip的对应关系？"><a href="#域名和ip的对应关系？" class="headerlink" title="域名和ip的对应关系？"></a>域名和ip的对应关系？</h2><p>（多对多！！！）<br>一个域名可以对应很多个ip，比如百度有很多个ip<br>一个ip也可以对应很多个域名，比如一台计算机上可以有很多个服务</p>
+<h2 id="linux通过什么文件修改域名对应的ip"><a href="#linux通过什么文件修改域名对应的ip" class="headerlink" title="linux通过什么文件修改域名对应的ip"></a>linux通过什么文件修改域名对应的ip</h2><p>修改配置文件&#x2F;etc&#x2F;hosts<br>例如：<br>192.168.1.100 example.com<br>10.0.0.1 test.com</p>
+<p>可以用ping命令验证修改是否有效</p>
+<h2 id="怎么修改域名服务器"><a href="#怎么修改域名服务器" class="headerlink" title="怎么修改域名服务器"></a>怎么修改域名服务器</h2><p>修改&#x2F;etc&#x2F;resolv.conf配置文件<br>使用nameserver关键字指定DNS服务器的IP地址，每行一个。例如：<br>nameserver 8.8.8.8<br>nameserver 8.8.4.4</p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="介绍一下主流操作系统"><a href="#介绍一下主流操作系统" class="headerlink" title="介绍一下主流操作系统"></a>介绍一下主流操作系统</h2><ol>
+<li>Windows<br>开发公司：微软公司<br>最新版本：Windows 11（2021年发布）<br>特点：<br>广泛使用于个人电脑和企业环境。<br>友好的用户界面和丰富的软件生态系统。<br>包含Microsoft Office、Edge浏览器和Cortana等内置应用。<br>强大的硬件兼容性和游戏支持。<br>应用场景：办公、娱乐、游戏、教育。</li>
+<li>macOS<br>开发公司：苹果公司<br>最新版本：macOS Ventura（2023年发布）<br>特点：<br>独特的设计和高效的用户界面。<br>深度集成<strong>苹果生态</strong>系统，如iCloud、iMessage和Siri。<br>强大的图形和视频编辑功能，广泛用于创意行业。<br>基于<strong>Unix</strong>的稳定和安全架构。<br>应用场景：设计、视频编辑、软件开发、日常使用。</li>
+<li>Linux<br>开发者：社区开发，众多发行版（如Ubuntu、Fedora、Debian）<br>特点：<br>开源、自由软件，<strong>高度可定制化</strong>。<br>多种发行版，适用于不同的需求和用户群体。<br>强大的<strong>命令行工具</strong>和服务器管理功能。<br><strong>安全性和稳定性</strong>高，适合开发和服务器环境。<br>应用场景：服务器、开发、教育、科学研究。</li>
+</ol>
+<h2 id="介绍一下Linux下内核态和用户态，为什么要分为内核态和用户态？"><a href="#介绍一下Linux下内核态和用户态，为什么要分为内核态和用户态？" class="headerlink" title="介绍一下Linux下内核态和用户态，为什么要分为内核态和用户态？"></a>介绍一下Linux下内核态和用户态，为什么要分为内核态和用户态？</h2><p>用户态和内核态是操作系统为了保护系统资源和实现权限控制而设计的两种不同的CPU运行级别。用户态（User Mode）是程序运行时的正常状态，而内核态（Kernel Mode）是系统在执行内核代码或响应系统调用时的特权状态。</p>
+<p>用户态与内核态的区别<br>权限：内核态具有执行所有指令和访问所有内存空间的权限，而用户态则受到限制，不能直接访问<strong>内核地址空间</strong>或执行<strong>特权指令</strong>。<br>代码：内核态主要执行操作系统的<strong>内核代码</strong>，如中断处理程序、设备驱动、文件系统等。用户态则主要执行应用程序的代码。<br>资源访问：在用户态下，程序不能直接访问<strong>受保护的系统资源</strong>，如硬件设备、中断、内核数据结构等。在内核态下，程序可以访问这些资源。</p>
+<h2 id="用户态和内核态如何切换"><a href="#用户态和内核态如何切换" class="headerlink" title="用户态和内核态如何切换"></a>用户态和内核态如何切换</h2><p>切换场景：<br>系统调用、异常、外部中断<br>系统调用（System Call）：当用户程序需要请求操作系统提供的服务时，会通过系统调用进入内核态。系统调用会触发一个特殊的中断，将CPU从用户态切换到内核态。在内核态下，操作系统会执行相应的服务例程，完成请求后，再通过中断返回指令将CPU切换回用户态。<br>异常（Exception）：当程序执行过程中出现错误或异常情况（如除以零、非法指令、缺页等）时，CPU会自动切换到内核态，以便操作系统能够处理这些异常。<br>外部中断（External Interrupt）：外部设备（如键盘、鼠标、磁盘等）产生的中断信号会使CPU从用户态切换到内核态。操作系统会处理这些中断，执行相应的中断处理程序，然后再将CPU切换回用户态。</p>
+<p>切换的时候会先保存<strong>处理器状态</strong>与<strong>错误信息</strong>至<strong>状态寄存器</strong>，主要保存4个东西，异常触发的<strong>指令地址PC</strong>,异常的<strong>原因</strong>，当前CPU的<strong>栈指针SP</strong>。当发生用户态到内核态的切换时，CPU会先获取<strong>异常向量表</strong>，然后根据异常的原因来调用相应的<strong>异常处理函数</strong>。异常处理完成后，会<strong>恢复应用储蓄的现场</strong>，恢复PC与SP指针，并切换回用户态。</p>
+<h2 id="介绍进程线程"><a href="#介绍进程线程" class="headerlink" title="介绍进程线程"></a>介绍进程线程</h2><p>详见博客</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>别人的字节面经</div>
+      <div>http://liebe-grausam.github.io/2024/07/08/别人的字节面经/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liebe_grausam</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/04/sds%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="redis sds底层数据结构">
+                        <span class="hidden-mobile">redis sds底层数据结构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://liebe-grausam.github.io" target="_blank" rel="nofollow noopener"><span>Kepler</span></a> <i class="iconfont icon-love"></i> <a href="https://junglethorn.github.io" target="_blank" rel="nofollow noopener"><span>Grey’pe</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
