@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
 <meta property="article:published_time" content="2024-07-08T07:55:35.000Z">
-<meta property="article:modified_time" content="2024-07-08T15:48:19.135Z">
+<meta property="article:modified_time" content="2024-07-09T07:08:00.083Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
@@ -214,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8k 字
+          8.3k 字
         
       </span>
     
@@ -225,7 +225,7 @@
         
         
         
-          67 分钟
+          70 分钟
         
       </span>
     
@@ -299,10 +299,17 @@
 <p>CRC冗余检验通常工作在数据链路层。（√）<br>存在100%能查错的算法。（×，目前不存在）<br>校验和查错速度比CRC检验快。（×，CRC是基于底层硬件的差错方式，更快）<br>散列函数（如MD5算法）（这玩意是单向加密的，无法通过MD5加密后的数据来还原）可用于数据保密通信。（×，只能检查数据的完整性）<br>奇偶校验只能查错，不能纠错。（×，多维奇偶校验可以纠错）<br>纠错机制应广泛用于计算机网络通信（×，代价太大，更多的是差错控制机制）</p>
 <h2 id="TCP、UDP差异及应用场景"><a href="#TCP、UDP差异及应用场景" class="headerlink" title="TCP、UDP差异及应用场景"></a>TCP、UDP差异及应用场景</h2><p>可靠性<br>点对点 vs 一对多 多对一 多对多<br>分片（TCP在传输层分片，UDP在网络层分片<br>首部开销<br>是否要建立连接<br>传输是否有边界（如何传输</p>
 <p>应用场景：TCP用于FTP文件传输，HTTP &#x2F; HTTPS；UDP用于包总量较少的通信，如 DNS、SNMP 等，视频、音频等多媒体通信，广播通信。</p>
-<h2 id="TCP如何保证数据可靠传输"><a href="#TCP如何保证数据可靠传输" class="headerlink" title="TCP如何保证数据可靠传输"></a>TCP如何保证数据可靠传输</h2><p>控制位<br>校验码<br>建立连接<br>拥塞控制<br>超时重传<br>seq、ack<br>滑动窗口<br>快速重传（当接收端收到比期望号大的seq时候，就会发送冗余ACK，在超时重传之前如果收到三个相同的冗余ACK，那么就知道哪段报文发生了丢包，重传该段报文即可，避免了超时重传）</p>
+<h2 id="TCP如何保证数据可靠传输"><a href="#TCP如何保证数据可靠传输" class="headerlink" title="TCP如何保证数据可靠传输"></a>TCP如何保证数据可靠传输</h2><ol>
+<li>控制位</li>
+<li>校验码</li>
+<li>建立连接</li>
+<li>拥塞控制（其实快速重传包含在拥塞控制里面）<br><strong>慢启动</strong>（初始cwnd&#x3D;1，收到ack cwnd++，经过一个RTT（往返时间）没出现丢包重传则cwnd*2，直到cwnd&gt;&#x3D;sshtresh门限则终止该阶段<br><strong>拥塞避免</strong>（每收到一个ack cwnd+&#x3D;1&#x2F;cwnd 线性增长<br>如果碰到<strong>超时重传</strong>（发送方传了之后没收到ack）的情况则sshresh&#x3D;cwnd&#x2F;2，cwnd&#x3D;1，重新回到慢启动阶段<br>如果碰到<strong>快速重传</strong>（收到三个重复ACK） cwnd &#x3D; cwnd&#x2F;2, sshresh &#x3D; cwnd, cwnd&#x3D;cwnd+3，重传丢失的数据包，如果再收到重复的ACK则cwnd+1，如果收到了新的ACK则恢复原来的状态，重新进入拥塞避免</li>
+<li>seq、ack</li>
+<li>滑动窗口</li>
+</ol>
 <h2 id="TCP3次握手4次挥手"><a href="#TCP3次握手4次挥手" class="headerlink" title="TCP3次握手4次挥手"></a>TCP3次握手4次挥手</h2><p>握手：<br>syn（seq&#x3D;x） synack （seq&#x3D;y ack&#x3D;x+1） ack（seq&#x3D;x+1 ack&#x3D;y+1）（注意要加一）<br>挥手：<br>fin（fin&#x3D;u） ack（seq&#x3D;v ack&#x3D;u+1） finack(seq&#x3D;w ack&#x3D;u+1) ack(seq&#x3D;u+1 ack&#x3D;w+1)</p>
 <h2 id="挥手之后客户端进入close状态要等多久"><a href="#挥手之后客户端进入close状态要等多久" class="headerlink" title="挥手之后客户端进入close状态要等多久"></a>挥手之后客户端进入close状态要等多久</h2><p>2MSL（MSL指报文被丢弃前的最长存活时间</p>
-<p>这是为了确保服务器收到ACK报文，如果服务器没收到ACK报文就要重传FINACK报文，如果在此期间客户端又收到了这个报文就要重新计时。</p>
+<p>一方面也是为了避免连接复用之后旧的数据包还没过期就到达，一方面是为了确认服务器已经关闭<br>这是为了确保服务器收到ACK报文，如果服务器没收到ACK报文就要重传FINACK报文，如果在此期间客户端又收到了这个报文就要重新计时。</p>
 <h2 id="TCP粘包"><a href="#TCP粘包" class="headerlink" title="TCP粘包"></a>TCP粘包</h2><p>这是由TCP的传输特性引起的。因为TCP是流式传输，如果请求发送的数据量没达到缓冲区大小，那么多个请求可能会合并成一个请求进行发送，这样TCP可能没办法判断哪一段流属于一个信息。<br>粘包时：发送方每次写入数据 &lt; 接收方套接字(Socket)缓冲区大小。<br>拆包时：发送方每次写入数据 &gt; 接收方套接字(Socket)缓冲区大小。<br>日常的网络应用开发大都在传输层进行，由于UDP有消息保护边界，不会发生粘包拆包问题，因此粘包拆包问题只发生在TCP协议中</p>
 <p>解决办法：</p>
 <p>1、<strong>固定长度</strong>：客户端在发送数据包的时候，每个包都固定长度，比如1024个字节大小，如果客户端发送的数据长度不足1024个字节，则通过补充空格的方式补全到指定长度；</p>
@@ -376,7 +383,8 @@
 <p>用户态与内核态的区别<br>权限：内核态具有执行所有指令和访问所有内存空间的权限，而用户态则受到限制，不能直接访问<strong>内核地址空间</strong>或执行<strong>特权指令</strong>。<br>代码：内核态主要执行操作系统的<strong>内核代码</strong>，如中断处理程序、设备驱动、文件系统等。用户态则主要执行应用程序的代码。<br>资源访问：在用户态下，程序不能直接访问<strong>受保护的系统资源</strong>，如硬件设备、中断、内核数据结构等。在内核态下，程序可以访问这些资源。</p>
 <h2 id="用户态和内核态如何切换"><a href="#用户态和内核态如何切换" class="headerlink" title="用户态和内核态如何切换"></a>用户态和内核态如何切换</h2><p>切换场景：<br>系统调用、异常、外部中断<br>系统调用（System Call）：当用户程序需要请求操作系统提供的服务时，会通过系统调用进入内核态。系统调用会触发一个特殊的中断，将CPU从用户态切换到内核态。在内核态下，操作系统会执行相应的服务例程，完成请求后，再通过中断返回指令将CPU切换回用户态。<br>异常（Exception）：当程序执行过程中出现错误或异常情况（如除以零、非法指令、缺页等）时，CPU会自动切换到内核态，以便操作系统能够处理这些异常。<br>外部中断（External Interrupt）：外部设备（如键盘、鼠标、磁盘等）产生的中断信号会使CPU从用户态切换到内核态。操作系统会处理这些中断，执行相应的中断处理程序，然后再将CPU切换回用户态。</p>
 <p>切换的时候会先保存<strong>处理器状态</strong>与<strong>错误信息</strong>至<strong>状态寄存器</strong>，主要保存4个东西，异常触发的<strong>指令地址PC</strong>,异常的<strong>原因</strong>，当前CPU的<strong>栈指针SP</strong>。当发生用户态到内核态的切换时，CPU会先获取<strong>异常向量表</strong>，然后根据异常的原因来调用相应的<strong>异常处理函数</strong>。异常处理完成后，会<strong>恢复应用储蓄的现场</strong>，恢复PC与SP指针，并切换回用户态。</p>
-<h2 id="介绍进程线程"><a href="#介绍进程线程" class="headerlink" title="介绍进程线程"></a>介绍进程线程</h2><p>详见博客</p>
+<h2 id="介绍进程线程协程"><a href="#介绍进程线程协程" class="headerlink" title="介绍进程线程协程"></a>介绍进程线程协程</h2><p>详见博客</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>四个条件</p>
 
                 
               </div>
