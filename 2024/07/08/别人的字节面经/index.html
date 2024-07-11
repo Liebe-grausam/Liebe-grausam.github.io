@@ -24,8 +24,9 @@
 <meta property="og:description" content="这是一份最终版字节面经，也是一份最终版互联网面经。如果这次还面不过的话应该就放弃这条路了。 计算机网络网络分层及其典型协议OSI七层模型：应用层（Application Layer）：这是网络体系结构中的最顶层，提供用户接口和应用程序之间的通信服务。在这一层，用户可以访问各种网络应用程序，如电子邮件、文件传输和远程登录。表示层（Presentation Layer）：该层负责数据的格式化、加密和压">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/MySQL%E5%BC%95%E6%93%8E.png">
 <meta property="article:published_time" content="2024-07-08T07:55:35.000Z">
-<meta property="article:modified_time" content="2024-07-10T08:47:40.444Z">
+<meta property="article:modified_time" content="2024-07-11T06:56:07.885Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E5%AD%97%E8%8A%82%E7%BB%88%E6%9E%81%E9%9D%A2%E8%AF%95/f4617ed300054efe99d9acb0bc7105fe.png">
@@ -415,7 +416,8 @@
 <p>然而，IO多路复用不能保证数据的原子性，因此在处理事务时并不适合使用。</p>
 <p>三、总结<br>尽管IO多路复用在网络编程中是一个重要的技术，但由于数据库连接的特殊需求，例如保持连接状态、支持事务处理，以及数据库操作的阻塞性等，数据库连接池通常不采用IO多路复用技术。</p>
 <p>虽然IO多路复用是一种高效的网络编程技术，但在数据库连接池中往往不被广泛采用。数据库连接池更适合使用传统的阻塞式调用，以便更好地管理连接的生命周期和状态，并提供稳定和可靠的连接池功能。</p>
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="MySQL搜索引擎"><a href="#MySQL搜索引擎" class="headerlink" title="MySQL搜索引擎"></a>MySQL搜索引擎</h2><h2 id="innodb和myisam区别"><a href="#innodb和myisam区别" class="headerlink" title="innodb和myisam区别"></a>innodb和myisam区别</h2><h2 id="b树-b-树"><a href="#b树-b-树" class="headerlink" title="b树 b+树"></a>b树 b+树</h2><h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><h2 id="什么是幻读"><a href="#什么是幻读" class="headerlink" title="什么是幻读"></a>什么是幻读</h2>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="MySQL搜索引擎innodb和myisam区别"><a href="#MySQL搜索引擎innodb和myisam区别" class="headerlink" title="MySQL搜索引擎innodb和myisam区别"></a>MySQL搜索引擎innodb和myisam区别</h2><p>MyISAM 发音为 “my-z[ei]m”;<br>InnoDB 发音为 “in-no-db”<br><img src="/../img/%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/MySQL%E5%BC%95%E6%93%8E.png" srcset="/img/loading.gif" lazyload alt="mysql引擎"></p>
+<h2 id="b树-b-树"><a href="#b树-b-树" class="headerlink" title="b树 b+树"></a>b树 b+树</h2><h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><h2 id="什么是幻读"><a href="#什么是幻读" class="headerlink" title="什么是幻读"></a>什么是幻读</h2>
                 
               </div>
             
