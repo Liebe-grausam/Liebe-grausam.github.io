@@ -49,12 +49,13 @@
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140213.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140257.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615220536.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715144642.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615223043.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615223535.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616000650.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616001800.png">
 <meta property="article:published_time" content="2024-06-08T13:53:12.000Z">
-<meta property="article:modified_time" content="2024-07-15T06:03:58.850Z">
+<meta property="article:modified_time" content="2024-07-15T06:50:42.578Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615132600.png">
@@ -243,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          16k 字
         
       </span>
     
@@ -254,7 +255,7 @@
         
         
         
-          127 分钟
+          133 分钟
         
       </span>
     
@@ -627,6 +628,26 @@
 <p>事务U在VAL集合中，即U的有效性确认已经成功；<br>事务U与事务T满足条件， FIN(U) &gt; VAL(T)；即对于事务T进入有效性确认后，事务U并没有完成；<br>此时事务T的有效性确认，检查它的写集合 WS(T) 和事务U的写集合 WS(U) 是否有交集；此时交集中有X，则不能通过有效性确认，需要回滚T；</p>
 <h2 id="MySQL-MVCC中的读视图和可见性算法"><a href="#MySQL-MVCC中的读视图和可见性算法" class="headerlink" title="MySQL MVCC中的读视图和可见性算法"></a>MySQL MVCC中的读视图和可见性算法</h2><p>𝒓𝒆𝒂𝒅_𝒗𝒊𝒆𝒘<br>事务在进行快照读的时候会创建一个读视图<br>• 𝒄𝒖𝒓𝒓𝒆𝒏𝒕_𝒕𝒓𝒙_𝒊𝒅 ： 当前事务的id<br>• 𝒂𝒍𝒊𝒗𝒆_𝒕𝒓𝒙_𝒍𝒊𝒔𝒕：读视图生成时刻系统中正在活跃的事务id<br>• 𝒎𝒊𝒏_𝒕𝒓𝒙_𝒊𝒅：上面的 𝒂𝒍𝒊𝒗𝒆_𝒕𝒓𝒙_𝒍𝒊𝒔𝒕 中的最小事务id<br>• 𝒎𝒂𝒙_𝒕𝒓𝒙_𝒊𝒅 ： 读视图生成时刻目前已创建过的事务id最大值+1</p>
 <p>可见性算法<br>当一个事务读取某条记录𝑟𝑒𝑐𝑜𝑟𝑑𝑖时会追溯其undo log版本链， 找到第一个可以访问的版本， 而该记录的某一个版本𝑑𝑏_𝑡𝑟𝑥_𝑖𝑑(𝑟𝑒𝑐𝑜𝑟𝑑𝑖)是否能被这个事务读取到遵循如下可见性算法规则：<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615220536.png" srcset="/img/loading.gif" lazyload></p>
+<p>在MVCC（多版本并发控制）中，读视图的概念是通过创建数据的快照来实现一致性读取。这个快照的创建是为了确保在读取过程中，数据的一致性和隔离性能够得到保证。</p>
+<p>在MVCC中，每个事务都有一个活跃事务列表（Active Transaction List, ATL），记录了系统中所有还未提交的事务ID。当一个事务开始时，它会生成一个一致性快照，包括以下信息：</p>
+<ol>
+<li><strong>活跃事务列表：在事务开始时，所有正在进行且未提交的事务ID列表。</strong></li>
+<li>最小事务ID（最小未提交事务ID）：活跃事务列表中最小的事务ID。</li>
+<li>最大事务ID（系统当前的最大事务ID）。</li>
+</ol>
+<p>读视图包含了这些信息，用于决定哪些数据版本对当前事务是可见的。MVCC通过以下规则来判断数据版本的可见性：</p>
+<ol>
+<li><strong>数据版本的创建事务ID小于最小未提交事务ID</strong>：这个数据版本在当前事务开始前已经提交，因此对当前事务可见。</li>
+<li><strong>数据版本的创建事务ID大于最大事务ID</strong>：这个数据版本是在当前事务开始后创建的，因此对当前事务不可见。</li>
+<li><strong>数据版本的创建事务ID在最小未提交事务ID和最大事务ID之间</strong>：<ul>
+<li>如果创建事务ID在活跃事务列表中，这意味着创建这个数据版本的事务尚未提交，因此对当前事务不可见。</li>
+<li>如果创建事务ID不在活跃事务列表中，这意味着创建这个数据版本的事务已经提交，因此对当前事务可见。</li>
+</ul>
+</li>
+</ol>
+<p>根据这些规则，当一个数据版本的创建事务ID在活跃事务列表中时，意味着这个数据版本是由尚未提交的事务创建的，因此对当前事务不可见。这是为了确保读事务只看到在其开始之前已经提交的数据版本，从而保证读取的一致性和隔离性。</p>
+<p>这种机制允许读事务能够读取一致性视图，并且在读取过程中不需要等待其他事务提交，大大提高了系统的并发性和性能。</p>
+<p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715144642.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第十章-恢复控制"><a href="#第十章-恢复控制" class="headerlink" title="第十章 恢复控制"></a>第十章 恢复控制</h1><h2 id="故障类型"><a href="#故障类型" class="headerlink" title="故障类型"></a>故障类型</h2><p>事务故障<br>    单个事务的运行没有到达预期的终点就被中止</p>
 <pre><code class="hljs">非预期故障
 • 不能由事务程序处理的
