@@ -45,13 +45,16 @@
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002038.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002057.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001146.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715134453.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140213.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140257.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615220536.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615223043.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615223535.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616000650.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616001800.png">
 <meta property="article:published_time" content="2024-06-08T13:53:12.000Z">
-<meta property="article:modified_time" content="2024-06-15T16:19:23.584Z">
+<meta property="article:modified_time" content="2024-07-15T06:03:58.850Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615132600.png">
@@ -251,7 +254,7 @@
         
         
         
-          121 分钟
+          127 分钟
         
       </span>
     
@@ -606,12 +609,22 @@
 <h2 id="基于时间戳的并发控制协议"><a href="#基于时间戳的并发控制协议" class="headerlink" title="基于时间戳的并发控制协议"></a>基于时间戳的并发控制协议</h2><p>◆ 每个事务 𝑻𝒊 进入系统被分配一个时间戳 𝑻𝑺(𝑻𝒊)<br>◆ 如果 𝑻𝒋 晚于 𝑻𝒊进入系统， 𝑻𝑺(𝑻𝒊) &lt; 𝑻𝑺(𝑻𝒋)<br>◆ 回滚的事务重新启动， 分配新的时间戳</p>
 <p>每个数据项 𝑸 有两个时间戳与之联系<br>◆ 𝑾𝑻 𝑸 : 所有执行𝒘𝒓𝒊𝒕𝒆(𝑸)的事务中最大的时间戳<br>◆ 𝑹𝑻 𝑸 : 所有执行𝒓𝒆𝒂𝒅(𝑸)的事务中最大的时间戳</p>
 <p>注意：不是最后执行Read(Q)事务的时间戳，而是所有执行𝒓𝒆𝒂𝒅(𝑸)的事务中<strong>最大</strong>的时间戳<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001940.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002038.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610002057.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240610001146.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="基于有效性检查的并发控制协议"><a href="#基于有效性检查的并发控制协议" class="headerlink" title="基于有效性检查的并发控制协议"></a>基于有效性检查的并发控制协议</h2><p>读阶段：事务𝑇𝑖在这一阶段中执行。数据项被读入并保存在𝑇𝑖的局部变量中。所有𝑤𝑟𝑖𝑡𝑒操作都是对局部临时变量进行的，并不对数据库进行真正更新<br>有效性检查阶段：𝑇𝑖进行有效性检查， 通过与其他事务的读写集合进行比较， 来判定是否可以将𝑤𝑟𝑖𝑡𝑒操作所更新的临时局部变量值拷入数据库而不违反可串行性<br>写阶段：若𝑇𝑖通过有效性检查，则在本阶段进行实际的数据库更新，否则回滚𝑇𝑖<br>令𝑻𝑺(𝑻𝒊) &#x3D; 𝑽𝒂𝒍𝒊𝒅𝒂𝒕𝒊𝒐𝒏(𝑻𝒊)<br>等价的串行顺序与有效性确认时间戳一致</p>
+<p>简单点解释，这个是简单控制协议（就是通过可以回滚事务来避免冲突</p>
+<p>可以解决过晚的读和过晚的写的冲突问题（待会还有一个可以不用回滚事务的解决措施</p>
+<p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715134453.png" srcset="/img/loading.gif" lazyload></p>
+<p>基于时间戳的另一种调度方法：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011436427/article/details/121482296">csdn链接</a><br>搞一个提交位，来避免出现“忽略了过时的写，但是采用的那个写的事务没有成功提交”的情况（C(x)的目的是避免出现事务读另一事务U所写数据然后U终止这样的情况）（也就是避免<strong>脏读</strong>！！！！）<br>提交位为1当且仅当最近操作过写这个数据的那个事务被成功提交</p>
+<p>就是说 如果前一个事务还没写完，后一个事务想读这个数据，并且提交位为0的情况下，后一个事务按理来说是可以实现的，所以它会等到前一个事务写完了（即提交位为1）或者前一个事务终止（就是没提交上也放弃提交了）之后再读</p>
+<p>如果是过晚的读就直接撤销</p>
+<h2 id="基于有效性检查的并发控制协议"><a href="#基于有效性检查的并发控制协议" class="headerlink" title="基于有效性检查的并发控制协议"></a>基于有效性检查的并发控制协议</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/senllang/article/details/134962567">csdn链接</a><br>读阶段：事务𝑇𝑖在这一阶段中执行。数据项被读入并保存在𝑇𝑖的局部变量中。所有𝑤𝑟𝑖𝑡𝑒操作都是对局部临时变量进行的，并不对数据库进行真正更新<br>有效性检查阶段：𝑇𝑖进行有效性检查， 通过与其他事务的读写集合进行比较， 来判定是否可以将𝑤𝑟𝑖𝑡𝑒操作所更新的临时局部变量值拷入数据库而不违反可串行性<br>写阶段：若𝑇𝑖通过有效性检查，则在本阶段进行实际的数据库更新，否则回滚𝑇𝑖<br>令𝑻𝑺(𝑻𝒊) &#x3D; 𝑽𝒂𝒍𝒊𝒅𝒂𝒕𝒊𝒐𝒏(𝑻𝒊)<br>等价的串行顺序与有效性确认时间戳一致</p>
 <p>检查条件：</p>
 <ol>
 <li>如果有一个事务他开始了但另一个事务还没结束那就违反串行性</li>
 <li>如果有一个事务他还没结束但另一个事务已经在有效性确认了，那就违反串行性</li>
 </ol>
+<p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140213.png" srcset="/img/loading.gif" lazyload><br>在事务T有效性确认时，因为事务T已经读过X，但是事务U写的X值并没有提交，所以事务T有效性确认不过。</p>
+<p>事务U在VAL集合中，即U的有效性确认已经成功；<br>事务U与事务T满足条件， FIN(U) &gt; START(T)；即在事务T进入有效性确认阶段前，事务U并没有完成；<br>此时事务T有效性确认时，检查 它的读集合RS(T) 与事务U的写集合 WS(U)是否有交集，至少包含X元素；此时就需要回滚T，避免串行顺序不一致的风险。</p>
+<p><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240715140257.png" srcset="/img/loading.gif" lazyload><br>在事务U写X之前，晚开始的事务T先对X进行了写入，按照有效性确认规则处理如下：</p>
+<p>事务U在VAL集合中，即U的有效性确认已经成功；<br>事务U与事务T满足条件， FIN(U) &gt; VAL(T)；即对于事务T进入有效性确认后，事务U并没有完成；<br>此时事务T的有效性确认，检查它的写集合 WS(T) 和事务U的写集合 WS(U) 是否有交集；此时交集中有X，则不能通过有效性确认，需要回滚T；</p>
 <h2 id="MySQL-MVCC中的读视图和可见性算法"><a href="#MySQL-MVCC中的读视图和可见性算法" class="headerlink" title="MySQL MVCC中的读视图和可见性算法"></a>MySQL MVCC中的读视图和可见性算法</h2><p>𝒓𝒆𝒂𝒅_𝒗𝒊𝒆𝒘<br>事务在进行快照读的时候会创建一个读视图<br>• 𝒄𝒖𝒓𝒓𝒆𝒏𝒕_𝒕𝒓𝒙_𝒊𝒅 ： 当前事务的id<br>• 𝒂𝒍𝒊𝒗𝒆_𝒕𝒓𝒙_𝒍𝒊𝒔𝒕：读视图生成时刻系统中正在活跃的事务id<br>• 𝒎𝒊𝒏_𝒕𝒓𝒙_𝒊𝒅：上面的 𝒂𝒍𝒊𝒗𝒆_𝒕𝒓𝒙_𝒍𝒊𝒔𝒕 中的最小事务id<br>• 𝒎𝒂𝒙_𝒕𝒓𝒙_𝒊𝒅 ： 读视图生成时刻目前已创建过的事务id最大值+1</p>
 <p>可见性算法<br>当一个事务读取某条记录𝑟𝑒𝑐𝑜𝑟𝑑𝑖时会追溯其undo log版本链， 找到第一个可以访问的版本， 而该记录的某一个版本𝑑𝑏_𝑡𝑟𝑥_𝑖𝑑(𝑟𝑒𝑐𝑜𝑟𝑑𝑖)是否能被这个事务读取到遵循如下可见性算法规则：<br><img src="/../img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615220536.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第十章-恢复控制"><a href="#第十章-恢复控制" class="headerlink" title="第十章 恢复控制"></a>第十章 恢复控制</h1><h2 id="故障类型"><a href="#故障类型" class="headerlink" title="故障类型"></a>故障类型</h2><p>事务故障<br>    单个事务的运行没有到达预期的终点就被中止</p>
