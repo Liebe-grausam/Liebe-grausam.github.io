@@ -24,7 +24,7 @@
 <meta property="og:description" content="自我介绍一个一个项目问大概是怎么做的（应该是为了防止项目不是自己做的反问：udp如何实现有序传输？（只答了seq ack，其他的在介绍项目的时候也讲了，，不知道他听见了没  添加seq&#x2F;ack机制在可靠UDP的设计中，我们需要引入类似于TCP的seq&#x2F;ack机制。当发送端发送数据时，为每片数据分配一个唯一的序列号（seq），并在数据中携带该序列号。接收端收到数据后，将其放入缓存">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-02T13:13:06.000Z">
-<meta property="article:modified_time" content="2024-06-02T14:31:33.582Z">
+<meta property="article:modified_time" content="2024-07-15T12:54:35.148Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k 字
+          6.8k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          52 分钟
+          57 分钟
         
       </span>
     
@@ -388,9 +388,12 @@
 <li><strong>列表</strong>是一个有序的字符串集合，可以在列表的两端进行添加和删除操作。</li>
 </ul>
 <h4 id="底层实现-1"><a href="#底层实现-1" class="headerlink" title="底层实现"></a>底层实现</h4><ul>
-<li><strong>压缩列表（Ziplist）</strong>：用于保存长度较短、元素较少的列表。压缩列表是一种紧凑的、连续内存结构。</li>
+<li><strong>压缩列表（Ziplist）</strong>：用于保存长度较短、元素较少的列表。压缩列表是一种紧凑的、连续内存结构。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hunternet/p/11306690.html">博客园链接</a><br>zlbytes：记录整个压缩列表所占内存字节数<br>zltail：记录压缩列表尾节点距离压缩列表起始地址的字节数（无需遍历整个列表就可以确定表尾节点的位置<br>zllen：整个压缩列表中节点的数量，如果小于65535那就是真实数量，如果等于65535就要遍历整个压缩列表才能确定节点数量</li>
+</ul>
+<p>每一个节点的结构：<br>前向长度：前一个节点的长度（如果小于254byte那么就用一个字节来记录长度，如果大于等于254byte那么就用五个字节，前一个字节为0xFE，标志位，后四个字节来表示长度）（记录这个的作用是可以实现双向遍历<br>编码：当前节点存储的数据类型及其长度<br>数据：具体数据值</p>
+<ul>
 <li><strong>双向链表（Linkedlist）</strong>：用于保存长度较长或元素较多的列表。双向链表可以高效地进行两端操作。</li>
-<li><strong>快速列表（Quicklist）</strong>：Redis 3.2之后引入，结合了压缩列表和双向链表的优点，用于优化内存和性能。</li>
+<li><strong>快速列表（Quicklist）</strong>：Redis 3.2之后引入，结合了压缩列表和双向链表的优点，用于优化内存和性能。quicklist 实际上是 zipList 和 linkedList 的混合体，它将 linkedList 按段切分，每一段使用 zipList 来紧凑存储，多个 zipList 之间使用双向指针串接起来。</li>
 </ul>
 <h3 id="3-集合（Set）"><a href="#3-集合（Set）" class="headerlink" title="3. 集合（Set）"></a>3. 集合（Set）</h3><h4 id="数据结构-2"><a href="#数据结构-2" class="headerlink" title="数据结构"></a>数据结构</h4><ul>
 <li><strong>集合</strong>是一个无序的字符串集合，集合中的每个元素是唯一的。</li>
@@ -403,7 +406,11 @@
 <li><strong>有序集合</strong>类似于集合，但每个元素都会关联一个分数，集合中的元素按分数排序。</li>
 </ul>
 <h4 id="底层实现-3"><a href="#底层实现-3" class="headerlink" title="底层实现"></a>底层实现</h4><ul>
-<li><strong>跳表（Skiplist）</strong>：用于按分数排序的快速查找。</li>
+<li><strong>跳表（Skiplist）</strong>：用于按分数排序的快速查找。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Appleeatingboy/article/details/119948340">csdn链接</a><br>跳表&#x3D;链表+多级索引</li>
+</ul>
+<p>跳表节点结构：不仅有前进指针还有后退指针，同一个节点有一个level数组，每个level结构体中分为前进指针和跨度（因为不同的层前进跨度是不一样的</p>
+<p>当向跳表中插入数据时，我们选择同时将这个数据插入到部分索引层中。 如何决定插入到哪些索引层中呢？ 通过一个随机函数来决定，比如通过  随机函数得到某个值 K, 那么就将这个节点添加到<strong>第一级到第K级</strong>索引中。</p>
+<ul>
 <li><strong>哈希表（Hashtable）</strong>：用于元素和分数的快速查找。</li>
 </ul>
 <h3 id="5-哈希（Hash）"><a href="#5-哈希（Hash）" class="headerlink" title="5. 哈希（Hash）"></a>5. 哈希（Hash）</h3><h4 id="数据结构-4"><a href="#数据结构-4" class="headerlink" title="数据结构"></a>数据结构</h4><ul>

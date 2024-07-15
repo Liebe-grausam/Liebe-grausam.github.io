@@ -55,7 +55,7 @@
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616000650.png">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616001800.png">
 <meta property="article:published_time" content="2024-06-08T13:53:12.000Z">
-<meta property="article:modified_time" content="2024-07-15T06:50:42.578Z">
+<meta property="article:modified_time" content="2024-07-15T07:16:11.868Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240615132600.png">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          17k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          133 分钟
+          140 分钟
         
       </span>
     
@@ -670,6 +670,35 @@
 <p>此外，位图索引<strong>适合静态数据，而不适合索引频繁更新的列</strong>。举个例子，有这样一个字段busy，记录各个机器的繁忙与否，当机器忙碌时，busy为1，当机器不忙碌时，busy为0。</p>
 <p>这个时候有人会说使用位图索引，因为busy只有两个值。好，我们使用位图索引索引busy字段！假设用户A使用update更新某个机器的busy值，比如update table set table.busy&#x3D;1 where rowid&#x3D;100;，但还没有commit，而用户B也使用update更新另一个机器的busy值，update table set table.busy&#x3D;1 where rowid&#x3D;12; 这个时候用户B怎么也更新不了，需要等待用户A commit。</p>
 <p>LSM-Tree的优点是支持高吞吐的写O1，这个特点在分布式系统上更为看重<br>针对读取普通的LSM-Tree结构，读取是On的复杂度<br>在使用索引或者缓存优化后的也可以达到O(logN)的复杂度。<br>适用于写多读少</p>
+<p>LSMtree其实不是树，而是像日记本一样的形式</p>
+<p>LSM树（Log-Structured Merge Tree）是一种适合用于处理高写入负载的数据库索引结构。它的基本思想是将所有的写操作先写入内存，然后再批量写入磁盘，以减少随机写入的次数。以下是一个通俗的解释：</p>
+<ol>
+<li><p><strong>内存写入</strong>：当你向数据库写入数据时，数据首先被写入内存中的一个结构（称为MemTable）。这个过程非常快，因为内存操作速度比磁盘操作快得多。</p>
+</li>
+<li><p><strong>磁盘写入</strong>：当MemTable的大小达到一定阈值时，数据会被批量写入磁盘，形成一个不可变的文件（称为SSTable）。这种批量写入比每次写入单条数据要高效得多。</p>
+</li>
+<li><p><strong>合并与整理</strong>：随着时间的推移，会有越来越多的SSTable文件。为了保持查询效率，系统会在后台进行合并操作，把多个小的SSTable合并成更大的SSTable。这就像把许多小文件合并成一个大文件，以便更快地查找数据。</p>
+</li>
+</ol>
+<p>优点</p>
+<ol>
+<li><p><strong>高写入性能</strong>：因为数据首先写入<strong>内存</strong>，并且磁盘写入是批量进行的，LSM树在处理大量写入操作时非常高效。</p>
+</li>
+<li><p><strong>顺序写入</strong>：磁盘上的数据写入是顺序进行的，这比随机写入要快很多，也减少了磁盘的磨损。</p>
+</li>
+<li><p><strong>读性能优化</strong>：虽然写入操作很高效，但读操作可能需要查找多个SSTable文件。为了优化读性能，系统通常会维护一个<strong>索引</strong>，并在内存中缓存一些数据，加速查找过程。</p>
+</li>
+</ol>
+<p>可以把LSM树想象成一个日记本：</p>
+<ol>
+<li><p><strong>写入新日记</strong>：每天写的新日记（数据）先记录在草稿本（内存）上，这个过程很快。</p>
+</li>
+<li><p><strong>整理日记</strong>：当草稿本写满时，你会把这些日记页按日期顺序整理好，装订成册（批量写入磁盘），这样以后查阅时更方便。</p>
+</li>
+<li><p><strong>合并日记</strong>：每隔一段时间，你会把多个小日记本合并成一个大日记本（合并SSTable），这样不仅节省空间，还能让日记更加井然有序。</p>
+</li>
+</ol>
+<p>LSM树通过内存写入和磁盘批量写入的方式，大大提高了数据库的写入性能，同时通过后台合并操作，保持了较高的查询效率。</p>
 <p>B+tree的优点是支持高效的读（稳定的O(logN)）<br>但是在大规模的写请求下（O(LogN)），效率会变得比较低，因为随着insert的操作，为了维护B+树结构，节点会不断的分裂和合并。操作磁盘的随机读写概率会变大，故导致性能降低。<br>适用于写少读多或写读平衡</p>
 <h2 id="按列存储"><a href="#按列存储" class="headerlink" title="按列存储"></a>按列存储</h2><p>优点：<br>◼ 提高带宽利用率：按列存储时， 只有那些被查询访问的属性才会从磁盘读出；按行存储时， 周围属性也被一并读出<br>◼ 提高数据压缩率：将同一个属性域的数据存储在一起， 提高了局部性以及压缩比率， 传输压缩数据同样减少了带宽<br>◼ 提高了cache局部性： cache line比一个元组属性要大， 因此按行存储时 cache line可能会包含不相关的周边属性， 浪费cache的空间减少命中率</p>
 <p>缺点：<br>➢ 增加了磁盘寻道时间：如果需要并行读取多个列， 在各个块读之间需要进行磁盘寻道<br>➢ 增加插入操作的代价：对于插入操作， 按列存储的性能很差，因为对每条插入的元组都需要在磁盘的多个不同位置更新<br>➢ 增加重构元组的代价：按列存储如果想支持标准的关系数据库接口， 就必须将多个列拼合起来， 构成一条元组输出</p>
