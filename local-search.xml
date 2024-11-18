@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>编译lab-准备做第一个作业</title>
+    <link href="/2024/11/19/%E7%BC%96%E8%AF%91lab-1/"/>
+    <url>/2024/11/19/%E7%BC%96%E8%AF%91lab-1/</url>
+    
+    <content type="html"><![CDATA[<p>（由于jt选了rust而苯人没学过rust只能硬刚c++，悲催地读文档中</p><p>上一篇是docker环境的配置，这一篇主要参考了lv1.2-lv1.5<br>文件夹目录如下：<br><img src="/../img/%E7%BC%96%E8%AF%91/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20241119001257.png"><br>全都是示例代码，它目前可以解析hello.c但也仅限于此x<br><img src="/../img/%E7%BC%96%E8%AF%91/%E8%A7%A3%E6%9E%90hello.png"><br>这里输入的命令是：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br>build/compiler -koopa hello.c -o hello.koopa<br></code></pre></td></tr></table></figure><p>评测时的命令为：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@5ac84d9ac1e3:/mycode<span class="hljs-comment"># autotest -koopa -s lv1 /mycode</span><br></code></pre></td></tr></table></figure><p>（虽然暂时还一个都没过哈但是可喜可贺至少迈出了历史的第一步！</p><p>值得一提的是退出容器的命令为exit不是quit。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>编译lab-初尝试</title>
+    <link href="/2024/11/19/%E7%BC%96%E8%AF%91lab-0/"/>
+    <url>/2024/11/19/%E7%BC%96%E8%AF%91lab-0/</url>
+    
+    <content type="html"><![CDATA[<p>因为写编译的过程太艰辛所以把博客又捡回来了<br>在系统命令行中执行docker pull maxxing&#x2F;compiler-dev命令后：<br><img src="/../img/%E7%BC%96%E8%AF%91/01.png"><br>尝试在容器内新建文件夹&#x2F;mycode<br><img src="/../img/%E7%BC%96%E8%AF%91/02.png"><br>这里是已经创建成功了的，但是退出重进后就发现新建的文件夹消失了）<br>这是因为 Docker 容器的文件系统是临时的，默认情况下，当你退出容器时，容器内创建的文件或目录会在容器停止或删除时丢失。必须使用挂载本地目录的方法来持久化数据。<br>运行docker run -v F:\bianyi:&#x2F;mycode -it maxxing&#x2F;compiler-dev命令，将本地的 F:\bianyi 目录挂载到容器内的 &#x2F;mycode 目录，这样，容器内的 &#x2F;mycode 目录将指向本地的 F:\bianyi 目录，所有在 &#x2F;mycode 中创建的文件或目录都会保留在本地。<br>执行命令mkdir &#x2F;mycode&#x2F;testfolder，可以看到本地的目录中新增了一个testfolder文件夹，并且在容器中也可以查看本地的文件内容</p><p>总之启动的命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -v F:\bianyi:/mycode -it maxxing/compiler-dev<br><span class="hljs-built_in">cd</span> /mycode<br>koopac hello.koopa | llc --filetype=obj -o hello.o<br>clang hello.o -L<span class="hljs-variable">$CDE_LIBRARY_PATH</span>/native -lsysy -o hello<br>./hello<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>别人的字节面经</title>
     <link href="/2024/07/08/%E5%88%AB%E4%BA%BA%E7%9A%84%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F/"/>
     <url>/2024/07/08/%E5%88%AB%E4%BA%BA%E7%9A%84%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F/</url>
@@ -308,19 +334,6 @@
     <url>/2024/05/28/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E4%B8%89%E8%BF%9E/</url>
     
     <content type="html"><![CDATA[<h3 id="股票一"><a href="#股票一" class="headerlink" title="股票一"></a>股票一</h3><h3 id="股票二"><a href="#股票二" class="headerlink" title="股票二"></a>股票二</h3><p>买卖无数次，同一天最多持有一只股票<br>动规：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; prices)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = prices.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> dp[n][<span class="hljs-number">2</span>];<br>        <span class="hljs-comment">// dp[x][0] 第x天未持有</span><br>        <span class="hljs-comment">// dp[x][1] 第x天持有</span><br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]=-prices[<span class="hljs-number">0</span>];<br>        <span class="hljs-comment">// 记得初始化</span><br>        <span class="hljs-type">int</span> maxp = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;<br>            <span class="hljs-comment">// 考虑边界，i从1开始</span><br>            dp[i][<span class="hljs-number">0</span>]=<span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>],dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]+prices[i]);<br>            dp[i][<span class="hljs-number">1</span>]=<span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>]-prices[i],dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];<br>        <span class="hljs-comment">// 只需要0状态，因为最后股票一定卖出了</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p>优化一下空间复杂度（因为每次之和前一个有关所以不用存一个数组，存两个变量就行</p><h3 id="股票三"><a href="#股票三" class="headerlink" title="股票三"></a>股票三</h3>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>碎碎念</title>
-    <link href="/2024/05/28/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    <url>/2024/05/28/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</url>
-    
-    <content type="html"><![CDATA[<p>又投了三个日常实习orz，，希望能有人快点联系我面试啊啊啊不要再给我发笔试邮件力</p>]]></content>
     
     
     
