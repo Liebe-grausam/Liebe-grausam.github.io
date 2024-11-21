@@ -16,27 +16,26 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="因为写编译的过程太艰辛所以把博客又捡回来了在系统命令行中执行docker pull maxxing&#x2F;compiler-dev命令后：尝试在容器内新建文件夹&#x2F;mycode这里是已经创建成功了的，但是退出重进后就发现新建的文件夹消失了）这是因为 Docker 容器的文件系统是临时的，默认情况下，当你退出容器时，容器内创建的文件或目录会在容器停止或删除时丢失。必须使用挂载本地目录的方">
+    <meta name="description" content="检查了一下报错发现是由于没有输出引起的然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式 1234567891011ofstream ofs(output);if (!ofs) &amp;#123;cerr &lt;&lt; &quot;Failed to open output file: &quot; &lt;&lt; output &lt;&lt; end">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译lab-初尝试">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/19/%E7%BC%96%E8%AF%91lab-0/index.html">
+<meta property="og:title" content="编译lab-2">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/20/%E7%BC%96%E8%AF%91lab-2/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="因为写编译的过程太艰辛所以把博客又捡回来了在系统命令行中执行docker pull maxxing&#x2F;compiler-dev命令后：尝试在容器内新建文件夹&#x2F;mycode这里是已经创建成功了的，但是退出重进后就发现新建的文件夹消失了）这是因为 Docker 容器的文件系统是临时的，默认情况下，当你退出容器时，容器内创建的文件或目录会在容器停止或删除时丢失。必须使用挂载本地目录的方">
+<meta property="og:description" content="检查了一下报错发现是由于没有输出引起的然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式 1234567891011ofstream ofs(output);if (!ofs) &amp;#123;cerr &lt;&lt; &quot;Failed to open output file: &quot; &lt;&lt; output &lt;&lt; end">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/01.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/02.png">
-<meta property="article:published_time" content="2024-11-18T16:07:04.000Z">
-<meta property="article:modified_time" content="2024-11-20T14:09:45.983Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png">
+<meta property="article:published_time" content="2024-11-20T14:09:18.000Z">
+<meta property="article:modified_time" content="2024-11-21T16:09:48.898Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/01.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>编译lab-初尝试 - 苯人的一些发疯自留地！</title>
+  <title>编译lab-2 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +192,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编译lab-初尝试"></span>
+            <span id="subtitle" data-typed-text="编译lab-2"></span>
           
         </div>
 
@@ -204,8 +203,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-19 00:07" pubdate>
-          2024年11月19日 凌晨
+        <time datetime="2024-11-20 22:09" pubdate>
+          2024年11月20日 晚上
         </time>
       </span>
     
@@ -216,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          709 字
+          1.7k 字
         
       </span>
     
@@ -227,7 +226,7 @@
         
         
         
-          6 分钟
+          15 分钟
         
       </span>
     
@@ -273,16 +272,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">编译lab-初尝试</h1>
+            <h1 style="display: none">编译lab-2</h1>
             
             
               <div class="markdown-body">
                 
-                <p>因为写编译的过程太艰辛所以把博客又捡回来了<br>在系统命令行中执行docker pull maxxing&#x2F;compiler-dev命令后：<br><img src="/../img/%E7%BC%96%E8%AF%91/01.png" srcset="/img/loading.gif" lazyload><br>尝试在容器内新建文件夹&#x2F;mycode<br><img src="/../img/%E7%BC%96%E8%AF%91/02.png" srcset="/img/loading.gif" lazyload><br>这里是已经创建成功了的，但是退出重进后就发现新建的文件夹消失了）<br>这是因为 Docker 容器的文件系统是临时的，默认情况下，当你退出容器时，容器内创建的文件或目录会在容器停止或删除时丢失。必须使用挂载本地目录的方法来持久化数据。<br>运行docker run -v F:\bianyi:&#x2F;mycode -it maxxing&#x2F;compiler-dev命令，将本地的 F:\bianyi 目录挂载到容器内的 &#x2F;mycode 目录，这样，容器内的 &#x2F;mycode 目录将指向本地的 F:\bianyi 目录，所有在 &#x2F;mycode 中创建的文件或目录都会保留在本地。<br>执行命令mkdir &#x2F;mycode&#x2F;testfolder，可以看到本地的目录中新增了一个testfolder文件夹，并且在容器中也可以查看本地的文件内容</p>
-<p>总之启动的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -v F:\bianyi:/mycode -it maxxing/compiler-dev<br><span class="hljs-built_in">cd</span> /mycode<br>koopac hello.koopa | llc --filetype=obj -o hello.o<br>clang hello.o -L<span class="hljs-variable">$CDE_LIBRARY_PATH</span>/native -lsysy -o hello<br>./hello<br></code></pre></td></tr></table></figure>
-<p>以后正常打开的话命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> -v F:\bianyi:/mycode -it maxxing/compiler-dev bash<br></code></pre></td></tr></table></figure>
+                <p>检查了一下报错发现是由于没有输出引起的<br>然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ofstream <span class="hljs-title">ofs</span><span class="hljs-params">(output)</span></span>;<br><span class="hljs-keyword">if</span> (!ofs) &#123;<br>cerr &lt;&lt; <span class="hljs-string">&quot;Failed to open output file: &quot;</span> &lt;&lt; output &lt;&lt; endl;<br><span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;  <span class="hljs-comment">// 打开文件失败时退出</span><br>&#125;<br><br><span class="hljs-comment">// 将 AST 写入输出文件</span><br>ofs &lt;&lt; *ast;<br><br><span class="hljs-comment">// 关闭输出文件</span><br>ofs.<span class="hljs-built_in">close</span>();<br></code></pre></td></tr></table></figure>
+<p>现在有输出了不过是一堆错误的输出<br>其中有一个比较好解决的（？算是吧）的报错是CASE ASSEMBLE ERROR，需要输出正确的KOOPA IR汇编</p>
+<p>盯了半天ChatGPT也问不出所以然，仔细地读了N遍文档之后！！终于！！看懂了要求</p>
+<p>这是原本的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-comment">// 注释也应该被删掉哦</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这是要转化成的KOOPA IR：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> @<span class="hljs-title">main</span><span class="hljs-params">()</span></span>: i32 &#123;<br>%entry:<br>  ret <span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>原本的EBNF表示：</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bnf">CompUnit  ::= FuncDef;<br><br>FuncDef   ::= FuncType IDENT <span class="hljs-string">&quot;(&quot;</span> <span class="hljs-string">&quot;)&quot;</span> Block;<br>FuncType  ::= <span class="hljs-string">&quot;int&quot;</span>;<br><br>Block     ::= <span class="hljs-string">&quot;&#123;&quot;</span> Stmt <span class="hljs-string">&quot;&#125;&quot;</span>;<br>Stmt      ::= <span class="hljs-string">&quot;return&quot;</span> Number <span class="hljs-string">&quot;;&quot;</span>;<br>Number    ::= INT_CONST;<br></code></pre></td></tr></table></figure>
+
+<p>重新规划后的EBNF表示：</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bnf">CompUnit  ::= FuncDef;<br><br>FuncDef   ::= <span class="hljs-string">&quot;fun @&quot;</span> IDENT <span class="hljs-string">&quot;():&quot;</span> FuncType Block<br>FuncType  ::= <span class="hljs-string">&quot;i32&quot;</span>;<br><br>Block     ::= <span class="hljs-string">&quot;&#123;&quot;</span> Stmt <span class="hljs-string">&quot;&#125;&quot;</span>;<br>Stmt      ::= <span class="hljs-string">&quot;%entry: ret&quot;</span> Number;<br>Number    ::= INT_CONST;<br></code></pre></td></tr></table></figure>
+
+<p>因此我们对.y文件做如下修改：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">FuncDef</span><br>  : <span class="hljs-title class_">FuncType</span> <span class="hljs-variable constant_">IDENT</span> <span class="hljs-string">&#x27;(&#x27;</span> <span class="hljs-string">&#x27;)&#x27;</span> <span class="hljs-title class_">Block</span> &#123;<br>    auto <span class="hljs-keyword">type</span> = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($1);<br>    auto ident = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    auto block = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($5);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;fun @&quot;</span> + *ident + <span class="hljs-string">&quot;(): &quot;</span> + *<span class="hljs-keyword">type</span> + <span class="hljs-string">&quot; &quot;</span> + *block);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">FuncType</span><br>  : <span class="hljs-variable constant_">INT</span> &#123;<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;i32&quot;</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Block</span><br>  : <span class="hljs-string">&#x27;&#123;&#x27;</span> <span class="hljs-title class_">Stmt</span> <span class="hljs-string">&#x27;&#125;&#x27;</span> &#123;<br>    auto stmt = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;&#123; &quot;</span> + *stmt + <span class="hljs-string">&quot; &#125;&quot;</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Stmt</span><br>  : <span class="hljs-variable constant_">RETURN</span> <span class="hljs-title class_">Number</span> <span class="hljs-string">&#x27;;&#x27;</span> &#123;<br>    auto <span class="hljs-built_in">number</span> = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;%entry: ret &quot;</span> + *<span class="hljs-built_in">number</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Number</span><br>  : <span class="hljs-variable constant_">INT_CONST</span> &#123;<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-title function_">to_string</span>($1));<br>  &#125;<br>  ;<br></code></pre></td></tr></table></figure>
+<p>就可以发现我们的程序已经对了6个（还有一个估计是注释的问题待会再看）<br><img src="/../img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -307,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编译lab-初尝试</div>
-      <div>http://liebe-grausam.github.io/2024/11/19/编译lab-0/</div>
+      <div>编译lab-2</div>
+      <div>http://liebe-grausam.github.io/2024/11/20/编译lab-2/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月19日</div>
+          <div>2024年11月20日</div>
         </div>
       
       
@@ -352,18 +364,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/19/%E7%BC%96%E8%AF%91lab-1/" title="编译lab-准备做第一个作业">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">编译lab-准备做第一个作业</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/08/%E5%88%AB%E4%BA%BA%E7%9A%84%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F/" title="别人的字节面经">
-                        <span class="hidden-mobile">别人的字节面经</span>
+                      <a href="/2024/11/19/%E7%BC%96%E8%AF%91lab-1/" title="编译lab-准备做第一个作业">
+                        <span class="hidden-mobile">编译lab-准备做第一个作业</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
