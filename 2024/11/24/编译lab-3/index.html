@@ -16,27 +16,27 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="检查了一下报错发现是由于没有输出引起的然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式 1234567891011ofstream ofs(output);if (!ofs) &amp;#123;cerr &lt;&lt; &quot;Failed to open output file: &quot; &lt;&lt; output &lt;&lt; end">
+    <meta name="description" content="没接触过rust的人第一次接触rust 第一步：新建工作区 1cargo new riscv 这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件 第二步：在Cargo.toml中添加对应依赖 12345[build-dependencies]lalrpop &#x3D; &quot;0.22.0&quot;[dependencies]lalrpop-util &#x3D; &amp;#123; version">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译lab-完成lab1">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/20/%E7%BC%96%E8%AF%91lab-2/index.html">
+<meta property="og:title" content="编译lab-rust零帧起手">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/24/%E7%BC%96%E8%AF%91lab-3/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="检查了一下报错发现是由于没有输出引起的然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式 1234567891011ofstream ofs(output);if (!ofs) &amp;#123;cerr &lt;&lt; &quot;Failed to open output file: &quot; &lt;&lt; output &lt;&lt; end">
+<meta property="og:description" content="没接触过rust的人第一次接触rust 第一步：新建工作区 1cargo new riscv 这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件 第二步：在Cargo.toml中添加对应依赖 12345[build-dependencies]lalrpop &#x3D; &quot;0.22.0&quot;[dependencies]lalrpop-util &#x3D; &amp;#123; version">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/lab1%E5%85%A8%E6%88%90%E5%B0%B1.png">
-<meta property="article:published_time" content="2024-11-20T14:09:18.000Z">
-<meta property="article:modified_time" content="2024-11-21T16:34:24.768Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E9%80%9A%E8%BF%87%E7%BC%96%E8%AF%91.png">
+<meta property="article:published_time" content="2024-11-24T07:19:35.000Z">
+<meta property="article:modified_time" content="2024-11-24T07:52:14.339Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>编译lab-完成lab1 - 苯人的一些发疯自留地！</title>
+  <title>编译lab-rust零帧起手 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编译lab-完成lab1"></span>
+            <span id="subtitle" data-typed-text="编译lab-rust零帧起手"></span>
           
         </div>
 
@@ -204,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-20 22:09" pubdate>
-          2024年11月20日 晚上
+        <time datetime="2024-11-24 15:19" pubdate>
+          2024年11月24日 下午
         </time>
       </span>
     
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          260 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          17 分钟
+          3 分钟
         
       </span>
     
@@ -273,34 +273,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">编译lab-完成lab1</h1>
+            <h1 style="display: none">编译lab-rust零帧起手</h1>
             
             
               <div class="markdown-body">
                 
-                <p>检查了一下报错发现是由于没有输出引起的<br>然后发现原本文档中的输出是采用了标准控制台输出的形式，而不是输出到文件中，于是改了一下输出形式</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ofstream <span class="hljs-title">ofs</span><span class="hljs-params">(output)</span></span>;<br><span class="hljs-keyword">if</span> (!ofs) &#123;<br>cerr &lt;&lt; <span class="hljs-string">&quot;Failed to open output file: &quot;</span> &lt;&lt; output &lt;&lt; endl;<br><span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;  <span class="hljs-comment">// 打开文件失败时退出</span><br>&#125;<br><br><span class="hljs-comment">// 将 AST 写入输出文件</span><br>ofs &lt;&lt; *ast;<br><br><span class="hljs-comment">// 关闭输出文件</span><br>ofs.<span class="hljs-built_in">close</span>();<br></code></pre></td></tr></table></figure>
-<p>现在有输出了不过是一堆错误的输出<br>其中有一个比较好解决的（？算是吧）的报错是CASE ASSEMBLE ERROR，需要输出正确的KOOPA IR汇编</p>
-<p>盯了半天ChatGPT也问不出所以然，仔细地读了N遍文档之后！！终于！！看懂了要求</p>
-<p>这是原本的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-comment">// 注释也应该被删掉哦</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这是要转化成的KOOPA IR：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> @<span class="hljs-title">main</span><span class="hljs-params">()</span></span>: i32 &#123;<br>%entry:<br>  ret <span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>原本的EBNF表示：</p>
-<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bnf">CompUnit  ::= FuncDef;<br><br>FuncDef   ::= FuncType IDENT <span class="hljs-string">&quot;(&quot;</span> <span class="hljs-string">&quot;)&quot;</span> Block;<br>FuncType  ::= <span class="hljs-string">&quot;int&quot;</span>;<br><br>Block     ::= <span class="hljs-string">&quot;&#123;&quot;</span> Stmt <span class="hljs-string">&quot;&#125;&quot;</span>;<br>Stmt      ::= <span class="hljs-string">&quot;return&quot;</span> Number <span class="hljs-string">&quot;;&quot;</span>;<br>Number    ::= INT_CONST;<br></code></pre></td></tr></table></figure>
-
-<p>重新规划后的EBNF表示：</p>
-<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bnf">CompUnit  ::= FuncDef;<br><br>FuncDef   ::= <span class="hljs-string">&quot;fun @&quot;</span> IDENT <span class="hljs-string">&quot;():&quot;</span> FuncType Block<br>FuncType  ::= <span class="hljs-string">&quot;i32&quot;</span>;<br><br>Block     ::= <span class="hljs-string">&quot;&#123;&quot;</span> Stmt <span class="hljs-string">&quot;&#125;&quot;</span>;<br>Stmt      ::= <span class="hljs-string">&quot;%entry: ret&quot;</span> Number;<br>Number    ::= INT_CONST;<br></code></pre></td></tr></table></figure>
-
-<p>因此我们对.y文件做如下修改：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">FuncDef</span><br>  : <span class="hljs-title class_">FuncType</span> <span class="hljs-variable constant_">IDENT</span> <span class="hljs-string">&#x27;(&#x27;</span> <span class="hljs-string">&#x27;)&#x27;</span> <span class="hljs-title class_">Block</span> &#123;<br>    auto <span class="hljs-keyword">type</span> = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($1);<br>    auto ident = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    auto block = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($5);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;fun @&quot;</span> + *ident + <span class="hljs-string">&quot;(): &quot;</span> + *<span class="hljs-keyword">type</span> + <span class="hljs-string">&quot; &quot;</span> + *block);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">FuncType</span><br>  : <span class="hljs-variable constant_">INT</span> &#123;<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;i32&quot;</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Block</span><br>  : <span class="hljs-string">&#x27;&#123;&#x27;</span> <span class="hljs-title class_">Stmt</span> <span class="hljs-string">&#x27;&#125;&#x27;</span> &#123;<br>    auto stmt = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;&#123; &quot;</span> + *stmt + <span class="hljs-string">&quot; &#125;&quot;</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Stmt</span><br>  : <span class="hljs-variable constant_">RETURN</span> <span class="hljs-title class_">Number</span> <span class="hljs-string">&#x27;;&#x27;</span> &#123;<br>    auto <span class="hljs-built_in">number</span> = unique_ptr&lt;<span class="hljs-built_in">string</span>&gt;($2);<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-string">&quot;%entry: ret &quot;</span> + *<span class="hljs-built_in">number</span>);<br>  &#125;<br>  ;<br><br><span class="hljs-title class_">Number</span><br>  : <span class="hljs-variable constant_">INT_CONST</span> &#123;<br>    $$ = <span class="hljs-keyword">new</span> <span class="hljs-title function_">string</span>(<span class="hljs-title function_">to_string</span>($1));<br>  &#125;<br>  ;<br></code></pre></td></tr></table></figure>
-<p>就可以发现我们的程序已经对了6个（还有一个估计是注释的问题待会再看）<br><img src="/../img/%E7%BC%96%E8%AF%91/%E4%BF%AE%E6%94%B9koopa%20ir%E6%A1%86%E6%9E%B6%E5%90%8E%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
-<p>善用搜索找到了多行注释的正则表达式（</p>
-<p>修改.l文件：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 空白符和注释 */</span><br>WhiteSpace    [ \t\n\r]*<br>LineComment   <span class="hljs-string">&quot;//&quot;</span>.*<br><span class="hljs-regexp">/* 这行Comment是新加的 */</span><br>Comment       <span class="hljs-string">&quot;/*&quot;</span>([^*]|\*+[^*<span class="hljs-regexp">/])*\*+&quot;/</span><span class="hljs-string">&quot;</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">&#123;WhiteSpace&#125;    &#123; <span class="hljs-regexp">/* 忽略, 不做任何操作 */</span> &#125;<br>&#123;LineComment&#125;   &#123; <span class="hljs-regexp">/* 忽略, 不做任何操作 */</span> &#125;<br><span class="hljs-regexp">/* 这行Comment也是新加的 */</span><br>&#123;Comment&#125;       &#123; <span class="hljs-regexp">/* 忽略, 不做任何操作 */</span> &#125;<br></code></pre></td></tr></table></figure>
-<p>然后就过了哈<br><img src="/../img/%E7%BC%96%E8%AF%91/lab1%E5%85%A8%E6%88%90%E5%B0%B1.png" srcset="/img/loading.gif" lazyload></p>
+                <p>没接触过rust的人第一次接触rust</p>
+<p>第一步：<br>新建工作区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new riscv<br></code></pre></td></tr></table></figure>
+<p>这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件</p>
+<p>第二步：<br>在Cargo.toml中添加对应依赖</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-dependencies]</span><br><span class="hljs-attr">lalrpop</span> = <span class="hljs-string">&quot;0.22.0&quot;</span><br><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">lalrpop-util</span> = &#123; version = <span class="hljs-string">&quot;0.22.0&quot;</span>, features = [<span class="hljs-string">&quot;lexer&quot;</span>] &#125;<br></code></pre></td></tr></table></figure>
+<p>总之就是按照官方文档的教程一步步做下来</p>
+<p><img src="/../img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E7%BC%96%E8%AF%91/%E9%80%9A%E8%BF%87%E7%BC%96%E8%AF%91.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -325,8 +310,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编译lab-完成lab1</div>
-      <div>http://liebe-grausam.github.io/2024/11/20/编译lab-2/</div>
+      <div>编译lab-rust零帧起手</div>
+      <div>http://liebe-grausam.github.io/2024/11/24/编译lab-3/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +323,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月20日</div>
+          <div>2024年11月24日</div>
         </div>
       
       
@@ -370,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/24/%E7%BC%96%E8%AF%91lab-3/" title="编译lab-rust零帧起手">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">编译lab-rust零帧起手</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/19/%E7%BC%96%E8%AF%91lab-1/" title="编译lab-准备做第一个作业">
-                        <span class="hidden-mobile">编译lab-准备做第一个作业</span>
+                      <a href="/2024/11/20/%E7%BC%96%E8%AF%91lab-2/" title="编译lab-完成lab1">
+                        <span class="hidden-mobile">编译lab-完成lab1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

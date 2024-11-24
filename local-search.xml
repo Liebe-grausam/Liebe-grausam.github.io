@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>编译lab-rust零帧起手</title>
+    <link href="/2024/11/24/%E7%BC%96%E8%AF%91lab-3/"/>
+    <url>/2024/11/24/%E7%BC%96%E8%AF%91lab-3/</url>
+    
+    <content type="html"><![CDATA[<p>没接触过rust的人第一次接触rust</p><p>第一步：<br>新建工作区</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new riscv<br></code></pre></td></tr></table></figure><p>这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件</p><p>第二步：<br>在Cargo.toml中添加对应依赖</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-dependencies]</span><br><span class="hljs-attr">lalrpop</span> = <span class="hljs-string">&quot;0.22.0&quot;</span><br><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">lalrpop-util</span> = &#123; version = <span class="hljs-string">&quot;0.22.0&quot;</span>, features = [<span class="hljs-string">&quot;lexer&quot;</span>] &#125;<br></code></pre></td></tr></table></figure><p>总之就是按照官方文档的教程一步步做下来</p><p><img src="/../img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png"><br><img src="/../img/%E7%BC%96%E8%AF%91/%E9%80%9A%E8%BF%87%E7%BC%96%E8%AF%91.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>编译</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>编译lab-完成lab1</title>
     <link href="/2024/11/20/%E7%BC%96%E8%AF%91lab-2/"/>
     <url>/2024/11/20/%E7%BC%96%E8%AF%91lab-2/</url>
