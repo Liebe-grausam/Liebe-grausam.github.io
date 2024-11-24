@@ -16,27 +16,26 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="没接触过rust的人第一次接触rust 第一步：新建工作区 1cargo new riscv 这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件 第二步：在Cargo.toml中添加对应依赖 12345[build-dependencies]lalrpop &#x3D; &quot;0.22.0&quot;[dependencies]lalrpop-util &#x3D; &amp;#123; version">
+    <meta name="description" content="前面那篇文章是一个小插曲，实际上我们只需要学习使用C语言编写而不需要用到rust。那么我们已经进行到了将c程序转变为koopa ir，下一步应该要将文本形式的koopa ir转换为raw program。 我们可以运用koopa的库函数，即使用 libkoopa 中的接口将文本形式 Koopa IR 转换为 raw program 新建了一个头文件raw_program_process.h用于ra">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译lab-rust零帧起手">
-<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/24/%E7%BC%96%E8%AF%91lab-3/index.html">
+<meta property="og:title" content="编译lab-4">
+<meta property="og:url" content="http://liebe-grausam.github.io/2024/11/24/%E7%BC%96%E8%AF%91lab-4/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="没接触过rust的人第一次接触rust 第一步：新建工作区 1cargo new riscv 这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件 第二步：在Cargo.toml中添加对应依赖 12345[build-dependencies]lalrpop &#x3D; &quot;0.22.0&quot;[dependencies]lalrpop-util &#x3D; &amp;#123; version">
+<meta property="og:description" content="前面那篇文章是一个小插曲，实际上我们只需要学习使用C语言编写而不需要用到rust。那么我们已经进行到了将c程序转变为koopa ir，下一步应该要将文本形式的koopa ir转换为raw program。 我们可以运用koopa的库函数，即使用 libkoopa 中的接口将文本形式 Koopa IR 转换为 raw program 新建了一个头文件raw_program_process.h用于ra">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/%E9%80%9A%E8%BF%87%E7%BC%96%E8%AF%91.png">
-<meta property="article:published_time" content="2024-11-24T07:19:35.000Z">
-<meta property="article:modified_time" content="2024-11-24T07:52:14.339Z">
+<meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/rawprogram%E5%A4%84%E7%90%86%E6%88%90%E5%8A%9F.png">
+<meta property="article:published_time" content="2024-11-24T15:41:04.000Z">
+<meta property="article:modified_time" content="2024-11-24T16:34:15.578Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/rawprogram%E5%A4%84%E7%90%86%E6%88%90%E5%8A%9F.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>编译lab-rust零帧起手 - 苯人的一些发疯自留地！</title>
+  <title>编译lab-4 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +192,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编译lab-rust零帧起手"></span>
+            <span id="subtitle" data-typed-text="编译lab-4"></span>
           
         </div>
 
@@ -204,8 +203,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-24 15:19" pubdate>
-          2024年11月24日 下午
+        <time datetime="2024-11-24 23:41" pubdate>
+          2024年11月24日 晚上
         </time>
       </span>
     
@@ -216,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          260 字
+          2.2k 字
         
       </span>
     
@@ -227,7 +226,7 @@
         
         
         
-          3 分钟
+          19 分钟
         
       </span>
     
@@ -273,19 +272,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">编译lab-rust零帧起手</h1>
+            <h1 style="display: none">编译lab-4</h1>
             
             
               <div class="markdown-body">
                 
-                <p>没接触过rust的人第一次接触rust</p>
-<p>第一步：<br>新建工作区</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new riscv<br></code></pre></td></tr></table></figure>
-<p>这样就新建了一个名为riscv的项目文件夹，并且自带一些配置文件</p>
-<p>第二步：<br>在Cargo.toml中添加对应依赖</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[build-dependencies]</span><br><span class="hljs-attr">lalrpop</span> = <span class="hljs-string">&quot;0.22.0&quot;</span><br><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">lalrpop-util</span> = &#123; version = <span class="hljs-string">&quot;0.22.0&quot;</span>, features = [<span class="hljs-string">&quot;lexer&quot;</span>] &#125;<br></code></pre></td></tr></table></figure>
-<p>总之就是按照官方文档的教程一步步做下来</p>
-<p><img src="/../img/%E7%BC%96%E8%AF%91/riscv%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E7%BC%96%E8%AF%91/%E9%80%9A%E8%BF%87%E7%BC%96%E8%AF%91.png" srcset="/img/loading.gif" lazyload></p>
+                <p>前面那篇文章是一个小插曲，实际上我们只需要学习使用C语言编写而不需要用到rust。那么我们已经进行到了将c程序转变为koopa ir，下一步应该要将文本形式的koopa ir转换为raw program。</p>
+<p>我们可以运用koopa的库函数，即使用 libkoopa 中的接口将文本形式 Koopa IR 转换为 raw program</p>
+<p>新建了一个头文件<code>raw_program_process.h</code>用于raw_program的处理和打印，内容如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cassert&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;koopa.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_basic_block</span><span class="hljs-params">(<span class="hljs-type">koopa_raw_function_t</span> &amp;func)</span> </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> j = <span class="hljs-number">0</span>; j &lt; func-&gt;bbs.len; ++j) &#123;<br>    <span class="hljs-built_in">assert</span>(func-&gt;bbs.kind == KOOPA_RSIK_BASIC_BLOCK);<br>    <span class="hljs-type">koopa_raw_basic_block_t</span> bb = (<span class="hljs-type">koopa_raw_basic_block_t</span>) func-&gt;bbs.buffer[j];<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Basic Block: &quot;</span> &lt;&lt; (bb-&gt;name ? bb-&gt;name : <span class="hljs-string">&quot;(anonymous)&quot;</span>) &lt;&lt; std::endl;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> k = <span class="hljs-number">0</span>; k &lt; bb-&gt;insts.len; ++k) &#123;<br>      <span class="hljs-keyword">auto</span> inst = <span class="hljs-built_in">reinterpret_cast</span>&lt;<span class="hljs-type">koopa_raw_value_t</span>&gt;(bb-&gt;insts.buffer[k]);<br>      <span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> &amp;kind = inst-&gt;kind;<br>      <span class="hljs-keyword">switch</span> (kind.tag) &#123;<br>        <span class="hljs-keyword">case</span> KOOPA_RVT_RETURN:<br>          std::cout &lt;&lt; <span class="hljs-string">&quot;  ret &quot;</span>;<br>          <span class="hljs-keyword">if</span> (kind.data.ret.value) std::cout &lt;&lt; kind.data.ret.value-&gt;kind.data.integer.value;<br>          std::cout &lt;&lt; std::endl;<br>          <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>          std::cout &lt;&lt; <span class="hljs-string">&quot;  Unknown instruction.&quot;</span> &lt;&lt; std::endl;<br>          <span class="hljs-keyword">break</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_function_list</span><span class="hljs-params">(<span class="hljs-type">koopa_raw_program_t</span> &amp;raw)</span> </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; raw.funcs.len; ++i) &#123;<br>    <span class="hljs-built_in">assert</span>(raw.funcs.kind == KOOPA_RSIK_FUNCTION);<br>    <span class="hljs-type">koopa_raw_function_t</span> func = (<span class="hljs-type">koopa_raw_function_t</span>) raw.funcs.buffer[i];<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Function: &quot;</span> &lt;&lt; (func-&gt;name ? func-&gt;name : <span class="hljs-string">&quot;(anonymous)&quot;</span>) &lt;&lt; std::endl;<br>    <span class="hljs-built_in">print_basic_block</span>(func);<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">process_raw_program</span><span class="hljs-params">(<span class="hljs-type">koopa_raw_program_t</span> &amp;raw)</span> </span>&#123;<br>  <span class="hljs-built_in">print_function_list</span>(raw);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">create_raw_program</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str)</span> </span>&#123;<br>  <span class="hljs-type">koopa_program_t</span> program;<br>  <span class="hljs-type">koopa_error_code_t</span> ret = <span class="hljs-built_in">koopa_parse_from_string</span>(str, &amp;program);<br>  <span class="hljs-built_in">assert</span>(ret == KOOPA_EC_SUCCESS);<br><br>  <span class="hljs-type">koopa_raw_program_builder_t</span> builder = <span class="hljs-built_in">koopa_new_raw_program_builder</span>();<br>  <span class="hljs-type">koopa_raw_program_t</span> raw = <span class="hljs-built_in">koopa_build_raw_program</span>(builder, program);<br><br>  <span class="hljs-built_in">koopa_delete_program</span>(program);<br><br>  <span class="hljs-built_in">process_raw_program</span>(raw);<br><br>  <span class="hljs-built_in">koopa_delete_raw_program_builder</span>(builder);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当然在<code>main.cpp</code>中也要添加这么一行：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;raw_program_process.h&quot;</span></span><br></code></pre></td></tr></table></figure>
+<p>为了检验头文件中功能能否正常实现，在main函数中调用了有关功能：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">char</span>* str = ast-&gt;<span class="hljs-built_in">c_str</span>();<br><span class="hljs-built_in">create_raw_program</span>(str);<br></code></pre></td></tr></table></figure>
+<p><img src="/../img/%E7%BC%96%E8%AF%91/rawprogram%E5%A4%84%E7%90%86%E6%88%90%E5%8A%9F.png" srcset="/img/loading.gif" lazyload alt="成功截图"></p>
 
                 
               </div>
@@ -310,8 +310,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编译lab-rust零帧起手</div>
-      <div>http://liebe-grausam.github.io/2024/11/24/编译lab-3/</div>
+      <div>编译lab-4</div>
+      <div>http://liebe-grausam.github.io/2024/11/24/编译lab-4/</div>
     </div>
     <div class="license-meta">
       
@@ -355,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/24/%E7%BC%96%E8%AF%91lab-4/" title="编译lab-4">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">编译lab-4</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/20/%E7%BC%96%E8%AF%91lab-2/" title="编译lab-完成lab1">
-                        <span class="hidden-mobile">编译lab-完成lab1</span>
+                      <a href="/2024/11/24/%E7%BC%96%E8%AF%91lab-3/" title="编译lab-rust零帧起手">
+                        <span class="hidden-mobile">编译lab-rust零帧起手</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
