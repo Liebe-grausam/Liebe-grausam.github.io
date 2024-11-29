@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>GAMES101-透视投影</title>
+    <link href="/2024/11/29/GAMES101-1/"/>
+    <url>/2024/11/29/GAMES101-1/</url>
+    
+    <content type="html"><![CDATA[<p>在看计算机图形学的perspective projection<br>b站真是人才辈出哇，，自己不看弹幕直接听课的话有好多东西都听不懂<br><img src="/../img/%E6%AF%95%E8%AE%BE/b9c501004490179808f1c18c1c2b833.jpg"><br>想了很久为什么z的值是unknown<br>后来发现这里的z并不单单是near平面或者far平面上的z，它其实代表着整个frost立方体里面的点，所以在保证x和y都是线性映射的情况下z不一定是线性映射的。<br><img src="/../img/%E6%AF%95%E8%AE%BE/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20241129182610.png"><br>最后一行完全可以是000z，但是z是变量，到时候计算的时候还得实时带入z的真实值，对于计算机来说很麻烦，要开辟内存，还要传值，浪费资源。为了节省计算机资源，要用常量凑出这个变换。<br><img src="/../img/%E6%AF%95%E8%AE%BE/03d23a25732de2798032c80c4091013.jpg"><br>近平面z不变是规定的每个点必须映射在原来的位置<br>远平面z不变是说远平面上的点在同一平面（z&#x3D;f这一平面）上收缩，而不要压缩完之后跑到别的平面去了<br>（理解了之后真的很简单，，</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>毕设</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>编译lab-7</title>
     <link href="/2024/11/27/%E7%BC%96%E8%AF%91lab-7/"/>
     <url>/2024/11/27/%E7%BC%96%E8%AF%91lab-7/</url>
