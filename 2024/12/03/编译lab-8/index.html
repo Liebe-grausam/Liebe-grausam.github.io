@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liebe-grausam.github.io/img/%E7%BC%96%E8%AF%91/lv3%E6%94%B9%E5%89%8D%E7%AB%AF.png">
 <meta property="article:published_time" content="2024-12-02T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-12-06T18:31:03.562Z">
+<meta property="article:modified_time" content="2024-12-08T10:42:41.578Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary_large_image">
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.3k 字
+          7k 字
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          53 分钟
+          58 分钟
         
       </span>
     
@@ -297,6 +297,12 @@
 <p>这是主要的修改部分。另外对计数器为零的情况也做了额外的分类讨论。不仅在一元表达式 unaryop 部分，在 stmt return部分也做了分类讨论（要考虑直接返回一个数而不是寄存器的情况</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span> (tempVarCounter!=<span class="hljs-number">0</span>)&#123;<br>  ofs&lt;&lt;<span class="hljs-string">&quot;ret %&quot;</span>&lt;&lt;tempVarCounter<span class="hljs-number">-1</span>;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>  <span class="hljs-comment">// exp-&gt;Dump_Koopa(ofs);</span><br>  <span class="hljs-comment">// // 如果是 primaryexp 类型，检查它是否是 PrimaryExpAST 类型</span><br>  <span class="hljs-comment">// auto expAST = dynamic_cast&lt;ExpAST*&gt;(exp.get());</span><br>  <span class="hljs-comment">// if (expAST) &#123;</span><br>  <span class="hljs-comment">//   // 如果是 PrimaryExpAST 类型，使用其中的 number 赋值给 rootnum</span><br>  <span class="hljs-comment">//   rootnum = expAST-&gt;rootnum;</span><br>  <br>  <span class="hljs-comment">// &#125;</span><br>  ofs&lt;&lt;<span class="hljs-string">&quot;ret &quot;</span>&lt;&lt;rootnum;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>目前正确率：7&#x2F;28</p>
+<hr>
+<p>12&#x2F;8修改<br>因为后面考虑到有多个常数无法再采用这种rootnum的形式，所以考虑添加了一个新的类<code>NumberAST</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">NumberAST</span> : <span class="hljs-keyword">public</span> BaseAST&#123;<br>  <span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> val;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Dump_AST</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> <span class="hljs-keyword">override</span> </span>&#123;<br>      std::cout &lt;&lt; <span class="hljs-string">&quot;NumberAST &#123;&quot;</span>;<br>      std::cout &lt;&lt; val;<br>      std::cout &lt;&lt; <span class="hljs-string">&quot; &#125;&quot;</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Dump_Koopa</span><span class="hljs-params">(std::ostream&amp; ofs = std::cout)</span> <span class="hljs-type">const</span> <span class="hljs-keyword">override</span> </span>&#123;<br>      ofs&lt;&lt;val;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>把原来和int number相关的代码全部改成numberAST的指针了，在.y文件里也改了<br>但是这样就回到了最初的问题：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs llvm">fun <span class="hljs-title">@main</span>(): <span class="hljs-type">i32</span>&#123;<br><span class="hljs-variable">%entry</span>:<br><span class="hljs-number">6</span><span class="hljs-variable">%0</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">eq</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span> <span class="hljs-number">0</span><br><span class="hljs-variable">%1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">sub</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-variable">%0</span><br><span class="hljs-variable">%2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">sub</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-variable">%1</span><br><span class="hljs-keyword">ret</span> <span class="hljs-variable">%2</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>莫名其妙前面多了一个六<br>经过列语法树debug发现是UnaryExp的输出顺序问题。<br>把<code>unaryexp-&gt;Dump_Koopa(ofs);</code>这一语句下调了顺序，但是发现出现了core dump，后来发现是没有检查空指针的问题。加入空指针判定成功输出，不过依然存在引入了多余的寄存器的问题。</p>
 
                 
               </div>
@@ -365,6 +371,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/12/26/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="编译期末复习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">编译期末复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
