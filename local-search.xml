@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>信息安全引论期末复习</title>
+    <link href="/2025/01/07/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BC%95%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    <url>/2025/01/07/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BC%95%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="作业一-古典密码"><a href="#作业一-古典密码" class="headerlink" title="作业一 古典密码"></a>作业一 古典密码</h3><p><strong>仿射密码：</strong><br>ax+b mod m<br>m&#x3D;26<br>gcd(a,m)&#x3D;1（a和m互素）<br>b可以取26种（0-25）<br>a的数量<em>b的数量&#x3D;仿射密码的种类<br><strong>Playfair矩阵的构造：</strong><br><img src="/../img/%E4%BF%A1%E5%AE%89/playfair.png"><br><img src="/../img/%E4%BF%A1%E5%AE%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250107011231.png"><br><strong>Hill矩阵</strong><br>K为m</em>m hill矩阵且K可逆<br>把明文分成每组m个<br>密文也是每组m个<br>密文(y1,y2,…,ym)&#x3D;明文(x1,x2,…,xm)*K<br>明文(x1,x2,…,xm)&#x3D;密文(y1,y2,…,ym)*K^-1（K的逆矩阵</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>编译期末复习</title>
     <link href="/2024/12/26/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <url>/2024/12/26/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</url>
