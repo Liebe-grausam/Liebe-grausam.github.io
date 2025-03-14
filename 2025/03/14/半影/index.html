@@ -16,28 +16,24 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="作业一 古典密码仿射密码：ax+b mod mm&#x3D;26gcd(a,m)&#x3D;1（a和m互素）b可以取26种（0-25）a的数量b的数量&#x3D;仿射密码的种类Playfair矩阵的构造：Hill矩阵K为mm hill矩阵且K可逆把明文分成每组m个密文也是每组m个密文(y1,y2,…,ym)&#x3D;明文(x1,x2,…,xm)*K明文(x1,x2,…,xm)&#x3D;密文(y">
+    <meta name="description" content="因为实在太乱了所以整了一个合集专门放毕设相关 前置知识半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点） PCF(Percentage Closer Filtering)众所周知shadow mapping有一种消除阴影锯齿的策略叫PC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息安全引论期末复习">
-<meta property="og:url" content="http://liebe-grausam.github.io/2025/01/07/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BC%95%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:title" content="PCF与PCSS">
+<meta property="og:url" content="http://liebe-grausam.github.io/2025/03/14/%E5%8D%8A%E5%BD%B1/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="作业一 古典密码仿射密码：ax+b mod mm&#x3D;26gcd(a,m)&#x3D;1（a和m互素）b可以取26种（0-25）a的数量b的数量&#x3D;仿射密码的种类Playfair矩阵的构造：Hill矩阵K为mm hill矩阵且K可逆把明文分成每组m个密文也是每组m个密文(y1,y2,…,ym)&#x3D;明文(x1,x2,…,xm)*K明文(x1,x2,…,xm)&#x3D;密文(y">
+<meta property="og:description" content="因为实在太乱了所以整了一个合集专门放毕设相关 前置知识半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点） PCF(Percentage Closer Filtering)众所周知shadow mapping有一种消除阴影锯齿的策略叫PC">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E4%BF%A1%E5%AE%89/playfair.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E4%BF%A1%E5%AE%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250107011231.png">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E4%BF%A1%E5%AE%89/9aa1dd4cea24975730fdfaa243c270c.jpg">
-<meta property="og:image" content="http://liebe-grausam.github.io/img/%E4%BF%A1%E5%AE%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250109131025.png">
-<meta property="article:published_time" content="2025-01-06T16:21:48.000Z">
-<meta property="article:modified_time" content="2025-01-09T05:10:46.711Z">
+<meta property="article:published_time" content="2025-03-14T04:47:31.000Z">
+<meta property="article:modified_time" content="2025-03-14T08:31:32.506Z">
 <meta property="article:author" content="Liebe_grausam">
+<meta property="article:tag" content="毕设">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://liebe-grausam.github.io/img/%E4%BF%A1%E5%AE%89/playfair.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>信息安全引论期末复习 - 苯人的一些发疯自留地！</title>
+  <title>PCF与PCSS - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +190,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="信息安全引论期末复习"></span>
+            <span id="subtitle" data-typed-text="PCF与PCSS"></span>
           
         </div>
 
@@ -205,8 +201,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-07 00:21" pubdate>
-          2025年1月7日 凌晨
+        <time datetime="2025-03-14 12:47" pubdate>
+          2025年3月14日 下午
         </time>
       </span>
     
@@ -217,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.2k 字
         
       </span>
     
@@ -228,7 +224,7 @@
         
         
         
-          14 分钟
+          11 分钟
         
       </span>
     
@@ -274,27 +270,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">信息安全引论期末复习</h1>
+            <h1 style="display: none">PCF与PCSS</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="作业一-古典密码"><a href="#作业一-古典密码" class="headerlink" title="作业一 古典密码"></a>作业一 古典密码</h3><p><strong>仿射密码：</strong><br>ax+b mod m<br>m&#x3D;26<br>gcd(a,m)&#x3D;1（a和m互素）<br>b可以取26种（0-25）<br>a的数量<em>b的数量&#x3D;仿射密码的种类<br><strong>Playfair矩阵的构造：</strong><br><img src="/../img/%E4%BF%A1%E5%AE%89/playfair.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E4%BF%A1%E5%AE%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250107011231.png" srcset="/img/loading.gif" lazyload><br><strong>Hill矩阵</strong><br>K为m</em>m hill矩阵且K可逆<br>把明文分成每组m个<br>密文也是每组m个<br>密文(y1,y2,…,ym)&#x3D;明文(x1,x2,…,xm)*K<br>明文(x1,x2,…,xm)&#x3D;密文(y1,y2,…,ym)*K^-1（K的逆矩阵</p>
-<h3 id="作业二-现代对称密码"><a href="#作业二-现代对称密码" class="headerlink" title="作业二 现代对称密码"></a>作业二 现代对称密码</h3><p>扩散就是让明文中的每一位影响密文中的许多位，或者说让密文中的每一位受明文中的许多位的影响．这样可以隐蔽明文的统计特性。</p>
-<p>混淆就是将<strong>密文与密钥</strong>（不是明文和密文！）之间的统计关系变得尽可能复杂，使得对手即使获取了关于密文的一些统计特性，也无法推测密钥。使用复杂的非线性代替变换可以达到比较好的混淆效果，而简单的线性代替变换得到的混淆效果则不理想。</p>
-<p>雪崩效应（Avalanche effect）指加密算法（尤其是块密码和加密散列函数）的一种理想属性。雪崩效应就是一种不稳定的平衡状态也是加密算法的一种特征，它指明文或密钥的少量变化会引起密文的很大变化。雪崩效应是指当输入发生最微小的改变（例如，反转一个二进制位）时，也会导致输出的剧变（如，输出中一半的二进制位发生反转）。在高品质的块密码中，无论密钥或明文的任何细微变化都应当引起密文的剧烈改变。</p>
-<h4 id="ECB（电子密码本模式"><a href="#ECB（电子密码本模式" class="headerlink" title="ECB（电子密码本模式"></a>ECB（电子密码本模式</h4><p>数据分组 + 各组加密&#x2F;解密</p>
-<p>简单和有效<br>可以并行实现<br>不能隐藏明文的模式信息<br>相同明文-&gt;相同密文<br>同样信息多次出现造成泄漏<br>对明文的主动攻击是可能的<br>信息块可被替换、重排、删除、重放<br>误差传递：密文块损坏-&gt;仅对应明文块损坏<br>适合于传输短信息</p>
-<p>优点：<br>简单，易实现，可并行<br>缺点：<br>分组进行加密，<strong>加密方式一致</strong>，那么可根据密文情况观察到明文情况，有被破解的风险，不安全</p>
-<p>加密消息块相互独立成为被攻击的弱点，不能提供严格的数据保密性，可以对明文进行主动攻击；</p>
-<h4 id="CBC密码分组链接模式"><a href="#CBC密码分组链接模式" class="headerlink" title="CBC密码分组链接模式"></a>CBC密码分组链接模式</h4><p>原理：每个明文块先与其前一个密文块进行异或，然后再进行加密</p>
-<p>没有已知的并行实现算法<br>能隐藏明文的模式信息<br>需要共同的初始化向量IV<br>相同明文-&gt;不同密文<br>初始化向量IV可以用来改变第一块<br>对明文的主动攻击是不容易的<br>信息块不容易被替换、重排、删除、重放<br>误差传递：密文块损坏-&gt;两明文块损坏<br>安全性好于ECB<br>适合于传输长度大于64位的报文，还可以进行用户鉴别，是大多系统的标准如 SSL、IPsec  </p>
-<p>这种方法的每个密文块都依赖于它前面的明文块，使加密的各段数据之间有了联系，保证了每条消息的唯一性。第一个块中需要使用初始化向量IV<br>加密的时候，第一块后的每一块 需要先与前一个密文异或再加密 Ci &#x3D; Ek (P ⊕ Ci-1), C0 &#x3D; IV.<br>解密的时候，<strong>一个密文会影响到该明文与后一个明文，不会对其他明文产生影响</strong> Pi &#x3D; Dk (Ci) ⊕Ci-1, C0 &#x3D; IV.</p>
-<p><strong>作业题！！背下来！！！</strong><br>在DES的ECB模式中，若在密文的传输过程中，某一块发生了错误，则只有相应的明文分组会有影响，然而，在CBC模式中，这种错误具有扩散性，比如传输时C1发生错误将会影响明文分组P1和P2,<br>a. P2以后的分组是否会受到影响?<br>答：不会<br>b. 假设P1本来就有一位发生了错误，则这个错误要扩散多少个密文分组，对接受者解密后的结果有何影响?<br>假如明文分组 P1出现1比特殊差错， P1影响 C1. 由于 C1 被作为输入来计算 C2, C2被影响了. 这一影响一直被传播, 因此所有的密文分组都会受到影响。但是，在接收端，解密算法能恢复出正确的明文，除了第一个分组。</p>
-<h3 id="自测练习一"><a href="#自测练习一" class="headerlink" title="自测练习一"></a>自测练习一</h3><p>① （错）绝大多数基于网络的对称加密应用程序使用流密码。<br>这是错的 因为大多数使用块密码<br>⑧（错）AES采用Feistel结构。<br>Feistel把数据分为左右两部分，而AES分为2*2矩阵（四部分</p>
-<h3 id="书面作业三"><a href="#书面作业三" class="headerlink" title="书面作业三"></a>书面作业三</h3><p>fermat定理：gcd(a， p)&#x3D;1, a^(p–1)&#x3D; 1 mod p</p>
-<h4 id="RSA计算"><a href="#RSA计算" class="headerlink" title="RSA计算"></a>RSA计算</h4><p><img src="/../img/%E4%BF%A1%E5%AE%89/9aa1dd4cea24975730fdfaa243c270c.jpg" srcset="/img/loading.gif" lazyload></p>
-<h4 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h4><p><img src="/../img/%E4%BF%A1%E5%AE%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250109131025.png" srcset="/img/loading.gif" lazyload></p>
+                <p>因为实在太乱了所以整了一个合集专门放毕设相关</p>
+<h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><p>半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。<br>如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点）</p>
+<h3 id="PCF-Percentage-Closer-Filtering"><a href="#PCF-Percentage-Closer-Filtering" class="headerlink" title="PCF(Percentage Closer Filtering)"></a>PCF(Percentage Closer Filtering)</h3><p>众所周知shadow mapping有一种消除阴影锯齿的策略叫PCF。其原理就是在深度测试中扩大采样范围（本来只对一个点进行深度测试采样，看它是否在阴影中，PCF做了一些优化，在深度测试的时候就对（比方说3×3个点进行采样<br>这样讲实在是不太清楚（ 上代码，来自<code>3.1.3.shadow_mapping.fs</code></p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">// 计算纹理的 texel 大小</span><br><span class="hljs-type">vec2</span> texelSize = <span class="hljs-number">1.0</span> / <span class="hljs-built_in">textureSize</span>(shadowMap, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 3x3 采样</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> x = <span class="hljs-number">-1</span>; x &lt;= <span class="hljs-number">1</span>; ++x)<br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> y = <span class="hljs-number">-1</span>; y &lt;= <span class="hljs-number">1</span>; ++y)<br>    &#123;<br>        <span class="hljs-type">float</span> pcfDepth = <span class="hljs-built_in">texture</span>(shadowMap, projCoords.xy + <span class="hljs-type">vec2</span>(x, y) * texelSize).r; <br>        shadow += currentDepth - bias &gt; pcfDepth  ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;        <br>    &#125;    <br>&#125;<br><span class="hljs-comment">// 计算平均值</span><br>shadow /= <span class="hljs-number">9.0</span>;<br></code></pre></td></tr></table></figure>
+<p><strong>GPT老师更专业的解释：</strong><br>在 PCF 处理之前，每个点的深度信息都是单独计算的，没有进行模糊处理，PCF 只是 在深度测试阶段 通过多个点采样来平滑阴影。<br>step 1：生成 Shadow Map（离线预计算）<br>在光源的视角渲染场景，并存储 每个像素的最近深度（Depth Map）。这一步 没有应用 PCF，只是记录了场景中各点的深度信息。<br>step 2：片元着色阶段（PCF 作用的地方）<br>在 实际渲染的片元着色阶段，计算片元的阴影情况：<br>获取当前片元的深度 currentDepth（从光源视角）。<br>从 Shadow Map 取出该点的 closestDepth：<br>如果直接比较 currentDepth 和 closestDepth，就相当于普通 Shadow Mapping，阴影边缘会很硬。<br>PCF 处理（关键步骤）：<br>不是只对 1 个点进行比较，而是对 9 个相邻像素进行比较。<br>对每个采样点进行阴影测试，并求平均，得到更平滑的阴影值。<br>✅ 在 Shadow Map 生成阶段，深度信息是单独的，每个点都存的是自己的最近深度。<br>✅ PCF 只在阴影测试时应用，通过在周围多个像素取样，使阴影边缘更平滑。<br>✅ 本质上是 在深度测试阶段增加了多点采样，相当于低通滤波，从而减少了阴影锯齿。</p>
+<h3 id="PCSS-Percentage-Closer-Soft-Shadows"><a href="#PCSS-Percentage-Closer-Soft-Shadows" class="headerlink" title="PCSS(Percentage Closer Soft Shadows)"></a>PCSS(Percentage Closer Soft Shadows)</h3><p>根据物体与光源的相对距离，动态调整模糊范围（比如对pcf是统一采用3×3采样，然后pcss就是根据与遮挡物的距离选择3×3或者7×7或者更大的采样）</p>
 
                 
               </div>
@@ -304,6 +290,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%AF%95%E8%AE%BE/">#毕设</a>
+      
+    </div>
+  
 </div>
 
 
@@ -312,8 +305,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>信息安全引论期末复习</div>
-      <div>http://liebe-grausam.github.io/2025/01/07/信息安全引论期末复习/</div>
+      <div>PCF与PCSS</div>
+      <div>http://liebe-grausam.github.io/2025/03/14/半影/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +318,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月7日</div>
+          <div>2025年3月14日</div>
         </div>
       
       
@@ -357,18 +350,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/14/%E5%8D%8A%E5%BD%B1/" title="PCF与PCSS">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PCF与PCSS</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/26/%E7%BC%96%E8%AF%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="编译期末复习">
-                        <span class="hidden-mobile">编译期末复习</span>
+                      <a href="/2025/01/07/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BC%95%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="信息安全引论期末复习">
+                        <span class="hidden-mobile">信息安全引论期末复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
