@@ -16,15 +16,15 @@
   <meta name="author" content="Liebe_grausam">
   <meta name="keywords" content="">
   
-    <meta name="description" content="因为实在太乱了所以整了一个合集专门放毕设相关 前置知识半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点） PCF(Percentage Closer Filtering)众所周知shadow mapping有一种消除阴影锯齿的策略叫PC">
+    <meta name="description" content="不是哥们我对论文实在是太抵触了，，于是新建一个文档在非官方的地方写会不会好一点，， 看了一下引言至少要写8页截了gpt老师的谆谆教导1. Shadow Mapping流（阴影映射）原理：    先从光源视角渲染场景并生成 深度贴图（Shadow Map）。   在主渲染阶段，通过比较当前像素的深度与阴影贴图的深度值，确定该像素是否在阴影中。  优化方法：  PCF（Percentage-Close">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PCF与PCSS">
-<meta property="og:url" content="http://liebe-grausam.github.io/2025/03/14/%E5%8D%8A%E5%BD%B1/index.html">
+<meta property="og:title" content="毕业论文（尝试拉一坨屎">
+<meta property="og:url" content="http://liebe-grausam.github.io/2025/03/15/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%EF%BC%88%E5%B0%9D%E8%AF%95%E6%8B%89%E4%B8%80%E5%9D%A8%E5%B1%8E/index.html">
 <meta property="og:site_name" content="苯人的一些发疯自留地！">
-<meta property="og:description" content="因为实在太乱了所以整了一个合集专门放毕设相关 前置知识半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点） PCF(Percentage Closer Filtering)众所周知shadow mapping有一种消除阴影锯齿的策略叫PC">
+<meta property="og:description" content="不是哥们我对论文实在是太抵触了，，于是新建一个文档在非官方的地方写会不会好一点，， 看了一下引言至少要写8页截了gpt老师的谆谆教导1. Shadow Mapping流（阴影映射）原理：    先从光源视角渲染场景并生成 深度贴图（Shadow Map）。   在主渲染阶段，通过比较当前像素的深度与阴影贴图的深度值，确定该像素是否在阴影中。  优化方法：  PCF（Percentage-Close">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-14T04:47:31.000Z">
-<meta property="article:modified_time" content="2025-03-14T08:31:32.506Z">
+<meta property="article:published_time" content="2025-03-15T13:44:36.000Z">
+<meta property="article:modified_time" content="2025-03-16T15:02:38.045Z">
 <meta property="article:author" content="Liebe_grausam">
 <meta property="article:tag" content="毕设">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>PCF与PCSS - 苯人的一些发疯自留地！</title>
+  <title>毕业论文（尝试拉一坨屎 - 苯人的一些发疯自留地！</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -190,7 +190,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="PCF与PCSS"></span>
+            <span id="subtitle" data-typed-text="毕业论文（尝试拉一坨屎"></span>
           
         </div>
 
@@ -201,8 +201,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-14 12:47" pubdate>
-          2025年3月14日 下午
+        <time datetime="2025-03-15 21:44" pubdate>
+          2025年3月15日 晚上
         </time>
       </span>
     
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.3k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          11 分钟
+          19 分钟
         
       </span>
     
@@ -270,17 +270,122 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">PCF与PCSS</h1>
+            <h1 style="display: none">毕业论文（尝试拉一坨屎</h1>
             
             
               <div class="markdown-body">
                 
-                <p>因为实在太乱了所以整了一个合集专门放毕设相关</p>
-<h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><p>半影，Penumbra，不透明体遮住光源时，如果光源是比较大的发光体（比如太阳），所产生的影子就有两部分，完全暗的部分叫本影，半明半暗的部分叫半影。<br>如何计算半影宽度？（这个我不太懂，，后面好像有别的算法涉及这一点）</p>
-<h3 id="PCF-Percentage-Closer-Filtering"><a href="#PCF-Percentage-Closer-Filtering" class="headerlink" title="PCF(Percentage Closer Filtering)"></a>PCF(Percentage Closer Filtering)</h3><p>众所周知shadow mapping有一种消除阴影锯齿的策略叫PCF。其原理就是在深度测试中扩大采样范围（本来只对一个点进行深度测试采样，看它是否在阴影中，PCF做了一些优化，在深度测试的时候就对（比方说3×3个点进行采样<br>这样讲实在是不太清楚（ 上代码，来自<code>3.1.3.shadow_mapping.fs</code></p>
-<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">// 计算纹理的 texel 大小</span><br><span class="hljs-type">vec2</span> texelSize = <span class="hljs-number">1.0</span> / <span class="hljs-built_in">textureSize</span>(shadowMap, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 3x3 采样</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> x = <span class="hljs-number">-1</span>; x &lt;= <span class="hljs-number">1</span>; ++x)<br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> y = <span class="hljs-number">-1</span>; y &lt;= <span class="hljs-number">1</span>; ++y)<br>    &#123;<br>        <span class="hljs-type">float</span> pcfDepth = <span class="hljs-built_in">texture</span>(shadowMap, projCoords.xy + <span class="hljs-type">vec2</span>(x, y) * texelSize).r; <br>        shadow += currentDepth - bias &gt; pcfDepth  ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;        <br>    &#125;    <br>&#125;<br><span class="hljs-comment">// 计算平均值</span><br>shadow /= <span class="hljs-number">9.0</span>;<br></code></pre></td></tr></table></figure>
-<p><strong>GPT老师更专业的解释：</strong><br>在 PCF 处理之前，每个点的深度信息都是单独计算的，没有进行模糊处理，PCF 只是 在深度测试阶段 通过多个点采样来平滑阴影。<br>step 1：生成 Shadow Map（离线预计算）<br>在光源的视角渲染场景，并存储 每个像素的最近深度（Depth Map）。这一步 没有应用 PCF，只是记录了场景中各点的深度信息。<br>step 2：片元着色阶段（PCF 作用的地方）<br>在 实际渲染的片元着色阶段，计算片元的阴影情况：<br>获取当前片元的深度 currentDepth（从光源视角）。<br>从 Shadow Map 取出该点的 closestDepth：<br>如果直接比较 currentDepth 和 closestDepth，就相当于普通 Shadow Mapping，阴影边缘会很硬。<br>PCF 处理（关键步骤）：<br>不是只对 1 个点进行比较，而是对 9 个相邻像素进行比较。<br>对每个采样点进行阴影测试，并求平均，得到更平滑的阴影值。<br>✅ 在 Shadow Map 生成阶段，深度信息是单独的，每个点都存的是自己的最近深度。<br>✅ PCF 只在阴影测试时应用，通过在周围多个像素取样，使阴影边缘更平滑。<br>✅ 本质上是 在深度测试阶段增加了多点采样，相当于低通滤波，从而减少了阴影锯齿。</p>
-<h3 id="PCSS-Percentage-Closer-Soft-Shadows"><a href="#PCSS-Percentage-Closer-Soft-Shadows" class="headerlink" title="PCSS(Percentage Closer Soft Shadows)"></a>PCSS(Percentage Closer Soft Shadows)</h3><p>根据物体与光源的相对距离，动态调整模糊范围（比如对pcf是统一采用3×3采样，然后pcss就是根据与遮挡物的距离选择3×3或者7×7或者更大的采样）</p>
+                <p>不是哥们我对论文实在是太抵触了，，于是新建一个文档在非官方的地方写会不会好一点，，</p>
+<p>看了一下引言至少要写8页<br>截了gpt老师的谆谆教导<br><strong>1. Shadow Mapping流（阴影映射）</strong><br><strong>原理</strong>：  </p>
+<ul>
+<li>先从光源视角渲染场景并生成 <strong>深度贴图</strong>（Shadow Map）。  </li>
+<li>在主渲染阶段，通过比较当前像素的深度与阴影贴图的深度值，确定该像素是否在阴影中。</li>
+</ul>
+<p><strong>优化方法</strong>：</p>
+<ul>
+<li><strong>PCF（Percentage-Closer Filtering）</strong>：对阴影边缘进行软化。  </li>
+<li><strong>PCSS（Percentage-Closer Soft Shadows）</strong>：模拟柔和阴影，考虑光源大小。  </li>
+<li><strong>VSM（Variance Shadow Mapping）</strong>：使用统计方法减少阴影失真。  </li>
+<li><strong>CSM（Cascaded Shadow Maps）</strong>：针对大规模场景，使用多级阴影贴图提高远近阴影精度。</li>
+</ul>
+<p><strong>优缺点</strong>：<br>✅ 适用于大多数场景，易于实现，支持动态阴影。<br>❌ 可能会出现锯齿（Aliasing）、阴影失真（Shadow Acne）、Peter Panning（阴影缺失）。  </p>
+<p><strong>2. Shadow Volume流（阴影体积法）</strong><br><strong>原理</strong>：  </p>
+<ul>
+<li>通过投影物体的轮廓边生成一个 <strong>阴影体积（Shadow Volume）</strong>。  </li>
+<li>在渲染时，使用 <strong>Stencil Buffer（模板缓冲区）</strong> 来判断像素是否被阴影覆盖。</li>
+</ul>
+<p><strong>优化方法</strong>：</p>
+<ul>
+<li><strong>Z-Fail Technique</strong>：减少阴影穿透问题，提高稳定性。  </li>
+<li><strong>GPU优化</strong>：通过几何着色器加速阴影体积计算。</li>
+</ul>
+<p><strong>优缺点</strong>：<br>✅ 阴影精度高，没有分辨率限制，不会有阴影失真。<br>❌ 计算量大，复杂几何体的处理成本高，不适用于大规模动态场景。  </p>
+<p><strong>3. Planar Shadow（平面阴影）</strong><br><strong>原理</strong>：  </p>
+<ul>
+<li>假设阴影投射到一个平面上（如地面）。  </li>
+<li>通过矩阵变换，将物体的投影计算到平面上。</li>
+</ul>
+<p><strong>优缺点</strong>：<br>✅ 计算简单，性能开销小，适用于固定场景（如室内）。<br>❌ 只能用于<strong>平面</strong>，无法投射到复杂几何体上，视觉效果受限。  </p>
+<p><strong>4. Screen Space Shadows（屏幕空间阴影）</strong><br><strong>代表方法</strong>：</p>
+<ul>
+<li><strong>SSAO（Screen Space Ambient Occlusion）</strong>：基于屏幕空间计算遮挡，增强环境光阴影。  </li>
+<li><strong>SSDO（Screen Space Directional Occlusion）</strong>：在 SSAO 基础上引入方向性光照。  </li>
+<li><strong>SSSS（Screen Space Soft Shadows）</strong>：针对阴影模糊计算优化，提高真实感。</li>
+</ul>
+<p><strong>优缺点</strong>：<br>✅ 易于集成到后处理管线中，不依赖场景结构。<br>❌ 仅基于屏幕空间信息，容易出现遮挡错误，远处阴影可能不准确。  </p>
+<p><strong>5. Hybrid Methods（混合方法）</strong><br>由于单一方法难以满足所有需求，混合方法逐渐成为主流，例如：  </p>
+<ul>
+<li><strong>Shadow Mapping + Screen Space Shadows</strong>：弥补阴影映射的精度问题，提高屏幕空间的局部细节。  </li>
+<li><strong>Ray Traced Shadows + Rasterized Shadows</strong>：利用光线追踪计算高精度阴影，并结合光栅化优化性能。</li>
+</ul>
+<p><strong>6. Ray Tracing Shadows（光线追踪阴影）</strong><br><strong>原理</strong>：</p>
+<ul>
+<li>通过光线追踪技术精确计算光线遮挡，生成真实的阴影效果。  </li>
+<li>现代 GPU（如 NVIDIA RTX）支持 <strong>RT Core</strong>，可加速实时光线追踪阴影。</li>
+</ul>
+<p><strong>优缺点</strong>：<br>✅ 精度极高，支持软阴影、半透明阴影等复杂阴影效果。<br>❌ 计算成本高，对硬件要求极高，仍然需要混合光栅化方法来优化性能。  </p>
+<p><strong>如何选择合适的方法？</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>适用场景</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Shadow Mapping</strong></td>
+<td>通用，适用于大多数实时渲染</td>
+<td>计算量低，易实现</td>
+<td>可能出现锯齿、阴影失真</td>
+</tr>
+<tr>
+<td><strong>Shadow Volume</strong></td>
+<td>高精度阴影需求（如 CAD、工业可视化）</td>
+<td>质量高，不受分辨率影响</td>
+<td>计算量大，不适用于复杂场景</td>
+</tr>
+<tr>
+<td><strong>Planar Shadow</strong></td>
+<td>固定地面阴影</td>
+<td>性能高，简单</td>
+<td>仅适用于平面</td>
+</tr>
+<tr>
+<td><strong>Screen Space Shadows</strong></td>
+<td>游戏、实时渲染</td>
+<td>屏幕空间优化，细节好</td>
+<td>遮挡错误，远处阴影不准确</td>
+</tr>
+<tr>
+<td><strong>Hybrid Methods</strong></td>
+<td>现代游戏、VR&#x2F;AR</td>
+<td>兼顾性能和质量</td>
+<td>实现复杂度高</td>
+</tr>
+<tr>
+<td><strong>Ray Tracing Shadows</strong></td>
+<td>电影级画质、RTX 支持的游戏</td>
+<td>真实感最强</td>
+<td>计算成本高</td>
+</tr>
+</tbody></table>
+<p><strong>总结</strong><br>如果你的<strong>目标是高效的实时阴影绘制</strong>，可以考虑以下策略：</p>
+<ul>
+<li><strong>游戏&#x2F;大规模场景</strong>：使用 <strong>Cascaded Shadow Mapping（CSM）</strong> + <strong>PCF&#x2F;PCSS</strong> 进行优化。  </li>
+<li><strong>高精度渲染</strong>（如建筑可视化）：<strong>Shadow Volume</strong> 或 <strong>Ray Tracing Shadows</strong>。  </li>
+<li><strong>移动端</strong>：使用 <strong>Planar Shadow</strong> 或优化过的 <strong>Shadow Mapping</strong>。  </li>
+<li><strong>混合方法</strong>：针对不同需求组合算法，比如 <strong>Shadow Mapping + Screen Space Shadows</strong> 提高阴影细节。</li>
+</ul>
+<p>如果你的论文要研究实时阴影优化，建议聚焦 <strong>Shadow Mapping 的优化方法</strong>，例如：</p>
+<ol>
+<li><strong>提高阴影质量</strong>（抗锯齿、软阴影优化）。</li>
+<li><strong>降低计算开销</strong>（层级优化、多分辨率阴影）。</li>
+<li><strong>混合方法</strong>（如基于屏幕空间的优化）。</li>
+</ol>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><h4 id="1-视景系统及其应用"><a href="#1-视景系统及其应用" class="headerlink" title="1.视景系统及其应用"></a>1.视景系统及其应用</h4><p>视景系统是一种通过计算机模拟真实世界的环境，使人们产生沉浸式体验的技术。其也被称为虚拟现实系统或仿真模拟系统。<br>视景系统结合了计算机图形学、多媒体技术、仿真技术等多个领域的知识。其实现依赖于高性能的计算机硬件和先进的图形学算法。<br>视景系统在许多领域都有广泛的应用。比如在军事领域模拟军事环境，进行战术演练；在游戏领域创造丰富的游戏世界，为人们带来更沉浸的体验；在教育领域模拟复杂的实验，帮助学生更直观地理解理论知识；在飞行领域帮助飞行员进行飞行模拟，提高飞行技能。<br>随着技术的不断发展，视景系统的逼真度和交互性越来越高，应用领域也越来越广泛。未来，随着虚拟现实技术的不断进步和普及，视景系统将在更多领域发挥重要作用。</p>
+<p>笑死 aigc率过高，（直接写进正文里算了 算是开了个好头</p>
 
                 
               </div>
@@ -305,8 +410,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PCF与PCSS</div>
-      <div>http://liebe-grausam.github.io/2025/03/14/半影/</div>
+      <div>毕业论文（尝试拉一坨屎</div>
+      <div>http://liebe-grausam.github.io/2025/03/15/毕业论文（尝试拉一坨屎/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +423,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月14日</div>
+          <div>2025年3月15日</div>
         </div>
       
       
@@ -350,18 +455,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/14/SDF-shadow/" title="SDF shadow">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SDF shadow</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/07/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%BC%95%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="信息安全引论期末复习">
-                        <span class="hidden-mobile">信息安全引论期末复习</span>
+                      <a href="/2025/03/14/SDF-shadow/" title="SDF shadow">
+                        <span class="hidden-mobile">SDF shadow</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
